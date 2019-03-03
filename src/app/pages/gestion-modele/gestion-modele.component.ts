@@ -41,9 +41,11 @@ export class ModeleDataSource extends DataSource<any> {
       modeles.forEach(value => {
         this.modeleService.getModele(value.CodeModele).subscribe((modele: ModeleDetail ) => {
           this.mod.push(modele);
+
         });
       });
     });
+    alert(this.mod);
     return Observable.of(this.mod);
   }
   disconnect() {}

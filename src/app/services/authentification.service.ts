@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable, Injector} from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 
@@ -9,12 +9,13 @@ import {map} from 'rxjs/operators';
 })
 
 export class AuthentificationService {
+  private url = this.injector.get('url');
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private injector: Injector) { }
   models: any;
   login(username: string, password: string) {
 
-    return this.http.post<any>('http://localhost:3000/auth/utilfab', { Mail: username, Mdp : password }).pipe(
+    return this.http.post<any>(this.url + '/auth/utilfab', { Mail: username, Mdp : password }).pipe(
       map(user => {
         //   login successful if there's a jwt token in the response
         if (user && user.token) {

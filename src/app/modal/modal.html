@@ -2,7 +2,6 @@
 <h1 mat-dialog-title style="margin: 0">Ajouter un Modele</h1>
   <HR align=left size=8 width="20%">
 
-  Value : {{formulaire.value | json}}
 <form [formGroup]="formulaire" (ngSubmit)="onSubmit()"#f="ngForm" novalidate id="formulaireHtml">
   <div class="row">
     <div class="col-3">

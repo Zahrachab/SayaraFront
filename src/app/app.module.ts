@@ -26,6 +26,9 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { ModalComponent } from './modal/modal.component';
 import { CommuneComponent } from './pages/commune/commune.component';
 
+const urlGlobale = 'http://172.20.10.5:3000';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,12 +59,13 @@ import { CommuneComponent } from './pages/commune/commune.component';
     BrowserAnimationsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MDBBootstrapModule.forRoot()
 
   ],
   entryComponents: [ModalComponent],
   schemas: [NO_ERRORS_SCHEMA],
-  providers: [ModeleService],
+  providers: [ModeleService, {provide: 'url', useValue: urlGlobale}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
