@@ -10,10 +10,12 @@ import {map} from 'rxjs/operators';
 export class ModeleService {
 
   private url = this.injector.get('url');
-  private serviceUrlModeles = this.url + '/marques/5/modeles';
+  private serviceUrlModeles ;
   private serviceUrlModele =  this.url + '/marques/modeles/';
 
-  constructor(private http: HttpClient, private injector: Injector) { }
+  constructor(private http: HttpClient, private injector: Injector) {
+    this.serviceUrlModeles = this.url + '/marques/' + JSON.parse(localStorage.getItem('utilisateur')).utilfab.Fabricant + '/modeles';
+  }
 
   getModeles(): Observable<Modele[]> {
     return this.http.get<Modele[]>(this.serviceUrlModeles);

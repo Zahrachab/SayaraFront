@@ -26,7 +26,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { ModalComponent } from './modal/modal.component';
 import { CommuneComponent } from './pages/commune/commune.component';
 
-const urlGlobale = 'http://172.20.10.5:3000';
+const urlGlobale = 'http://eb85ef62.ngrok.io';
 
 
 @NgModule({

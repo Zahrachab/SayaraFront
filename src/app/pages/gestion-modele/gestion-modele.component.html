@@ -5,7 +5,7 @@
     <div fxFlex="70">
       <form class="example-form">
         <mat-form-field class="example-full-width" >
-          <input matInput placeholder="Rechercher un modèle" value="">
+          <input matInput (keyup)="applyFilter($event.target.value)"  placeholder="Rechercher un modèle" value="">
         </mat-form-field>
       </form>
     </div>
@@ -52,9 +52,9 @@
       <ng-container matColumnDef="gestion" >
         <mat-header-cell *matHeaderCellDef><i class="material-icons">tune</i> GESTION</mat-header-cell>
         <mat-cell mat-cell *matCellDef="let modele">
-          <mat-icon class="vert">edit</mat-icon>
-          <mat-icon class="rouge">delete</mat-icon>
-          <mat-icon>more_vert</mat-icon>
+          <a routerLink="."><mat-icon class="vert">edit</mat-icon></a>
+          <a routerLink="."><mat-icon class="rouge">delete</mat-icon></a>
+          <a routerLink="."><mat-icon>more_vert</mat-icon></a>
         </mat-cell>
       </ng-container>
 

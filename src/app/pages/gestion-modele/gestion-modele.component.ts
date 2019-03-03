@@ -20,6 +20,9 @@ export class GestionModeleComponent implements OnInit {
 
   constructor(private modeleService: ModeleService, private modalService: MatDialog) {}
   ngOnInit() {
+    setInterval(function() {
+      this.refresh();
+    }, 120000);
   }
 
   openModal() {
