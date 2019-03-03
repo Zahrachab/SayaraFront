@@ -1,0 +1,80 @@
+
+
+div{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: white;
+    h4{
+        
+      text-align: center;
+      color:  black;
+      font-family: 'Roboto', sans-serif;
+      font-size: 32px;
+      line-height: 1.5;  
+      margin: 0px;
+      font-weight: 100;
+    }
+    p{
+      text-align: start;
+      color:  #7F8C8D;
+      font-family: 'Lato', sans-serif;
+      font-size: 16px;
+    }
+    div.trait{
+        width: 60px; 
+        border-top: 3px solid #1abc9c;
+        margin: 0px;
+        margin-left:1%;
+        
+    }
+    div#offers{
+      margin-top: 20px;
+      mat-card{
+        max-width: 300px;
+        margin: 15px;
+        padding: 0px;
+        border-style: none;
+        box-shadow: none;
+
+        img{
+            max-width: 50px;
+            margin-left:auto;
+            margin-right: auto;
+            display: block;
+    
+        }
+    
+        mat-card-title{
+            font-family: 'Roboto', sans-serif;
+            max-width: 150px;
+            text-align: center;
+           
+        }
+        
+        #card1Title{
+            color:  #16a085;
+        }
+    
+        #card2Title{
+            color:  #33747b;
+        }
+        
+    
+        #card3Title{
+            color:  #2980b9;
+        }
+    
+        mat-card-content{
+              font-family: 'Lato', sans-serif;
+              color:  #7F8C8D;
+              text-align: justify;
+    
+        }
+     
+    }
+      
+    }
+
+
+
+  }

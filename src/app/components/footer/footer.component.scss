@@ -1,0 +1,72 @@
+div {
+  #degrade{
+    background-image: linear-gradient(to right, #2980b9 , #1abc9c);
+    width: 100%;
+    height: 80px;
+  }
+  .mat-card-wrapper {
+    position: relative;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    height: 250px;
+
+    mat-card {
+      padding: 0px;
+      margin: 0px;
+      margin-left: 40%;
+      height: 100%;
+      width: 60%;
+
+      img {
+        width: 100%;
+        height: 100%;
+        opacity: 0.8;
+        object-fit: contain;
+      }
+    }
+
+    div.footer {
+      opacity: 0.93;
+      top: 0%;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      padding: 30px;
+      color: white;
+      background-color: #2c3e50;
+
+      div {
+        img {
+          width: 60%;
+          object-fit: cover;
+          margin-bottom: 10px;
+        }
+
+        p, a {
+          font-family: 'Roboto-Medium', sans-serif;
+          margin: 7px;
+          font-size: 15px;
+          color: white;
+        }
+
+        a {
+          margin: 0px;
+          img{
+            width: 30px;
+          }
+        }
+
+        p.gris {
+          color: #bdc3c7;
+          font-weight: 500;
+          margin-bottom: 10px;
+        }
+
+        div {
+          padding: 3px;
+        }
+      }
+    }
+  }
+}
