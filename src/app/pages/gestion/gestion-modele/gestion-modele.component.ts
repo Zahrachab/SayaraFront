@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ModeleService } from '../../services/modele.service';
+import { ModeleService } from '../../../services/modele.service';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import {DataSource} from '@angular/cdk/collections';
-import {Modele} from '../../services/entites/modele.model';
-import {ModeleDetail} from '../../services/entites/modeleDetail.model';
+import {Modele} from '../../../services/entites/modele.model';
+import {ModeleDetail} from '../../../services/entites/modeleDetail.model';
 import {AjouterModeleComponent} from './ajouterModele/ajouterModele.component';
 import {MatDialog} from '@angular/material';
 

@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, FormArray} from '@angular/forms';
-import {ModeleService} from '../../../services/modele.service';
-import {OptionService} from '../../../services/option.service';
-import {VersionService} from '../../../services/version.service';
+import {ModeleService} from '../../../../services/modele.service';
+import {OptionService} from '../../../../services/option.service';
+import {VersionService} from '../../../../services/version.service';
 
 @Component({
   selector: 'app-modal',

@@ -1,22 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CommuneComponent } from './commune.component';
+import { GestionComponent } from './gestion.component';
 
-describe('CommuneComponent', () => {
-  let component: CommuneComponent;
-  let fixture: ComponentFixture<CommuneComponent>;
+describe('GestionComponent', () => {
+  let component: GestionComponent;
+  let fixture: ComponentFixture<GestionComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CommuneComponent ]
+      declarations: [ GestionComponent ]
     })
-    .compileComponents().then(() => {
-
-    });
+    .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CommuneComponent);
+    fixture = TestBed.createComponent(GestionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
