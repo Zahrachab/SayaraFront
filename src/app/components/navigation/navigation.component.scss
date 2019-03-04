@@ -1,62 +1,67 @@
 .mat-card-wrapper {
-    position: relative;
+  position: relative;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  height: 500px;
+
+  mat-card {
+    padding: 0;
+    margin: 0;
+    height: 100%;
     width: 100%;
-    padding: 0px;
-    margin: 0px;
-    height: 500px;
-        mat-card{
-          padding: 0px;
-          margin: 0px;
-          height: 100%;
-          width: 100%  ;
-            img{
-              width: 100%;
-              height: 100%;
-              opacity: 0.8;
-              object-fit: cover;
-            } 
-          }
-  
-            div {
-              height: 70%;
-              width: 100%;
-              top: 30%;
-              position: absolute;
-  
-        
-                span.slogan {
-                  display: inline;
-                  color: white;
-                  font-size: 37px;
-                  font-family: 'Roboto', sans-serif;
-                  font-weight: bold;
-                }
-        
-                span.description {
-                  display: inline;
-                  color: white;
-                  font-size: 24px;
-                  font-family: 'Lato', sans-serif;
-                  font-weight: 300;
-                }
-                span{
-                  a{
-                    color: white;
-                    line-height: 3.5;
-                    font-weight: bold;
-                    font-family: 'Lato', sans-serif;
-                    border-radius: 10px;
-                    font-size: 13px;
-  
-                  }
-                  a.infosBtn{
-                    background-color: #1abc9c;
-                  }
-                  a.servicesBtn{
-                     background-color: transparent;
-                     border: 2px solid white; 
-                  }
-                }
-        
-          }
-        }
+
+    img {
+      width: 100%;
+      height: 100%;
+      opacity: 0.8;
+      object-fit: cover;
+    }
+  }
+
+  div {
+    height: 70%;
+    width: 100%;
+    top: 30%;
+    position: absolute;
+
+
+    span.slogan {
+      display: inline;
+      color: white;
+      font-size: 37px;
+      font-family: 'Roboto', sans-serif;
+      font-weight: bold;
+    }
+
+    span.description {
+      display: inline;
+      color: white;
+      font-size: 24px;
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+    }
+
+    span {
+      a {
+        color: white;
+        line-height: 3.5;
+        font-weight: bold;
+        font-family: 'Lato', sans-serif;
+        border-radius: 10px;
+        font-size: 13px;
+
+      }
+
+      a.infosBtn {
+        background-color: #1abc9c;
+      }
+
+      a.servicesBtn {
+        background-color: transparent;
+        border: 2px solid white;
+      }
+    }
+
+  }
+}

@@ -3,10 +3,9 @@ import { ModeleService } from '../../services/modele.service';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import {DataSource} from '@angular/cdk/collections';
-import {Modele} from '../../services/modele.model';
-import {ModeleDetail} from '../../services/modeleDetail.model';
-import {forEach} from '@angular/router/src/utils/collection';
-import {ModalComponent} from '../../modal/modal.component';
+import {Modele} from '../../services/entites/modele.model';
+import {ModeleDetail} from '../../services/entites/modeleDetail.model';
+import {AjouterModeleComponent} from './ajouterModele/ajouterModele.component';
 import {MatDialog} from '@angular/material';
 
 @Component({
@@ -26,7 +25,7 @@ export class GestionModeleComponent implements OnInit {
   }
 
   openModal() {
-    const modalRef = this.modalService.open(ModalComponent, {width: '800px'});
+    this.modalService.open(AjouterModeleComponent, {width: '800px'});
   }
 
 }

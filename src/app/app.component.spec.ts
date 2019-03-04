@@ -11,7 +11,9 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
-    }).compileComponents();
+    }).compileComponents().then(() => {
+
+    });
   }));
 
   it('should create the app', () => {

@@ -12,7 +12,6 @@ export class AuthentificationService {
   private url = this.injector.get('url');
 
   constructor(private http: HttpClient, private injector: Injector) { }
-  models: any;
   login(username: string, password: string) {
 
     return this.http.post<any>(this.url + '/auth/utilfab', { Mail: username, Mdp : password }).pipe(
@@ -28,6 +27,6 @@ export class AuthentificationService {
 
   logout() {
     // remove user from local storage to log user out
-    localStorage.removeItem('currentUser');
+    localStorage.removeItem('utilisateur');
   }
 }

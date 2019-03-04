@@ -17,16 +17,14 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { GestionModeleComponent } from './pages/gestion-modele/gestion-modele.component';
 import { ModeleService } from './services/modele.service';
-import {PopupComponent} from './popup/popup.component';
 import {MDBBootstrapModule} from 'angular-bootstrap-md';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './pages/login/login.component';
 import { FormsModule } from '@angular/forms';
-import { AcceuilComponent } from './acceuil/acceuil.component';
 import {ReactiveFormsModule} from '@angular/forms';
-import { ModalComponent } from './modal/modal.component';
+import { AjouterModeleComponent } from './pages/gestion-modele/ajouterModele/ajouterModele.component';
 import { CommuneComponent } from './pages/commune/commune.component';
 
-const urlGlobale = 'http://eb85ef62.ngrok.io';
+const urlGlobale = 'https://sayaradz.herokuapp.com';
 
 
 @NgModule({
@@ -42,14 +40,9 @@ const urlGlobale = 'http://eb85ef62.ngrok.io';
     NavbarComponent,
     SidenavComponent,
     GestionModeleComponent,
-    PopupComponent,
     LoginComponent,
-    AcceuilComponent,
-    ModalComponent,
+    AjouterModeleComponent,
     CommuneComponent,
-
-
-
   ],
   imports: [
     BrowserModule,
@@ -61,9 +54,8 @@ const urlGlobale = 'http://eb85ef62.ngrok.io';
     ReactiveFormsModule,
     FormsModule,
     MDBBootstrapModule.forRoot()
-
   ],
-  entryComponents: [ModalComponent],
+  entryComponents: [AjouterModeleComponent],
   schemas: [NO_ERRORS_SCHEMA],
   providers: [ModeleService, {provide: 'url', useValue: urlGlobale}],
   bootstrap: [AppComponent]

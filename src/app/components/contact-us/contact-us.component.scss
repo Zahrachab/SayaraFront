@@ -1,37 +1,39 @@
-div{
+div {
   height: 140px;
-    div#contact{
-        width: 50%;
-        background-image: linear-gradient(to bottom, #ecf0f1, #ffffff);
-        height: 100%;
 
-        a.loginBtn{
-          border: 2px solid #7F8C8D;
-          color: #7F8C8D;
-          border-radius: 10px;
-          margin-left: 40px;
-        }
-        p{
-           font-size: 18px;
-           font-weight: 700;
-           font-family: 'Lato', sans-serif; 
-           color:#7F8C8D;
-        }
-        h6{
-          font-size: 25px;
-          font-family: 'Lato', sans-serif;
-          font-weight: 400;
-          margin: 0px;
-          color:#34495e;
-          margin-left: 40px;
-        }
+  div#contact {
+    width: 50%;
+    background-image: linear-gradient(to bottom, #ecf0f1, #ffffff);
+    height: 100%;
+
+    a.loginBtn {
+      border: 2px solid #7F8C8D;
+      color: #7F8C8D;
+      border-radius: 10px;
+      margin-left: 40px;
     }
 
-    div#rien{
-        width: 50%;
-        height: 100%;
-        background-image:  linear-gradient(to right, #3498d8 , #1abc9c);
-
+    p {
+      font-size: 18px;
+      font-weight: 700;
+      font-family: 'Lato', sans-serif;
+      color: #7F8C8D;
     }
+
+    h6 {
+      font-size: 25px;
+      font-family: 'Lato', sans-serif;
+      font-weight: 400;
+      color: #34495e;
+      margin: 0 0 0 40px;
+    }
+  }
+
+  div#rien {
+    width: 50%;
+    height: 100%;
+    background-image: linear-gradient(to right, #3498d8, #1abc9c);
+
+  }
 
 }

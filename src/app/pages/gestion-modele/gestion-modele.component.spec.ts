@@ -10,7 +10,9 @@ describe('GestionModeleComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ GestionModeleComponent ]
     })
-    .compileComponents();
+    .compileComponents().then(() => {
+
+    });
   }));
 
   beforeEach(() => {

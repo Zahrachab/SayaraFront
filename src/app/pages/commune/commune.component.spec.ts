@@ -10,7 +10,9 @@ describe('CommuneComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ CommuneComponent ]
     })
-    .compileComponents();
+    .compileComponents().then(() => {
+
+    });
   }));
 
   beforeEach(() => {

@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { UtilisateurGuardGuard } from './utilisateur-guard.guard';
+import { UtilisateurGuard } from './utilisateur.guard';
 
-describe('UtilisateurGuardGuard', () => {
+describe('UtilisateurGuard', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [UtilisateurGuardGuard]
+      providers: [UtilisateurGuard]
     });
   });
 
-  it('should ...', inject([UtilisateurGuardGuard], (guard: UtilisateurGuardGuard) => {
+  it('should ...', inject([UtilisateurGuard], (guard: UtilisateurGuard) => {
     expect(guard).toBeTruthy();
   }));
 });

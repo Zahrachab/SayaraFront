@@ -1,20 +1,20 @@
 div {
-  #degrade{
-    background-image: linear-gradient(to right, #2980b9 , #1abc9c);
+  #degrade {
+    background-image: linear-gradient(to right, #2980b9, #1abc9c);
     width: 100%;
     height: 80px;
   }
+
   .mat-card-wrapper {
     position: relative;
     width: 100%;
-    padding: 0px;
-    margin: 0px;
+    padding: 0;
+    margin: 0;
     height: 250px;
 
     mat-card {
-      padding: 0px;
-      margin: 0px;
-      margin-left: 40%;
+      padding: 0;
+      margin: 0 0 0 40%;
       height: 100%;
       width: 60%;
 
@@ -28,7 +28,7 @@ div {
 
     div.footer {
       opacity: 0.93;
-      top: 0%;
+      top: 0;
       position: absolute;
       width: 100%;
       height: 100%;
@@ -51,8 +51,9 @@ div {
         }
 
         a {
-          margin: 0px;
-          img{
+          margin: 0;
+
+          img {
             width: 30px;
           }
         }

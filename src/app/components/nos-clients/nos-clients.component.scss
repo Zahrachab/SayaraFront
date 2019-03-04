@@ -1,61 +1,69 @@
-div#nosClients{
-    div#text{
-        width: 50%;
-        padding: 30px; 
-        background-image: linear-gradient(to right, #3498d8 , #1abc9c);
-    
-        h6{
-            
-            text-align: start;
-            color:  white;
-            font-family: 'Roboto', sans-serif;
-            font-size: 32px;
-            line-height: 1.5;  
-            margin: 0px;
-            font-weight: 100;
-          }
-          p{
-              color: white;
-              margin-top: 20px;
-          }
-          div.trait{
-            width: 60px; 
-            border-top: 2px solid white;
-            margin: 0px;
-            padding: 0px;
-        }
-    }
-    div#logos{
-        background-image: linear-gradient(to bottom, #ecf0f1, #ffffff);
-        width: 50%;
-        padding: 20px;
-        mat-card{
-            width: 30%;
-            border-radius: 10px;
-            height: 75px;
-            margin: 5px;
-            padding: 10px;
-            img{
-                width: 100%;
-                object-fit: contain;
-                height: 100%;
-                margin-left:auto;
-                margin-right: auto;
-                display: block;
-                padding: 0px;
-            }
-        }
-        #card1{
-            left: 12%;
-        }
-        #card2{
-            left: 55%;
-        }
-        #card3{
-            left:18%;
-        }
+div#nosClients {
+  div#text {
+    width: 50%;
+    padding: 30px;
+    background-image: linear-gradient(to right, #3498d8, #1abc9c);
 
-       
+    h6 {
+
+      text-align: start;
+      color: white;
+      font-family: 'Roboto', sans-serif;
+      font-size: 32px;
+      line-height: 1.5;
+      margin: 0;
+      font-weight: 100;
     }
+
+    p {
+      color: white;
+      margin-top: 20px;
+    }
+
+    div.trait {
+      width: 60px;
+      border-top: 2px solid white;
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  div#logos {
+    background-image: linear-gradient(to bottom, #ecf0f1, #ffffff);
+    width: 50%;
+    padding: 20px;
+
+    mat-card {
+      width: 30%;
+      border-radius: 10px;
+      height: 75px;
+      margin: 5px;
+      padding: 10px;
+
+      img {
+        width: 100%;
+        object-fit: contain;
+        height: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        padding: 0;
+      }
+    }
+
+    #card1 {
+      left: 12%;
+    }
+
+    #card2 {
+      left: 55%;
+    }
+
+    #card3 {
+      left: 18%;
+    }
+
+
+  }
 
 }

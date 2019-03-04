@@ -1,98 +1,101 @@
-.sideMenu{
-  padding: 0px;
+.sideMenu {
+  padding: 0;
   background-color: #34495e;
   height: 100%;
   border-bottom: 1px solid #bdc3c7;
   color: white;
 
-   div#carre {
-     width: 100%;
-     height: 160px;
-     padding: 0px;
-     margin: 0px;
-     background-image: linear-gradient(to right, #2980b9 , #1abc9c);
+  div#carre {
+    width: 100%;
+    height: 160px;
+    padding: 0;
+    margin: 0;
+    background-image: linear-gradient(to right, #2980b9, #1abc9c);
 
-     /*mat-card#vert {
-       top: 5px;
-       left: 4px;
-       width: 25%;
-       height: 32%;
-       position: absolute;;
-       border-radius: initial ;
-       background-image: linear-gradient(to right, #3498d8 , #1abc9c);
-     }
+    /*mat-card#vert {
+      top: 5px;
+      left: 4px;
+      width: 25%;
+      height: 32%;
+      position: absolute;;
+      border-radius: initial ;
+      background-image: linear-gradient(to right, #3498d8 , #1abc9c);
+    }
 
-     mat-card#blanc {
-       top: 20px;
-       left: 18px;
-       background-color: white;
-       width: 70%;
-       height: 35%;
-       position: absolute;
-       border-bottom: 1px solid #bdc3c7;
+    mat-card#blanc {
+      top: 20px;
+      left: 18px;
+      background-color: white;
+      width: 70%;
+      height: 35%;
+      position: absolute;
+      border-bottom: 1px solid #bdc3c7;
 
-     }*/
-   }
+    }*/
+  }
 
-  .coord{
-    padding: 20px 0px 20px 10px;
+  .coord {
+    padding: 20px 0 20px 10px;
     background-color: transparent;
-    p{
-       text-align: start;
-       font-size: 40px;
-       font-weight: bolder;
-       margin: 8px;
-       font-family: 'Roboto-Medium';
-       font-size: 18px;
+
+    p {
+      text-align: start;
+      font-size: 40px;
+      font-weight: bolder;
+      margin: 8px;
+      font-family: 'Roboto-Medium', serif;
+      font-size: 18px;
 
     }
   }
 
-  .example-card{
+  .example-card {
     background-color: transparent;
-    padding: 7px;
     width: 85%;
-    margin: 0px;
-    padding-bottom: 35px;
+    margin: 0;
+    padding: 7px 7px 35px;
     border-radius: initial;
     border-bottom: 2px solid #bdc3c7;
-    border-top: 2px solid #bdc3c7 ;
+    border-top: 2px solid #bdc3c7;
     box-shadow: none;
 
-      .example-header-image {
-          background-image: url('/assets/images/Pics/user.png');
-          background-size: cover;
-        }
+    .example-header-image {
+      background-image: url('/assets/images/Pics/user.png');
+      background-size: cover;
+    }
 
-      mat-card-header{
-        font-family: 'Roboto-Bold' ,'Sherif';
-        color: white;
-        mat-card-title{
-            font-size: 80%;
-        }
-        mat-card-subtitle{
-          font-size: 60%;
-          color: white;
-        }
+    mat-card-header {
+      font-family: 'Roboto-Bold', 'Sherif', serif;
+      color: white;
 
+      mat-card-title {
+        font-size: 80%;
       }
+
+      mat-card-subtitle {
+        font-size: 60%;
+        color: white;
+      }
+
+    }
   }
 
-  div#sous-menu{
+  div#sous-menu {
     padding-top: 20px;
     width: 100%;
-    a{;
+
+    a {;
       width: 100%;
       font-weight: bold;
       font-size: 90%;
-      padding: 3px 0px 4px 20px;
-      font-family: 'Roboto-Medium';
+      padding: 3px 0 4px 20px;
+      font-family: 'Roboto-Medium', serif;
       text-align: start;
-      border-radius: 0px;
+      border-radius: 0;
     }
 
-    a.active{
-      background-image: linear-gradient(to right, #2980b9 , #1abc9c);
+    a.active {
+      background-image: linear-gradient(to right, #2980b9, #1abc9c);
     }
   }
 

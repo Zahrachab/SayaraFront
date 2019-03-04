@@ -1392,7 +1392,7 @@ var Collapse = function ($$$1) {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0): modal.js
+ * Bootstrap (v4.0.0): ajouterModele.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -1439,16 +1439,16 @@ var Modal = function ($$$1) {
     CLICK_DATA_API: "click" + EVENT_KEY + DATA_API_KEY
   };
   var ClassName = {
-    SCROLLBAR_MEASURER: 'modal-scrollbar-measure',
-    BACKDROP: 'modal-backdrop',
-    OPEN: 'modal-open',
+    SCROLLBAR_MEASURER: 'ajouterModele-scrollbar-measure',
+    BACKDROP: 'ajouterModele-backdrop',
+    OPEN: 'ajouterModele-open',
     FADE: 'fade',
     SHOW: 'show'
   };
   var Selector = {
-    DIALOG: '.modal-dialog',
-    DATA_TOGGLE: '[data-toggle="modal"]',
-    DATA_DISMISS: '[data-dismiss="modal"]',
+    DIALOG: '.ajouterModele-dialog',
+    DATA_TOGGLE: '[data-toggle="ajouterModele"]',
+    DATA_DISMISS: '[data-dismiss="ajouterModele"]',
     FIXED_CONTENT: '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top',
     STICKY_CONTENT: '.sticky-top',
     NAVBAR_TOGGLER: '.navbar-toggler'
@@ -1606,7 +1606,7 @@ var Modal = function ($$$1) {
       var transition = Util.supportsTransitionEnd() && $$$1(this._element).hasClass(ClassName.FADE);
 
       if (!this._element.parentNode || this._element.parentNode.nodeType !== Node.ELEMENT_NODE) {
-        // Don't move modal's DOM position
+        // Don't move ajouterModele's DOM position
         document.body.appendChild(this._element);
       }
 
@@ -1781,7 +1781,7 @@ var Modal = function ($$$1) {
       }
     }; // ----------------------------------------------------------------------
     // the following methods are used to handle overflowing modals
-    // todo (fat): these should probably be refactored out of modal.js
+    // todo (fat): these should probably be refactored out of ajouterModele.js
     // ----------------------------------------------------------------------
 
 
@@ -1936,7 +1936,7 @@ var Modal = function ($$$1) {
 
     var $target = $$$1(target).one(Event.SHOW, function (showEvent) {
       if (showEvent.isDefaultPrevented()) {
-        // Only register focus restorer if modal will actually get shown
+        // Only register focus restorer if ajouterModele will actually get shown
         return;
       }
 

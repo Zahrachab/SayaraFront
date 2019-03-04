@@ -1,90 +1,98 @@
-div{
-    background-color: white;
-    padding-top: 10px;
-    div#app{
-      width: 25%;
-      margin: 0px;
-      margin-top: 30px;
-      height: 100%;
-      img{
-        max-width: 100%;
-        max-height: 100%;
-        object-fit: contain;
-      }
-    }
+div {
+  background-color: white;
+  padding-top: 10px;
 
-    div#services{
+  div#app {
+    width: 25%;
+    margin: 30px 0 0;
+    height: 100%;
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  div#services {
     width: 70%;
     padding: 10px;
     margin-top: 30px;
-    justify-content:flex-start;
+    justify-content: flex-start;
 
-        div{
-             margin: 0px;
-             padding: 0px;
-            a{
-                color: white;
-                line-height: 3;
-                font-weight: bold;
-                font-family: 'Lato', sans-serif;
-                border-radius: 10px;
-                font-size: 13px;
-                margin-left: 20px;
+    div {
+      margin: 0;
+      padding: 0;
 
-        
-              }
-              a#playStore{
-                background-color: #1abc9c;
-              }
-              a#appStore{
-                background-color: #2980b9;
-              }
-        }
-        .centre{
-          margin-left: 5%;
-        }
-        h6{
-          text-align: start;
-          color:  black;
-          font-family: 'Roboto', sans-serif;
-          font-size: 32px;
-          line-height: 1.5;  
-          margin: 0px;
-          margin-bottom: 3px;
-          font-weight: lighter;
-       }
-       div#trait{
-        
-        width: 60px; 
-        border-top: 3px solid #3498d8;
-        margin-bottom: 18px;
-        margin-left: 6%;
-       }
-        p{
-          text-align: start;
-          color:  #7F8C8D;
-          font-family: 'Lato', sans-serif;
-          font-size: 16px;
-          margin:6px;
-          font-weight: 300;
-        }
-        p#téléchargez{
-          font-weight: 600;
-          font-size: 20px;
-        }
+      a {
+        color: white;
+        line-height: 3;
+        font-weight: bold;
+        font-family: 'Lato', sans-serif;
+        border-radius: 10px;
+        font-size: 13px;
+        margin-left: 20px;
 
-        img{
-          width: 20px;
-          height: 20px;
-          margin-left: 2px;
-        }
 
-        div#playStore{
-          justify-content: start;
-          margin-top: 35px;
-          margin-bottom: 5%;
-        }
+      }
 
-    
+      a#playStore {
+        background-color: #1abc9c;
+      }
+
+      a#appStore {
+        background-color: #2980b9;
+      }
     }
+
+    .centre {
+      margin-left: 5%;
+    }
+
+    h6 {
+      text-align: start;
+      color: black;
+      font-family: 'Roboto', sans-serif;
+      font-size: 32px;
+      line-height: 1.5;
+      margin: 0 0 3px;
+      font-weight: lighter;
+    }
+
+    div#trait {
+
+      width: 60px;
+      border-top: 3px solid #3498d8;
+      margin-bottom: 18px;
+      margin-left: 6%;
+    }
+
+    p {
+      text-align: start;
+      color: #7F8C8D;
+      font-family: 'Lato', sans-serif;
+      font-size: 16px;
+      margin: 6px;
+      font-weight: 300;
+    }
+
+    p#téléchargez {
+      font-weight: 600;
+      font-size: 20px;
+    }
+
+    img {
+      width: 20px;
+      height: 20px;
+      margin-left: 2px;
+    }
+
+    div#playStore {
+      justify-content: start;
+      margin-top: 35px;
+      margin-bottom: 5%;
+    }
+
+
+  }
 }

@@ -1,107 +1,110 @@
 
-     mat-sidenav-container {
-       height: 100%;
-       background-color: white;
-       margin: 0px;
-       padding-left: 10px;
-       padding-right: 10px;
-       border-bottom: 1.5px solid #bdc3c7;
-       box-shadow: 1.5px 1.5px #95a5a6;
-         mat-sidenav{
-           height: 100%;
-           background-color: white;
-           padding: 0px;
-         }
-         mat-sidenav-content{
-           height: 100%;
-           margin: 0px 0px ;
- 
-           mat-toolbar {
-             background-color: transparent;
-           }
-         }
- 
-     }
- 
-     mat-sidenav {
-       width: 250px;
-     }
- 
- 
- 
-     #img-button{
-       width: 200px;
-       height: 50px;
-       padding: 0px;
-       margin: 0px;
-       background-color: transparent;
-       border: none;
- 
-       img{
-         width: 100%;
-         height: 80%;
-       }
- 
-     }
- 
-     a {
-       text-decoration: none;
-       color: black;
-       font-size: 16px;
-       font-family: 'Roboto-Bold', sans-serif;
-     }
- 
-     a:hover{
-       color: #2980b9;
-     }
- 
-     .navigation-items {
-       list-style: none;
-       padding: 0;
-       margin: 0;
-       cursor: pointer;
-       background-color: transparent;
-     }
- 
-     .icon {
-       display: inline-block;
-       height: 30px;
-       margin: 0 auto;
-       padding-right: 5px;
-       text-align: center;
-       vertical-align: middle;
-       width: 15%;
-     }
- 
-     .label {
-       display: inline-block;
-       line-height: 1.8;
-       margin: 0;
-       width: 100%;
-     }
- 
-     a.loginBtn{
-         color: white;
-         border-radius: 10px;
-         background-image: linear-gradient(to right, #2980b9 , #1abc9c);
-         width: 100px;
-         font-family: 'Roboto-Bold';
- 
-     }
- 
-     p{
-       color: black;
-     }
- 
-     nav.image {
-     height: 500px;
-     width:100%;
-     img{
-       height: 100%;
-       width: 100%;
- 
-     }
-     div{
-       width: 80%;
-     }
-     }
+mat-sidenav-container {
+  height: 100%;
+  background-color: white;
+  margin: 0;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-bottom: 1.5px solid #bdc3c7;
+  box-shadow: 1.5px 1.5px #95a5a6;
+
+  mat-sidenav {
+    height: 100%;
+    background-color: white;
+    padding: 0;
+  }
+
+  mat-sidenav-content {
+    height: 100%;
+    margin: 0 0;
+
+    mat-toolbar {
+      background-color: transparent;
+    }
+  }
+
+}
+
+mat-sidenav {
+  width: 250px;
+}
+
+
+#img-button {
+  width: 200px;
+  height: 50px;
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  border: none;
+
+  img {
+    width: 100%;
+    height: 80%;
+  }
+
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  font-size: 16px;
+  font-family: 'Roboto-Bold', sans-serif;
+}
+
+a:hover {
+  color: #2980b9;
+}
+
+.navigation-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.icon {
+  display: inline-block;
+  height: 30px;
+  margin: 0 auto;
+  padding-right: 5px;
+  text-align: center;
+  vertical-align: middle;
+  width: 15%;
+}
+
+.label {
+  display: inline-block;
+  line-height: 1.8;
+  margin: 0;
+  width: 100%;
+}
+
+a.loginBtn {
+  color: white;
+  border-radius: 10px;
+  background-image: linear-gradient(to right, #2980b9, #1abc9c);
+  width: 100px;
+  font-family: 'Roboto-Bold', serif;
+
+}
+
+p {
+  color: black;
+}
+
+nav.image {
+  height: 500px;
+  width: 100%;
+
+  img {
+    height: 100%;
+    width: 100%;
+
+  }
+
+  div {
+    width: 80%;
+  }
+}

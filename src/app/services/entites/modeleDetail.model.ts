@@ -1,7 +1,7 @@
 export interface ModeleDetail {
   CodeModele: { type: string };
   NomModele: { type: string };
-  CodeMarque: {type: string};
+  CodeMarque: { type: string };
   versions: [{
     CodeVersion: { type: string };
     CodeModele: { type: string };

@@ -1,11 +1,11 @@
 <div class="gestion">
   <h2>Gestion des modèles </h2>
-  <div id="trait" ></div>
+  <div id="trait"></div>
   <div fxLayout="row">
     <div fxFlex="70">
       <form class="example-form">
-        <mat-form-field class="example-full-width" >
-          <input matInput (keyup)="applyFilter($event.target.value)"  placeholder="Rechercher un modèle" value="">
+        <mat-form-field class="example-full-width">
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Rechercher un modèle" value="">
         </mat-form-field>
       </form>
     </div>
@@ -17,17 +17,26 @@
 
 
       <ng-container matColumnDef='CodeModele'>
-        <mat-header-cell *matHeaderCellDef><mat-icon>code</mat-icon> CODE</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef>
+          <mat-icon>code</mat-icon>
+          CODE
+        </mat-header-cell>
         <mat-cell *matCellDef="let modele"> {{modele.CodeModele}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef='NomModele'>
-        <mat-header-cell *matHeaderCellDef><mat-icon>directions_car</mat-icon> MODELE</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef>
+          <mat-icon>directions_car</mat-icon>
+          MODELE
+        </mat-header-cell>
         <mat-cell class="gras" *matCellDef="let modele"> {{modele.NomModele}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef='versions'>
-        <mat-header-cell *matHeaderCellDef><mat-icon>bookmark</mat-icon> VERSIONS </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef>
+          <mat-icon>bookmark</mat-icon>
+          VERSIONS
+        </mat-header-cell>
         <mat-cell *matCellDef="let modele">
           <ul>
             <li *ngFor="let version of modele.versions">
@@ -38,7 +47,10 @@
       </ng-container>
 
       <ng-container matColumnDef='options'>
-        <mat-header-cell *matHeaderCellDef><mat-icon>assignment_turned_in</mat-icon> OPTIONS </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef>
+          <mat-icon>assignment_turned_in</mat-icon>
+          OPTIONS
+        </mat-header-cell>
         <mat-cell *matCellDef="let modele" fxLayout="column" fxLayoutAlign="start start">
           <ul>
             <li *ngFor="let option of modele.options">
@@ -49,12 +61,18 @@
         </mat-cell>
       </ng-container>
 
-      <ng-container matColumnDef="gestion" >
+      <ng-container matColumnDef="gestion">
         <mat-header-cell *matHeaderCellDef><i class="material-icons">tune</i> GESTION</mat-header-cell>
         <mat-cell mat-cell *matCellDef="let modele">
-          <a routerLink="."><mat-icon class="vert">edit</mat-icon></a>
-          <a routerLink="."><mat-icon class="rouge">delete</mat-icon></a>
-          <a routerLink="."><mat-icon>more_vert</mat-icon></a>
+          <a routerLink=".">
+            <mat-icon class="vert">edit</mat-icon>
+          </a>
+          <a routerLink=".">
+            <mat-icon class="rouge">delete</mat-icon>
+          </a>
+          <a routerLink=".">
+            <mat-icon>more_vert</mat-icon>
+          </a>
         </mat-cell>
       </ng-container>
 
@@ -62,7 +80,6 @@
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
   </div>
-
 
 
 </div>

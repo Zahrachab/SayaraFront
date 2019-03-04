@@ -6,6 +6,7 @@
   background-image: linear-gradient(101deg, #34749f 0%, #22c6a6 100%);
   color: #ffffff;
 }
+
 #formulaire {
   height: 87%;
   position: relative;
@@ -41,24 +42,25 @@ input[type="text"], input[type="password"] {
   width: 60%;
 }
 
-html,body,app,router-outlet,#colonneGauche,#colonneDroite{
+html, body, app, router-outlet, #colonneGauche, #colonneDroite {
   min-height: 100vh;
 }
 
 h2 {
   color: #000000;
-  font-family: Roboto;
+  font-family: Roboto, serif;
   font-size: 40px;
   font-weight: 400;
-  letter-spacing: 1.03px;
+  letter-spacing: 1px;
   line-height: 70px;
-  padding-bottom: 0px;
+  padding-bottom: 0;
 }
 
 HR {
-  margin-top: 0px;
+  margin-top: 0;
   border: 1px solid #579dc6;
 }
+
 #colonneDroite {
   width: 62%;
   background-color: #2980B9;
@@ -74,6 +76,7 @@ HR {
 .carousel {
   margin-top: 20%;
 }
+
 #carousel img {
   display: block;
   float: left;
@@ -81,8 +84,7 @@ HR {
   position: relative;
 }
 
-.carousel .carousel-item
-{
+.carousel .carousel-item {
   visibility: visible;
 }
 

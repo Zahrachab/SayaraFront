@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import 'materialize-css';
 import {ActivatedRoute, Router} from '@angular/router';
-import {AuthentificationService} from '../services/authentification.service';
-import {AlertService} from '../services/alert.service';
+import {AuthentificationService} from '../../services/authentification.service';
+import {AlertService} from '../../services/alert.service';
 import * as $ from 'jquery';
 
 
@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     /*
-          $(document).ojready(function() {
+          $(document).ready(function() {
             $('.carousel').carousel();
           });
      */
