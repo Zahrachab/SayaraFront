@@ -1,0 +1,77 @@
+<mat-dialog-content>
+<h1 mat-dialog-title style="margin: 0">Ajouter un Modele</h1>
+  <HR align=left size=8 width="20%">
+
+<form [formGroup]="formulaire" (ngSubmit)="onSubmit()"#f="ngForm" novalidate id="formulaireHtml">
+  <div class="row">
+    <div class="col-3">
+      <span class="label">Code</span>
+      <input matNativeControl matInput required formControlName="code" class="input">
+    </div>
+    <div class="col-8">
+      <span class="label">Designation</span>
+      <input matInput required formControlName="nom" class="input">
+    </div>
+  </div>
+  <!--
+  <div class="row">
+    <div class="col-11">
+      <i class="material-icons">
+        info
+      </i>
+      <span class="label">Description</span>
+      <textarea required formControlName="description" class="input"
+                id="descriptionText" style="height: 100px"> </textarea>
+    </div>
+  </div>
+  -->
+  <div class="row">
+    <div class="col-11">
+      <i class="material-icons">
+        bookmarks
+      </i>
+      <span class="label">Options</span>
+      <!--
+      <div class="form-check" *ngFor="let item of tableauOptions.controls; let i = index;">
+        <input class="form-check-input" [formControl]="item" type="checkbox" id="checkbox{{i}}" value="">
+        <label class="form-check-label" for="checkbox{{i}}" class="options">{{options[i]}}</label>
+      </div>
+    -->
+      <br/>
+      <i class="material-icons iajouter" (click)="ajouterOption()">
+        add
+      </i>
+      <span (click)="ajouterOption()" class="ajouter">Ajouter une option</span>
+      <div formArrayName="options">
+        <div *ngFor="let opt of optionsFormulaire.controls; let i=index" [formGroupName]="i" class="row" style="margin: 0">
+          <div class="col-4">
+            <input class="inputOption" matInput formControlName="codeOption">
+          </div>
+          <div class="col-4">
+            <input class="inputOption" matInput formControlName="nomOption">
+          </div>
+          <div class="col-3">
+            <button mat-raised-button color="warn" (click)="supprimerOption(i)">Supprimer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-11">
+      <i class="material-icons">
+        party_mode
+      </i>
+      <span class="label">Photos</span>
+      <br/>
+      <i class="material-icons iajouter" (click)="ajouterOption()">
+        add
+      </i>
+      <span (click)="ajouterOption()" class="ajouter">Ajouter une Photo</span>
+    </div>
+  </div>
+  <div mat-dialog-actions>
+    <button type="submit" class="btn-ajout">Submit </button>
+  </div>
+</form>
+</mat-dialog-content>
