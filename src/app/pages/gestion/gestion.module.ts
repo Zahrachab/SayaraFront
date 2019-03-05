@@ -10,9 +10,9 @@ import {MDBBootstrapModule} from 'angular-bootstrap-md';
 import {BrowserModule} from '@angular/platform-browser';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {HttpClientModule} from '@angular/common/http';
-import {NavbarComponent} from '../../components/navbar/navbar.component';
-import {SidenavComponent} from '../../components/sidenav/sidenav.component';
-import {FooterComponent} from '../../components/footer/footer.component';
+import {NavbarComponent} from '../../Components/navbar/navbar.component';
+import {SidenavComponent} from '../../Components/sidenav/sidenav.component';
+import {FooterComponent} from '../../Components/footer/footer.component';
 
 @NgModule({
   declarations: [GestionComponent, GestionModeleComponent, AjouterModeleComponent, NavbarComponent, SidenavComponent, FooterComponent],
