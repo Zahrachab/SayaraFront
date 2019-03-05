@@ -16,11 +16,13 @@ import { ModeleService } from './services/modele.service';
 import {MDBBootstrapModule} from 'angular-bootstrap-md';
 import { LoginComponent } from './pages/login/login.component';
 import { FormsModule } from '@angular/forms';
-import {ReactiveFormsModule} from '@angular/forms';
 import { GestionModule } from './pages/gestion/gestion.module';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
-const urlGlobale = 'http://localhost:3000';
+
+
+const urlGlobale = 'https://sayaradz.herokuapp.com';
 
 
 @NgModule({
