@@ -3,7 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { Modele } from './entites/modele.model';
-import { ModeleDetail } from './entites/modeleDetail.model';
+import { ModeleDetail } from "./entites/modeleDetail.model";
 
 @Injectable()
 export class ModeleService {

@@ -14,14 +14,12 @@ import {MatDialog} from '@angular/material';
   styleUrls: ['./gestion-modele.component.scss']
 })
 export class GestionModeleComponent implements OnInit {
-  dataSource = new ModeleDataSource(this.modeleService);
+  dataSource: DataSource | null;
   displayedColumns = ['CodeModele', 'NomModele', 'versions', 'options', 'gestion'];
 
   constructor(private modeleService: ModeleService, private modalService: MatDialog) {}
   ngOnInit() {
-    setInterval(function() {
-      this.refresh();
-    }, 120000);
+    this.dataSource = new DataSource(this.modeleService);
   }
 
   openModal() {

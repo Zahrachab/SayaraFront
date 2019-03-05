@@ -20,7 +20,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { GestionModule } from './pages/gestion/gestion.module';
 
 
-const urlGlobale = 'https://sayaradz.herokuapp.com';
+const urlGlobale = 'http://localhost:3000';
 
 
 @NgModule({
