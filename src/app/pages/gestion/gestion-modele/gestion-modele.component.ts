@@ -15,10 +15,21 @@ import {MatDialog} from '@angular/material';
 })
 export class GestionModeleComponent implements OnInit {
   private dataSource: ModeleDataSource;
+  interval: any;
   displayedColumns = ['CodeModele', 'NomModele', 'versions', 'options', 'gestion'];
 
   constructor(private modeleService: ModeleService, private modalService: MatDialog) {}
   ngOnInit() {
+    /*récupérer les données à partir du service */
+    this.refreshData();
+    /*rafraichir les données chaque 5 secondes*/
+    this.interval = setInterval(() => {
+      this.refreshData();
+    }, 5000);
+
+  }
+
+  refreshData() {
     this.dataSource = new ModeleDataSource(this.modeleService);
   }
 
