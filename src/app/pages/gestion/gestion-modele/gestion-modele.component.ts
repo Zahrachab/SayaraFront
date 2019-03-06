@@ -14,14 +14,12 @@ import {MatDialog} from '@angular/material';
   styleUrls: ['./gestion-modele.component.scss']
 })
 export class GestionModeleComponent implements OnInit {
-  dataSource = new ModeleDataSource(this.modeleService);
+  private dataSource: ModeleDataSource;
   displayedColumns = ['CodeModele', 'NomModele', 'versions', 'options', 'gestion'];
 
   constructor(private modeleService: ModeleService, private modalService: MatDialog) {}
   ngOnInit() {
-    setInterval(function() {
-      this.refresh();
-    }, 120000);
+    this.dataSource = new ModeleDataSource(this.modeleService);
   }
 
   openModal() {
@@ -35,20 +33,9 @@ export class ModeleDataSource extends DataSource<any> {
   constructor(private modeleService: ModeleService) {
     super();
   }
-  public modeles: Modele[];
-  public mod = new Array<ModeleDetail>();
-  connect(): Observable<ModeleDetail[]> {
-    this.modeleService.getModeles().subscribe((modeles: Modele[]) => {
-      this.modeles = modeles;
-      modeles.forEach(value => {
-        this.modeleService.getModele(value.CodeModele).subscribe((modele: ModeleDetail ) => {
-          this.mod.push(modele);
 
-        });
-      });
-    });
-    alert(this.mod);
-    return Observable.of(this.mod);
+  connect(): Observable<ModeleDetail[]> {
+    return this.modeleService.getModeles();
   }
   disconnect() {}
 

@@ -1,9 +1,10 @@
 import {Injectable, Injector} from '@angular/core';
+import { Modele } from './entites/modele.model';
+import { ModeleDetail } from './entites/modeleDetail.model';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
-import { Modele } from './entites/modele.model';
-import { ModeleDetail } from './entites/modeleDetail.model';
+
 
 @Injectable()
 export class ModeleService {
@@ -15,8 +16,9 @@ export class ModeleService {
   constructor(private http: HttpClient, private injector: Injector) {
   }
 
-  getModeles(): Observable<Modele[]> {
-    return this.http.get<Modele[]>(this.serviceUrlModeles);
+  /*Récupérer tous les modèles d'une marque */
+  getModeles(): Observable<ModeleDetail[]> {
+    return this.http.get<ModeleDetail[]>(this.serviceUrlModeles);
   }
 
   getModele(codeModele): Observable<ModeleDetail> {
