@@ -13,9 +13,12 @@ import {HttpClientModule} from '@angular/common/http';
 import {NavbarComponent} from '../../components/navbar/navbar.component';
 import {SidenavComponent} from '../../components/sidenav/sidenav.component';
 import {FooterComponent} from '../../components/footer/footer.component';
+import {GestionVersionComponent } from './gestion-version/gestion-version.component';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
-  declarations: [GestionComponent, GestionModeleComponent, AjouterModeleComponent, NavbarComponent, SidenavComponent, FooterComponent],
+  declarations: [GestionComponent, GestionModeleComponent, AjouterModeleComponent,
+                  NavbarComponent, SidenavComponent, FooterComponent, GestionVersionComponent],
   imports: [
     CommonModule,
     GestionRoutingModule,
@@ -25,6 +28,7 @@ import {FooterComponent} from '../../components/footer/footer.component';
     FlexLayoutModule,
     HttpClientModule,
     ReactiveFormsModule,
+    MatSelectModule,
     MDBBootstrapModule.forRoot()
   ],
   exports: [NavbarComponent, SidenavComponent, FooterComponent],
