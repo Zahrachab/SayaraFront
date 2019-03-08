@@ -1,0 +1,136 @@
+div.gestion {
+  margin: 5%;
+  width: 1000px;
+  padding-bottom: 300px;
+
+  .gras {
+    font-weight: bold;
+  }
+
+  h2 {
+    margin-bottom: 6px;
+    font-size: 30px;
+    font-family: 'Roboto-Thin', 'Sherif', serif;
+
+  }
+
+  div#trait {
+    width: 60px;
+    border-top: 3px solid #3498d8;
+    margin-bottom: 25px;
+    margin-left: 2px
+  }
+
+  div {
+    width: 100%;
+
+    div {
+      .example-form {
+        width: 70%;
+        height: 44px;
+        padding: 0;
+
+        div {
+          background-color: transparent;
+        }
+
+        .example-full-width {
+          width: 100%;
+        }
+      }
+
+
+    }
+
+    button {
+      color: white;
+      line-height: 3;
+      font-weight: bold;
+      font-family: 'Lato', sans-serif;
+      border-radius: 10px;
+      font-size: 13px;
+    }
+
+    button.ajouter {
+      background-color: #2980b9;
+    }
+  }
+
+
+  .example-container {
+    width: 90%;
+    background-color: transparent;
+    margin-top: 5%;
+    overflow: auto;
+    padding: 0;
+
+
+    mat-table {
+      width: 100%;
+      margin: 0;
+      box-shadow: 1.5px 1.5px #95a5a6;
+
+      mat-row {
+        padding: 1% 0;
+        border-bottom: 3px solid #ecf0f1;
+
+        mat-cell {
+          padding: 0 2%;
+
+          mat-icon {
+            margin-right: 3%
+          }
+
+          mat-icon.vert {
+            color: #16a085;
+          }
+
+          mat-icon.rouge {
+            color: firebrick;
+          }
+
+        }
+
+        ul {
+          padding: 0;
+          margin-bottom: 0;
+          color: black;
+        }
+
+        a {
+          color: #3498d8;
+          border: 0;
+
+        }
+      }
+
+      ng-container {
+        mat-cell {
+          padding: 0 2%;
+        }
+      }
+
+
+      mat-header-row {
+        background-color: #ecf0f1;
+        justify-content: center;
+
+        mat-header-cell {
+          color: #2c3e50;
+          font-size: 80%;
+          font-family: 'Roboto-Bold', serif;
+
+          mat-icon {
+            margin-right: 5px;
+          }
+        }
+
+      }
+
+
+    }
+
+  }
+
+
+}

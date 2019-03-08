@@ -18,6 +18,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { GestionModule } from './pages/gestion/gestion.module';
 import {ReactiveFormsModule} from '@angular/forms';
+import { GestionOptionsComponent } from './pages/gestion/gestion-options/gestion-options.component';
 
 
 
@@ -35,6 +36,7 @@ const urlGlobale = 'https://sayaradz.herokuapp.com';
     ContactUsComponent,
     PremierePageComponent,
     LoginComponent,
+    GestionOptionsComponent,
   ],
   imports: [
     BrowserModule,
