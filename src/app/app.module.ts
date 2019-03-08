@@ -25,7 +25,6 @@ import { GestionOptionsComponent } from './pages/gestion/gestion-options/gestion
 
 const urlGlobale = 'https://sayaradz.herokuapp.com';
 
-
 @NgModule({
   declarations: [
     AppComponent,

@@ -1,14 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {ModeleService} from '../../../services/modele.service';
+import {Component, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material';
-import {AjouterModeleComponent} from '../gestion-modele/ajouterModele/ajouterModele.component';
-import {DataSource} from '@angular/cdk/table';
-import {Observable} from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
-import {ModeleDetail} from '../../../services/entites/modeleDetail.model';
 import {OptionService} from '../../../services/option.service';
-import {Option} from '../../../services/entites/option.model';
-  /* pour lire le code modèle passé en paramètre dans l'url */
+import {OptionDataSource} from '../../../dataSources/OptionDataSource';
 
 @Component({
   selector: 'app-gestion-options',
@@ -17,7 +11,7 @@ import {Option} from '../../../services/entites/option.model';
 })
 export class GestionOptionsComponent implements OnInit {
 
-  public dataSource: ModeleDataSource;
+  public dataSource: OptionDataSource;
   private codeModele: any;
   interval: any;
   displayedColumns = ['CodeOption', 'NomOption', 'gestion'];
@@ -32,7 +26,7 @@ export class GestionOptionsComponent implements OnInit {
   }
 
   refreshData() {
-    this.dataSource = new ModeleDataSource(this.optionService, this.codeModele);
+    this.dataSource = new OptionDataSource(this.optionService, this.codeModele);
   }
 
   openModal() {
@@ -41,15 +35,3 @@ export class GestionOptionsComponent implements OnInit {
 }
 
 
-export class ModeleDataSource extends DataSource<any> {
-  constructor(private optionService: OptionService, private codeModele: string) {
-    super();
-  }
-
-  connect(): Observable<Option[]> {
-    return this.optionService.getOptions(this.codeModele);
-  }
-  disconnect() {}
-
-
-}

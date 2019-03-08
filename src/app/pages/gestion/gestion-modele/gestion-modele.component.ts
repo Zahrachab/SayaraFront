@@ -1,7 +1,6 @@
 
 import { Component, OnInit, Input } from '@angular/core';
 import { ModeleService } from '../../../services/modele.service';
-import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import {AjouterModeleComponent} from './ajouterModele/ajouterModele.component';
 import {MatDialog} from '@angular/material';
@@ -32,6 +31,7 @@ export class GestionModeleComponent implements OnInit {
 
   refreshData() {
     this.dataSource = new ModeleDataSource(this.modeleService);
+    console.log(this.dataSource);
   }
 
   openModal() {

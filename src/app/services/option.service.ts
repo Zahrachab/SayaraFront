@@ -26,9 +26,9 @@ export class OptionService {
 
   getOptions(codeModele): Observable<Option[]> {
     let options;
-    this.http.get<ModeleDetail>(this.serviceUrlOptions + codeModele).subscribe(modeles => {
-      options = ((modeles as ModeleDetail).options) as Option[];
+    this.http.get<ModeleDetail>(this.serviceUrlOptions + codeModele).subscribe(modele => {
+      options = (modele as ModeleDetail).options as Option[];
     });
-    return Observable.of(options);
+    return new Observable<Option[]>(options);
   }
 }
