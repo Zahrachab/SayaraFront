@@ -10,7 +10,7 @@ import {observable} from 'rxjs';
 export class OptionService {
 
   private url = this.injector.get('url');
-  private serviceUrlOptions = this.url + '/marques/5/modeles/';
+  private serviceUrlOptions = this.url + '/marques/modeles/';
   private options: Option[];
 
   constructor(private http: HttpClient, private injector: Injector) {
@@ -26,7 +26,7 @@ export class OptionService {
 
   getOptions(codeModele): Observable<Option[]> {
     let options;
-    this.http.get<ModeleDetail>(this.serviceUrlOptions ).subscribe(modeles => {
+    this.http.get<ModeleDetail>(this.serviceUrlOptions + codeModele).subscribe(modeles => {
       options = ((modeles as ModeleDetail).options) as Option[];
     });
     return Observable.of(options);
