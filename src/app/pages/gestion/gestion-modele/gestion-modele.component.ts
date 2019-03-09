@@ -31,7 +31,6 @@ export class GestionModeleComponent implements OnInit {
 
   refreshData() {
     this.dataSource = new ModeleDataSource(this.modeleService);
-    console.log(this.dataSource);
   }
 
   openModal() {

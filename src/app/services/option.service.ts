@@ -28,7 +28,12 @@ export class OptionService {
     let options;
     this.http.get<ModeleDetail>(this.serviceUrlOptions + codeModele).subscribe(modele => {
       options = (modele as ModeleDetail).options as Option[];
+      console.log(options);
     });
-    return new Observable<Option[]>(options);
+    return new Observable(observer => {
+      setTimeout(() => {
+        observer.next(options);
+      }, 2000);
+    });
   }
 }
