@@ -3,6 +3,9 @@ import {MatDialog} from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 import {OptionService} from '../../../services/option.service';
 import {OptionDataSource} from '../../../dataSources/OptionDataSource';
+import {VersionDataSource} from '../../../dataSources/VersionDataSource';
+import {ModeleDetail} from '../../../services/entites/modeleDetail.model';
+import {ModeleService} from '../../../services/modele.service';
 
 @Component({
   selector: 'app-gestion-options',
@@ -13,24 +16,34 @@ export class GestionOptionsComponent implements OnInit {
 
   public dataSource: OptionDataSource;
   private codeModele: any;
+  private modeles: ModeleDetail[];
   interval: any;
   displayedColumns = ['CodeOption', 'NomOption', 'gestion'];
-
-  constructor(private optionService: OptionService, private modalService: MatDialog, private _Activatedroute: ActivatedRoute) {}
+  constructor(private optionService: OptionService, private modalService: MatDialog, private _Activatedroute: ActivatedRoute, private modeleService: ModeleService) {}
   ngOnInit() {
-    this.codeModele = this._Activatedroute.snapshot.params.CodeModele;
+    try {
+      this.codeModele = this._Activatedroute.snapshot.params.CodeModele; /*récupérer le code modèle passé en paramètre dans l'url*/
+    } catch {
+      this.codeModele = null;
+    }
+    this.modeleService.getModeles().subscribe(modeles => {
+      this.modeles = modeles as ModeleDetail[];
+    });
     this.refreshData();
-    this.interval = setInterval(() => {
-      this.refreshData();
-    }, 200000);
+    console.log(this.codeModele);
+
   }
 
   refreshData() {
-    this.dataSource = new OptionDataSource(this.optionService, this.codeModele);
+    if ((this.codeModele !== '') || (this.codeModele != null )) {
+        this.dataSource = new OptionDataSource(this.optionService, this.codeModele);
+    }
   }
 
-  openModal() {
+  changerOptions($event) {
+    this.dataSource = new OptionDataSource(this.optionService, $event.value);
   }
+
 
 }
 

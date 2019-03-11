@@ -33,7 +33,8 @@ export class OptionService {
     return new Observable(observer => {
       setTimeout(() => {
         observer.next(options);
-      }, 2000);
+        observer.complete();
+      }, 500);
     });
   }
 }
