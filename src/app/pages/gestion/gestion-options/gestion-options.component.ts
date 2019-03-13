@@ -3,7 +3,6 @@ import {MatDialog} from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 import {OptionService} from '../../../services/option.service';
 import {OptionDataSource} from '../../../dataSources/OptionDataSource';
-import {VersionDataSource} from '../../../dataSources/VersionDataSource';
 import {ModeleDetail} from '../../../services/entites/modeleDetail.model';
 import {ModeleService} from '../../../services/modele.service';
 

@@ -1,5 +1,5 @@
 <div class="gestion">
-  <div fxLayout="row">
+  <div fxLayout="row wrap">
     <h2 fxFlex="60">Gestion des versions du modèle </h2>
     <mat-select fxFlex="25"[(value)]="modelId" (selectionChange)="changerOptions($event)">
       <mat-option>Choisissez un model</mat-option>
@@ -15,7 +15,7 @@
         </mat-form-field>
       </form>
     </div>
-    <button mat-button fxFlex='20' mat-stroked-button (click)="openModal()" class="ajouter">Ajouter Modèle</button>
+    <button mat-button fxFlex='20' mat-stroked-button (click)="openModal()" class="ajouter">Ajouter une version</button>
   </div>
   <div class="example-container mat-elevation-z8">
     <mat-table [dataSource]="versionDataSource">

@@ -24,6 +24,14 @@ export class OptionService {
     });
   }
 
+  ajouterOptionModele(code: string, designation: string, codeModele: string) {
+    const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
+    this.http.post(this.url + '/Marques/Modeles/' + codeModele + '/Options',
+      {CodeOption: code, NomOption: designation}, {headers: tokenHeader}).subscribe(() => {
+
+    });
+  }
+
   getOptions(codeModele): Observable<Option[]> {
     let options;
     this.http.get<ModeleDetail>(this.serviceUrlOptions + codeModele).subscribe(modele => {
@@ -34,7 +42,7 @@ export class OptionService {
       setTimeout(() => {
         observer.next(options);
         observer.complete();
-      }, 500);
+      }, 2000);
     });
   }
 }

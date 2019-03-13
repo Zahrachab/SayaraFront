@@ -15,7 +15,7 @@
         </mat-form-field>
       </form>
     </div>
-    <button mat-button fxFlex='20' mat-stroked-button (click)="openModal()" class="ajouter">Ajouter Modèle</button>
+    <button mat-button fxFlex='20' mat-stroked-button (click)="openModal()" class="ajouter">Ajouter une option</button>
   </div>
   <div class="example-container mat-elevation-z8">
     <mat-table [dataSource]="dataSource">
@@ -39,7 +39,7 @@
 
       <ng-container matColumnDef="gestion">
         <mat-header-cell *matHeaderCellDef><i class="material-icons">tune</i> GESTION</mat-header-cell>
-        <mat-cell mat-cell *matCellDef="let modele">
+        <mat-cell *matCellDef="let modele">
           <a routerLink=".">
             <mat-icon class="vert">edit</mat-icon>
           </a>

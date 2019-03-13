@@ -5,6 +5,7 @@ import 'rxjs/add/observable/of';
 import {AjouterModeleComponent} from './ajouterModele/ajouterModele.component';
 import {MatDialog} from '@angular/material';
 import {ModeleDataSource} from '../../../dataSources/ModeleDataSource';
+import {ModeleDetail} from '../../../services/entites/modeleDetail.model';
 
 @Component({
   selector: 'app-gestion-modele',
@@ -23,10 +24,10 @@ export class GestionModeleComponent implements OnInit {
     /*récupérer les données à partir du service */
     this.refreshData();
     /*rafraichir les données chaque 5 secondes*/
-    this.interval = setInterval(() => {
+   /* this.interval = setInterval(() => {
       this.refreshData();
     }, 5000);
-
+*/
   }
 
   refreshData() {
@@ -34,6 +35,10 @@ export class GestionModeleComponent implements OnInit {
   }
 
   openModal() {
+    this.modalService.open(AjouterModeleComponent, {width: '800px'});
+  }
+
+  modifierModele(modele: ModeleDetail) {
     this.modalService.open(AjouterModeleComponent, {width: '800px'});
   }
 

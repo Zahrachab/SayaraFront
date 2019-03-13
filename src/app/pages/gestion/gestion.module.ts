@@ -15,24 +15,25 @@ import {SidenavComponent} from '../../components/sidenav/sidenav.component';
 import {FooterComponent} from '../../components/footer/footer.component';
 import {GestionVersionComponent } from './gestion-version/gestion-version.component';
 import {MatSelectModule} from '@angular/material/select';
-
+import { GestionOptionsComponent } from './gestion-options/gestion-options.component';
+import {AjouterVersionComponent} from './gestion-version/ajouter-version/ajouter-version.component';
 @NgModule({
-  declarations: [GestionComponent, GestionModeleComponent, AjouterModeleComponent,
-                  NavbarComponent, SidenavComponent, FooterComponent, GestionVersionComponent],
+  declarations: [GestionComponent, GestionModeleComponent, AjouterModeleComponent, NavbarComponent, SidenavComponent, FooterComponent,
+    GestionVersionComponent, GestionOptionsComponent, AjouterVersionComponent],
   imports: [
     CommonModule,
     GestionRoutingModule,
-    MaterialModule,
     FormsModule,
     BrowserModule,
     FlexLayoutModule,
     HttpClientModule,
     ReactiveFormsModule,
+    MaterialModule,
     MatSelectModule,
     MDBBootstrapModule.forRoot()
   ],
   exports: [NavbarComponent, SidenavComponent, FooterComponent],
-  entryComponents: [AjouterModeleComponent],
+  entryComponents: [AjouterModeleComponent, AjouterVersionComponent],
 })
 export class GestionModule {
 }

@@ -3,6 +3,8 @@ import {VersionDataSource} from '../../../dataSources/VersionDataSource';
 import {ModeleService} from '../../../services/modele.service';
 import {ModeleDetail} from '../../../services/entites/modeleDetail.model';
 import {VersionService} from '../../../services/version.service';
+import {AjouterVersionComponent} from './ajouter-version/ajouter-version.component';
+import {MatDialog, MatDialogRef} from '@angular/material';
 
 @Component({
   selector: 'app-gestion-version',
@@ -10,11 +12,12 @@ import {VersionService} from '../../../services/version.service';
   styleUrls: ['./gestion-version.component.scss']
 })
 export class GestionVersionComponent implements OnInit {
+  private codeModele: string;
   private versionDataSource: VersionDataSource;
   private modeles: ModeleDetail[];
   displayedColumns = ['CodeVersion', 'NomVersion', 'modele', 'options', 'gestion'];
 
-  constructor(private versionService: VersionService, private modeleService: ModeleService) {
+  constructor(private versionService: VersionService, private modeleService: ModeleService, private matDialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -25,6 +28,12 @@ export class GestionVersionComponent implements OnInit {
 
 
   changerOptions($event) {
+    this.codeModele = $event.value;
     this.versionDataSource = new VersionDataSource(this.versionService, $event.value);
+  }
+
+  openModal() {
+    const dialogRef: MatDialogRef<AjouterVersionComponent> = this.matDialog.open(AjouterVersionComponent, {width: '800px', height: '70%'});
+    dialogRef.componentInstance.codeModele = this.codeModele;
   }
 }
