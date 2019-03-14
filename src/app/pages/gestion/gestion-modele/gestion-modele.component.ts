@@ -35,7 +35,7 @@ export class GestionModeleComponent implements OnInit {
   }
 
   openModal() {
-    this.modalService.open(AjouterModeleComponent, {width: '800px'});
+    this.modalService.open(AjouterModeleComponent, {width: '850px', height: '80%'});
   }
 
   modifierModele(modele: ModeleDetail) {

@@ -1,5 +1,5 @@
 <mat-dialog-content>
-  <div  fxLayout="row" fxLayoutAlign="space-between center" >
+  <div  fxLayout="row" fxLayoutAlign="space-between start" >
     <div fxLayout="column">
       <h1 mat-dialog-title style="margin: 0">Ajouter une version</h1>
       <div id="trait"></div>
@@ -48,10 +48,26 @@
         <i class="material-icons iajouter" (click)="ajouterOption()">
           add
         </i>
+        <label class="image-upload-container btn btn-bwm">
         <span (click)="ajouterOption()" class="ajouter">Ajouter une Photo</span>
+        <input #imageInput id="imgInput"
+                 type="file"
+                 accept="image/*"
+                 (change)="processFile(imageInput)">
+        </label>
+        <div *ngIf="selectedFile" class="img-preview-container">
+
+          <div class="img-preview{{selectedFile.status === 'fail' ? '-error' : ''}}"
+               [ngStyle]="{'background-image': 'url('+ selectedFile.src + ')'}">
+          </div>
+
+          <div *ngIf="selectedFile.pending" class="img-loading-overlay">
+            <div class="img-spinning-circle"></div>
+          </div>
+        </div>
       </div>
     </div>
-    <div mat-dialog-actions>
+    <div mat-dialog-actions fxLayout="row" fxLayoutAlign="end end">
       <button type="submit" class="btn-ajout">Submit </button>
     </div>
   </form>

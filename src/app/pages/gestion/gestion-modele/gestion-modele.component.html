@@ -63,13 +63,13 @@
       <ng-container matColumnDef="gestion">
         <mat-header-cell *matHeaderCellDef><i class="material-icons">tune</i> GESTION</mat-header-cell>
         <mat-cell *matCellDef="let modele">
-          <button mat-stroked-button (click)="modifierModele(modele)"  >
+          <button mat-icon-button (click)="modifierModele(modele)"  >
             <mat-icon class="vert">edit</mat-icon>
           </button>
-          <button mat-stroked-button (click)="deleteModele(modele)"  >
+          <button mat-icon-button>
             <mat-icon class="rouge">delete</mat-icon>
           </button>
-          <button mat-stroked-button (click)="optionsModele(modele)"  >
+          <button mat-icon-button >
             <mat-icon class="blue">more_vert</mat-icon>
           </button>
         </mat-cell>

@@ -33,7 +33,10 @@ export class GestionVersionComponent implements OnInit {
   }
 
   openModal() {
-    const dialogRef: MatDialogRef<AjouterVersionComponent> = this.matDialog.open(AjouterVersionComponent, {width: '800px', height: '70%'});
+    const dialogRef: MatDialogRef<AjouterVersionComponent> = this.matDialog.open(AjouterVersionComponent, {width: '800px', height: '85%'});
     dialogRef.componentInstance.codeModele = this.codeModele;
+  }
+  modifierModele() {
+
   }
 }

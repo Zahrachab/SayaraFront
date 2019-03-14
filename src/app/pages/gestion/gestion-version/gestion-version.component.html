@@ -61,16 +61,16 @@
 
       <ng-container matColumnDef="gestion">
         <mat-header-cell *matHeaderCellDef><i class="material-icons">tune</i> GESTION</mat-header-cell>
-        <mat-cell mat-cell *matCellDef="let modele">
-          <a routerLink=".">
+        <mat-cell *matCellDef="let modele">
+          <button mat-icon-button (click)="modifierVersion(modele)"  >
             <mat-icon class="vert">edit</mat-icon>
-          </a>
-          <a routerLink=".">
+          </button>
+          <button mat-icon-button>
             <mat-icon class="rouge">delete</mat-icon>
-          </a>
-          <a routerLink=".">
-            <mat-icon>more_vert</mat-icon>
-          </a>
+          </button>
+          <button mat-icon-button >
+            <mat-icon class="blue">more_vert</mat-icon>
+          </button>
         </mat-cell>
       </ng-container>
 

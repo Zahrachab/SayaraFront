@@ -7,7 +7,7 @@ import {VersionService} from '../../../../services/version.service';
 @Component({
   selector: 'app-modal',
   templateUrl: './ajouterModele.component.html',
-  styleUrls: ['ajouterModele.component.css']
+  styleUrls: ['ajouterModele.component.scss']
 })
 export class AjouterModeleComponent implements OnInit {
 

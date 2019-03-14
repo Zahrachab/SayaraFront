@@ -5,6 +5,7 @@ import {OptionService} from '../../../../services/option.service';
 import {VersionService} from '../../../../services/version.service';
 import {Option} from '../../../../services/entites/option.model';
 import {MatDialogRef} from '@angular/material';
+import {ImageService} from '../../../../services/image.service';
 
 
 @Component({
@@ -18,17 +19,42 @@ export class AjouterVersionComponent implements OnInit {
   private formulaire: FormGroup;
   public codeModele: string;
   public optionsChoisies: Array<Option> = [];
+  selectedFile: ImageSnippet;
+  pending = false;
+  status = 'init';
 
   constructor(private constructeurFormulaire: FormBuilder,
               private modeleservice: ModeleService,
               private optionservice: OptionService,
               private versionservice: VersionService,
-              public dialogRef: MatDialogRef<AjouterVersionComponent>
+              private dialogRef: MatDialogRef<AjouterVersionComponent>,
+              private imageService: ImageService,
   ) {
   }
 
+  private onSuccess() {
+    this.selectedFile.pending = false;
+    this.selectedFile.status = 'ok';
+  }
+
+  private onError() {
+    this.selectedFile.pending = false;
+    this.selectedFile.status = 'fail';
+    this.selectedFile.src = '';
+  }
+
+  processFile(imageInput: any) {
+    const file: File = imageInput.files[0];
+    const reader = new FileReader();
+    reader.addEventListener('load', (event: any) => {
+        this.selectedFile = new ImageSnippet(event.target.result, file);
+    });
+
+    reader.readAsDataURL(file);
+  }
+
   ngOnInit() {
-    this.optionservice.getOptions(this.codeModele).subscribe( opts => this.options = opts as Option[]);
+    this.optionservice.getOptions(this.codeModele).subscribe(opts => this.options = opts as Option[]);
     this.formulaire = this.constructeurFormulaire.group({
       code: '',
       nom: '',
@@ -37,18 +63,40 @@ export class AjouterVersionComponent implements OnInit {
   }
 
   gererOptions(event, option) {
-      option.checked = !option.checked;
-      console.log(event, option);
-      this.optionsChoisies.push(option);
-    }
+    option.checked = !option.checked;
+    console.log(event, option);
+    this.optionsChoisies.push(option);
+  }
 
-    onSubmit() {
+  onSubmit() {
+    this.selectedFile.pending = true;
     this.versionservice.ajouter(this.formulaire.value.code + JSON.parse(localStorage.getItem('utilisateur')).utilfab.Fabricant,
-      this.formulaire.value.nom, this.codeModele);
+      this.formulaire.value.nom, this.codeModele).subscribe(
+      (res) => {
+            for (const option of this.options) {
+              this.optionservice.ajouter(String(option.CodeOption), String(option.NomOption),
+                this.formulaire.value.code + JSON.parse(localStorage.getItem('utilisateur')).utilfab.Fabricant);
+            }
+            this.imageService.uploadImage(this.selectedFile.file, this.formulaire.value.code ).subscribe(
+              (re) => {
+                this.onSuccess();
+              },
+              (err) => {
+                this.onError();
+              });
+            },
+      (err) => {
+        this.onError();
+      });
+  }
+}
 
-    for (const option of this.options) {
-      this.optionservice.ajouter(String(option.CodeOption),  String(option.NomOption),
-        this.formulaire.value.code + JSON.parse(localStorage.getItem('utilisateur')).utilfab.Fabricant);
-    }
+
+
+class ImageSnippet {
+  pending = false;
+  status = 'init';
+
+  constructor(public src: string, public file: File) {
   }
 }

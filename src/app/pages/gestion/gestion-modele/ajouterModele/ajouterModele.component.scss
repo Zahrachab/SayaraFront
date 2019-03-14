@@ -1,7 +1,14 @@
+mat-dialog-content{
+  height: 100%;
+  width: 100%;
+  border-radius: 20px;
+}
+
 #formulaireHtml {
   width: 100%;
   display: flex;
   flex-direction: column;
+  height: 90%;
 }
 
 #formulaireHtml > * {
@@ -16,22 +23,35 @@
   width: 50%;
 }
 
+
+div#trait {
+  width: 60px;
+  border-top: 3px solid #1abc9c;
+  margin-bottom: 25px;
+  margin-left: 2px
+}
+mat-icon{
+  color: #ea1c0d;
+}
 .input {
+  width: 80%;
   height: 30px;
   border-radius: 10px;
   border: 1px solid #707070;
   background-color: #fbfbfb;
+  padding-left: 20px;
+  font-family: 'Roboto-Bold','Sherif';
   margin: 10px;
   margin-top: 0;
-  margin-bottom: 0  ;
+  margin-bottom:10px;
 }
 
 .label {
   color: #34495e;
-  font-family: Roboto;
-  font-weight: 500;
-  line-height: 52px;
-  margin-left: 10px;
+  line-height: 30px;
+  margin-left: 15px;
+  font-weight: bold;
+  font-family: 'Roboto-Bold', 'Sherif';
 }
 
 #descriptionText {
@@ -48,6 +68,12 @@ i
   font-family: Lato;
 }
 
+
+.optionDiv{
+  div{
+    padding: 10px 15px;
+  }
+}
 .ajouter {
   color: #22c6a6;
   font-family: Roboto;
@@ -69,7 +95,7 @@ i
 }
 
 .btn-ajout {
-  width: 15%;
+  width: 100px;
   height: 44px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
   border-radius: 18px;
@@ -77,7 +103,12 @@ i
   color: #ffffff;
 }
 
-HR {
-  margin-top: 0px;
-  border: 1px solid #579dc6;
+mat-dialog-actions{
+  position: fixed;
+  bottom: 0;
 }
+
+
+
+
+
