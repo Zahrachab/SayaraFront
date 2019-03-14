@@ -2,7 +2,6 @@ import {Injectable, Injector} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {VersionDetail} from './entites/versionDetail.model';
 import {Observable} from 'rxjs';
-import {ModeleDetail} from './entites/modeleDetail.model';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +21,12 @@ export class VersionService {
   }
 
   getVersions(codeModele): Observable<VersionDetail[]> {
-    console.log(this.urlVersionDetails + codeModele + '/versions');
     return this.http.get<VersionDetail[]>(this.urlVersionDetails + codeModele + '/versions');
+  }
+
+  supprimerVersion(codeVersion) {
+    const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
+    return this.http.delete(this.urlVersionDetails + 'versions/' + codeVersion, {headers: tokenHeader}).pipe(
+    );
   }
 }

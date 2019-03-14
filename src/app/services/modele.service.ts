@@ -1,5 +1,4 @@
 import {Injectable, Injector} from '@angular/core';
-import { Modele } from './entites/modele.model';
 import { ModeleDetail } from './entites/modeleDetail.model';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable } from 'rxjs';
@@ -31,5 +30,11 @@ export class ModeleService {
     return this.http.post(this.url + '/Marques/' + JSON.parse(localStorage.getItem('utilisateur')).utilfab.Fabricant + '/Modeles',
       {CodeModele: code, NomModele: designation}, {headers: tokenHeader}).subscribe(() => {
     });
+  }
+
+  supprimerModele(codeModele) {
+    const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
+    return this.http.delete(this.serviceUrlModele + codeModele, {headers: tokenHeader}).pipe(
+    );
   }
 }

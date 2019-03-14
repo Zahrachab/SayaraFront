@@ -15,10 +15,13 @@ import {SidenavComponent} from '../../components/sidenav/sidenav.component';
 import {FooterComponent} from '../../components/footer/footer.component';
 import {GestionVersionComponent } from './gestion-version/gestion-version.component';
 import {MatSelectModule} from '@angular/material/select';
+import { SupprimerModeleComponent } from './gestion-modele/supprimer-modele/supprimer-modele.component';
+import { SupprimerVersionComponent } from './gestion-version/supprimer-version/supprimer-version.component';
 
 @NgModule({
   declarations: [GestionComponent, GestionModeleComponent, AjouterModeleComponent,
-                  NavbarComponent, SidenavComponent, FooterComponent, GestionVersionComponent],
+                  NavbarComponent, SidenavComponent, FooterComponent, GestionVersionComponent, SupprimerModeleComponent,
+                  SupprimerVersionComponent],
   imports: [
     CommonModule,
     GestionRoutingModule,
@@ -32,7 +35,7 @@ import {MatSelectModule} from '@angular/material/select';
     MDBBootstrapModule.forRoot()
   ],
   exports: [NavbarComponent, SidenavComponent, FooterComponent],
-  entryComponents: [AjouterModeleComponent],
+  entryComponents: [AjouterModeleComponent, SupprimerModeleComponent, SupprimerVersionComponent],
 })
 export class GestionModule {
 }

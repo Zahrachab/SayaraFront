@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import {OptionService} from '../../../services/option.service';
 import {OptionDataSource} from '../../../dataSources/OptionDataSource';
 
@@ -16,7 +16,9 @@ export class GestionOptionsComponent implements OnInit {
   interval: any;
   displayedColumns = ['CodeOption', 'NomOption', 'gestion'];
 
-  constructor(private optionService: OptionService, private modalService: MatDialog, private _Activatedroute: ActivatedRoute) {}
+  constructor(private optionService: OptionService, private modalService: MatDialog, private _Activatedroute: ActivatedRoute) {
+  }
+
   ngOnInit() {
     this.codeModele = this._Activatedroute.snapshot.params.CodeModele;
     this.refreshData();

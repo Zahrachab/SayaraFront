@@ -3,6 +3,8 @@ import {VersionDataSource} from '../../../dataSources/VersionDataSource';
 import {ModeleService} from '../../../services/modele.service';
 import {ModeleDetail} from '../../../services/entites/modeleDetail.model';
 import {VersionService} from '../../../services/version.service';
+import {MatDialog} from '@angular/material';
+import {SupprimerVersionComponent} from './supprimer-version/supprimer-version.component';
 
 @Component({
   selector: 'app-gestion-version',
@@ -14,7 +16,7 @@ export class GestionVersionComponent implements OnInit {
   private modeles: ModeleDetail[];
   displayedColumns = ['CodeVersion', 'NomVersion', 'modele', 'options', 'gestion'];
 
-  constructor(private versionService: VersionService, private modeleService: ModeleService) {
+  constructor(private versionService: VersionService, private modeleService: ModeleService, private matDialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -26,5 +28,9 @@ export class GestionVersionComponent implements OnInit {
 
   changerOptions($event) {
     this.versionDataSource = new VersionDataSource(this.versionService, $event.value);
+  }
+
+  supprimerVersion(version) {
+    this.matDialog.open(SupprimerVersionComponent, {width: '800px', data: {version}});
   }
 }
