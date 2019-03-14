@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import {OptionService} from '../../../services/option.service';
 import {OptionDataSource} from '../../../dataSources/OptionDataSource';
 import {ModeleDetail} from '../../../services/entites/modeleDetail.model';
@@ -18,7 +18,9 @@ export class GestionOptionsComponent implements OnInit {
   private modeles: ModeleDetail[];
   interval: any;
   displayedColumns = ['CodeOption', 'NomOption', 'gestion'];
-  constructor(private optionService: OptionService, private modalService: MatDialog, private _Activatedroute: ActivatedRoute, private modeleService: ModeleService) {}
+
+  constructor(private optionService: OptionService, private modalService: MatDialog,
+              private _Activatedroute: ActivatedRoute, private modeleService: ModeleService) {}
   ngOnInit() {
     try {
       this.codeModele = this._Activatedroute.snapshot.params.CodeModele; /*récupérer le code modèle passé en paramètre dans l'url*/

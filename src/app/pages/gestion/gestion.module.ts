@@ -15,12 +15,16 @@ import {SidenavComponent} from '../../components/sidenav/sidenav.component';
 import {FooterComponent} from '../../components/footer/footer.component';
 import {GestionVersionComponent } from './gestion-version/gestion-version.component';
 import {MatSelectModule} from '@angular/material/select';
+import { SupprimerModeleComponent } from './gestion-modele/supprimer-modele/supprimer-modele.component';
+import { SupprimerVersionComponent } from './gestion-version/supprimer-version/supprimer-version.component';
 import { GestionOptionsComponent } from './gestion-options/gestion-options.component';
 import {AjouterVersionComponent} from './gestion-version/ajouter-version/ajouter-version.component';
 import { ModifierVerionComponent } from './gestion-version/modifier-verion/modifier-verion.component';
 @NgModule({
-  declarations: [GestionComponent, GestionModeleComponent, AjouterModeleComponent, NavbarComponent, SidenavComponent, FooterComponent,
-    GestionVersionComponent, GestionOptionsComponent, AjouterVersionComponent, ModifierVerionComponent],
+  declarations: [GestionOptionsComponent, GestionComponent, GestionModeleComponent, AjouterModeleComponent,
+                  NavbarComponent, SidenavComponent, FooterComponent, GestionVersionComponent, SupprimerModeleComponent,
+                  SupprimerVersionComponent, AjouterVersionComponent, ModifierVerionComponent],
+
   imports: [
     CommonModule,
     GestionRoutingModule,
@@ -34,7 +38,8 @@ import { ModifierVerionComponent } from './gestion-version/modifier-verion/modif
     MDBBootstrapModule.forRoot()
   ],
   exports: [NavbarComponent, SidenavComponent, FooterComponent],
-  entryComponents: [AjouterModeleComponent, AjouterVersionComponent, ModifierVerionComponent],
+  entryComponents: [AjouterModeleComponent, AjouterVersionComponent, ModifierVerionComponent,
+    SupprimerModeleComponent, SupprimerVersionComponent],
 })
 export class GestionModule {
 }

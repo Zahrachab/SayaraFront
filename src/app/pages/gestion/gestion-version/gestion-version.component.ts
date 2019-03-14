@@ -2,10 +2,12 @@ import {Component, OnInit} from '@angular/core';
 import {VersionDataSource} from '../../../dataSources/VersionDataSource';
 import {ModeleService} from '../../../services/modele.service';
 import {ModeleDetail} from '../../../services/entites/modeleDetail.model';
-import {VersionService} from '../../../services/version.service';
+import {VersionService} from '../../../services/version.service';;
+import {SupprimerVersionComponent} from './supprimer-version/supprimer-version.component';
 import {AjouterVersionComponent} from './ajouter-version/ajouter-version.component';
 import {ModifierVerionComponent} from './modifier-verion/modifier-verion.component';
 import {MatDialog, MatDialogRef} from '@angular/material';
+
 
 @Component({
   selector: 'app-gestion-version',
@@ -44,5 +46,9 @@ export class GestionVersionComponent implements OnInit {
   modifierVersion(version) {
     const dialogRef: MatDialogRef<ModifierVerionComponent> = this.matDialog.open(ModifierVerionComponent, {width: '800px', height: '80%'});
     dialogRef.componentInstance.version = version;
+  }
+
+  supprimerVersion(version) {
+    this.matDialog.open(SupprimerVersionComponent, {width: '800px', data: {version}});
   }
 }

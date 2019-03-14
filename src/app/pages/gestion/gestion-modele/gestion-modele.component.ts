@@ -5,6 +5,7 @@ import 'rxjs/add/observable/of';
 import {AjouterModeleComponent} from './ajouterModele/ajouterModele.component';
 import {MatDialog} from '@angular/material';
 import {ModeleDataSource} from '../../../dataSources/ModeleDataSource';
+import {SupprimerModeleComponent} from './supprimer-modele/supprimer-modele.component';
 import {ModeleDetail} from '../../../services/entites/modeleDetail.model';
 
 @Component({
@@ -42,6 +43,9 @@ export class GestionModeleComponent implements OnInit {
     this.modalService.open(AjouterModeleComponent, {width: '800px'});
   }
 
+  supprimerModele(modele) {
+    this.modalService.open(SupprimerModeleComponent, {width: '800px', data: {modele}});
+  }
 }
 
 

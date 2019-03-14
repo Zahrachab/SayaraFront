@@ -65,13 +65,13 @@
         <mat-cell *matCellDef="let modele">
           <button mat-icon-button (click)="modifierModele(modele)"  >
             <mat-icon class="vert">edit</mat-icon>
-          </button>
-          <button mat-icon-button>
-            <mat-icon class="rouge">delete</mat-icon>
-          </button>
-          <button mat-icon-button >
-            <mat-icon class="blue">more_vert</mat-icon>
-          </button>
+          </a>
+          <a routerLink=".">
+            <mat-icon class="rouge" (click)="supprimerModele(modele)">delete</mat-icon>
+          </a>
+          <a routerLink=".">
+            <mat-icon>more_vert</mat-icon>
+          </a>
         </mat-cell>
       </ng-container>
 
