@@ -4,6 +4,7 @@ import {ModeleService} from '../../../services/modele.service';
 import {ModeleDetail} from '../../../services/entites/modeleDetail.model';
 import {VersionService} from '../../../services/version.service';
 import {AjouterVersionComponent} from './ajouter-version/ajouter-version.component';
+import {ModifierVerionComponent} from './modifier-verion/modifier-verion.component';
 import {MatDialog, MatDialogRef} from '@angular/material';
 
 @Component({
@@ -32,11 +33,16 @@ export class GestionVersionComponent implements OnInit {
     this.versionDataSource = new VersionDataSource(this.versionService, $event.value);
   }
 
+
+  /* Ouvrir un mat dialog pour l'ajout d'une version au modèle courant */
   openModal() {
-    const dialogRef: MatDialogRef<AjouterVersionComponent> = this.matDialog.open(AjouterVersionComponent, {width: '800px', height: '85%'});
+    const dialogRef: MatDialogRef<AjouterVersionComponent> = this.matDialog.open(AjouterVersionComponent, {width: '800px', height: '80%'});
     dialogRef.componentInstance.codeModele = this.codeModele;
   }
-  modifierModele() {
 
+  /* Ouvrir un mat dialog pour la modification des informations d'une version */
+  modifierVersion(version) {
+    const dialogRef: MatDialogRef<ModifierVerionComponent> = this.matDialog.open(ModifierVerionComponent, {width: '800px', height: '80%'});
+    dialogRef.componentInstance.version = version;
   }
 }

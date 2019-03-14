@@ -2,6 +2,12 @@ mat-dialog-content{
   height: 100%;
 }
 
+mat-dialog-container{
+  padding: 10px 24px;
+}
+form{
+  width: 100%;
+}
 #formulaireHtml {
   width: 100%;
   display: flex;
@@ -111,7 +117,7 @@ i
 }
 
 
-#imgInput {
+#imageVersion {
   display: none;
 }
 
@@ -186,3 +192,7 @@ i
   }
 }
 
+mat-dialog-actions{
+  position: fixed;
+  bottom: 0;
+}

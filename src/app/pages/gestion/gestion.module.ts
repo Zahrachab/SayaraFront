@@ -17,9 +17,10 @@ import {GestionVersionComponent } from './gestion-version/gestion-version.compon
 import {MatSelectModule} from '@angular/material/select';
 import { GestionOptionsComponent } from './gestion-options/gestion-options.component';
 import {AjouterVersionComponent} from './gestion-version/ajouter-version/ajouter-version.component';
+import { ModifierVerionComponent } from './gestion-version/modifier-verion/modifier-verion.component';
 @NgModule({
   declarations: [GestionComponent, GestionModeleComponent, AjouterModeleComponent, NavbarComponent, SidenavComponent, FooterComponent,
-    GestionVersionComponent, GestionOptionsComponent, AjouterVersionComponent],
+    GestionVersionComponent, GestionOptionsComponent, AjouterVersionComponent, ModifierVerionComponent],
   imports: [
     CommonModule,
     GestionRoutingModule,
@@ -33,7 +34,7 @@ import {AjouterVersionComponent} from './gestion-version/ajouter-version/ajouter
     MDBBootstrapModule.forRoot()
   ],
   exports: [NavbarComponent, SidenavComponent, FooterComponent],
-  entryComponents: [AjouterModeleComponent, AjouterVersionComponent],
+  entryComponents: [AjouterModeleComponent, AjouterVersionComponent, ModifierVerionComponent],
 })
 export class GestionModule {
 }

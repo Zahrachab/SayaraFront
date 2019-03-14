@@ -5,6 +5,7 @@ export interface VersionDetail {
   options: [{
     CodeOption: { type: string };
     NomOption: { type: string };
+    Checked: boolean;
     rel_ver_opt: {
       idRelVerOpt: { type: string };
       CodeVersion: { type: string };

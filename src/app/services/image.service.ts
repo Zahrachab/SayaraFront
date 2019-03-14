@@ -7,15 +7,15 @@ import {Observable } from 'rxjs';
 })
 export class ImageService {
   private url = this.injector.get('url');
-  private imagesVersionUrl = this.url + '/images/version/';
+  private imagesVersionUrl = this.url + '/images/versions/';
   constructor(private http: HttpClient, private injector: Injector) {}
 
 
   public uploadImage(image: File, codeVersion: string) {
     const formData = new FormData();
 
-    formData.append('image', image);
-
-    return this.http.post(this.imagesVersionUrl + codeVersion, formData);
-  }
+    formData.append('imageVersion', image);
+    const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
+    return this.http.post(this.imagesVersionUrl + codeVersion, formData, {headers: tokenHeader});
+}
 }

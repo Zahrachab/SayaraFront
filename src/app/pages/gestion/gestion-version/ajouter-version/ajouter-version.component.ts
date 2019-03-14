@@ -63,21 +63,22 @@ export class AjouterVersionComponent implements OnInit {
   }
 
   gererOptions(event, option) {
-    option.checked = !option.checked;
-    console.log(event, option);
+    option.Cheked = !option.Checked;
     this.optionsChoisies.push(option);
   }
 
   onSubmit() {
+    let i = 0;
     this.selectedFile.pending = true;
     this.versionservice.ajouter(this.formulaire.value.code + JSON.parse(localStorage.getItem('utilisateur')).utilfab.Fabricant,
       this.formulaire.value.nom, this.codeModele).subscribe(
       (res) => {
-            for (const option of this.options) {
-              this.optionservice.ajouter(String(option.CodeOption), String(option.NomOption),
+            for (i = 0 ; i < this.optionsChoisies.length; i++) {
+              console.log(this.optionsChoisies[i]);
+              this.optionservice.ajouter(String(this.optionsChoisies[i].CodeOption), String(this.optionsChoisies[i].NomOption),
                 this.formulaire.value.code + JSON.parse(localStorage.getItem('utilisateur')).utilfab.Fabricant);
             }
-            this.imageService.uploadImage(this.selectedFile.file, this.formulaire.value.code ).subscribe(
+            this.imageService.uploadImage(this.selectedFile.file, this.formulaire.value.code + JSON.parse(localStorage.getItem('utilisateur')).utilfab.Fabricant ).subscribe(
               (re) => {
                 this.onSuccess();
               },

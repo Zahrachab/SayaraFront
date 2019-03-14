@@ -19,7 +19,9 @@ export class OptionService {
   ajouter(code: string, designation: string, codeVersion: string) {
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
     return this.http.post(this.url + '/Marques/Modeles/Versions/' + codeVersion + '/Options',
-      {CodeOption: code, NomOption: designation}, {headers: tokenHeader});
+      {CodeOption: code, NomOption: designation}, {headers: tokenHeader}).subscribe(() => {
+
+    });
   }
 
   ajouterOptionModele(code: string, designation: string, codeModele: string) {
@@ -34,7 +36,6 @@ export class OptionService {
     let options;
     this.http.get<ModeleDetail>(this.serviceUrlOptions + codeModele).subscribe(modele => {
       options = (modele as ModeleDetail).options as Option[];
-      console.log(options);
     });
     return new Observable(observer => {
       setTimeout(() => {

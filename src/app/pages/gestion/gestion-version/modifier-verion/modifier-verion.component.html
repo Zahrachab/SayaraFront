@@ -1,11 +1,10 @@
-
 <mat-dialog-content>
   <div  fxLayout="row" fxLayoutAlign="space-between start" >
     <div fxLayout="column">
       <h1 mat-dialog-title style="margin: 0">Ajouter une version</h1>
       <div id="trait"></div>
     </div>
-    <button mat-icon-button type="submit" (click)="addUser()" mat-dialog-close [disabled]="formisvalid">
+    <button mat-icon-button type="submit"  mat-dialog-close [disabled]="formisvalid">
       <mat-icon>close</mat-icon>
     </button>
   </div>
@@ -34,8 +33,8 @@
         </i>
         <span class="label">Options</span>
         <br/>
-        <div fxLayout="column" fxLayoutAlign="center start" id="options">
-        <mat-checkbox color="primary" *ngFor="let option of options" [value]="option.CodeOption" (change)="gererOptions($event, option)">{{option.NomOption}}</mat-checkbox>
+        <div fxLayout="column" fxLayoutAlign="center start" id="options"  >
+          <mat-checkbox *ngFor="let option of options" color="primary" [value]="option.CodeOption"  [checked]="option.Checked" (change)="gererOptions($event, option)">{{option.NomOption}}</mat-checkbox>
         </div>
       </div>
     </div>
@@ -50,8 +49,8 @@
           add
         </i>
         <label class="image-upload-container btn btn-bwm">
-        <span (click)="ajouterOption()" class="ajouter">Ajouter une Photo</span>
-        <input #imageInput id="imageVersion"
+          <span (click)="ajouterOption()" class="ajouter">Ajouter une Photo</span>
+          <input #imageInput id="imgInput"
                  type="file"
                  accept="image/*"
                  (change)="processFile(imageInput)">
@@ -70,7 +69,7 @@
     </div>
   </form>
   <div mat-dialog-actions fxLayout="row" fxLayoutAlign="end end">
-    <button type="submit" class="btn-ajout" (click)="onSubmit()">Submit </button>
+    <button type="submit" class="btn-ajout">Submit </button>
   </div>
 </mat-dialog-content>
 
