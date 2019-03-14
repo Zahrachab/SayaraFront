@@ -76,18 +76,26 @@ div.gestion {
 
         mat-cell {
           padding: 0 2%;
+           button{
+             padding: 0px;
+             margin-left: -20px;
+             border: 0px solid white;
+             mat-icon {
+               margin-right: 3%
+             }
 
-          mat-icon {
-            margin-right: 3%
-          }
+             mat-icon.vert {
+               color: #16a085;
+             }
 
-          mat-icon.vert {
-            color: #16a085;
-          }
+             mat-icon.rouge {
+               color: firebrick;
+             }
 
-          mat-icon.rouge {
-            color: firebrick;
-          }
+             mat-icon.blue {
+               color: #2ebcfc;
+             }
+           }
 
         }
 

@@ -7,7 +7,7 @@ import {VersionService} from '../../../../services/version.service';
 @Component({
   selector: 'app-modal',
   templateUrl: './ajouterModele.component.html',
-  styleUrls: ['ajouterModele.component.css']
+  styleUrls: ['ajouterModele.component.scss']
 })
 export class AjouterModeleComponent implements OnInit {
 
@@ -57,8 +57,8 @@ export class AjouterModeleComponent implements OnInit {
       this.formulaire.value.nom, this.formulaire.value.code);
 
     for (const option of this.formulaire.value.options) {
-      this.optionservice.ajouter(option.codeOption, option.nomOption,
-        this.formulaire.value.code + JSON.parse(localStorage.getItem('utilisateur')).utilfab.Fabricant);
+      this.optionservice.ajouterOptionModele(option.codeOption, option.nomOption,
+        this.formulaire.value.code);
     }
   }
 }

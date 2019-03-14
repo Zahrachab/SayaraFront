@@ -5,6 +5,8 @@ import {ModeleDetail} from '../../../services/entites/modeleDetail.model';
 import {VersionService} from '../../../services/version.service';
 import {MatDialog} from '@angular/material';
 import {SupprimerVersionComponent} from './supprimer-version/supprimer-version.component';
+import {AjouterVersionComponent} from './ajouter-version/ajouter-version.component';
+import {MatDialog, MatDialogRef} from '@angular/material';
 
 @Component({
   selector: 'app-gestion-version',
@@ -12,6 +14,7 @@ import {SupprimerVersionComponent} from './supprimer-version/supprimer-version.c
   styleUrls: ['./gestion-version.component.scss']
 })
 export class GestionVersionComponent implements OnInit {
+  private codeModele: string;
   private versionDataSource: VersionDataSource;
   private modeles: ModeleDetail[];
   displayedColumns = ['CodeVersion', 'NomVersion', 'modele', 'options', 'gestion'];
@@ -27,7 +30,16 @@ export class GestionVersionComponent implements OnInit {
 
 
   changerOptions($event) {
+    this.codeModele = $event.value;
     this.versionDataSource = new VersionDataSource(this.versionService, $event.value);
+  }
+
+  openModal() {
+    const dialogRef: MatDialogRef<AjouterVersionComponent> = this.matDialog.open(AjouterVersionComponent, {width: '800px', height: '85%'});
+    dialogRef.componentInstance.codeModele = this.codeModele;
+  }
+  modifierModele() {
+
   }
 
   supprimerVersion(version) {

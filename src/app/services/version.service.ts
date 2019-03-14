@@ -15,9 +15,8 @@ export class VersionService {
 
   ajouter(code: string, designation: string, model: string) {
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
-    this.http.post(this.url + '/Marques/Modeles/' + model + '/Versions',
-      {CodeVersion: code, NomVersion: designation}, {headers: tokenHeader}).subscribe(() => {
-    });
+    return this.http.post(this.url + '/Marques/Modeles/' + model + '/Versions',
+      {CodeVersion: code, NomVersion: designation}, {headers: tokenHeader});
   }
 
   getVersions(codeModele): Observable<VersionDetail[]> {

@@ -14,6 +14,13 @@ div.gestion {
 
   }
 
+  mat-select{
+    margin-top: 35px;
+    margin-left: 2%;
+    font-family: 'Roboto-Thin', 'Sherif';
+    font-size: 18px;
+  }
+
   div#trait {
     width: 60px;
     border-top: 3px solid #3498d8;
@@ -87,6 +94,9 @@ div.gestion {
 
           mat-icon.rouge {
             color: firebrick;
+          }
+          mat-icon.blue {
+            color: #3498d8;
           }
 
         }

@@ -18,7 +18,13 @@ export class OptionService {
 
   ajouter(code: string, designation: string, codeVersion: string) {
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
-    this.http.post(this.url + '/Marques/Modeles/Versions/' + codeVersion + '/Options',
+    return this.http.post(this.url + '/Marques/Modeles/Versions/' + codeVersion + '/Options',
+      {CodeOption: code, NomOption: designation}, {headers: tokenHeader});
+  }
+
+  ajouterOptionModele(code: string, designation: string, codeModele: string) {
+    const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
+    return this.http.post(this.url + '/Marques/Modeles/' + codeModele + '/Options',
       {CodeOption: code, NomOption: designation}, {headers: tokenHeader}).subscribe(() => {
 
     });
@@ -33,6 +39,7 @@ export class OptionService {
     return new Observable(observer => {
       setTimeout(() => {
         observer.next(options);
+        observer.complete();
       }, 2000);
     });
   }

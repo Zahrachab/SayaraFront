@@ -20,6 +20,11 @@ const routes: Routes = [
         pathMatch: 'full'
       },
       {
+        path: 'options',
+        component: GestionOptionsComponent,
+        pathMatch: 'full'
+      },
+      {
         path: 'versions',
         component: GestionVersionComponent
       }

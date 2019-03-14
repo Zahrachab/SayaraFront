@@ -1,5 +1,11 @@
 <div class="gestion">
-  <h2>Gestion des versions </h2>
+  <div fxLayout="row wrap">
+    <h2 fxFlex="60">Gestion des versions du modèle </h2>
+    <mat-select fxFlex="25"[(value)]="modelId" (selectionChange)="changerOptions($event)">
+      <mat-option>Choisissez un model</mat-option>
+      <mat-option *ngFor="let modele of modeles" [value]="modele.CodeModele"> {{modele.NomModele}}</mat-option>
+    </mat-select>
+  </div>
   <div id="trait"></div>
   <div fxLayout="row">
     <div fxFlex="70">
@@ -9,11 +15,11 @@
       </mat-select>
       <form class="example-form">
         <mat-form-field class="example-full-width">
-          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Rechercher une version" value="">
+          <input matInput  placeholder="Rechercher un modèle" value="">
         </mat-form-field>
       </form>
     </div>
-    <button mat-button fxFlex='20' mat-stroked-button (click)="openModal()" class="ajouter">Ajouter Version</button>
+    <button mat-button fxFlex='20' mat-stroked-button (click)="openModal()" class="ajouter">Ajouter une version</button>
   </div>
   <div class="example-container mat-elevation-z8">
     <mat-table [dataSource]="versionDataSource">
