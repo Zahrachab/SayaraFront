@@ -6,7 +6,7 @@ import {VersionService} from '../../../services/version.service';
 import {MatDialog} from '@angular/material';
 import {SupprimerVersionComponent} from './supprimer-version/supprimer-version.component';
 import {AjouterVersionComponent} from './ajouter-version/ajouter-version.component';
-import {MatDialog, MatDialogRef} from '@angular/material';
+import {MatDialogRef} from '@angular/material';
 
 @Component({
   selector: 'app-gestion-version',

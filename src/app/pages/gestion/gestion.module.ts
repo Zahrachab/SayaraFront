@@ -20,7 +20,7 @@ import { SupprimerVersionComponent } from './gestion-version/supprimer-version/s
 import { GestionOptionsComponent } from './gestion-options/gestion-options.component';
 import {AjouterVersionComponent} from './gestion-version/ajouter-version/ajouter-version.component';
 @NgModule({
-  declarations: [GestionComponent, GestionModeleComponent, AjouterModeleComponent,
+  declarations: [GestionOptionsComponent, GestionComponent, GestionModeleComponent, AjouterModeleComponent,
                   NavbarComponent, SidenavComponent, FooterComponent, GestionVersionComponent, SupprimerModeleComponent,
                   SupprimerVersionComponent, AjouterVersionComponent],
   imports: [

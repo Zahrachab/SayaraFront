@@ -18,7 +18,9 @@ export class GestionOptionsComponent implements OnInit {
   private modeles: ModeleDetail[];
   interval: any;
   displayedColumns = ['CodeOption', 'NomOption', 'gestion'];
-  constructor(private optionService: OptionService, private modalService: MatDialog, private _Activatedroute: ActivatedRoute, private modeleService: ModeleService) {}
+
+  constructor(private optionService: OptionService, private modalService: MatDialog,
+              private _Activatedroute: ActivatedRoute, private modeleService: ModeleService) {}
   ngOnInit() {
     try {
       this.codeModele = this._Activatedroute.snapshot.params.CodeModele; /*récupérer le code modèle passé en paramètre dans l'url*/
