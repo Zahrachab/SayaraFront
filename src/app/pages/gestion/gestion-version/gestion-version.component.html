@@ -9,10 +9,6 @@
   <div id="trait"></div>
   <div fxLayout="row">
     <div fxFlex="70">
-      <mat-select [(value)]="modelId" (selectionChange)="changerOptions($event)">
-        <mat-option>Choisissez un model</mat-option>
-        <mat-option *ngFor="let modele of modeles" [value]="modele.CodeModele"> {{modele.NomModele}}</mat-option>
-      </mat-select>
       <form class="example-form">
         <mat-form-field class="example-full-width">
           <input matInput  placeholder="Rechercher un modèle" value="">
@@ -69,12 +65,12 @@
           <button mat-icon-button (click)="modifierVersion(version)"  >
             <mat-icon class="vert">edit</mat-icon>
           </button>
-          <a routerLink=".">
+          <button mat-icon-button>
             <mat-icon class="rouge" (click)="supprimerVersion(version)" >delete</mat-icon>
-          </a>
-          <a routerLink=".">
-            <mat-icon>more_vert</mat-icon>
-          </a>
+          </button>
+          <button mat-icon-button >
+            <mat-icon class="bleu">more_vert</mat-icon>
+          </button>
         </mat-cell>
       </ng-container>
 

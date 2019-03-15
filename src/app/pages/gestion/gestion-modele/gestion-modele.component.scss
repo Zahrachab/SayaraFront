@@ -76,10 +76,7 @@ div.gestion {
 
         mat-cell {
           padding: 0 2%;
-           button{
-             padding: 0px;
-             margin-left: -20px;
-             border: 0px solid white;
+           button{;
              mat-icon {
                margin-right: 3%
              }
@@ -92,7 +89,7 @@ div.gestion {
                color: firebrick;
              }
 
-             mat-icon.blue {
+             mat-icon.bleu {
                color: #2ebcfc;
              }
            }
