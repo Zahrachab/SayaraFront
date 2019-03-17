@@ -19,9 +19,14 @@ export class OptionService {
   ajouter(code: string, designation: string, codeVersion: string) {
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
     return this.http.post(this.url + '/Marques/Modeles/Versions/' + codeVersion + '/Options',
-      {CodeOption: code, NomOption: designation}, {headers: tokenHeader}).subscribe(() => {
+      {CodeOption: code, NomOption: designation}, {headers: tokenHeader});
+  }
 
-    });
+  supprimer(code: string, codeVersion: string) {
+    const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
+    return this.http.delete(this.url + '/Marques/Modeles/Versions/' + codeVersion + '/Options/' + code,
+     {headers: tokenHeader}).pipe();
+
   }
 
   ajouterOptionModele(code: string, designation: string, codeModele: string) {

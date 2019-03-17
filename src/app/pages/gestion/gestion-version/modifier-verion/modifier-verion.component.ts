@@ -19,7 +19,8 @@ export class ModifierVerionComponent implements OnInit {
   private formulaire: FormGroup;
   public version: VersionDetail;
   private optionsVersion: Option[];
-  private optionsChoisies: Array<Option> = [];
+  private optionsAjoutes: Array<Option> = [];
+  private optionsSupp: Array<Option> = [];
   selectedFile: ImageSnippet;
   pending = false;
   status = 'init';
@@ -83,16 +84,44 @@ export class ModifierVerionComponent implements OnInit {
 
 
   gererOptions(event, option) {
+    option.Checked = !option.Checked;
+    console.log(option.Checked);
+    if (option.Checked === true) {
+      if ( this.optionsSupp.indexOf(option) === -1) {
+        this.optionsAjoutes.push(option);
+      } else {
+        this.optionsSupp.splice(this.optionsSupp.indexOf(option) , 1);
+      }
+    } else {
+      if ( this.optionsAjoutes.indexOf(option) === -1) {
+        this.optionsSupp.push(option);
+      } else {
+        this.optionsAjoutes.splice(this.optionsAjoutes.indexOf(option) , 1);
+      }
+    }
 
   }
 
+
+
   onSubmit() {
+    /* modifier le nom de la version */
     this.versionService.modifierVersion(this.formulaire.value.code,
       this.formulaire.value.nom, this.formulaire.value.code).subscribe((res) => {
-
+        this.dialogRef.close();
       }
       );
-
+   /* ajouter des options */
+    for (let i = 0 ; i < this.optionsAjoutes.length; i++) {
+      this.optionService.ajouter(String(this.optionsAjoutes[i].CodeOption), String(this.optionsAjoutes[i].NomOption),
+        this.formulaire.value.code).subscribe((res) => {
+        } , (error) => {});
+    }
+    /* supprimer des options */
+    for (let i = 0 ; i < this.optionsSupp.length; i++) {
+      this.optionService.supprimer(String(this.optionsSupp[i].CodeOption),
+        this.formulaire.value.code);
+    }
   }
 }
 
