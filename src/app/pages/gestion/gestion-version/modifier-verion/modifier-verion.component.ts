@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {VersionDetail} from '../../../../services/entites/versionDetail.model';
 import {MatDialogRef} from '@angular/material';
 import {Option} from '../../../../services/entites/option.model';
@@ -30,7 +30,9 @@ export class ModifierVerionComponent implements OnInit {
               private versionService: VersionService,
               private dialogRef: MatDialogRef<ModifierVerionComponent>,
               private imageService: ImageService,
+              private changeDetectorRef: ChangeDetectorRef
   ) {
+
   }
 
   ngOnInit() {
@@ -39,31 +41,57 @@ export class ModifierVerionComponent implements OnInit {
       code: this.version.CodeVersion,
       nom: this.version.NomVersion,
     });
-    this.getOptions();
+    this.loadFile();
     this.formulaire.valueChanges.subscribe();
+    /* Charger les options */
+    this.getOptions();
+
   }
 
   getOptions() {
-    this.optionService.getOptions(this.version.CodeModele).subscribe(opts => this.options = opts as Option[]);
-    this.optionsVersion = (this.version as VersionDetail).options as Option[];
-    for (let i = 0; i < this.optionsChoisies.length; i++) {
-      for (let j = 0; j < this.options.length; j++) {
-        console.log('hh');
-         if ( String(this.options[j].CodeOption) === String(this.optionsChoisies[i].CodeOption)) {
-           this.options[j].Checked = true;
-
-         }
-      }
-
-    }
-    console.log(this.options);
+    /*subscribe pour régler le problème de synchronisation*/
+    this.optionService.getOptions(this.version.CodeModele).subscribe(opts => {
+      this.options = opts as Option[];
+      this.optionsVersion = (this.version as VersionDetail).options as Option[];
+      this.optionsVersion.forEach((element) => {
+        this.options.forEach((opt) => {
+          if (String(element.CodeOption) === String(opt.CodeOption)) {
+            /* séléctionner les options compatibles avec la version parmi ceux associées au modèle */
+            opt.Checked = true;
+          }
+        });
+      });
+    });
   }
+
+
+  loadFile() {
+    this.selectedFile = new ImageSnippet(null , null);
+    this.selectedFile.status = 'ok';
+    this.selectedFile.src = String(this.version.images[0]);
+  }
+
+  processFile(imageInput: any) {
+    const file: File = imageInput.files[0];
+    const reader = new FileReader();
+    reader.addEventListener('load', (event: any) => {
+      this.selectedFile = new ImageSnippet(event.target.result, file);
+    });
+
+    reader.readAsDataURL(file);
+  }
+
 
   gererOptions(event, option) {
 
   }
 
   onSubmit() {
+    this.versionService.modifierVersion(this.formulaire.value.code,
+      this.formulaire.value.nom, this.formulaire.value.code).subscribe((res) => {
+
+      }
+      );
 
   }
 }

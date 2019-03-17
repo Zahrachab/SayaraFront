@@ -28,4 +28,10 @@ export class VersionService {
     return this.http.delete(this.urlVersionDetails + 'versions/' + codeVersion, {headers: tokenHeader}).pipe(
     );
   }
+
+  modifierVersion(code: string, designation: string, codeVersion: string) {
+    const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
+    return this.http.put(this.url + '/Marques/Modeles/Versions/' + codeVersion ,
+      {CodeVersion: code, NomVersion: designation}, {headers: tokenHeader});
+  }
 }

@@ -22,6 +22,6 @@ export interface VersionDetail {
     };
   }];
   images: [{
-    CheminImange: {type: string};
+    CheminImage: {type: string};
   }];
 }

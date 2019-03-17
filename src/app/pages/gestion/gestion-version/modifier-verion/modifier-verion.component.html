@@ -34,7 +34,7 @@
         <span class="label">Options</span>
         <br/>
         <div fxLayout="column" fxLayoutAlign="center start" id="options"  >
-          <mat-checkbox *ngFor="let option of options" color="primary" [value]="option.CodeOption"  [checked]="option.Checked" (change)="gererOptions($event, option)">{{option.NomOption}}</mat-checkbox>
+          <mat-checkbox *ngFor="let option of options" color="primary" [value]="option.CodeOption"   [checked]="option.Checked" (change)="gererOptions($event, option)">{{option.NomOption}}</mat-checkbox>
         </div>
       </div>
     </div>
@@ -50,12 +50,12 @@
         </i>
         <label class="image-upload-container btn btn-bwm">
           <span (click)="ajouterOption()" class="ajouter">Ajouter une Photo</span>
-          <input #imageInput id="imgInput"
+          <input #imageInput id="imageVersion"
                  type="file"
                  accept="image/*"
                  (change)="processFile(imageInput)">
         </label>
-        <div *ngIf="selectedFile" class="img-preview-container">
+        <div class="img-preview-container">
 
           <div class="img-preview{{selectedFile.status === 'fail' ? '-error' : ''}}"
                [ngStyle]="{'background-image': 'url('+ selectedFile.src + ')'}">
@@ -69,7 +69,7 @@
     </div>
   </form>
   <div mat-dialog-actions fxLayout="row" fxLayoutAlign="end end">
-    <button type="submit" class="btn-ajout">Submit </button>
+    <button type="submit" class="btn-ajout" (click)="onSubmit()">Submit </button>
   </div>
 </mat-dialog-content>
 

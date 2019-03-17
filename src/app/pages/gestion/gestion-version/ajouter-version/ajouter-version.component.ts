@@ -74,7 +74,6 @@ export class AjouterVersionComponent implements OnInit {
       this.formulaire.value.nom, this.codeModele).subscribe(
       (res) => {
             for (i = 0 ; i < this.optionsChoisies.length; i++) {
-              console.log(this.optionsChoisies[i]);
               this.optionservice.ajouter(String(this.optionsChoisies[i].CodeOption), String(this.optionsChoisies[i].NomOption),
                 this.formulaire.value.code + JSON.parse(localStorage.getItem('utilisateur')).utilfab.Fabricant);
             }
