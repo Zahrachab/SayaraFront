@@ -72,6 +72,17 @@ export class ModifierVerionComponent implements OnInit {
     this.selectedFile.src = String(this.version.images[0]);
   }
 
+  private onSuccess() {
+    this.selectedFile.pending = false;
+    this.selectedFile.status = 'ok';
+  }
+
+  private onError() {
+    this.selectedFile.pending = false;
+    this.selectedFile.status = 'fail';
+    this.selectedFile.src = '';
+  }
+
   processFile(imageInput: any) {
     const file: File = imageInput.files[0];
     const reader = new FileReader();
@@ -95,6 +106,7 @@ export class ModifierVerionComponent implements OnInit {
     } else {
       if ( this.optionsAjoutes.indexOf(option) === -1) {
         this.optionsSupp.push(option);
+        console.log(this.optionsSupp );
       } else {
         this.optionsAjoutes.splice(this.optionsAjoutes.indexOf(option) , 1);
       }
@@ -105,10 +117,10 @@ export class ModifierVerionComponent implements OnInit {
 
 
   onSubmit() {
+    this.selectedFile.pending = true;
     /* modifier le nom de la version */
     this.versionService.modifierVersion(this.formulaire.value.code,
       this.formulaire.value.nom, this.formulaire.value.code).subscribe((res) => {
-        this.dialogRef.close();
       }
       );
    /* ajouter des options */
@@ -120,8 +132,23 @@ export class ModifierVerionComponent implements OnInit {
     /* supprimer des options */
     for (let i = 0 ; i < this.optionsSupp.length; i++) {
       this.optionService.supprimer(String(this.optionsSupp[i].CodeOption),
-        this.formulaire.value.code);
+        this.formulaire.value.code).subscribe(() => {
+      });
     }
+
+    if (this.selectedFile.file !== null) {
+    this.imageService.uploadImage(this.selectedFile.file,
+      this.formulaire.value.code ).subscribe(
+      (re) => {
+        console.log('hh');
+        this.onSuccess();
+        this.dialogRef.close();
+      },
+      (err) => {
+        this.onError();
+      });
+    }
+
   }
 }
 
