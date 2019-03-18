@@ -50,20 +50,23 @@
         </i>
         <label class="image-upload-container btn btn-bwm">
           <span (click)="ajouterOption()" class="ajouter">Ajouter une Photo</span>
-          <input #imageInput id="imageVersion"
+          <input  ng2FileSelect accept=".png" [uploader]="uploader" #imageInput id="imageVersion"
                  type="file"
                  accept="image/*"
-                 (change)="processFile(imageInput)">
+                 (change)="processFile(imageInput)" multiple/><br/>
         </label>
-        <div class="img-preview-container">
-
-          <div class="img-preview{{selectedFile.status === 'fail' ? '-error' : ''}}"
-               [ngStyle]="{'background-image': 'url('+ selectedFile.src + ')'}">
+        <div *ngFor="let selected of selectedFile" class="img-preview-container" fxLayout="row" fxLayoutAlign="center center">
+          <div class="img-preview{{selected.status === 'fail' ? '-error' : ''}}"
+               [ngStyle]="{'background-image': 'url('+ selected.src + ')'}">
           </div>
 
-          <div *ngIf="selectedFile.pending" class="img-loading-overlay">
+          <div *ngIf="selected.pending" class="img-loading-overlay">
             <div class="img-spinning-circle"></div>
           </div>
+          <button mat-icon-button  (click)="supprimerImage(selected)">
+            <mat-icon class="rouge" >delete</mat-icon>
+          </button>
+
         </div>
       </div>
     </div>

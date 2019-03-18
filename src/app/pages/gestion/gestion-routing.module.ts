@@ -1,9 +1,10 @@
-import { NgModule } from '@angular/core';
+import {Input, NgModule} from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {GestionComponent} from './gestion/gestion.component';
 import {GestionModeleComponent} from './gestion-modele/gestion-modele.component';
 import {GestionOptionsComponent} from './gestion-options/gestion-options.component';
 import {GestionVersionComponent} from './gestion-version/gestion-version.component';
+import {FileUploaderComponent } from './file-uploader/file-uploader.component';
 
 const routes: Routes = [
   {
@@ -27,7 +28,11 @@ const routes: Routes = [
       {
         path: 'versions',
         component: GestionVersionComponent
-      }
+      },
+      {
+        path: 'upload',
+        component: FileUploaderComponent
+      },
     ]
   }
 ];
