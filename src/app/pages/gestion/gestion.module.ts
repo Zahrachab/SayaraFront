@@ -20,12 +20,11 @@ import { SupprimerVersionComponent } from './gestion-version/supprimer-version/s
 import { GestionOptionsComponent } from './gestion-options/gestion-options.component';
 import {AjouterVersionComponent} from './gestion-version/ajouter-version/ajouter-version.component';
 import { ModifierVerionComponent } from './gestion-version/modifier-verion/modifier-verion.component';
-import { FileUploaderComponent } from './file-uploader/file-uploader.component';
 import {FileSelectDirective} from 'ng2-file-upload';
 @NgModule({
   declarations: [GestionOptionsComponent, GestionComponent, GestionModeleComponent, AjouterModeleComponent,
                   NavbarComponent, SidenavComponent, FooterComponent, GestionVersionComponent, SupprimerModeleComponent,
-                  SupprimerVersionComponent, AjouterVersionComponent, ModifierVerionComponent, FileUploaderComponent,
+                  SupprimerVersionComponent, AjouterVersionComponent, ModifierVerionComponent,
                   FileSelectDirective],
 
   imports: [
