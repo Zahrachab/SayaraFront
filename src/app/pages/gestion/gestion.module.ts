@@ -41,7 +41,7 @@ import {FileSelectDirective} from 'ng2-file-upload';
   ],
   exports: [NavbarComponent, SidenavComponent, FooterComponent],
   entryComponents: [AjouterModeleComponent, AjouterVersionComponent, ModifierVerionComponent,
-    SupprimerModeleComponent, SupprimerVersionComponent ],
+    SupprimerModeleComponent, SupprimerVersionComponent],
 })
 export class GestionModule {
 }

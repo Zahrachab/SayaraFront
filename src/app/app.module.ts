@@ -18,6 +18,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { GestionModule } from './pages/gestion/gestion.module';
 import {ReactiveFormsModule} from '@angular/forms';
+import { ConfirmationDialogComponent } from './pages/shared/confirmation-dialog/confirmation-dialog.component';
 
 const urlGlobale = 'https://sayaradz.herokuapp.com';
 
@@ -31,6 +32,7 @@ const urlGlobale = 'https://sayaradz.herokuapp.com';
     ContactUsComponent,
     PremierePageComponent,
     LoginComponent,
+    ConfirmationDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,7 +46,7 @@ const urlGlobale = 'https://sayaradz.herokuapp.com';
     GestionModule,
     MDBBootstrapModule.forRoot()
   ],
-  entryComponents: [],
+  entryComponents: [ConfirmationDialogComponent],
   schemas: [NO_ERRORS_SCHEMA],
   providers: [ModeleService, {provide: 'url', useValue: urlGlobale}],
   bootstrap: [AppComponent]
