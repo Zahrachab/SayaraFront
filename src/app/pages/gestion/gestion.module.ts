@@ -21,11 +21,18 @@ import { GestionOptionsComponent } from './gestion-options/gestion-options.compo
 import {AjouterVersionComponent} from './gestion-version/ajouter-version/ajouter-version.component';
 import { ModifierVerionComponent } from './gestion-version/modifier-verion/modifier-verion.component';
 import {FileSelectDirective} from 'ng2-file-upload';
+import { ColorPickerModule } from 'ngx-color-picker';
+import { GestionCouleurComponent } from './gestion-couleur/gestion-couleur.component';
+import { ModifierCouleurComponent } from './gestion-couleur/modifier-couleur/modifier-couleur.component';
+import { AjouterCouleurComponent } from './gestion-couleur/ajouter-couleur/ajouter-couleur.component';
 @NgModule({
   declarations: [GestionOptionsComponent, GestionComponent, GestionModeleComponent, AjouterModeleComponent,
                   NavbarComponent, SidenavComponent, FooterComponent, GestionVersionComponent, SupprimerModeleComponent,
                   SupprimerVersionComponent, AjouterVersionComponent, ModifierVerionComponent,
-                  FileSelectDirective],
+                  FileSelectDirective,
+                  GestionCouleurComponent,
+                  ModifierCouleurComponent,
+                  AjouterCouleurComponent],
 
   imports: [
     CommonModule,
@@ -37,11 +44,12 @@ import {FileSelectDirective} from 'ng2-file-upload';
     ReactiveFormsModule,
     MaterialModule,
     MatSelectModule,
+    ColorPickerModule,
     MDBBootstrapModule.forRoot()
   ],
   exports: [NavbarComponent, SidenavComponent, FooterComponent],
   entryComponents: [AjouterModeleComponent, AjouterVersionComponent, ModifierVerionComponent,
-    SupprimerModeleComponent, SupprimerVersionComponent],
+    SupprimerModeleComponent, SupprimerVersionComponent, ModifierCouleurComponent, AjouterCouleurComponent],
 })
 export class GestionModule {
 }

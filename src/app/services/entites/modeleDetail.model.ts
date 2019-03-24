@@ -17,4 +17,10 @@ export interface ModeleDetail {
       CodeOption: { type: string };
     };
   }];
+  couleurs: [{
+    CodeCouleur: { type: string };
+    NomCouleur: { type: string};
+    Couleur: { type: string };
+    Checked: boolean;
+  }];
 }

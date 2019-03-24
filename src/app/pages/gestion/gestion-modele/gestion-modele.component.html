@@ -60,6 +60,21 @@
         </mat-cell>
       </ng-container>
 
+      <ng-container matColumnDef='couleurs'>
+        <mat-header-cell *matHeaderCellDef>
+          <mat-icon>assignment_turned_in</mat-icon>
+          Couleurs
+        </mat-header-cell>
+        <mat-cell *matCellDef="let modele" fxLayout="column" fxLayoutAlign="start start">
+          <ul>
+            <li *ngFor="let couleur of modele.couleurs">
+              {{couleur.NomCouleur}}
+            </li>
+          </ul>
+          <a  [routerLink]="['/gestion/couleurs', modele.CodeModele]" >+ de couleurs </a>
+        </mat-cell>
+      </ng-container>
+
       <ng-container matColumnDef="gestion">
         <mat-header-cell *matHeaderCellDef><i class="material-icons">tune</i> GESTION</mat-header-cell>
         <mat-cell *matCellDef="let modele">

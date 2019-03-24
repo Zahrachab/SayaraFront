@@ -20,7 +20,9 @@ export class GestionVersionComponent implements OnInit {
   private modeles: ModeleDetail[];
   displayedColumns = ['CodeVersion', 'NomVersion', 'modele', 'options', 'gestion'];
 
-  constructor(private versionService: VersionService, private modeleService: ModeleService, private matDialog: MatDialog) {
+  constructor(private versionService: VersionService,
+              private modeleService: ModeleService,
+              private matDialog: MatDialog) {
   }
 
   ngOnInit() {

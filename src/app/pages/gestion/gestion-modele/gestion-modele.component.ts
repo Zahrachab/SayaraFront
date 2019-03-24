@@ -16,7 +16,7 @@ import {ModeleDetail} from '../../../services/entites/modeleDetail.model';
 export class GestionModeleComponent implements OnInit {
   private dataSource: ModeleDataSource;
   interval: any;
-  displayedColumns = ['CodeModele', 'NomModele', 'versions', 'options', 'gestion'];
+  displayedColumns = ['CodeModele', 'NomModele', 'versions', 'options', 'couleurs', 'gestion'];
 
   constructor(private modeleService: ModeleService, private modalService: MatDialog) {
   }

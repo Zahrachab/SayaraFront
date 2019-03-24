@@ -1,0 +1,33 @@
+<mat-dialog-content>
+  <div  fxLayout="row" fxLayoutAlign="space-between start" >
+    <div fxLayout="column">
+      <h1 mat-dialog-title style="margin: 0">Modifier Couleur</h1>
+      <div id="trait"></div>
+    </div>
+    <button mat-icon-button type="submit"  mat-dialog-close [disabled]="formisvalid">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <form [formGroup]="formulaire" (ngSubmit)="onSubmit()"#f="ngForm" novalidate id="formulaireHtml">
+    <div fxLayout="row wrap">
+      <div fxFlex="25"
+           fxFlex.md="33"
+           fxFlex.sm="50"
+           fxFlex.xs="100" fxLayout="column">
+        <span class="label">Code couleur </span>
+        <input matNativeControl matInput required formControlName="code" class="input">
+      </div>
+      <div fxFlex="70"
+           fxFlex.md="67"
+           fxFlex.sm="50"
+           fxFlex.xs="100" fxLayout="column">
+        <span class="label">Nom de la couleur</span>
+        <input matInput required formControlName="nom" class="input">
+      </div>
+    </div>
+  </form>
+  <div mat-dialog-actions fxLayout="row" fxLayoutAlign="end end">
+    <button type="submit" class="btn-ajout" (click)="onSubmit()">Valider</button>
+  </div>
+</mat-dialog-content>
+

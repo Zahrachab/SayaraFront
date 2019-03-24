@@ -23,6 +23,13 @@ mat-dialog-content{
   width: 50%;
 }
 
+.example-card {
+    border-radius: 50%;
+    border: 1px solid #000000;
+    width: 30px;
+    height: 30px;
+    background: #424242;
+}
 
 div#trait {
   width: 60px;
@@ -32,6 +39,10 @@ div#trait {
 }
 mat-icon{
   color: #ea1c0d;
+}
+
+div.divInput{
+  padding: 0px;
 }
 .input {
   width: 80%;

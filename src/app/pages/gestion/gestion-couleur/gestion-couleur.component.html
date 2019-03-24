@@ -1,0 +1,61 @@
+<div class="gestion" >
+  <div fxLayout="row">
+    <h2 fxFlex="60">Gestion des couleurs du modèle </h2>
+    <mat-select fxFlex="25"[(value)]="modelId" (selectionChange)="changerCouleurs($event)">
+      <mat-option>Choisissez un model</mat-option>
+      <mat-option *ngFor="let modele of modeles" [value]="modele.CodeModele"> {{modele.NomModele}}</mat-option>
+    </mat-select>
+  </div>
+  <div id="trait"></div>
+  <div fxLayout="row">
+    <div fxFlex="70">
+      <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <input matInput  placeholder="Rechercher un modèle" value="">
+        </mat-form-field>
+      </form>
+    </div>
+    <button mat-button fxFlex='20' mat-stroked-button (click)="ajouterCouleur()" class="ajouter">Ajouter une couleur</button>
+  </div>
+  <div class="example-container mat-elevation-z8">
+    <mat-table [dataSource]="dataSource">
+
+
+      <ng-container matColumnDef='CodeCouleur'>
+        <mat-header-cell *matHeaderCellDef>
+          <mat-icon>code</mat-icon>
+          CODE Couleur
+        </mat-header-cell>
+        <mat-cell *matCellDef="let couleur"> {{couleur.CodeCouleur}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef='NomCouleur'>
+        <mat-header-cell *matHeaderCellDef>
+          <mat-icon>directions_car</mat-icon>
+          Nom Couleur
+        </mat-header-cell>
+        <mat-cell class="gras" *matCellDef="let couleur"> {{couleur.NomCouleur}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="gestion">
+        <mat-header-cell *matHeaderCellDef><i class="material-icons">tune</i> GESTION</mat-header-cell>
+        <mat-cell *matCellDef="let couleur">
+          <button mat-icon-button (click)="modifierCouleur(couleur)"  >
+            <mat-icon class="vert">edit</mat-icon>
+          </button>
+          <button mat-icon-button  (click)="supprimerCouleur(couleur)">
+            <mat-icon class="rouge" >delete</mat-icon>
+          </button>
+          <button mat-icon-button >
+            <mat-icon class="bleu">more_vert</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>
+
+
+</div>
