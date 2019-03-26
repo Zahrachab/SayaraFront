@@ -20,6 +20,7 @@ import { SupprimerVersionComponent } from './gestion-version/supprimer-version/s
 import { GestionOptionsComponent } from './gestion-options/gestion-options.component';
 import {AjouterVersionComponent} from './gestion-version/ajouter-version/ajouter-version.component';
 import { ModifierVerionComponent } from './gestion-version/modifier-verion/modifier-verion.component';
+import {FileSelectDirective} from 'ng2-file-upload';
 import { ModifierModeleComponent } from './gestion-modele/modifier-modele/modifier-modele.component';
 import { SupprimerOptionsComponent } from './gestion-options/supprimer-options/supprimer-options.component';
 import { AjouterOptionComponent } from './gestion-options/ajouter-option/ajouter-option.component';
@@ -31,7 +32,8 @@ import { ModifierOptionComponent } from './gestion-options/modifier-option/modif
                   ModifierModeleComponent,
                   SupprimerOptionsComponent,
                   AjouterOptionComponent,
-                  ModifierOptionComponent],
+                  ModifierOptionComponent,
+                  FileSelectDirective],
 
   imports: [
     CommonModule,

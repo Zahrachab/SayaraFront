@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {Input, NgModule} from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {GestionComponent} from './gestion/gestion.component';
 import {GestionModeleComponent} from './gestion-modele/gestion-modele.component';
@@ -27,7 +27,7 @@ const routes: Routes = [
       {
         path: 'versions',
         component: GestionVersionComponent
-      }
+      },
     ]
   }
 ];
