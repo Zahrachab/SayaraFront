@@ -22,6 +22,17 @@ form{
   width: 25%;
 }
 
+.circle-color{
+  border-radius: 50%;
+  border: 1px solid #000000;
+  width: 40px;
+  height: 40px;
+  background: #424242;
+}
+
+.color-div{
+  padding: 10px 20px;
+}
 
 div#trait {
   width: 60px;

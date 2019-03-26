@@ -7,7 +7,6 @@ import {ModeleService} from '../../../services/modele.service';
 import {CouleurService} from '../../../services/couleur.service';
 import {ModifierCouleurComponent} from './modifier-couleur/modifier-couleur.component';
 import {AjouterCouleurComponent} from './ajouter-couleur/ajouter-couleur.component';
-import {Couleur} from '../../../services/entites/couleur.model';
 import {ConfirmationDialogComponent} from '../../shared/confirmation-dialog/confirmation-dialog.component';
 
 @Component({
@@ -21,7 +20,7 @@ export class GestionCouleurComponent implements OnInit {
   private codeModele: any;
   private modeles: ModeleDetail[];
   interval: any;
-  displayedColumns = ['CodeCouleur', 'NomCouleur', 'gestion'];
+  displayedColumns = ['CodeCouleur', 'NomCouleur', 'Hexa', 'gestion'];
 
   constructor(private couleurService: CouleurService,
               private modalService: MatDialog,
@@ -56,14 +55,14 @@ export class GestionCouleurComponent implements OnInit {
 
   /* Ouvrir un mat dialog pour l'ajout d'une couleur au modèle courant */
   ajouterCouleur() {
-    const dialogRef: MatDialogRef<AjouterCouleurComponent> = this.matDialog.open(AjouterCouleurComponent, {width: '800px', height: '80%'});
+    const dialogRef: MatDialogRef<AjouterCouleurComponent> = this.matDialog.open(AjouterCouleurComponent, {width: '800px', height: '350px'});
     dialogRef.componentInstance.codeModele = this.codeModele;
   }
 
   /* Ouvrir un mat dialog pour la modification des informations d'une couleur */
   modifierCouleur(couleur) {
     const dialogRef: MatDialogRef<ModifierCouleurComponent> = this.matDialog.open(ModifierCouleurComponent,
-      {width: '800px', height: '80%'});
+      {width: '800px', height: '350px'});
     dialogRef.componentInstance.couleur = couleur;
   }
 

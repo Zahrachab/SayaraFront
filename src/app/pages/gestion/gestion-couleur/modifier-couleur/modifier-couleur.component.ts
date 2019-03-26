@@ -13,6 +13,7 @@ import {CouleurService} from '../../../../services/couleur.service';
 export class ModifierCouleurComponent implements OnInit {
   private formulaire: FormGroup;
   couleur: Couleur;
+  private color;
 
   constructor(private constructeurFormulaire: FormBuilder,
               private couleurService: CouleurService,
@@ -39,7 +40,7 @@ export class ModifierCouleurComponent implements OnInit {
       if (result) {
         /* modifier le nom de la version */
 
-        this.couleurService.modifierCouleur(this.formulaire.value.code, this.formulaire.value.nom);
+        this.couleurService.modifierCouleur(this.formulaire.value.code, this.formulaire.value.nom, this.color);
       }
     });
     this.dialogRef.close();

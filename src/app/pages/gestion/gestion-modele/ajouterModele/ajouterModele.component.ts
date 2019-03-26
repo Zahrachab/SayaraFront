@@ -4,6 +4,8 @@ import {ModeleService} from '../../../../services/modele.service';
 import {OptionService} from '../../../../services/option.service';
 import {VersionService} from '../../../../services/version.service';
 import {CouleurService} from '../../../../services/couleur.service';
+import {Couleur} from '../../../../services/entites/couleur.model';
+import {ModeleDetail} from '../../../../services/entites/modeleDetail.model';
 
 @Component({
   selector: 'app-modal',
@@ -11,7 +13,9 @@ import {CouleurService} from '../../../../services/couleur.service';
   styleUrls: ['ajouterModele.component.scss']
 })
 export class AjouterModeleComponent implements OnInit {
-
+  private couleursMap;
+  private couleursArray: Array<Couleur> = [];
+  private couleursChecked: Array<Couleur> = [];
   constructor(private constructeurFormulaire: FormBuilder,
               private modeleService: ModeleService,
               private optionService: OptionService,
@@ -46,6 +50,24 @@ export class AjouterModeleComponent implements OnInit {
 
 
     this.formulaire.valueChanges.subscribe();
+    /* récupérer les couleurs des autres modèles déjà existants dans la marque */
+    this.couleursMap = new Map();
+    let modeles;
+    this.modeleService.getModeles().subscribe( res => {
+      modeles = res as ModeleDetail[];
+      for (let i = 0; i < modeles.length; i++) {
+        const couleurs = modeles[i].couleurs as Couleur[];
+        for (let j = 0; j < couleurs.length ; j++) {
+          if (!(this.couleursMap.has(couleurs[j].CodeCouleur))) {
+            this.couleursMap.set(couleurs[j].CodeCouleur , couleurs[j]);
+            this.couleursArray.push(couleurs[j]);
+          }
+        }
+      }
+      console.log(this.couleursArray);
+    });
+
+
   }
 
 
@@ -69,6 +91,19 @@ export class AjouterModeleComponent implements OnInit {
     this.couleursFormulaire.push(couleur);
   }
 
+  gererCouleurs(event, clr) {
+      clr.Checked = !clr.Checked;
+      if (clr.Checked) {
+        this.couleursChecked.push(clr);
+      }
+      else {
+        this.couleursChecked.splice(clr);
+      }
+  }
+
+  changerCouleur(i , color) {
+    this.formulaire.value.couleurs[i].codeHexa = color;
+  }
 
 
   supprimerCouleur(i) {
@@ -83,8 +118,16 @@ export class AjouterModeleComponent implements OnInit {
         this.formulaire.value.code);
     }
 
+    for (const couleur of this.couleursChecked) {
+      console.log(couleur.CodeCouleur + ' ' + couleur.NomCouleur + ' ' + couleur.CodeHexa);
+      this.couleurService.ajouterCouleurModele(String(couleur.CodeCouleur), String(couleur.NomCouleur), String(couleur.CodeHexa),
+        this.formulaire.value.code);
+    }
+
+
     for (const couleur of this.formulaire.value.couleurs) {
-      this.couleurService.ajouterCouleurModele(couleur.codeCouleur, couleur.nomCouleur,
+      console.log(couleur.codeCouleur + ' ' + couleur.nomCouleur + ' ' + couleur.codeHexa);
+      this.couleurService.ajouterCouleurModele(couleur.codeCouleur, couleur.nomCouleur, couleur.codeHexa,
         this.formulaire.value.code);
     }
   }

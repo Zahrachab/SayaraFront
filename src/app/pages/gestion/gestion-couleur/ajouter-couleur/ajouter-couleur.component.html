@@ -25,6 +25,13 @@
         <input matInput required formControlName="nom" class="input">
       </div>
     </div>
+    <div fxLayout="row wrap" class="color-div">
+      <div class="circle-color"
+            [(colorPicker)]="clr" [style.background]="clr" >
+      </div>
+    </div>
+
+
   </form>
   <div mat-dialog-actions fxLayout="row" fxLayoutAlign="end end">
     <button type="submit" class="btn-ajout" (click)="onSubmit()">Valider</button>

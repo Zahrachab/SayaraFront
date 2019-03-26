@@ -37,6 +37,16 @@
         <mat-cell class="gras" *matCellDef="let couleur"> {{couleur.NomCouleur}} </mat-cell>
       </ng-container>
 
+      <ng-container matColumnDef='Hexa'>
+        <mat-header-cell *matHeaderCellDef>
+          <mat-icon>directions_car</mat-icon>
+          Couleur
+        </mat-header-cell>
+        <mat-cell class="gras" *matCellDef="let couleur">
+          <button mat-fab disabled color ="{{couleur.CodeHexa}}"  class="circle"></button>
+        </mat-cell>
+      </ng-container>
+
       <ng-container matColumnDef="gestion">
         <mat-header-cell *matHeaderCellDef><i class="material-icons">tune</i> GESTION</mat-header-cell>
         <mat-cell *matCellDef="let couleur">

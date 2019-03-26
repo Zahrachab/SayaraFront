@@ -58,6 +58,11 @@
       </i>
       <span class="label">Couleurs</span>
       <br/>
+      <span>choisir parmis les couleurs existantes</span>
+      <br/>
+      <div fxLayout="column" fxLayoutAlign="center start" id="options" *ngIf="couleursMap">
+        <mat-checkbox color="primary" *ngFor="let clr of couleursArray" [value]="clr.CodeCouleur" [checked]="clr.Checked" (change)="gererCouleurs($event, clr)">{{clr.CodeCouleur}}  {{clr.NomCouleur}}</mat-checkbox>
+      </div>
       <i class="material-icons iajouter" (click)="ajouterCouleur()">
         add
       </i>
@@ -80,8 +85,8 @@
                fxFlex.md="12"
                fxFlex.sm="50"
                fxFlex.xs="100">
-            <div fxLayout="column" class="example-card"
-                 [(colorPicker)]="color" [style.background]="color" >
+            <div fxLayout="column" class="circle-color" formControlName="codeHexa"
+                 [(colorPicker)]="color" [style.background]="color" (colorPickerChange)="changerCouleur(i, color)">
             </div>
           </div>
           <div  class="divInput">

@@ -12,6 +12,7 @@ import {ConfirmationDialogComponent} from '../../../shared/confirmation-dialog/c
 })
 export class AjouterCouleurComponent implements OnInit {
   private formulaire: FormGroup;
+  private clr;
   couleur: Couleur;
   public codeModele: string;
 
@@ -38,7 +39,7 @@ export class AjouterCouleurComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.couleurService.ajouterCouleurModele(this.formulaire.value.code, this.formulaire.value.nom, this.codeModele);
+        this.couleurService.ajouterCouleurModele(this.formulaire.value.code, this.formulaire.value.nom, this.clr, this.codeModele);
       }
     });
     this.dialogRef.close();

@@ -100,7 +100,6 @@ export class ModifierVerionComponent implements OnInit {
 
   gererOptions(event, option) {
     option.Checked = !option.Checked;
-    console.log(option.Checked);
     if (option.Checked === true) {
       if ( this.optionsSupp.indexOf(option) === -1) {
         this.optionsAjoutes.push(option);

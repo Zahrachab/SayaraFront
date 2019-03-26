@@ -15,6 +15,7 @@ export interface VersionDetail {
   couleurs: [{
     CodeCouleur: {type: string};
     NomCouleur: {type: string};
+    CodeHexa: {type: string};
     rel_ver_coul: {
       idRelVerCoul: { type: string };
       CodeVersion: { type: string };

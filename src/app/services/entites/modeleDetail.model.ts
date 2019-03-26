@@ -20,7 +20,7 @@ export interface ModeleDetail {
   couleurs: [{
     CodeCouleur: { type: string };
     NomCouleur: { type: string};
-    Couleur: { type: string };
+    CodeHexa: { type: string };
     Checked: boolean;
   }];
 }
