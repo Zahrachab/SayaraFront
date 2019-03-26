@@ -60,7 +60,7 @@ import { AjouterCouleurComponent } from './gestion-couleur/ajouter-couleur/ajout
   exports: [NavbarComponent, SidenavComponent, FooterComponent],
   entryComponents: [AjouterModeleComponent, AjouterVersionComponent, ModifierVerionComponent,
     SupprimerModeleComponent, SupprimerVersionComponent, ModifierCouleurComponent, AjouterCouleurComponent,
-    SupprimerOptionsComponent, AjouterOptionComponent, ModifierOptionComponent],
+    SupprimerOptionsComponent, AjouterOptionComponent, ModifierOptionComponent,ModifierModeleComponent],
 })
 export class GestionModule {
 }

@@ -18,8 +18,8 @@ export class ModifierOptionComponent implements OnInit {
 
   ngOnInit() {
     this.formulaire = this.constructeurFormulaire.group({
-      code: '',
-      nom: '',
+      code: this.data.option.CodeOption,
+      nom: this.data.option.NomOption,
     });
     this.formulaire.valueChanges.subscribe();
   }

@@ -20,9 +20,9 @@ export class ModifierModeleComponent implements OnInit {
 
   ngOnInit() {
     this.formulaire = this.constructeurFormulaire.group({
-      code: '',
+      code: this.data.modele.CodeModele,
       description: '',
-      nom: '',
+      nom: this.data.modele.NomModele,
       options: this.constructeurFormulaire.array([])
     });
 
