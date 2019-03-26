@@ -1,28 +1,29 @@
-<div class="gestion" >
+<div class="gestion">
   <div fxLayout="row">
-    <h2 fxFlex="60">Gestion des option du modèle </h2>
-    <mat-select fxFlex="25"[(value)]="modelId" (selectionChange)="changerOptions($event)">
-      <mat-option>Choisissez un model</mat-option>
-      <mat-option *ngFor="let modele of modeles" [value]="modele.CodeModele"> {{modele.NomModele}}</mat-option>
-    </mat-select>
+      <h2 fxFlex="60">Gestion des option du modèle </h2>
+      <mat-select fxFlex="25" (selectionChange)="changerOptions($event)"
+                  [(value)]="modeleSelectionne">
+        <mat-option>Choisissez un model</mat-option>
+        <mat-option *ngFor="let modele of modeles" [value]="modele.CodeModele"> {{modele.NomModele}}</mat-option>
+      </mat-select>
   </div>
   <div id="trait"></div>
   <div fxLayout="row">
     <div fxFlex="70">
       <form class="example-form">
         <mat-form-field class="example-full-width">
-          <input matInput  placeholder="Rechercher un modèle" value="">
+          <input matInput type="text" (keyup)="appliquerFiltre($event.target.value)" placeholder="Rechercher un modèle"
+                 value="">
         </mat-form-field>
       </form>
     </div>
-    <button mat-button fxFlex='20' mat-stroked-button (click)="openModal()" class="ajouter">Ajouter une option</button>
+    <button mat-button fxFlex='20' mat-stroked-button (click)="ajouterOption()" class="ajouter">Ajouter une option
+    </button>
   </div>
   <div class="example-container mat-elevation-z8">
-    <mat-table [dataSource]="dataSource">
-
-
+    <mat-table [dataSource]="dataSource" matSort>
       <ng-container matColumnDef='CodeOption'>
-        <mat-header-cell *matHeaderCellDef>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
           <mat-icon>code</mat-icon>
           CODE
         </mat-header-cell>
@@ -30,7 +31,7 @@
       </ng-container>
 
       <ng-container matColumnDef='NomOption'>
-        <mat-header-cell *matHeaderCellDef>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
           <mat-icon>directions_car</mat-icon>
           Nom de l'option
         </mat-header-cell>
@@ -39,13 +40,13 @@
 
       <ng-container matColumnDef="gestion">
         <mat-header-cell *matHeaderCellDef><i class="material-icons">tune</i> GESTION</mat-header-cell>
-        <mat-cell *matCellDef="let modele">
-          <a routerLink=".">
+        <mat-cell *matCellDef="let option">
+          <button mat-icon-button (click)="modifierOption(option)">
             <mat-icon class="vert">edit</mat-icon>
-          </a>
-          <a routerLink=".">
+          </button>
+          <button mat-icon-button (click)="supprimerOption(option)">
             <mat-icon class="rouge">delete</mat-icon>
-          </a>
+          </button>
           <a routerLink=".">
             <mat-icon>more_vert</mat-icon>
           </a>
@@ -55,6 +56,7 @@
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
   </div>
 
 

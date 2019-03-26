@@ -3,7 +3,6 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import {ModeleDetail} from './entites/modeleDetail.model';
 import {Option} from './entites/option.model';
-import {observable} from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -48,5 +47,18 @@ export class OptionService {
         observer.complete();
       }, 2000);
     });
+  }
+
+  supprimerDuModele(code: string, codeModele: string) {
+    const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
+    alert(this.url + '/Marques/Modeles/' + codeModele + '/Options/' + code);
+    return this.http.delete(this.url + '/Marques/Modeles/' + codeModele + '/Options/' + code,
+      {headers: tokenHeader}).pipe();
+  }
+
+  modifier(code: string, nom: string) {
+    const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
+    return this.http.put(this.url + '/Marques/Modeles/Versions/Options/' + code,
+      {CodeOption: code, NomOption: nom}, {headers: tokenHeader});
   }
 }

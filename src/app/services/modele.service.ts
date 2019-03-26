@@ -37,4 +37,10 @@ export class ModeleService {
     return this.http.delete(this.serviceUrlModele + codeModele, {headers: tokenHeader}).pipe(
     );
   }
+
+  modifier(code: string, nom: string) {
+    const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
+    return this.http.put(this.url + '/Marques/Modeles/' + code,
+      {CodeModele: code, NomModele: nom}, {headers: tokenHeader});
+  }
 }

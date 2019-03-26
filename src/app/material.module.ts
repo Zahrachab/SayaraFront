@@ -17,7 +17,7 @@ import {
   MatSelectModule,
   MatChipsModule,
   MatBottomSheetModule,
-  MatDialogModule,
+  MatDialogModule
 } from '@angular/material';
 
 

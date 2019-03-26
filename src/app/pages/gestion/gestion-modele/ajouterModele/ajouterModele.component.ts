@@ -18,7 +18,7 @@ export class AjouterModeleComponent implements OnInit {
               private modeleservice: ModeleService,
               private optionservice: OptionService,
               private versionservice: VersionService,
-  ) {
+  )   {
   }
 
   ngOnInit() {
@@ -26,11 +26,8 @@ export class AjouterModeleComponent implements OnInit {
       code: '',
       description: '',
       nom: '',
-      //     options: this.ajouterOptionsFormulaires()
       options: this.constructeurFormulaire.array([])
     });
-
-
     this.formulaire.valueChanges.subscribe();
   }
 
@@ -51,7 +48,7 @@ export class AjouterModeleComponent implements OnInit {
   }
 
 
-  onSubmit() {
+  ajouterModele() {
     this.modeleservice.ajouter(this.formulaire.value.code, this.formulaire.value.nom);
     this.versionservice.ajouter(this.formulaire.value.code + JSON.parse(localStorage.getItem('utilisateur')).utilfab.Fabricant,
       this.formulaire.value.nom, this.formulaire.value.code);
