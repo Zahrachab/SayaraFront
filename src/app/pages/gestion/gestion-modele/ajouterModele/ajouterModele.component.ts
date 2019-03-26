@@ -39,7 +39,6 @@ export class AjouterModeleComponent implements OnInit {
   formulaire: FormGroup;
 
 
-
   ngOnInit() {
     this.formulaire = this.constructeurFormulaire.group({
       code: '',
@@ -55,25 +54,23 @@ export class AjouterModeleComponent implements OnInit {
     /* récupérer les couleurs des autres modèles déjà existants dans la marque */
     this.couleursMap = new Map();
     let modeles;
-    this.modeleService.getModeles().subscribe( res => {
+    this.modeleService.getModeles().subscribe(res => {
       modeles = res as ModeleDetail[];
       for (let i = 0; i < modeles.length; i++) {
         const couleurs = modeles[i].couleurs as Couleur[];
-        for (let j = 0; j < couleurs.length ; j++) {
+        for (let j = 0; j < couleurs.length; j++) {
           if (!(this.couleursMap.has(couleurs[j].CodeCouleur))) {
-            this.couleursMap.set(couleurs[j].CodeCouleur , couleurs[j]);
+            this.couleursMap.set(couleurs[j].CodeCouleur, couleurs[j]);
             this.couleursArray.push(couleurs[j]);
           }
         }
       }
       console.log(this.couleursArray);
     });
-
-
   }
 
 
-  ajouterOption() {
+    ajouterOption() {
     const option = this.constructeurFormulaire.group({
       codeOption: [],
       nomOption: []
@@ -97,8 +94,7 @@ export class AjouterModeleComponent implements OnInit {
       clr.Checked = !clr.Checked;
       if (clr.Checked) {
         this.couleursChecked.push(clr);
-      }
-      else {
+      } else {
         this.couleursChecked.splice(clr);
       }
   }
@@ -113,8 +109,11 @@ export class AjouterModeleComponent implements OnInit {
   }
 
 
-  onSubmit() {
+  ajouterModele() {
     this.modeleService.ajouter(this.formulaire.value.code, this.formulaire.value.nom);
+    this.versionService.ajouter(this.formulaire.value.code + JSON.parse(localStorage.getItem('utilisateur')).utilfab.Fabricant,
+      this.formulaire.value.nom, this.formulaire.value.code);
+
     for (const option of this.formulaire.value.options) {
       this.optionService.ajouterOptionModele(option.codeOption, option.nomOption,
         this.formulaire.value.code);

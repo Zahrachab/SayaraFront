@@ -1,31 +1,35 @@
 <mat-dialog-content>
   <div  fxLayout="row" fxLayoutAlign="space-between start" >
     <div fxLayout="column">
-      <h1 mat-dialog-title style="margin: 0">Ajouter une version</h1>
+      <h1 mat-dialog-title style="margin: 0">Ajouter un modele</h1>
       <div id="trait"></div>
     </div>
-    <button mat-icon-button type="submit" mat-dialog-close [disabled]="formisvalid">
+    <button mat-icon-button type="submit" mat-dialog-close>
       <mat-icon>close</mat-icon>
     </button>
   </div>
-<form [formGroup]="formulaire" (ngSubmit)="onSubmit()"#f="ngForm" novalidate id="formulaireHtml">
+<form [formGroup]="formulaire" (ngSubmit)="ajouterModele()" novalidate id="formulaireHtml">
   <div fxLayout="row wrap">
     <div fxFlex="25"
          fxFlex.md="33"
          fxFlex.sm="50"
          fxFlex.xs="100" fxLayout="column">
-      <span class="label">Code</span>
-      <input matNativeControl matInput required formControlName="code" class="input">
+      <label>
+        <span class="label">Code</span>
+        <input matNativeControl matInput required formControlName="code" class="input">
+      </label>
     </div>
     <div fxFlex="70"
          fxFlex.md="67"
          fxFlex.sm="50"
          fxFlex.xs="100" fxLayout="column">
-      <span class="label">Designation</span>
-      <input matInput required formControlName="nom" class="input">
+      <label>
+        <span class="label">Designation</span>
+        <input matInput required formControlName="nom" class="input">
+      </label>
     </div>
   </div>
-  <div class="row" class="optionDiv">
+  <div class="row optionDiv">
     <div class="col-11">
       <i class="material-icons">
         bookmarks
@@ -37,12 +41,16 @@
       </i>
       <span (click)="ajouterOption()" class="ajouter">Ajouter une option</span>
       <div formArrayName="options">
-        <div *ngFor="let opt of optionsFormulaire.controls; let i=index" [formGroupName]="i" class="row" style="margin: 0">
+          <div *ngFor="let opt of optionsFormulaire.controls; let i=index" [formGroupName]="i" class="row" style="margin: 0">
           <div class="col-4">
-            <input class="inputOption" matInput formControlName="codeOption">
+            <label>
+              <input class="inputOption" matInput formControlName="codeOption">
+            </label>
           </div>
           <div class="col-4">
-            <input class="inputOption" matInput formControlName="nomOption">
+            <label>
+              <input class="inputOption" matInput formControlName="nomOption">
+            </label>
           </div>
           <div class="col-3">
             <button mat-raised-button color="warn" (click)="supprimerOption(i)">Supprimer</button>
@@ -51,7 +59,7 @@
       </div>
     </div>
   </div>
-  <div class="row" class="optionDiv">
+  <div class="row optionDiv">
     <div class="col-11">
       <i class="material-icons">
         party_mode

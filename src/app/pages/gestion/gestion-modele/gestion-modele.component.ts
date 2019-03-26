@@ -1,12 +1,13 @@
-
-import { Component, OnInit, Input } from '@angular/core';
-import { ModeleService } from '../../../services/modele.service';
+import {Component, OnInit, Input, ViewChild, AfterViewInit} from '@angular/core';
+import {ModeleService} from '../../../services/modele.service';
 import 'rxjs/add/observable/of';
 import {AjouterModeleComponent} from './ajouterModele/ajouterModele.component';
+import {MatDialog, MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {MatDialog, MatDialogRef} from '@angular/material';
 import {ModeleDataSource} from '../../../dataSources/ModeleDataSource';
 import {SupprimerModeleComponent} from './supprimer-modele/supprimer-modele.component';
 import {ModeleDetail} from '../../../services/entites/modeleDetail.model';
+import {ModifierModeleComponent} from './modifier-modele/modifier-modele.component';
 import {AjouterVersionComponent} from '../gestion-version/ajouter-version/ajouter-version.component';
 import {ModifierCouleurComponent} from '../gestion-couleur/modifier-couleur/modifier-couleur.component';
 
@@ -15,26 +16,50 @@ import {ModifierCouleurComponent} from '../gestion-couleur/modifier-couleur/modi
   templateUrl: './gestion-modele.component.html',
   styleUrls: ['./gestion-modele.component.scss']
 })
-export class GestionModeleComponent implements OnInit {
-  private dataSource: ModeleDataSource;
+export class GestionModeleComponent implements OnInit, AfterViewInit {
+  private dataSource = new MatTableDataSource<ModeleDetail>();
   interval: any;
   displayedColumns = ['CodeModele', 'NomModele', 'versions', 'options', 'couleurs', 'gestion'];
 
+  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
   constructor(private modeleService: ModeleService, private modalService: MatDialog) {
+    this.dataSource.filterPredicate = (order: any, filter: string) => {
+      const transformedFilter = filter.trim().toLowerCase();
+
+      const listAsFlatString = (obj): string => {
+        let returnVal = '';
+
+        Object.values(obj).forEach((val) => {
+          if (typeof val !== 'object') {
+            returnVal = returnVal + ' ' + val;
+          } else if (val !== null) {
+            returnVal = returnVal + ' ' + listAsFlatString(val);
+          }
+        });
+
+        return returnVal.trim().toLowerCase();
+      };
+      return listAsFlatString(order).includes(transformedFilter);
+    };
   }
 
   ngOnInit() {
+    this.dataSource.paginator = this.paginator;
     /*récupérer les données à partir du service */
     this.refreshData();
     /*rafraichir les données chaque 5 secondes*/
-   /* this.interval = setInterval(() => {
-      this.refreshData();
-    }, 5000);
-*/
+    /* this.interval = setInterval(() => {
+       this.refreshData();
+     }, 5000);
+ */
   }
 
   refreshData() {
-    this.dataSource = new ModeleDataSource(this.modeleService);
+    this.modeleService.getModeles().subscribe(res => {
+      this.dataSource.data = res as ModeleDetail[];
+    });
   }
 
   openModal() {
@@ -45,10 +70,7 @@ export class GestionModeleComponent implements OnInit {
   }
 
   modifierModele(modele: ModeleDetail) {
-   /* const dialogRef: MatDialogRef<ModifierModeleComponent> = this.modalService.open(Modi, {width: '800px'});
-    dialogRef.afterClosed().subscribe(res => {
-      this.refreshData();
-    })*/
+    this.modalService.open(ModifierModeleComponent, {width: '800px', data: {modele}});
   }
 
   supprimerModele(modele) {
@@ -57,6 +79,17 @@ export class GestionModeleComponent implements OnInit {
       this.refreshData();
     });
   }
+
+  ngAfterViewInit(): void {
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+  }
+
+  appliquerFiltre = (value: string) => {
+    this.dataSource.filter = value.trim().toLocaleLowerCase();
+  }
+
+
 }
 
 

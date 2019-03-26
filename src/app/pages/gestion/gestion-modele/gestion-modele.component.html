@@ -5,18 +5,16 @@
     <div fxFlex="70">
       <form class="example-form">
         <mat-form-field class="example-full-width">
-          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Rechercher un modèle" value="">
+          <input matInput type="text" (keyup)="appliquerFiltre($event.target.value)" placeholder="Rechercher un modèle" value="">
         </mat-form-field>
       </form>
     </div>
     <button mat-button fxFlex='20' mat-stroked-button (click)="openModal()" class="ajouter">Ajouter un modèle</button>
   </div>
   <div class="example-container mat-elevation-z8">
-    <mat-table [dataSource]="dataSource">
-
-
+    <mat-table [dataSource]="dataSource" matSort>
       <ng-container matColumnDef='CodeModele'>
-        <mat-header-cell *matHeaderCellDef>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
           <mat-icon>code</mat-icon>
           CODE
         </mat-header-cell>
@@ -24,7 +22,7 @@
       </ng-container>
 
       <ng-container matColumnDef='NomModele'>
-        <mat-header-cell *matHeaderCellDef>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
           <mat-icon>directions_car</mat-icon>
           MODELE
         </mat-header-cell>
@@ -97,6 +95,7 @@
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
   </div>
 
 

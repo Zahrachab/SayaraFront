@@ -21,6 +21,10 @@ import { GestionOptionsComponent } from './gestion-options/gestion-options.compo
 import {AjouterVersionComponent} from './gestion-version/ajouter-version/ajouter-version.component';
 import { ModifierVerionComponent } from './gestion-version/modifier-verion/modifier-verion.component';
 import {FileSelectDirective} from 'ng2-file-upload';
+import { ModifierModeleComponent } from './gestion-modele/modifier-modele/modifier-modele.component';
+import { SupprimerOptionsComponent } from './gestion-options/supprimer-options/supprimer-options.component';
+import { AjouterOptionComponent } from './gestion-options/ajouter-option/ajouter-option.component';
+import { ModifierOptionComponent } from './gestion-options/modifier-option/modifier-option.component';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { GestionCouleurComponent } from './gestion-couleur/gestion-couleur.component';
 import { ModifierCouleurComponent } from './gestion-couleur/modifier-couleur/modifier-couleur.component';
@@ -32,7 +36,13 @@ import { AjouterCouleurComponent } from './gestion-couleur/ajouter-couleur/ajout
                   FileSelectDirective,
                   GestionCouleurComponent,
                   ModifierCouleurComponent,
-                  AjouterCouleurComponent],
+                  AjouterCouleurComponent,
+                  SupprimerVersionComponent, GestionOptionsComponent,
+                  ModifierModeleComponent,
+                  SupprimerOptionsComponent,
+                  AjouterOptionComponent,
+                  ModifierOptionComponent,
+                  FileSelectDirective],
 
   imports: [
     CommonModule,
@@ -49,7 +59,8 @@ import { AjouterCouleurComponent } from './gestion-couleur/ajouter-couleur/ajout
   ],
   exports: [NavbarComponent, SidenavComponent, FooterComponent],
   entryComponents: [AjouterModeleComponent, AjouterVersionComponent, ModifierVerionComponent,
-    SupprimerModeleComponent, SupprimerVersionComponent, ModifierCouleurComponent, AjouterCouleurComponent],
+    SupprimerModeleComponent, SupprimerVersionComponent, ModifierCouleurComponent, AjouterCouleurComponent,
+    SupprimerOptionsComponent, AjouterOptionComponent, ModifierOptionComponent],
 })
 export class GestionModule {
 }
