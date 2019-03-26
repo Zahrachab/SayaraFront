@@ -6,6 +6,7 @@ import {VersionService} from '../../../../services/version.service';
 import {CouleurService} from '../../../../services/couleur.service';
 import {Couleur} from '../../../../services/entites/couleur.model';
 import {ModeleDetail} from '../../../../services/entites/modeleDetail.model';
+import {MatDialogRef} from '@angular/material';
 
 @Component({
   selector: 'app-modal',
@@ -21,6 +22,7 @@ export class AjouterModeleComponent implements OnInit {
               private optionService: OptionService,
               private versionService: VersionService,
               private couleurService: CouleurService,
+              public dialogRef: MatDialogRef<AjouterModeleComponent>
   ) {
   }
 
@@ -126,9 +128,9 @@ export class AjouterModeleComponent implements OnInit {
 
 
     for (const couleur of this.formulaire.value.couleurs) {
-      console.log(couleur.codeCouleur + ' ' + couleur.nomCouleur + ' ' + couleur.codeHexa);
       this.couleurService.ajouterCouleurModele(couleur.codeCouleur, couleur.nomCouleur, couleur.codeHexa,
         this.formulaire.value.code);
     }
+    this.dialogRef.close();
   }
 }

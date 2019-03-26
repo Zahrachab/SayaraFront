@@ -45,11 +45,11 @@
         </i>
         <span class="label">Photos</span>
         <br/>
-        <i class="material-icons iajouter" (click)="ajouterOption()">
+        <i class="material-icons iajouter" >
           add
         </i>
-        <label class="image-upload-container btn btn-bwm">
-          <span (click)="ajouterOption()" class="ajouter">Ajouter une Photo</span>
+        <label  class="image-upload-container btn btn-bwm">
+          <span class="ajouter">Ajouter une Photo</span>
           <input  ng2FileSelect accept=".png" [uploader]="uploader" #imageInput id="imageVersion"
                  type="file"
                  accept="image/*"

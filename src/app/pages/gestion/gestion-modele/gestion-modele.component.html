@@ -52,11 +52,13 @@
         </mat-header-cell>
         <mat-cell *matCellDef="let modele" fxLayout="column" fxLayoutAlign="start start">
           <ul>
-            <li *ngFor="let option of modele.options">
+            <li *ngFor="let option of modele.options  | slice:0:5" >
               {{option.NomOption}}
             </li>
           </ul>
-          <a  [routerLink]="['/gestion/options', modele.CodeModele]" >+ d'aptions </a>
+          <div *ngIf="(modele.options.length > 5)">
+            <a  [routerLink]="['/gestion/options', modele.CodeModele]" >+ d'aptions </a>
+          </div>
         </mat-cell>
       </ng-container>
 
@@ -67,11 +69,13 @@
         </mat-header-cell>
         <mat-cell *matCellDef="let modele" fxLayout="column" fxLayoutAlign="start start">
           <ul>
-            <li *ngFor="let couleur of modele.couleurs">
+            <li *ngFor="let couleur of modele.couleurs  | slice:0:5">
               {{couleur.NomCouleur}}
             </li>
           </ul>
-          <a  [routerLink]="['/gestion/couleurs', modele.CodeModele]" >+ de couleurs </a>
+          <div *ngIf="(modele.options.length > 5)">
+            <a  [routerLink]="['/gestion/couleurs', modele.CodeModele]" >+ de couleurs </a>
+          </div>
         </mat-cell>
       </ng-container>
 

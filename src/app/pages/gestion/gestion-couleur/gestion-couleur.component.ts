@@ -42,7 +42,7 @@ export class GestionCouleurComponent implements OnInit {
   }
 
   refreshData() {
-    if ((this.codeModele !== '') || (this.codeModele != null )) {
+    if ((this.codeModele !== '') && (this.codeModele != null )) {
       this.dataSource = new CouleurDataSource(this.couleurService, this.codeModele);
     }
   }
@@ -55,8 +55,18 @@ export class GestionCouleurComponent implements OnInit {
 
   /* Ouvrir un mat dialog pour l'ajout d'une couleur au modèle courant */
   ajouterCouleur() {
-    const dialogRef: MatDialogRef<AjouterCouleurComponent> = this.matDialog.open(AjouterCouleurComponent, {width: '800px', height: '350px'});
-    dialogRef.componentInstance.codeModele = this.codeModele;
+    if (this.codeModele != null) {
+      const dialogRef: MatDialogRef<AjouterCouleurComponent> = this.matDialog.open(AjouterCouleurComponent, {
+        width: '800px',
+        height: '350px'
+      });
+      dialogRef.componentInstance.codeModele = this.codeModele;
+      dialogRef.afterClosed().subscribe(res => {
+        this.refreshData();
+      });
+    } else {
+      alert('Veuillez choisir un modèle d\'abord');
+    }
   }
 
   /* Ouvrir un mat dialog pour la modification des informations d'une couleur */
@@ -64,6 +74,9 @@ export class GestionCouleurComponent implements OnInit {
     const dialogRef: MatDialogRef<ModifierCouleurComponent> = this.matDialog.open(ModifierCouleurComponent,
       {width: '800px', height: '350px'});
     dialogRef.componentInstance.couleur = couleur;
+    dialogRef.afterClosed().subscribe(res => {
+      this.refreshData();
+    });
   }
 
   supprimerCouleur(couleur) {
@@ -74,8 +87,9 @@ export class GestionCouleurComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.couleurService.supprimerCouleurModele(couleur.code , this.codeModele).subscribe(() => {
-        });;
+        this.couleurService.supprimerCouleurModele(couleur.CodeCouleur , this.codeModele).subscribe(() => {
+          this.refreshData();
+        });
       }
     });
   }

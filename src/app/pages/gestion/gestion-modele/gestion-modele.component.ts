@@ -3,10 +3,12 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ModeleService } from '../../../services/modele.service';
 import 'rxjs/add/observable/of';
 import {AjouterModeleComponent} from './ajouterModele/ajouterModele.component';
-import {MatDialog} from '@angular/material';
+import {MatDialog, MatDialogRef} from '@angular/material';
 import {ModeleDataSource} from '../../../dataSources/ModeleDataSource';
 import {SupprimerModeleComponent} from './supprimer-modele/supprimer-modele.component';
 import {ModeleDetail} from '../../../services/entites/modeleDetail.model';
+import {AjouterVersionComponent} from '../gestion-version/ajouter-version/ajouter-version.component';
+import {ModifierCouleurComponent} from '../gestion-couleur/modifier-couleur/modifier-couleur.component';
 
 @Component({
   selector: 'app-gestion-modele',
@@ -36,15 +38,24 @@ export class GestionModeleComponent implements OnInit {
   }
 
   openModal() {
-    this.modalService.open(AjouterModeleComponent, {width: '850px', height: '80%'});
+    const dialogRef: MatDialogRef<AjouterModeleComponent> = this.modalService.open(AjouterModeleComponent, {width: '850px', height: '80%'});
+    dialogRef.afterClosed().subscribe(res => {
+      this.refreshData();
+    });
   }
 
   modifierModele(modele: ModeleDetail) {
-    this.modalService.open(AjouterModeleComponent, {width: '800px'});
+   /* const dialogRef: MatDialogRef<ModifierModeleComponent> = this.modalService.open(Modi, {width: '800px'});
+    dialogRef.afterClosed().subscribe(res => {
+      this.refreshData();
+    })*/
   }
 
   supprimerModele(modele) {
-    this.modalService.open(SupprimerModeleComponent, {width: '800px', data: {modele}});
+    const dialogRef: MatDialogRef<SupprimerModeleComponent> = this.modalService.open(SupprimerModeleComponent, {width: '800px', data: {modele}});
+    dialogRef.afterClosed().subscribe(res => {
+      this.refreshData();
+    });
   }
 }
 

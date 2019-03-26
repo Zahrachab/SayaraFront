@@ -17,5 +17,11 @@ export class ImageService {
     formData.append('imageVersion', image);
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
     return this.http.post(this.imagesVersionUrl + codeVersion, formData, {headers: tokenHeader});
-}
+  }
+  public supprimerImage(id: string, codeVersion: string) {
+      const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
+      return this.http.delete(this.url + '/Marques/Modeles/Versions/' + codeVersion + '/Images/' + id,
+        {headers: tokenHeader}).pipe();
+
+    }
 }

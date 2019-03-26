@@ -23,6 +23,9 @@ export interface VersionDetail {
     };
   }];
   images: [{
+    idImage: { type: string };
+    CodeImage: { type: string };
+    Type: { type: string };
     CheminImage: {type: string};
   }];
 }

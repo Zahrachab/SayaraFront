@@ -42,8 +42,13 @@
           <mat-icon>directions_car</mat-icon>
           Couleur
         </mat-header-cell>
-        <mat-cell class="gras" *matCellDef="let couleur">
-          <button mat-fab disabled color ="{{couleur.CodeHexa}}"  class="circle"></button>
+        <mat-cell class="gras" *matCellDef="let couleur" >
+          <div fxLayout="column" class="color-div">
+              <div class="circle-color"
+                   [(colorPicker)]="couleur.CodeHexa" [style.background]="couleur.CodeHexa" >
+              </div>
+          </div>
+
         </mat-cell>
       </ng-container>
 

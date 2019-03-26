@@ -44,7 +44,6 @@ export class ModifierCouleurComponent implements OnInit {
       }
     });
     this.dialogRef.close();
-
   }
 
 

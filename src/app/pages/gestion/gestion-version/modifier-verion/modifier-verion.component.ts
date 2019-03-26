@@ -79,6 +79,7 @@ export class ModifierVerionComponent implements OnInit {
       this.selectedFile[j].status = 'ok';
       this.selectedFile[j].new = false;
       this.selectedFile[j].src = String(this.version.images[j].CheminImage);
+      this.selectedFile[j].id = String(this.version.images[j].idImage);
     }
   }
 
@@ -109,7 +110,6 @@ export class ModifierVerionComponent implements OnInit {
     } else {
       if ( this.optionsAjoutes.indexOf(option) === -1) {
         this.optionsSupp.push(option);
-        console.log(this.optionsSupp );
       } else {
         this.optionsAjoutes.splice(this.optionsAjoutes.indexOf(option) , 1);
       }
@@ -149,7 +149,7 @@ export class ModifierVerionComponent implements OnInit {
         }
 
         for (let j = 0; j < this.imagesSupp.length; j++) {
-          // en attendant le route
+          this.imageService.supprimerImage(this.imagesSupp[j], String(this.version.CodeVersion)).subscribe( res => {});
         }
       }
     });

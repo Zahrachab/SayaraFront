@@ -35,6 +35,7 @@ export class AjouterVersionComponent implements OnInit {
   private onSuccess() {
     this.selectedFile.pending = false;
     this.selectedFile.status = 'ok';
+    this.dialogRef.close();
   }
 
   private onError() {

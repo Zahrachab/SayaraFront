@@ -51,11 +51,13 @@
         </mat-header-cell>
         <mat-cell *matCellDef="let version" fxLayout="column" fxLayoutAlign="start start">
           <ul>
-            <li *ngFor="let option of version.options">
+            <li *ngFor="let option of version.options | slice:0:5">
               {{option.NomOption}}
             </li>
           </ul>
-          <a routerLink=".">+ d'aptions </a>
+          <div *ngIf="(version.options.length > 5)">
+             <a routerLink=".">+ d'aptions </a>
+          </div>
         </mat-cell>
       </ng-container>
 
