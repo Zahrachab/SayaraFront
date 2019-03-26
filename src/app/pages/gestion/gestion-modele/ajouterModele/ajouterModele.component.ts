@@ -34,8 +34,6 @@ export class AjouterModeleComponent implements OnInit {
     return this.formulaire.get('couleurs') as FormArray;
   }
 
-  options: Array<string> = ['option1', 'option2', 'option3'];
-  couleurs: Array<string> = ['couleur1', 'couleur2', 'couleur3'];
   formulaire: FormGroup;
 
 
@@ -65,7 +63,6 @@ export class AjouterModeleComponent implements OnInit {
           }
         }
       }
-      console.log(this.couleursArray);
     });
   }
 

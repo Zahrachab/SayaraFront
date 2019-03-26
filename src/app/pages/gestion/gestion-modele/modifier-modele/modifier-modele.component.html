@@ -36,6 +36,23 @@
         </i>
         <span class="label">Options</span>
         <br/>
+        <div formArrayName="options1">
+          <div *ngFor="let opt of options1Formulaire.controls; let i=index" [formGroupName]="i" class="row" style="margin: 0">
+            <div class="col-4">
+              <label>
+                <input class="inputOption" disabled="true" formControlName="codeOption">
+              </label>
+            </div>
+            <div class="col-4">
+              <label>
+                <input class="inputOption" disabled="true" formControlName="nomOption">
+              </label>
+            </div>
+            <div class="col-3">
+              <button mat-raised-button color="warn" (click)="supprimerOption(i)">Supprimer</button>
+            </div>
+          </div>
+        </div>
         <i class="material-icons iajouter" (click)="ajouterOption()">
           add
         </i>
@@ -59,17 +76,52 @@
         </div>
       </div>
     </div>
+
     <div class="row optionDiv">
       <div class="col-11">
         <i class="material-icons">
           party_mode
         </i>
-        <span class="label">Photos</span>
+        <span class="label">Couleurs</span>
         <br/>
-        <i class="material-icons iajouter" (click)="ajouterOption()">
+        <span>choisir parmis les couleurs existantes</span>
+        <br/>
+        <div fxLayout="column" fxLayoutAlign="center start" id="options" *ngIf="couleursMap">
+          <mat-checkbox color="primary" *ngFor="let clr of couleursArray" [value]="clr.CodeCouleur" [checked]="clr.Checked" (change)="gererCouleurs($event, clr)">{{clr.CodeCouleur}}  {{clr.NomCouleur}}</mat-checkbox>
+        </div>
+        <i class="material-icons iajouter" (click)="ajouterCouleur()">
           add
         </i>
-        <span (click)="ajouterOption()" class="ajouter">Ajouter une Photo</span>
+        <span (click)="ajouterCouleur()" class="ajouter">Ajouter une couleur</span>
+        <div formArrayName="couleurs">
+          <div fxLayout="row wrap" *ngFor="let couleur of couleursFormulaire.controls; let i=index" [formGroupName]="i" class="row" style="margin: 0">
+            <div fxFlex="25"
+                 fxFlex.md="33"
+                 fxFlex.sm="50"
+                 fxFlex.xs="100" fxLayout="column" class="divInput">
+              <input class="inputOption" matInput formControlName="codeCouleur" placeholder="Code" class="input">
+            </div>
+            <div fxFlex="25"
+                 fxFlex.md="33"
+                 fxFlex.sm="50"
+                 fxFlex.xs="100" fxLayout="column" class="divInput">
+              <input class="inputOption" matInput formControlName="nomCouleur" placeholder="Nom" class="input">
+            </div>
+            <div fxFlex="10"
+                 fxFlex.md="12"
+                 fxFlex.sm="50"
+                 fxFlex.xs="100">
+              <div fxLayout="column" class="circle-color" formControlName="codeHexa"
+                   [(colorPicker)]="color" [style.background]="color" (colorPickerChange)="changerCouleur(i, color)">
+              </div>
+            </div>
+            <div  class="divInput">
+              <button mat-icon-button  (click)="supprimerCouleur(i)">
+                <mat-icon class="rouge" >delete</mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div mat-dialog-actions fxLayout="row" fxLayoutAlign="end end">
