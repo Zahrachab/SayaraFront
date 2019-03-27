@@ -3,6 +3,8 @@ import {FormArray, FormBuilder, FormGroup} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {ModeleService} from '../../../../services/modele.service';
 import {OptionService} from '../../../../services/option.service';
+import {ModeleDetail} from '../../../../services/entites/modeleDetail.model';
+import {Couleur} from '../../../../services/entites/couleur.model';
 
 @Component({
   selector: 'app-modifier-modele',
@@ -17,6 +19,9 @@ import {OptionService} from '../../../../services/option.service';
  */
 export class ModifierModeleComponent implements OnInit {
   // Réference vers le formulaire html
+  private couleursMap;
+  private couleursArray: Array<Couleur> = [];
+  private couleursChecked: Array<Couleur> = [];
   formulaire: FormGroup;
 
   /**
@@ -32,7 +37,7 @@ export class ModifierModeleComponent implements OnInit {
    * @param constructeurFormulaire
    * De type FormBuilder pour construire le formulaire
    */
-  constructor(private dialogReference: MatDialogRef<ModifierModeleComponent>, private modeleservice: ModeleService,
+  constructor(private dialogReference: MatDialogRef<ModifierModeleComponent>, private modeleService: ModeleService,
               private optionservice: OptionService,
               @Inject(MAT_DIALOG_DATA) private data: any, private constructeurFormulaire: FormBuilder) {
   }
@@ -46,8 +51,12 @@ export class ModifierModeleComponent implements OnInit {
       code: this.data.modele.CodeModele,
       description: '',
       nom: this.data.modele.NomModele,
-      options: this.constructeurFormulaire.array([])
+      options: this.constructeurFormulaire.array([]),
+      options1: this.constructeurFormulaire.array([]),
+      couleurs: this.constructeurFormulaire.array([]),
     });
+
+    this.chargerCouleurs();
 
     // Initialisation des options
     for (const item of this.data.modele.options) {
@@ -55,7 +64,7 @@ export class ModifierModeleComponent implements OnInit {
         codeOption: [item.CodeOption],
         nomOption: [item.NomOption]
       });
-      this.optionsFormulaire.push(option);
+      this.options1Formulaire.push(option);
     }
     // Liaison avec le Html
     this.formulaire.valueChanges.subscribe();
@@ -63,6 +72,25 @@ export class ModifierModeleComponent implements OnInit {
   /**
    * Ajouter une option compatible avec le modele
    */
+
+  chargerCouleurs() {
+    this.formulaire.valueChanges.subscribe();
+    /* récupérer les couleurs des autres modèles déjà existants dans la marque */
+    this.couleursMap = new Map();
+    let modeles;
+    this.modeleService.getModeles().subscribe(res => {
+      modeles = res as ModeleDetail[];
+      for (let i = 0; i < modeles.length; i++) {
+        const couleurs = modeles[i].couleurs as Couleur[];
+        for (let j = 0; j < couleurs.length; j++) {
+          if (!(this.couleursMap.has(couleurs[j].CodeCouleur))) {
+            this.couleursMap.set(couleurs[j].CodeCouleur, couleurs[j]);
+            this.couleursArray.push(couleurs[j]);
+          }
+        }
+      }
+    });
+  }
   ajouterOption() {
     const option = this.constructeurFormulaire.group({
       codeOption: [],
@@ -83,6 +111,14 @@ export class ModifierModeleComponent implements OnInit {
    * @param i
    * L'indice de l'iption a supprimer
    */
+  get options1Formulaire() {
+    return this.formulaire.get('options1') as FormArray;
+  }
+
+  get couleursFormulaire() {
+    return this.formulaire.get('couleurs') as FormArray;
+  }
+
   supprimerOption(i) {
     this.optionsFormulaire.removeAt(i);
   }
@@ -90,10 +126,36 @@ export class ModifierModeleComponent implements OnInit {
   /**
    * Modifie un modele, en modifiant le nom et les options et les couelurs
    */
+  ajouterCouleur() {
+    const couleur = this.constructeurFormulaire.group({
+      codeCouleur: [],
+      nomCouleur: [],
+    });
+    this.couleursFormulaire.push(couleur);
+  }
+
+  gererCouleurs(event, clr) {
+    clr.Checked = !clr.Checked;
+    if (clr.Checked) {
+      this.couleursChecked.push(clr);
+    } else {
+      this.couleursChecked.splice(clr);
+    }
+  }
+
+  changerCouleur(i , color) {
+    this.formulaire.value.couleurs[i].codeHexa = color;
+  }
+
+
+  supprimerCouleur(i) {
+    this.couleursFormulaire.removeAt(i);
+  }
+
   modifierModele() {
     let trouv = false;
     // Modifier un modele
-    this.modeleservice.modifier(this.data.modele.CodeModele, this.formulaire.value.nom).subscribe((res) => {
+    this.modeleService.modifier(this.data.modele.CodeModele, this.formulaire.value.nom).subscribe((res) => {
         this.dialogReference.close();
       }
     );

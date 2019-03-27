@@ -156,25 +156,25 @@ export class AjouterModeleComponent implements OnInit {
    * L'ajout du modele, ajoute le modele, puis les options et les couleurs puis les associations entre eux
    */
   ajouterModele() {
-    // L'ajout du modele
-    this.modeleService.ajouter(this.formulaire.value.code, this.formulaire.value.nom);
-
-    // Ajout des options
-    for (const option of this.formulaire.value.options) {
-      this.optionService.ajouterOptionModele(option.codeOption, option.nomOption,
-        this.formulaire.value.code);
-    }
-    // Ajout des couleurs
-    for (const couleur of this.couleursChecked) {
-      this.couleurService.ajouterCouleurModele(String(couleur.CodeCouleur), String(couleur.NomCouleur), String(couleur.CodeHexa),
-        this.formulaire.value.code);
-    }
-
-
-    for (const couleur of this.formulaire.value.couleurs) {
-      this.couleurService.ajouterCouleurModele(couleur.codeCouleur, couleur.nomCouleur, couleur.codeHexa,
-        this.formulaire.value.code);
-    }
-    this.dialogRef.close();
   }
+}    // L'ajout du modele
+this.modeleService.ajouter(this.formulaire.value.code, this.formulaire.value.nom);
+
+// Ajout des options
+for (const option of this.formulaire.value.options) {
+  this.optionService.ajouterOptionModele(option.codeOption, option.nomOption,
+    this.formulaire.value.code);
 }
+// Ajout des couleurs
+for (const couleur of this.couleursChecked) {
+  this.couleurService.ajouterCouleurModele(String(couleur.CodeCouleur), String(couleur.NomCouleur), String(couleur.CodeHexa),
+    this.formulaire.value.code);
+}
+
+
+for (const couleur of this.formulaire.value.couleurs) {
+  this.couleurService.ajouterCouleurModele(couleur.codeCouleur, couleur.nomCouleur, couleur.codeHexa,
+    this.formulaire.value.code);
+}
+this.dialogRef.close();
+
