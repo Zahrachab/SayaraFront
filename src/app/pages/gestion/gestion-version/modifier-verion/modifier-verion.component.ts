@@ -16,21 +16,58 @@ import {ConfirmationDialogComponent} from '../../../shared/confirmation-dialog/c
   templateUrl: './modifier-verion.component.html',
   styleUrls: ['../ajouter-version/ajouter-version.component.scss']
 })
+/**
+ *  Classe de modification des versions
+ *  Implemente OnInit pour l'initialisation du composant
+ *  @author CHABANE CHAOUCH Zahra, CHOUAKI Salim
+ *
+ */
 export class ModifierVerionComponent implements OnInit {
+  // Les options pour les checkbox
   private options: Option[];
+
+  // Réference vers le formulaire html
   private formulaire: FormGroup;
+
+  // La version a modifier
   public version: VersionDetail;
+
+  // Les options de la version
   private optionsVersion: Option[];
+
+  // Les options ajoutées
   private optionsAjoutes: Array<Option> = [];
+
+  // Les options supprimées
   private optionsSupp: Array<Option> = [];
+
+  // Les images sélectionnées
   selectedFile: Array<ImageSnippet> = [];
   images: Array<File> = [];
   imagesSupp: Array<any> = [];
 
+  // File uploader
   public uploader: FileUploader = new FileUploader({
     isHTML5: true
   });
 
+  /**
+   * Constructeur de la classe, déclare les attributs de la classe
+   * @param dialogRef
+   * Réference vers la boite de dialogue
+   * @param modeleService
+   * Service qui va permettre d'envoyer la requete de modification de modele
+   * @param optionService
+   * Service qui va permettre d'envoyer les requetes d'insertions et de suppressions des modeles
+   * @param constructeurFormulaire
+   * De type FormBuilder pour construire le formulaire
+   * @param dialogValidation
+   * Validation du formulaire
+   * @param imageService
+   * Pour la gestion des images
+   * @param versionService
+   * Pour la gestion des services
+   */
   constructor(private constructeurFormulaire: FormBuilder,
               private modeleService: ModeleService,
               private optionService: OptionService,
@@ -42,20 +79,26 @@ export class ModifierVerionComponent implements OnInit {
 
   }
 
+  /**
+   *  Executé a l'initialisation du composant, Construit le formulaire et fait la lsiasion avec le html
+   */
   ngOnInit() {
-
+    // Construction du formuaire
     this.formulaire = this.constructeurFormulaire.group({
       code: this.version.CodeVersion,
       nom: this.version.NomVersion,
       type:  [null, Validators.compose([Validators.required])]
     });
+    //Chargement des images
     this.loadFile();
+    //Liaison avec l'html
     this.formulaire.valueChanges.subscribe();
     /* Charger les options */
     this.getOptions();
 
   }
 
+  // Obtention des options
   getOptions() {
     /*subscribe pour régler le problème de synchronisation*/
     this.optionService.getOptions(this.version.CodeModele).subscribe(opts => {
@@ -72,7 +115,7 @@ export class ModifierVerionComponent implements OnInit {
     });
   }
 
-
+  // Récuperation des images
   loadFile() {
     for (let j = 0; j < this.version.images.length; j++) {
       this.selectedFile[j] = new ImageSnippet(null , null);
@@ -83,7 +126,7 @@ export class ModifierVerionComponent implements OnInit {
     }
   }
 
-
+  // Zahra please
   processFile(imageInput: any) {
     for (let j = 0; j < this.uploader.queue.length; j++) {
       const reader = new FileReader ();
@@ -98,7 +141,7 @@ export class ModifierVerionComponent implements OnInit {
     this.uploader.clearQueue();
   }
 
-
+  // Gestion des options de versions
   gererOptions(event, option) {
     option.Checked = !option.Checked;
     if (option.Checked === true) {
@@ -117,6 +160,7 @@ export class ModifierVerionComponent implements OnInit {
 
   }
 
+  // Modification des versions
   onSubmit() {
     const dialogRef: MatDialogRef<ConfirmationDialogComponent> = this.dialogValidation.open(ConfirmationDialogComponent, {
         width: '350px',
@@ -158,7 +202,7 @@ export class ModifierVerionComponent implements OnInit {
     }
 
 
-
+  // Supprimer des images
   supprimerImage(selected: ImageSnippet) {
     // si l'image appartient déjà à la version (elle est sur le cloud)
     if (selected.new === false) {
@@ -171,7 +215,7 @@ export class ModifierVerionComponent implements OnInit {
 }
 
 
-
+// Zahra please
 class ImageSnippet {
   pending = false;
   status = 'init';
