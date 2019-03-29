@@ -39,6 +39,8 @@
         </div>
       </div>
     </div>
+
+
     <div class="row">
       <div class="col-11">
         <i class="material-icons">
@@ -46,28 +48,32 @@
         </i>
         <span class="label">Photos</span>
         <br/>
-        <i class="material-icons iajouter" (click)="ajouterOption()">
+        <i class="material-icons iajouter" >
           add
         </i>
-        <label class="image-upload-container btn btn-bwm">
-        <span  class="ajouter">Ajouter une Photo</span>
-        <input #imageInput id="imageVersion"
-                 type="file"
-                 accept="image/*"
-                 (change)="processFile(imageInput)">
+        <label  class="image-upload-container btn btn-bwm">
+          <span class="ajouter">Ajouter une Photo</span>
+          <input  ng2FileSelect accept=".png" [uploader]="uploader" #imageInput id="imageVersion"
+                  type="file"
+                  accept="image/*"
+                  (change)="processFile(imageInput)" multiple/><br/>
         </label>
-        <div *ngIf="selectedFile" class="img-preview-container">
-
-          <div class="img-preview{{selectedFile.status === 'fail' ? '-error' : ''}}"
-               [ngStyle]="{'background-image': 'url('+ selectedFile.src + ')'}">
+        <div *ngFor="let selected of selectedFile" class="img-preview-container" fxLayout="row" fxLayoutAlign="center center">
+          <div class="img-preview{{selected.status === 'fail' ? '-error' : ''}}"
+               [ngStyle]="{'background-image': 'url('+ selected.src + ')'}">
           </div>
 
-          <div *ngIf="selectedFile.pending" class="img-loading-overlay">
+          <div *ngIf="selected.pending" class="img-loading-overlay">
             <div class="img-spinning-circle"></div>
           </div>
+          <button mat-icon-button  (click)="supprimerImage(selected)">
+            <mat-icon class="rouge" >delete</mat-icon>
+          </button>
+
         </div>
       </div>
     </div>
+
   </form>
   <div mat-dialog-actions fxLayout="row" fxLayoutAlign="end end">
     <button type="submit" class="btn-ajout" (click)="onSubmit()">Submit </button>

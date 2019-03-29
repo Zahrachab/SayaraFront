@@ -89,9 +89,9 @@ export class ModifierVerionComponent implements OnInit {
       nom: this.version.NomVersion,
       type:  [null, Validators.compose([Validators.required])]
     });
-    //Chargement des images
+    /*Chargement des images */
     this.loadFile();
-    //Liaison avec l'html
+    /*Liaison avec l'html*/
     this.formulaire.valueChanges.subscribe();
     /* Charger les options */
     this.getOptions();
@@ -115,7 +115,7 @@ export class ModifierVerionComponent implements OnInit {
     });
   }
 
-  // Récuperation des images
+  // Récuperation des images de la version sélectionnée
   loadFile() {
     for (let j = 0; j < this.version.images.length; j++) {
       this.selectedFile[j] = new ImageSnippet(null , null);
@@ -126,7 +126,7 @@ export class ModifierVerionComponent implements OnInit {
     }
   }
 
-  // Zahra please
+  // Uploader des images depuis l'ordinateur
   processFile(imageInput: any) {
     for (let j = 0; j < this.uploader.queue.length; j++) {
       const reader = new FileReader ();
@@ -160,7 +160,7 @@ export class ModifierVerionComponent implements OnInit {
 
   }
 
-  // Modification des versions
+  // Modification de la version
   onSubmit() {
     const dialogRef: MatDialogRef<ConfirmationDialogComponent> = this.dialogValidation.open(ConfirmationDialogComponent, {
         width: '350px',
@@ -168,6 +168,11 @@ export class ModifierVerionComponent implements OnInit {
       });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
+
+        for (let j = 0; j < this.selectedFile.length; j++) {
+          this.selectedFile[j].pending = true;
+        }
+
         /* modifier le nom de la version */
         this.versionService.modifierVersion(this.formulaire.value.code,
           this.formulaire.value.nom, this.formulaire.value.code).subscribe((res) => {
@@ -186,19 +191,21 @@ export class ModifierVerionComponent implements OnInit {
           });
         }
 
-        /*ajouter une photo à une version */
+        /*ajouter des photos à une version */
         for (let j = 0; j < this.images.length; j++) {
           this.imageService.uploadImage(this.images[j], String(this.version.CodeVersion) ).subscribe(res => {
+            this.selectedFile[j].pending = false;
           });
         }
 
+        /* supprimer des photos  d'une version */
         for (let j = 0; j < this.imagesSupp.length; j++) {
           this.imageService.supprimerImage(this.imagesSupp[j], String(this.version.CodeVersion)).subscribe( res => {});
+          this.selectedFile[j].pending = false;
         }
       }
+      this.dialogRef.close();
     });
-    this.dialogRef.close();
-
     }
 
 

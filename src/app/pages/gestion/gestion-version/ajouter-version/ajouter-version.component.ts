@@ -4,8 +4,10 @@ import {ModeleService} from '../../../../services/modele.service';
 import {OptionService} from '../../../../services/option.service';
 import {VersionService} from '../../../../services/version.service';
 import {Option} from '../../../../services/entites/option.model';
-import {MatDialogRef} from '@angular/material';
+import {MatDialog, MatDialogRef} from '@angular/material';
 import {ImageService} from '../../../../services/image.service';
+import {FileUploader} from 'ng2-file-upload';
+import {ConfirmationDialogComponent} from '../../../shared/confirmation-dialog/confirmation-dialog.component';
 
 
 @Component({
@@ -31,15 +33,15 @@ export class AjouterVersionComponent implements OnInit {
 
   // Les otpions cochées
   public optionsChoisies: Array<Option> = [];
+  // Les images sélectionnées
+  selectedFile: Array<ImageSnippet> = [];
+  images: Array<File> = [];
 
-  // Pour l'ajout des images
-  selectedFile: ImageSnippet;
+  // File uploader
+  public uploader: FileUploader = new FileUploader({
+    isHTML5: true
+  });
 
-  // Zahra plase
-  pending = false;
-
-  // Zahra please
-  status = 'init';
 
   /**
    * Constructeur de la classe, déclare seulement les attributs privés de la classe
@@ -62,32 +64,23 @@ export class AjouterVersionComponent implements OnInit {
               private versionservice: VersionService,
               private dialogRef: MatDialogRef<AjouterVersionComponent>,
               private imageService: ImageService,
+              private dialogValidation: MatDialog
   ) {
   }
 
-  // Zahra please
-  private onSuccess() {
-    this.selectedFile.pending = false;
-    this.selectedFile.status = 'ok';
-    this.dialogRef.close();
-  }
-
-  // Zahra please
-  private onError() {
-    this.selectedFile.pending = false;
-    this.selectedFile.status = 'fail';
-    this.selectedFile.src = '';
-  }
-
-  // Zahra please
+  // Uploader des images depuis l'ordinateur
   processFile(imageInput: any) {
-    const file: File = imageInput.files[0];
-    const reader = new FileReader();
-    reader.addEventListener('load', (event: any) => {
-        this.selectedFile = new ImageSnippet(event.target.result, file);
-    });
+    for (let j = 0; j < this.uploader.queue.length; j++) {
+      const reader = new FileReader();
+      const fileItem = this.uploader.queue[j]._file;
+      reader.addEventListener('load', (event: any) => {
+        this.selectedFile[this.selectedFile.length] = new ImageSnippet(event.target.result, fileItem);
+      });
 
-    reader.readAsDataURL(file);
+      reader.readAsDataURL(fileItem);
+      this.images.push(this.uploader.queue[j]._file);
+    }
+    this.uploader.clearQueue();
   }
 
   /**
@@ -105,41 +98,57 @@ export class AjouterVersionComponent implements OnInit {
     this.formulaire.valueChanges.subscribe();
   }
 
-  // Zahra please
+  /* Sélectionner ou déselectionner une option */
   gererOptions(event, option) {
     option.Cheked = !option.Checked;
-    this.optionsChoisies.push(option);
+    if (option.Checked) {
+      this.optionsChoisies.push(option);
+    } else {
+      this.optionsChoisies.splice(option);
+    }
   }
 
-  // Zahra please
+  // Ajout d'une version
   onSubmit() {
-    let i = 0;
-    this.selectedFile.pending = true;
-    this.versionservice.ajouter(this.formulaire.value.code + JSON.parse(localStorage.getItem('utilisateur')).utilfab.Fabricant,
-      this.formulaire.value.nom, this.codeModele).subscribe(
-      (res) => {
-            for (i = 0 ; i < this.optionsChoisies.length; i++) {
-              this.optionservice.ajouter(String(this.optionsChoisies[i].CodeOption), String(this.optionsChoisies[i].NomOption),
-                this.formulaire.value.code + JSON.parse(localStorage.getItem('utilisateur')).utilfab.Fabricant);
+
+    const dialogRef: MatDialogRef<ConfirmationDialogComponent> = this.dialogValidation.open(ConfirmationDialogComponent, {
+      width: '350px',
+      data: 'Voulez vous vraiment ajouter cette version?'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        let i = 0;
+        for (let j = 0; j < this.selectedFile.length; j++) {
+          this.selectedFile[j].pending = true;
+        }
+        const codeVersion = this.formulaire.value.code + JSON.parse(localStorage.getItem('utilisateur')).utilfab.Fabricant;
+        this.versionservice.ajouter(codeVersion,
+          this.formulaire.value.nom, this.codeModele).subscribe(
+          (res) => {
+            for (i = 0; i < this.optionsChoisies.length; i++) {
+              this.optionservice.ajouter(String(this.optionsChoisies[i].CodeOption), String(this.optionsChoisies[i].NomOption), codeVersion
+              );
             }
-            this.imageService.uploadImage(this.selectedFile.file, this.formulaire.value.code +
-              JSON.parse(localStorage.getItem('utilisateur')).utilfab.Fabricant ).subscribe(
-              (re) => {
-                this.onSuccess();
-              },
-              (err) => {
-                this.onError();
+
+            /*ajouter des photos à une version */
+            for (let j = 0; j < this.images.length; j++) {
+              this.imageService.uploadImage(this.images[j], codeVersion).subscribe(resultat => {
+                this.selectedFile[j].pending = false;
               });
-            },
-      (err) => {
-        this.onError();
-      });
+            }
+            this.dialogRef.close();
+          },
+          (err) => {
+            this.dialogRef.close();
+          });
+      }
+    });
   }
 }
 
 
 
-// Zahra please
+// Classe pour représenter une image
 class ImageSnippet {
   pending = false;
   status = 'init';

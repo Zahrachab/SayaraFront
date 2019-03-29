@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import {MatDialog, MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {MatDialog, MatDialogRef, MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {ActivatedRoute} from '@angular/router';
 import {OptionService} from '../../../services/option.service';
 import {ModeleDetail} from '../../../services/entites/modeleDetail.model';
@@ -54,7 +54,8 @@ export class GestionOptionsComponent implements OnInit, AfterViewInit {
    * Il va permettre d'avoir les modeles pour le mat-select
    */
   constructor(private optionService: OptionService, private modalService: MatDialog,
-              private activatedroute: ActivatedRoute, private modeleService: ModeleService) {
+              private activatedroute: ActivatedRoute,
+              private modeleService: ModeleService) {
   }
 
   /**
@@ -104,18 +105,24 @@ export class GestionOptionsComponent implements OnInit, AfterViewInit {
    * L'option a supprimer
    */
   supprimerOption(option) {
-    this.modalService.open(SupprimerOptionsComponent, {width: '800px', data: {option, modele: this.modeleSelectionne}});
+        this.modalService.open(SupprimerOptionsComponent, {width: '800px', data: {option, modele: this.modeleSelectionne}});
   }
 
   /**
    * Ajouter une option, invoque le composant ajouterOption
    */
   ajouterOption() {
-    this.modalService.open(AjouterOptionComponent, {
+    // Ouverture de la boite de dialogue, composant Ajouter Option
+    const dialogRef: MatDialogRef<AjouterOptionComponent> = this.modalService.open(AjouterOptionComponent, {
       width: '800px',
       height: '40%',
       data: {modele: this.modeleSelectionne}
     });
+    // Rafraichissement de la page apres fermeture de la boite de dialogue
+    dialogRef.afterClosed().subscribe(() => {
+      this.refreshData();
+    });
+
   }
 
   /**
@@ -124,7 +131,17 @@ export class GestionOptionsComponent implements OnInit, AfterViewInit {
    * L'option a modifier
    */
   modifierOption(option) {
-    this.modalService.open(ModifierOptionComponent, {width: '800px', height: '40%', data: {option}});
+    // Ouverture de la boite de dialogue, composant Modifier Option
+    const dialogRef: MatDialogRef<ModifierOptionComponent> = this.modalService.open(ModifierOptionComponent,
+      {
+        width: '800px',
+        height: '40%',
+        data: {option}});
+
+    // Rafraichissement de la page apres fermeture de la boite de dialogue
+    dialogRef.afterClosed().subscribe(() => {
+      this.refreshData();
+    });
   }
 
   /**
