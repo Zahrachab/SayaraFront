@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, FormArray} from '@angular/forms';
+import {FormBuilder, FormGroup, FormArray, Validators} from '@angular/forms';
 import {ModeleService} from '../../../../services/modele.service';
 import {OptionService} from '../../../../services/option.service';
 import {CouleurService} from '../../../../services/couleur.service';
@@ -21,10 +21,6 @@ import {MatDialogRef} from '@angular/material';
 export class AjouterModeleComponent implements OnInit {
   // Réference vers le formulaire html
   formulaire: FormGroup;
-
-  // zahra please
-  private couleursMap;
-
   // zahra please
   private couleursArray: Array<Couleur> = [];
 
@@ -72,24 +68,24 @@ export class AjouterModeleComponent implements OnInit {
   ngOnInit() {
     // Construction du formulaire
     this.formulaire = this.constructeurFormulaire.group({
-      code: '',
-      description: '',
-      nom: '',
-      options: this.constructeurFormulaire.array([]),
-      couleurs: this.constructeurFormulaire.array([]),
+      code: ['', Validators.required],
+      description: ['', Validators.required],
+      nom: ['', Validators.required],
+      options: [this.constructeurFormulaire.array([]), Validators.required],
+      couleurs: this.constructeurFormulaire.array([], Validators.required),
     });
     // Liaison avec l'Html
     this.formulaire.valueChanges.subscribe();
     // récupérer les couleurs des autres modèles déjà existants dans la marque
-    this.couleursMap = new Map();
+    const couleursMap = new Map();
     let modeles;
     this.modeleService.getModeles().subscribe(res => {
       modeles = res as ModeleDetail[];
       for (const modele of modeles) {
         const couleurs = modele.couleurs as Couleur[];
         for (const couleur of couleurs) {
-          if (!(this.couleursMap.has(couleur.CodeCouleur))) {
-            this.couleursMap.set(couleur.CodeCouleur, couleur);
+          if (!(couleursMap.has(couleur.CodeCouleur))) {
+            couleursMap.set(couleur.CodeCouleur, couleur);
             this.couleursArray.push(couleur);
           }
         }
@@ -102,8 +98,8 @@ export class AjouterModeleComponent implements OnInit {
    */
   ajouterOption() {
     const option = this.constructeurFormulaire.group({
-      codeOption: [],
-      nomOption: []
+      codeOption: ['', Validators.required ],
+      nomOption: ['', Validators.required]
     });
     this.optionsFormulaire.push(option);
   }
@@ -122,8 +118,8 @@ export class AjouterModeleComponent implements OnInit {
    */
   ajouterCouleur() {
     const couleur = this.constructeurFormulaire.group({
-      codeCouleur: [],
-      nomCouleur: [],
+      codeCouleur: ['', Validators.required ],
+      nomCouleur: ['', Validators.required ]
     });
     this.couleursFormulaire.push(couleur);
   }

@@ -1,6 +1,6 @@
 export interface Modele {
-  CodeMarque: { type: string };
-  CodeModele: { type: string };
-  NomModele: { type: string };
+  CodeMarque: string;
+  CodeModele: string;
+  NomModele: string;
 
 }

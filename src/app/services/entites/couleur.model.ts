@@ -1,6 +1,6 @@
 export interface Couleur {
-    CodeCouleur: { type: string };
-    NomCouleur: {type: string};
-    CodeHexa: { type: string };
+    CodeCouleur: string;
+    NomCouleur: string;
+    CodeHexa: string;
     Checked: boolean;
 }

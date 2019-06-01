@@ -5,6 +5,8 @@ import {GestionModeleComponent} from './gestion-modele/gestion-modele.component'
 import {GestionOptionsComponent} from './gestion-options/gestion-options.component';
 import {GestionVersionComponent} from './gestion-version/gestion-version.component';
 import {GestionCouleurComponent} from './gestion-couleur/gestion-couleur.component';
+import {StockComponent} from './stock/stock.component';
+import {StockVehiculesComponent} from './stock/stock-vehicules/stock-vehicules.component';
 
 const routes: Routes = [
   {
@@ -34,10 +36,15 @@ const routes: Routes = [
         component: GestionCouleurComponent,
         pathMatch: 'full'
       },
+
       {
-        path: 'couleurs',
-        component: GestionCouleurComponent
+        path: 'stock',
+        component: StockComponent,
       },
+      {
+        path: 'stock/vehicules',
+        component: StockVehiculesComponent,
+      }
     ]
   }
 ];

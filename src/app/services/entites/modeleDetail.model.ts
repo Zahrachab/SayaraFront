@@ -1,26 +1,26 @@
 export interface ModeleDetail {
-  CodeModele: { type: string };
-  NomModele: { type: string };
-  CodeMarque: { type: string };
-  versions: [{
-    CodeVersion: { type: string };
-    CodeModele: { type: string };
-    NomVersion: { type: string };
-  }];
-  options: [{
-    CodeOption: { type: string };
-    NomOption: { type: string };
+  CodeModele: string ;
+  NomModele: string;
+  CodeMarque: string;
+  versions: {
+    CodeVersion: string;
+    CodeModele: string;
+    NomVersion: string;
+  }[];
+  options: {
+    CodeOption: string;
+    NomOption: string;
     Checked: boolean;
     rel_ver_opt: {
-      idRelVerOpt: { type: string };
-      CodeVersion: { type: string };
-      CodeOption: { type: string };
+      idRelVerOpt: string;
+      CodeVersion: string;
+      CodeOption: string;
     };
-  }];
-  couleurs: [{
-    CodeCouleur: { type: string };
-    NomCouleur: { type: string};
-    CodeHexa: { type: string };
+  }[];
+  couleurs: {
+    CodeCouleur: string;
+    NomCouleur: string;
+    CodeHexa: string;
     Checked: boolean;
-  }];
+  }[];
 }
