@@ -27,8 +27,14 @@
           <p> Importez votre fichier </p>
         </div>
 
-        <div fxLayout="row" id="btn">
-          <button mat-button  mat-raised-button (click)="ajouterFichier()" class="ajouter">Importer Fichier</button>
+        <div fxLayout="row" id="inputDiv">
+          <label  class="image-upload-container btn btn-bwm">
+            <span>  Upload Fichier  </span>
+            <input  ng2FileSelect accept=".png" [uploader]="uploader" id="fileInput"
+                    type="file"
+                    accept="*"
+                    (change)="processFile(csvInput)" multiple/><br/>
+          </label>
         </div>
       </div>
 
@@ -40,11 +46,12 @@
      <h4> Importation </h4>
      <div fxLayout="row" fxLayoutGap="25px" class="divFile">
 
-       <mat-icon fxLayoutAlign="center center"> insert_drive_file</mat-icon>
+       <mat-icon fxLayoutAlign="center center"> insert_drive_file
+       </mat-icon>
 
        <div fxLayout="column" fxLayoutAlign="start start">
          <p> file1.csv</p>
-         <mat-progress-bar></mat-progress-bar>
+         <mat-progress-bar id="progress-bar"></mat-progress-bar>
          <p>35%</p>
        </div>
      </div>

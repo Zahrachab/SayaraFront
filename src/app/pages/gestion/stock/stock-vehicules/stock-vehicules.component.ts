@@ -106,7 +106,7 @@ export class StockVehiculesComponent  {
   expandedElement1: any | null;
   expandedElement2: any | null;
 
-  isExpansionDetailRow = (i: number, row: Object) => {console.log(row.hasOwnProperty('nomOption')); };
+  isExpansionDetailRow = (i: number, row: Object) => (1 === 1) ;
 
 }
 

@@ -16,7 +16,7 @@ import {VersionServiceMock} from '../../../../mocks/Version.Service.mock';
 import {MatDialogRef} from '@angular/material';
 
 
-fdescribe('AjouterModeleComponent', () => {
+describe('AjouterModeleComponent', () => {
   let component: AjouterModeleComponent;
   let fixture: ComponentFixture<AjouterModeleComponent>;
 

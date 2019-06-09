@@ -141,15 +141,14 @@
 
 
                 <mat-header-row *matHeaderRowDef="displayedColumnsVehicules"></mat-header-row>
-                <mat-row *matRowDef="let row; columns:  displayedColumnsVehicules;"
+                <mat-row *matRowDef="let row;  columns:  displayedColumnsVehicules;"
                          matRipple
                          class="element-row"
                          [class.example-expanded-row]="expandedElement2 == row"
                          (click)="expandedElement2 = row">
                 </mat-row>
-                <mat-row *matRowDef="let row; columns: ['expandedDetail2']; "
-                         [@detailExpand2]="row.element == expandedElement2 ? 'expanded' : 'collapsed'"
-                         style="overflow: hidden">
+                <mat-row *matRowDef="let row; columns: ['expandedDetail2']; when: isExpansionDetailRow"
+                         [@detailExpand2]="row  == expandedElement2 ? 'expanded' : 'collapsed'">
                 </mat-row>
               </mat-table>
             </div>

@@ -23,6 +23,8 @@ div.gestion {
     width: 90%;
     margin-bottom: 30px;
 
+
+
     .example-card {
       background-color: transparent;
       width: 85%;
@@ -74,15 +76,27 @@ div.gestion {
       color: #bdc3c7;
     }
 
-    div#btn {
+    span {
+      margin-left: 6px;
+      margin-right: 6px;
+    }
+
+    div#inputDiv {
       margin-top: 20px;
       width: 70%;
 
-      button{
+      .image-upload-container {
+        cursor: pointer;
         margin-left: auto;
         margin-right: auto;
         background-color: #1abc9c;
         color: white;
+        line-height: 2.1;
+        border-radius: 4px;
+      }
+
+      #fileInput {
+        display: none;
       }
     }
 

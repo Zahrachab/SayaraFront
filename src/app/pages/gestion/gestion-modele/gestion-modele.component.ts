@@ -20,7 +20,7 @@ import {ModifierModeleComponent} from './modifier-modele/modifier-modele.compone
  */
 export class GestionModeleComponent implements OnInit, AfterViewInit {
   // Le data source qui contient les informations a afficher dans le mat-table
-  private dataSource = new MatTableDataSource<ModeleDetail>();
+  public dataSource = new MatTableDataSource<ModeleDetail>();
 
   // Les colonnes a afficher dans le mat-table
   displayedColumns = ['CodeModele', 'NomModele', 'versions', 'options', 'couleurs', 'gestion'];
