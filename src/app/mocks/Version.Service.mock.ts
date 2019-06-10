@@ -16,23 +16,98 @@ export class VersionServiceMock {
   getVersions(codeModele): Observable<VersionDetail[]> {
      return Observable.of ([
        {
-         CodeVersion: 'jj',
-         CodeModele: '',
-         NomVersion: 'kk',
-         options: [{
-           CodeOption : '',
-           NomOption: '',
-           Checked: false,
-           rel_ver_opt: {
-             idRelVerOpt: '',
-             CodeVersion: '',
-             CodeOption: '',
+         CodeVersion: '100015',
+         CodeModele: '1',
+         NomVersion: 'GT Line',
+         options: [
+           {
+             CodeOption: '11',
+             NomOption: 'Toit en verre',
+             rel_ver_opt: {
+               idRelVerOpt: '',
+               CodeVersion: '',
+               CodeOption: '',
+             },
+             Checked: true
+           },
+           {
+             CodeOption: '10',
+             NomOption: 'radar avant',
+             rel_ver_opt: {
+               idRelVerOpt: '',
+               CodeVersion: '',
+               CodeOption: '',
+             },
+             Checked: true
+           },
+           {
+             CodeOption: '11111',
+             NomOption: 'Projecteurs Full LED ',
+             rel_ver_opt: {
+               idRelVerOpt: '',
+               CodeVersion: '',
+               CodeOption: '',
+             },
+             Checked: true
            }
-         }],
+         ],
          couleurs: [{
-           CodeCouleur: '',
-           NomCouleur: '',
-           CodeHexa: '',
+           CodeCouleur: '1000',
+           NomCouleur: 'Gris',
+           CodeHexa: '#3456ff',
+           rel_ver_coul: {
+             idRelVerCoul: 'string',
+             CodeVersion: 'string',
+             CodeCouleur: 'string'
+           },
+         }],
+         images: [{
+           idImage: '',
+           CodeImage: '',
+           Type: '',
+           CheminImage: ''
+         }]
+       },
+       {
+         CodeVersion: '89451',
+         CodeModele: '87651',
+         NomVersion: 'RS',
+         options: [
+           {
+             CodeOption: '11',
+             NomOption: 'Toit en verre',
+             rel_ver_opt: {
+               idRelVerOpt: '',
+               CodeVersion: '',
+               CodeOption: '',
+             },
+             Checked: true
+           },
+           {
+             CodeOption: '10',
+             NomOption: 'radar avant',
+             rel_ver_opt: {
+               idRelVerOpt: '',
+               CodeVersion: '',
+               CodeOption: '',
+             },
+             Checked: true
+           },
+           {
+             CodeOption: '11111',
+             NomOption: 'Projecteurs Full LED ',
+             rel_ver_opt: {
+               idRelVerOpt: '',
+               CodeVersion: '',
+               CodeOption: '',
+             },
+             Checked: true
+           }
+         ],
+         couleurs: [{
+           CodeCouleur: '1000',
+           NomCouleur: 'Gris',
+           CodeHexa: '#3456ff',
            rel_ver_coul: {
              idRelVerCoul: 'string',
              CodeVersion: 'string',
@@ -46,8 +121,7 @@ export class VersionServiceMock {
            CheminImage: ''
          }]
        }
-       ]
-     );
+       ]);
   }
 
   supprimerVersion(codeVersion) {
