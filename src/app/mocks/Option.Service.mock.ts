@@ -25,24 +25,24 @@ export class OptionServiceMock {
   getOptions(codeModele): Observable<Option[]> {
     return Observable.of([
       {
-        CodeOption: '',
-        NomOption: '',
-        Checked: false,
+        CodeOption: '10',
+        NomOption: 'radar avant',
         rel_ver_opt: {
           idRelVerOpt: '',
           CodeVersion: '',
-          CodeOption: ''
-        }
+          CodeOption: '',
+        },
+        Checked: true
       },
       {
-        CodeOption: '',
-        NomOption: '',
-        Checked: false,
+        CodeOption: '11111',
+        NomOption: 'Projecteurs Full LED ',
         rel_ver_opt: {
           idRelVerOpt: '',
           CodeVersion: '',
-          CodeOption: ''
-        }
+          CodeOption: '',
+        },
+        Checked: true
       }
       ]);
 
