@@ -21,15 +21,15 @@ export class CouleurServiceMock {
   getCouleurs(codeModele): Observable<Couleur[]> {
      return Observable.of (
        [{
-         CodeCouleur: '',
-         NomCouleur: '',
-         CodeHexa: '',
+         CodeCouleur: '13466',
+         NomCouleur: 'Gris',
+         CodeHexa: '#5e5e5e',
          Checked: true
        },
     {
-      CodeCouleur: '',
-        NomCouleur: '',
-      CodeHexa: '',
+      CodeCouleur: '165788',
+        NomCouleur: 'Noir',
+      CodeHexa: '#000000',
       Checked: true
     }
     ]);
