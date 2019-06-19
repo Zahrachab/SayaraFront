@@ -115,7 +115,6 @@ export class GestionOptionsComponent implements OnInit, AfterViewInit {
     // Ouverture de la boite de dialogue, composant Ajouter Option
     const dialogRef: MatDialogRef<AjouterOptionComponent> = this.modalService.open(AjouterOptionComponent, {
       width: '800px',
-      height: '40%',
       data: {modele: this.modeleSelectionne}
     });
     // Rafraichissement de la page apres fermeture de la boite de dialogue
@@ -135,7 +134,6 @@ export class GestionOptionsComponent implements OnInit, AfterViewInit {
     const dialogRef: MatDialogRef<ModifierOptionComponent> = this.modalService.open(ModifierOptionComponent,
       {
         width: '800px',
-        height: '40%',
         data: {option}});
 
     // Rafraichissement de la page apres fermeture de la boite de dialogue

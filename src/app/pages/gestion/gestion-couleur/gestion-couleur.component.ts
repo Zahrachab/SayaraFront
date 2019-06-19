@@ -58,7 +58,6 @@ export class GestionCouleurComponent implements OnInit {
     if (this.codeModele != null) {
       const dialogRef: MatDialogRef<AjouterCouleurComponent> = this.matDialog.open(AjouterCouleurComponent, {
         width: '800px',
-        height: '350px'
       });
       dialogRef.componentInstance.codeModele = this.codeModele;
       dialogRef.afterClosed().subscribe(res => {

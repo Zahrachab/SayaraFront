@@ -95,7 +95,6 @@ export class GestionVersionComponent implements OnInit, AfterViewInit {
     if (this.codeModele != null) {
       const dialogRef: MatDialogRef<AjouterVersionComponent> = this.matDialog.open(AjouterVersionComponent, {
         width: '800px',
-        height: '80%'
       });
       dialogRef.componentInstance.codeModele = this.codeModele;
       dialogRef.afterClosed().subscribe(() => {
