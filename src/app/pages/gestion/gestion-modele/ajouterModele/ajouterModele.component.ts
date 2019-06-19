@@ -71,8 +71,8 @@ export class AjouterModeleComponent implements OnInit {
       code: ['', Validators.required],
       description: ['', Validators.required],
       nom: ['', Validators.required],
-      options: [this.constructeurFormulaire.array([]), Validators.required],
-      couleurs: this.constructeurFormulaire.array([], Validators.required),
+      options: this.constructeurFormulaire.array([]),
+      couleurs: this.constructeurFormulaire.array([]),
     });
     // Liaison avec l'Html
     this.formulaire.valueChanges.subscribe();

@@ -38,6 +38,12 @@ const routes: Routes = [
       },
 
       {
+        path: 'couleurs',
+        component: GestionCouleurComponent,
+        pathMatch: 'full'
+      },
+
+      {
         path: 'stock',
         component: StockComponent,
       },
