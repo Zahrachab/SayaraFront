@@ -1,19 +1,19 @@
 mat-dialog-content{
-  height: 100%;
+  height: auto;
   width: 100%;
   border-radius: 20px;
+  overflow: inherit;
+
 }
 
 #formulaireHtml {
   width: 100%;
   display: flex;
   flex-direction: column;
-  height: 90%;
+  height: auto;
 }
 
-#formulaireHtml > * {
-  width: 100%;
-}
+
 
 #codeInput {
   width: 25%;

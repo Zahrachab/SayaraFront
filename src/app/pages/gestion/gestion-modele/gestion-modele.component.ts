@@ -87,7 +87,7 @@ export class GestionModeleComponent implements OnInit, AfterViewInit {
     // Ouverture de la boite de dialogue, composant AjouterModele
     const dialogRef: MatDialogRef<AjouterModeleComponent> = this.modalService.open(AjouterModeleComponent, {
       width: '850px',
-      height: '80%'
+      height: 'auto'
     });
     // Rafraichissement de la page apres fermeture de la boite de dialogue
     dialogRef.afterClosed().subscribe(() => {
