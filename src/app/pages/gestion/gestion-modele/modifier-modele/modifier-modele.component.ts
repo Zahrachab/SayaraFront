@@ -7,6 +7,7 @@ import {ModeleDetail} from '../../../../services/entites/modeleDetail.model';
 import {Couleur} from '../../../../services/entites/couleur.model';
 import {CouleurService} from '../../../../services/couleur.service';
 import {ConfirmationDialogComponent} from '../../../shared/confirmation-dialog/confirmation-dialog.component';
+import {Option} from '../../../../services/entites/option.model';
 
 @Component({
   selector: 'app-modifier-modele',
@@ -24,6 +25,9 @@ export class ModifierModeleComponent implements OnInit {
   private couleursArray: Array<Couleur> = [];
   private couleursChecked: Array<Couleur> = [];
   private couleursSupp: Array<Couleur> = [];
+  private optionsArray: Array<Option> = [];
+  private optionsChecked: Array<Option> = [];
+  private optionsSupp: Array<Option> = [];
   formulaire: FormGroup;
 
   /**
@@ -62,6 +66,7 @@ export class ModifierModeleComponent implements OnInit {
     });
 
     this.chargerCouleurs();
+    this.chargerOptions();
 
     // Initialisation des options
     for (const item of this.data.modele.options) {
@@ -101,6 +106,35 @@ export class ModifierModeleComponent implements OnInit {
           if (String(element.CodeCouleur) === String(clr.CodeCouleur)) {
             /* séléctionner les couleurs associées au modèle parmis ceux exitants dans la marque */
             clr.Checked = true;
+          }
+        });
+      });
+    });
+  }
+
+  chargerOptions() {
+    const optionsMap: Map<string, object> = new Map();
+    this.formulaire.valueChanges.subscribe();
+    /* récupérer les options des autres modèles déjà existants dans la marque */
+    let modeles;
+    this.modeleService.getModeles().subscribe(res => {
+      modeles = res as ModeleDetail[];
+      for (let i = 0; i < modeles.length; i++) {
+        const options = modeles[i].options as Option[];
+        for (let j = 0; j < options.length; j++) {
+          if (!(optionsMap.has(String(options[j].CodeOption)))) {
+            optionsMap.set(String(options[j].CodeOption), options[j]);
+            this.optionsArray.push(options[j]);
+          }
+        }
+      }
+
+      const optionsModele = this.data.modele.options as Option[];
+      optionsModele.forEach((element) => {
+        this.optionsArray.forEach((opt) => {
+          if (String(element.CodeOption) === String(opt.CodeOption)) {
+            /* séléctionner les options associées au modèle parmis ceux exitants dans la marque */
+            opt.Checked = true;
           }
         });
       });
@@ -168,6 +202,23 @@ export class ModifierModeleComponent implements OnInit {
     }
   }
 
+  gererOptions(event, opt) {
+    opt.Checked = !opt.Checked;
+    if (opt.Checked) {
+      if (this.optionsSupp.indexOf(opt) === -1) {
+        this.optionsChecked.push(opt);
+      } else {
+        this.optionsSupp.splice(this.optionsSupp.indexOf(opt), 1);
+      }
+    } else {
+      if (this.optionsChecked.indexOf(opt) === -1) {
+        this.optionsSupp.push(opt);
+      } else {
+        this.optionsChecked.splice(this.optionsChecked.indexOf(opt), 1);
+      }
+    }
+  }
+
   changerCouleur(i , color) {
     this.formulaire.value.couleurs[i].codeHexa = color;
   }
@@ -198,20 +249,21 @@ export class ModifierModeleComponent implements OnInit {
         }
 
 
-        for (const option of this.data.modele.options) {
-          for (const option2 of this.formulaire.value.options1) {
-            if (option.CodeOption === option2.codeOption) {
-              trouv = true;
-            }
-          }
-          if (!trouv) {
-            // supprimer l'association avec le modele
-            this.optionservice.supprimerDuModele(option.CodeOption, this.data.modele.CodeModele).subscribe(() => {
-            });
-          }
-          trouv = false;
+        /* ajouter des options */
+        for (let i = 0; i < this.optionsChecked.length; i++) {
+          this.optionservice.ajouterOptionModele(String(this.optionsChecked[i].CodeOption), String(this.optionsChecked[i].NomOption), this.formulaire.value.code);
         }
-
+        /* supprimer des options*/
+        for (let i = 0; i < this.optionsSupp.length; i++) {
+          this.optionservice.supprimerDuModele(String(this.optionsSupp[i].CodeOption),
+            this.formulaire.value.code).subscribe(() => {
+          });
+        }
+        /* ajouter les options ajoutés à partir du formulaire */
+        for (const option of this.formulaire.value.options) {
+          this.optionservice.ajouterOptionModele(option.codeOption, option.NomOption,
+            this.formulaire.value.code);
+        }
 
         /* ajouter des couleurs */
         for (let i = 0; i < this.couleursChecked.length; i++) {

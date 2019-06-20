@@ -29,6 +29,7 @@
       </label>
     </div>
   </div>
+
   <div class="row optionDiv">
     <div class="col-11">
       <i class="material-icons">
@@ -36,12 +37,17 @@
       </i>
       <span class="label">Options</span>
       <br/>
+      <span>choisir parmis les options existantes</span>
+      <br/>
+      <div fxLayout="column" fxLayoutAlign="center start" id="options" *ngIf="optionsArray">
+        <mat-checkbox color="primary" *ngFor="let opt of optionsArray" [value]="opt.CodeOption" [checked]="opt.Checked" (change)="gererOptions($event, opt)">{{opt.CodeOption}}  {{opt.NomOption}}</mat-checkbox>
+      </div>
       <i class="material-icons iajouter" (click)="ajouterOption()">
         add
       </i>
       <span (click)="ajouterOption()" class="ajouter">Ajouter une option</span>
       <div formArrayName="options">
-          <div *ngFor="let opt of optionsFormulaire.controls; let i=index" [formGroupName]="i" class="row" style="margin: 0">
+        <div *ngFor="let opt of optionsFormulaire.controls; let i=index" [formGroupName]="i" class="row" style="margin: 0">
           <div class="col-4">
             <label>
               <input class="inputOption" matInput formControlName="codeOption">
@@ -59,6 +65,7 @@
       </div>
     </div>
   </div>
+
   <div class="row optionDiv">
     <div class="col-11">
       <i class="material-icons">
@@ -68,7 +75,7 @@
       <br/>
       <span>choisir parmis les couleurs existantes</span>
       <br/>
-      <div fxLayout="column" fxLayoutAlign="center start" id="couleurs" *ngIf="couleursMap">
+      <div fxLayout="column" fxLayoutAlign="center start" id="options" *ngIf="couleursArray">
         <mat-checkbox color="primary" *ngFor="let clr of couleursArray" [value]="clr.CodeCouleur" [checked]="clr.Checked" (change)="gererCouleurs($event, clr)">{{clr.CodeCouleur}}  {{clr.NomCouleur}}</mat-checkbox>
       </div>
       <i class="material-icons iajouter" (click)="ajouterCouleur()">
@@ -76,11 +83,11 @@
       </i>
       <span (click)="ajouterCouleur()" class="ajouter">Ajouter une couleur</span>
       <div formArrayName="couleurs">
-        <div fxLayout="row wrap" *ngFor="let couleur of couleursFormulaire.controls; let i=index" [formGroupName]="i" class="row" style="margin: 0">
+        <div fxLayout="row wrap" *ngFor="let couleur of couleursFormulaire.controls; let i=index" [formGroupName]="i" class="row" >
           <div fxFlex="25"
-                 fxFlex.md="33"
-                 fxFlex.sm="50"
-                 fxFlex.xs="100" fxLayout="column" class="divInput">
+               fxFlex.md="33"
+               fxFlex.sm="50"
+               fxFlex.xs="100" fxLayout="column" class="divInput">
             <input class="inputOption" matInput formControlName="codeCouleur" placeholder="Code" class="input">
           </div>
           <div fxFlex="25"
@@ -106,6 +113,7 @@
       </div>
     </div>
   </div>
+
   <div mat-dialog-actions fxLayout="row" fxLayoutAlign="end end">
     <button type="submit" class="btn-ajout">Valider </button>
   </div>
