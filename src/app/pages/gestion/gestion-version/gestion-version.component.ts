@@ -13,7 +13,7 @@ import {VersionDetail} from '../../../services/entites/versionDetail.model';
 @Component({
   selector: 'app-gestion-version',
   templateUrl: './gestion-version.component.html',
-  styleUrls: ['./gestion-version.component.scss']
+  styleUrls: ['../gestion-modele/gestion-modele.component.scss']
 })
 
 /**

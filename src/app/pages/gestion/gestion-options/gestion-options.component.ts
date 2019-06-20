@@ -12,7 +12,7 @@ import {Option} from '../../../services/entites/option.model';
 @Component({
   selector: 'app-gestion-options',
   templateUrl: './gestion-options.component.html',
-  styleUrls: ['./gestion-options.component.scss']
+  styleUrls: ['../gestion-modele/gestion-modele.component.scss']
 })
 /**
  *  Classe de gestion des options

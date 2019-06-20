@@ -1,6 +1,6 @@
 div.gestion {
   margin: 5%;
-  width: 1100px;
+  width: 1000px;
   padding-bottom: 300px;
 
   .gras {
@@ -12,6 +12,10 @@ div.gestion {
     font-size: 30px;
     font-family: 'Roboto-Thin', 'Sherif', serif;
 
+  }
+  div#selector {
+    margin-top: 30px;
+    width: 200px;
   }
 
   div#trait {
@@ -109,6 +113,14 @@ div.gestion {
         }
       }
 
+      .circle-color{
+        border-radius: 50%;
+        border: 1px solid #000000;
+        height: 40px;
+        width: 40px;
+        background: #424242;
+      }
+
       ng-container {
         mat-cell {
           padding: 0 2%;
@@ -136,6 +148,8 @@ div.gestion {
     }
 
   }
+
+
 
 
 }

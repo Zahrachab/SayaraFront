@@ -1,24 +1,23 @@
 <div class="gestion">
   <div fxLayout="row">
-      <h2 fxFlex="60">Gestion des option du modèle </h2>
-      <mat-select fxFlex="25" (selectionChange)="changerOptions($event)"
-                  [(value)]="modeleSelectionne">
-        <mat-option>Choisissez un model</mat-option>
-        <mat-option *ngFor="let modele of modeles" [value]="modele.CodeModele"> {{modele.NomModele}}</mat-option>
-      </mat-select>
+    <h2 fxFlex="60">Gestion des couleurs du modèle </h2>
   </div>
   <div id="trait"></div>
   <div fxLayout="row">
     <div fxFlex="70">
       <form class="example-form">
         <mat-form-field class="example-full-width">
-          <input matInput type="text" (keyup)="appliquerFiltre($event.target.value)" placeholder="Rechercher un modèle"
-                 value="">
+          <input matInput  placeholder="Rechercher une couleur" value="">
         </mat-form-field>
       </form>
     </div>
-    <button mat-button fxFlex='20' mat-stroked-button (click)="ajouterOption()" class="ajouter">Ajouter une option
-    </button>
+    <button mat-button fxFlex='20' mat-stroked-button (click)="ajouterCouleur()" class="ajouter">Ajouter une couleur</button>
+  </div>
+  <div id="selector">
+    <mat-select [(value)]="modelId" (selectionChange)="changerCouleurs($event)" placeholder="Choisissez un modèle">
+      <mat-option>Choisissez un model</mat-option>
+      <mat-option *ngFor="let modele of modeles" [value]="modele.CodeModele"> {{modele.NomModele}}</mat-option>
+    </mat-select>
   </div>
   <div class="example-container mat-elevation-z8">
     <mat-table [dataSource]="dataSource" matSort>

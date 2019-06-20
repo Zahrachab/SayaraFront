@@ -12,7 +12,7 @@ import {ConfirmationDialogComponent} from '../../shared/confirmation-dialog/conf
 @Component({
   selector: 'app-gestion-couleur',
   templateUrl: './gestion-couleur.component.html',
-  styleUrls: ['./gestion-couleur.component.scss']
+  styleUrls: ['../gestion-modele/gestion-modele.component.scss']
 })
 export class GestionCouleurComponent implements OnInit {
 

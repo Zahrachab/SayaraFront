@@ -1,10 +1,6 @@
-<div class="gestion" >
+<div class="gestion" fxLayout="column">
   <div fxLayout="row">
     <h2 fxFlex="60">Gestion des couleurs du modèle </h2>
-    <mat-select fxFlex="25"[(value)]="modelId" (selectionChange)="changerCouleurs($event)">
-      <mat-option>Choisissez un model</mat-option>
-      <mat-option *ngFor="let modele of modeles" [value]="modele.CodeModele"> {{modele.NomModele}}</mat-option>
-    </mat-select>
   </div>
   <div id="trait"></div>
   <div fxLayout="row">
@@ -16,6 +12,12 @@
       </form>
     </div>
     <button mat-button fxFlex='20' mat-stroked-button (click)="ajouterCouleur()" class="ajouter">Ajouter une couleur</button>
+  </div>
+  <div id="selector">
+    <mat-select [(value)]="modelId" (selectionChange)="changerCouleurs($event)" placeholder="Choisissez un modèle">
+      <mat-option>Choisissez un model</mat-option>
+      <mat-option *ngFor="let modele of modeles" [value]="modele.CodeModele"> {{modele.NomModele}}</mat-option>
+    </mat-select>
   </div>
   <div class="example-container mat-elevation-z8">
     <mat-table [dataSource]="dataSource">
