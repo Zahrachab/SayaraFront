@@ -54,8 +54,8 @@
         </mat-cell>
       </ng-container>
 
-      <ng-container matColumnDef="gestion">
-        <mat-header-cell *matHeaderCellDef><i class="material-icons">tune</i> GESTION</mat-header-cell>
+      <ng-container matColumnDef="gestion" >
+        <mat-header-cell *matHeaderCellDef id="gestion"><i class="material-icons">tune</i> GESTION</mat-header-cell>
         <mat-cell *matCellDef="let couleur">
           <button mat-icon-button (click)="modifierCouleur(couleur)"  >
             <mat-icon class="vert">edit</mat-icon>

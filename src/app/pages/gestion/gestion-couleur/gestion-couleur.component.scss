@@ -125,6 +125,10 @@ div.gestion {
         }
       }
 
+      ng-container#gestion {
+        padding-left: 20px;
+      }
+
 
       mat-header-row {
         background-color: #ecf0f1;

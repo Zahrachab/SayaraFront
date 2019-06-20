@@ -62,7 +62,7 @@ div.gestion {
 
 
   .example-container {
-    width: 90%;
+    width: 96%;
     background-color: transparent;
     margin-top: 5%;
     overflow: auto;
@@ -128,11 +128,14 @@ div.gestion {
       }
 
 
+
+
       mat-header-row {
         background-color: #ecf0f1;
         justify-content: center;
 
         mat-header-cell {
+          padding-left: 40px;
           color: #2c3e50;
           font-size: 80%;
           font-family: 'Roboto-Bold', serif;

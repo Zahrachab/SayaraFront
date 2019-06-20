@@ -78,7 +78,7 @@
       </ng-container>
 
       <ng-container matColumnDef="gestion">
-        <mat-header-cell *matHeaderCellDef><i class="material-icons">tune</i> GESTION</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef id="gestion"><i class="material-icons">tune</i> GESTION</mat-header-cell>
         <mat-cell *matCellDef="let modele">
           <button mat-icon-button (click)="modifierModele(modele)"  >
             <mat-icon class="vert">edit</mat-icon>

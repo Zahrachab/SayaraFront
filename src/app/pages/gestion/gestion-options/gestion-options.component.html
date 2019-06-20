@@ -1,20 +1,20 @@
 <div class="gestion">
   <div fxLayout="row">
-    <h2 fxFlex="60">Gestion des couleurs du modèle </h2>
+    <h2 fxFlex="60">Gestion des options du modèle </h2>
   </div>
   <div id="trait"></div>
   <div fxLayout="row">
     <div fxFlex="70">
       <form class="example-form">
         <mat-form-field class="example-full-width">
-          <input matInput  placeholder="Rechercher une couleur" value="">
+          <input matInput  placeholder="Rechercher une option" value="">
         </mat-form-field>
       </form>
     </div>
-    <button mat-button fxFlex='20' mat-stroked-button (click)="ajouterCouleur()" class="ajouter">Ajouter une couleur</button>
+    <button mat-button fxFlex='20' mat-stroked-button (click)="ajouterOption()" class="ajouter">Ajouter une option</button>
   </div>
   <div id="selector">
-    <mat-select [(value)]="modelId" (selectionChange)="changerCouleurs($event)" placeholder="Choisissez un modèle">
+    <mat-select [(value)]="modelId" (selectionChange)="changerOptions($event)" placeholder="Choisissez un modèle">
       <mat-option>Choisissez un model</mat-option>
       <mat-option *ngFor="let modele of modeles" [value]="modele.CodeModele"> {{modele.NomModele}}</mat-option>
     </mat-select>
@@ -38,7 +38,7 @@
       </ng-container>
 
       <ng-container matColumnDef="gestion">
-        <mat-header-cell *matHeaderCellDef><i class="material-icons">tune</i> GESTION</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef id="gestion"><i class="material-icons">tune</i> GESTION</mat-header-cell>
         <mat-cell *matCellDef="let option">
           <button mat-icon-button (click)="modifierOption(option)">
             <mat-icon class="vert">edit</mat-icon>
