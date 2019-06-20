@@ -203,6 +203,7 @@ export class ModifierVerionComponent implements OnInit {
           this.imageService.supprimerImage(this.imagesSupp[j], String(this.version.CodeVersion)).subscribe( res => {});
           this.selectedFile[j].pending = false;
         }
+        this.dialogRef.close();
       }
       this.dialogRef.close();
     });

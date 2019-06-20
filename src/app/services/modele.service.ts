@@ -28,8 +28,7 @@ export class ModeleService {
 
 
     return this.http.post(this.url + '/Marques/' + JSON.parse(localStorage.getItem('utilisateur')).utilfab.Fabricant + '/Modeles',
-      {CodeModele: code, NomModele: designation}, {headers: tokenHeader}).subscribe(() => {
-    });
+      {CodeModele: code, NomModele: designation}, {headers: tokenHeader}).pipe();
   }
 
   supprimerModele(codeModele) {

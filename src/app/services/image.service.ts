@@ -20,7 +20,7 @@ export class ImageService {
   }
   public supprimerImage(id: string, codeVersion: string) {
       const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
-      return this.http.delete(this.url + '/Marques/Modeles/Versions/' + codeVersion + '/Images/' + id,
+      return this.http.delete(this.url + '/images/' + id,
         {headers: tokenHeader}).pipe();
 
     }

@@ -71,7 +71,7 @@ export class AjouterVersionComponent implements OnInit {
   // Uploader des images depuis l'ordinateur
   processFile(imageInput: any) {
     for (let j = 0; j < this.uploader.queue.length; j++) {
-      const reader = new FileReader();
+      const reader = new FileReader ();
       const fileItem = this.uploader.queue[j]._file;
       reader.addEventListener('load', (event: any) => {
         this.selectedFile[this.selectedFile.length] = new ImageSnippet(event.target.result, fileItem);
@@ -82,6 +82,7 @@ export class AjouterVersionComponent implements OnInit {
     }
     this.uploader.clearQueue();
   }
+
 
   /**
    *  Executé a l'initialisation du composant, Construit le formulaire et fait la lsiasion avec le html
@@ -100,8 +101,8 @@ export class AjouterVersionComponent implements OnInit {
 
   /* Sélectionner ou déselectionner une option */
   gererOptions(event, option) {
-    option.Cheked = !option.Checked;
-    if (option.Checked) {
+    option.Checked = !option.Checked;
+    if (option.Checked === true) {
       this.optionsChoisies.push(option);
     } else {
       this.optionsChoisies.splice(option);
@@ -124,10 +125,11 @@ export class AjouterVersionComponent implements OnInit {
         const codeVersion = this.formulaire.value.code + JSON.parse(localStorage.getItem('utilisateur')).utilfab.Fabricant;
         this.versionservice.ajouter(codeVersion,
           this.formulaire.value.nom, this.codeModele).subscribe(
-          (res) => {
+          () => {
             for (i = 0; i < this.optionsChoisies.length; i++) {
+              console.log(i);
               this.optionservice.ajouter(String(this.optionsChoisies[i].CodeOption), String(this.optionsChoisies[i].NomOption), codeVersion
-              );
+              ).subscribe();
             }
 
             /*ajouter des photos à une version */
@@ -143,6 +145,12 @@ export class AjouterVersionComponent implements OnInit {
           });
       }
     });
+  }
+
+  // Supprimer des images
+  supprimerImage(selected: ImageSnippet) {
+    this.selectedFile.splice(this.selectedFile.indexOf(selected), 1);
+    this.images.splice(this.selectedFile.indexOf(selected),1);
   }
 }
 

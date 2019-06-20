@@ -35,7 +35,7 @@
         <span class="label">Options</span>
         <br/>
         <div fxLayout="column" fxLayoutAlign="center start" id="options">
-        <mat-checkbox color="primary" *ngFor="let option of options" [value]="option.CodeOption" (change)="gererOptions($event, option)">{{option.NomOption}}</mat-checkbox>
+          <mat-checkbox *ngFor="let option of options" color="primary" [value]="option.CodeOption"   [checked]="option.Checked" (change)="gererOptions($event, option)">{{option.NomOption}}</mat-checkbox>
         </div>
       </div>
     </div>
@@ -72,8 +72,7 @@
 
         </div>
       </div>
-    </div>
-
+      </div>
   </form>
   <div mat-dialog-actions fxLayout="row" fxLayoutAlign="end end">
     <button type="submit" class="btn-ajout" (click)="onSubmit()">Submit </button>

@@ -162,8 +162,9 @@ export class AjouterModeleComponent implements OnInit {
    */
   ajouterCouleur() {
     const couleur = this.constructeurFormulaire.group({
-      codeCouleur: ['', Validators.required ],
-      nomCouleur: ['', Validators.required ]
+       codeCouleur: ['', Validators.required ],
+       nomCouleur: ['', Validators.required ],
+       codeHexa: ['', Validators.required]
     });
     this.couleursFormulaire.push(couleur);
   }
@@ -195,7 +196,7 @@ export class AjouterModeleComponent implements OnInit {
   gererOptions(event, opt) {
     opt.Checked = !opt.Checked;
     if (opt.Checked) {
-      this.optionsSupp.splice(this.optionsSupp.indexOf(opt), 1);
+      this.optionsChecked.push(opt);
     } else {
         this.optionsChecked.splice(this.optionsChecked.indexOf(opt), 1);
       }
@@ -205,29 +206,29 @@ export class AjouterModeleComponent implements OnInit {
    */
   ajouterModele() {
     // L'ajout du modele
-    this.modeleService.ajouter(this.formulaire.value.code, this.formulaire.value.nom);
+    this.modeleService.ajouter(this.formulaire.value.code, this.formulaire.value.nom).subscribe(() => {
+      // Ajout des nouvelles options
+      for (const option of this.formulaire.value.options) {
+        this.optionService.ajouterOptionModele(option.codeOption, option.nomOption,
+          this.formulaire.value.code);
+      }
 
-    // Ajout des nouvelles options
-    for (const option of this.formulaire.value.options) {
-      this.optionService.ajouterOptionModele(option.codeOption, option.nomOption,
-        this.formulaire.value.code);
-    }
-
-    // Ajout des options
-    /*for (const opt of this.optionsChecked) {
-      this.optionService.(String(opt.CodeOption), String(opt.NomOption),
-        this.formulaire.value.code);
-    }*/
-    // Ajout des couleurs
-    for (const couleur of this.couleursChecked) {
-      this.couleurService.ajouterCouleurModele(String(couleur.CodeCouleur), String(couleur.NomCouleur), String(couleur.CodeHexa),
-        this.formulaire.value.code);
-    }
-     // ajout des nouvelles couleurs
-    for (const couleur of this.formulaire.value.couleurs) {
-      this.couleurService.ajouterCouleurModele(couleur.codeCouleur, couleur.nomCouleur, couleur.codeHexa,
-        this.formulaire.value.code);
-    }
+      // Ajout des options
+      for (const opt of this.optionsChecked) {
+        this.optionService.ajouterOptionModele(String(opt.CodeOption), String(opt.NomOption),
+          this.formulaire.value.code);
+      }
+      // Ajout des couleurs
+      for (const couleur of this.couleursChecked) {
+        this.couleurService.ajouterCouleurModele(String(couleur.CodeCouleur), String(couleur.NomCouleur), String(couleur.CodeHexa),
+          this.formulaire.value.code);
+      }
+      // ajout des nouvelles couleurs
+      for (const couleur of this.formulaire.value.couleurs) {
+        this.couleurService.ajouterCouleurModele(couleur.codeCouleur, couleur.nomCouleur, couleur.codeHexa,
+          this.formulaire.value.code);
+      }
+    });
     this.dialogRef.close();
   }
 }
