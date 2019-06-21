@@ -19,8 +19,12 @@ import { FormsModule } from '@angular/forms';
 import { GestionModule } from './pages/gestion/gestion.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import { ConfirmationDialogComponent } from './pages/shared/confirmation-dialog/confirmation-dialog.component';
+<<<<<<< Updated upstream
 import {LoginErrorInterceptor} from './EroorsInterceptors/LoginEroor.interceptor';
 import { AlertComponent } from './components/alert/alert.component';
+=======
+import { StockRoutingModule } from './pages/stock/stock-routing.module';
+>>>>>>> Stashed changes
 
 const urlGlobale = 'https://sayaradz.herokuapp.com';
 
@@ -47,7 +51,8 @@ const urlGlobale = 'https://sayaradz.herokuapp.com';
     ReactiveFormsModule,
     FormsModule,
     GestionModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+    StockRoutingModule
   ],
   entryComponents: [ConfirmationDialogComponent],
   schemas: [NO_ERRORS_SCHEMA],
