@@ -1,0 +1,19 @@
+<mat-dialog-content>
+  <div  fxLayout="row" fxLayoutAlign="space-between start" >
+    <div fxLayout="column">
+      <h1 mat-dialog-title style="margin: 0">Toutes les options de la version</h1>
+      <div id="trait"></div>
+    </div>
+    <button mat-icon-button type="submit" (click)="addUser()" mat-dialog-close [disabled]="formisvalid">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+    <div>
+      <ul>
+        <li *ngFor="let option of version.options ">
+          {{option.NomOption}}
+        </li>
+      </ul>
+    </div>
+</mat-dialog-content>

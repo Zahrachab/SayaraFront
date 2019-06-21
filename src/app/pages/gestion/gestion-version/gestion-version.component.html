@@ -58,7 +58,7 @@
             </li>
           </ul>
           <div *ngIf="(version.options.length > 5)">
-             <a routerLink=".">+ d'aptions </a>
+             <button mat-button (click)="afficherTousOptions(version)">+ d'aptions </button>
           </div>
         </mat-cell>
       </ng-container>

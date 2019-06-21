@@ -31,6 +31,8 @@ import { ModifierCouleurComponent } from './gestion-couleur/modifier-couleur/mod
 import { AjouterCouleurComponent } from './gestion-couleur/ajouter-couleur/ajouter-couleur.component';
 import { StockComponent } from './stock/stock.component';
 import { StockVehiculesComponent } from './stock/stock-vehicules/stock-vehicules.component';
+import { InfosDialogComponent } from './gestion-version/infos-dialog/infos-dialog.component';
+
 @NgModule({
   declarations: [GestionOptionsComponent, GestionComponent, GestionModeleComponent, AjouterModeleComponent,
                   NavbarComponent, SidenavComponent, FooterComponent, GestionVersionComponent, SupprimerModeleComponent,
@@ -46,7 +48,8 @@ import { StockVehiculesComponent } from './stock/stock-vehicules/stock-vehicules
                   ModifierOptionComponent,
                   FileSelectDirective,
                   StockComponent,
-                  StockVehiculesComponent],
+                  StockVehiculesComponent,
+                  InfosDialogComponent],
 
   imports: [
     CommonModule,
@@ -64,7 +67,7 @@ import { StockVehiculesComponent } from './stock/stock-vehicules/stock-vehicules
   exports: [NavbarComponent, SidenavComponent, FooterComponent],
   entryComponents: [AjouterModeleComponent, AjouterVersionComponent, ModifierVerionComponent,
     SupprimerModeleComponent, SupprimerVersionComponent, ModifierCouleurComponent, AjouterCouleurComponent,
-    SupprimerOptionsComponent, AjouterOptionComponent, ModifierOptionComponent, ModifierModeleComponent],
+    SupprimerOptionsComponent, AjouterOptionComponent, ModifierOptionComponent, ModifierModeleComponent, InfosDialogComponent],
 })
 export class GestionModule {
 }

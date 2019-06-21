@@ -7,6 +7,7 @@ import {AjouterVersionComponent} from './ajouter-version/ajouter-version.compone
 import {ModifierVerionComponent} from './modifier-verion/modifier-verion.component';
 import {MatDialog, MatDialogRef, MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {VersionDetail} from '../../../services/entites/versionDetail.model';
+import {InfosDialogComponent} from './infos-dialog/infos-dialog.component';
 
 
 
@@ -137,6 +138,14 @@ export class GestionVersionComponent implements OnInit, AfterViewInit {
     });
   }
 
+
+  afficherTousOptions(version) {
+    const dialogRef: MatDialogRef<InfosDialogComponent> = this.matDialog.open(InfosDialogComponent, {width: '800px', height: '60%'});
+    dialogRef.componentInstance.version = version;
+    dialogRef.afterClosed().subscribe(() => {
+    });
+
+  }
   /**
    *  Association du sort et de la pagination au dataSource
    */
