@@ -7,11 +7,13 @@ import {GestionVersionComponent} from './gestion-version/gestion-version.compone
 import {GestionCouleurComponent} from './gestion-couleur/gestion-couleur.component';
 import {StockComponent} from './stock/stock.component';
 import {StockVehiculesComponent} from './stock/stock-vehicules/stock-vehicules.component';
+import {UtilisateurGuard} from '../../guards/utilisateur.guard';
 
 const routes: Routes = [
   {
     path: 'gestion',
     component: GestionComponent,
+    canActivate: [UtilisateurGuard],
     children: [
       {
         path: 'modeles',

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {MaterialModule} from './material.module';
@@ -19,6 +19,8 @@ import { FormsModule } from '@angular/forms';
 import { GestionModule } from './pages/gestion/gestion.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import { ConfirmationDialogComponent } from './pages/shared/confirmation-dialog/confirmation-dialog.component';
+import {LoginErrorInterceptor} from './EroorsInterceptors/LoginEroor.interceptor';
+import { AlertComponent } from './components/alert/alert.component';
 
 const urlGlobale = 'https://sayaradz.herokuapp.com';
 
@@ -33,6 +35,7 @@ const urlGlobale = 'https://sayaradz.herokuapp.com';
     PremierePageComponent,
     LoginComponent,
     ConfirmationDialogComponent,
+    AlertComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,7 +51,8 @@ const urlGlobale = 'https://sayaradz.herokuapp.com';
   ],
   entryComponents: [ConfirmationDialogComponent],
   schemas: [NO_ERRORS_SCHEMA],
-  providers: [ModeleService, {provide: 'url', useValue: urlGlobale}],
+  providers: [ModeleService, {provide: 'url', useValue: urlGlobale},
+              { provide: HTTP_INTERCEPTORS, useClass: LoginErrorInterceptor, multi: true },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

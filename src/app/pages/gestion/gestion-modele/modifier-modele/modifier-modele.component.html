@@ -36,22 +36,10 @@
         </i>
         <span class="label">Options</span>
         <br/>
-        <div formArrayName="options1">
-          <div *ngFor="let opt of options1Formulaire.controls; let i=index" [formGroupName]="i" class="row" style="margin: 0">
-            <div class="col-4">
-              <label>
-                <input class="inputOption" disabled="true" formControlName="codeOption">
-              </label>
-            </div>
-            <div class="col-4">
-              <label>
-                <input class="inputOption" disabled="true" formControlName="nomOption">
-              </label>
-            </div>
-            <div class="col-3">
-              <button mat-raised-button color="warn" (click)="supprimerOption(i)">Supprimer</button>
-            </div>
-          </div>
+        <span>choisir parmis les options existantes</span>
+        <br/>
+        <div fxLayout="column" fxLayoutAlign="center start" id="options" *ngIf="optionsArray">
+          <mat-checkbox color="primary" *ngFor="let opt of optionsArray" [value]="opt.CodeOption" [checked]="opt.Checked" (change)="gererOptions($event, opt)">{{opt.CodeOption}}  {{opt.NomOption}}</mat-checkbox>
         </div>
         <i class="material-icons iajouter" (click)="ajouterOption()">
           add
