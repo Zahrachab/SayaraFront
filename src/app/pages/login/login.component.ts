@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     private authenticationService: AuthentificationService,
     private alertService: AlertService
   ) {
-        if (this.authenticationService.currentUserValue) {
+        if (AuthentificationService.currentUserValue) {
            this.router.navigate(['/gestion/modeles']);
         }
   }

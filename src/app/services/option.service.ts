@@ -3,6 +3,8 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import {ModeleDetail} from './entites/modeleDetail.model';
 import {Option} from './entites/option.model';
+import {VersionDetail} from './entites/versionDetail.model';
+import {OptionDetail} from './entites/optionDetail.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -38,6 +40,7 @@ export class OptionService {
 
   getOptions(codeModele): Observable<Option[]> {
     let options;
+    alert(this.serviceUrlOptions + codeModele);
     this.http.get<ModeleDetail>(this.serviceUrlOptions + codeModele).subscribe(modele => {
       options = (modele as ModeleDetail).options as Option[];
     });
@@ -49,6 +52,9 @@ export class OptionService {
     });
   }
 
+  getOptionsWithLigneTarifs(codeModele): Observable<OptionDetail[]> {
+    return this.http.get<OptionDetail[]>(this.serviceUrlOptions + codeModele + '/options');
+  }
   supprimerDuModele(code: string, codeModele: string) {
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
     alert(this.url + '/Marques/Modeles/' + codeModele + '/Options/' + code);

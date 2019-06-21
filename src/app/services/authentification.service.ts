@@ -11,18 +11,18 @@ import {User} from './entites/user.model';
 })
 
 export class AuthentificationService {
-  private currentUserSubject: BehaviorSubject<User>;
-  public currentUser: Observable<User>;
-  private url = this.injector.get('url');
 
   constructor(private http: HttpClient, private injector: Injector) {
-    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
-    this.currentUser = this.currentUserSubject.asObservable();
+    AuthentificationService.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
+    AuthentificationService.currentUser = AuthentificationService.currentUserSubject.asObservable();
   }
 
-  public get currentUserValue(): User {
-    return this.currentUserSubject.value;
+  public static get currentUserValue(): User {
+    return AuthentificationService.currentUserSubject.value;
   }
+  public static currentUser: Observable<User>;
+  private static currentUserSubject: BehaviorSubject<User>;
+  private url = this.injector.get('url');
 
   login(username: string, password: string) {
 
@@ -32,7 +32,7 @@ export class AuthentificationService {
         if (user && user.token) {
           // store user details and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem('utilisateur', JSON.stringify(user));
-          this.currentUserSubject.next(user);
+          AuthentificationService.currentUserSubject.next(user);
         }
         return user;
       }));
@@ -41,6 +41,6 @@ export class AuthentificationService {
    logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('utilisateur');
-    this.currentUserSubject.next(null);
+    AuthentificationService.currentUserSubject.next(null);
   }
 }
