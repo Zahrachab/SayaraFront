@@ -21,6 +21,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { ConfirmationDialogComponent } from './pages/shared/confirmation-dialog/confirmation-dialog.component';
 import {LoginErrorInterceptor} from './EroorsInterceptors/LoginEroor.interceptor';
 import { AlertComponent } from './components/alert/alert.component';
+import {TarifsModule} from './pages/tarifs/tarifs.module';
 
 const urlGlobale = 'https://sayaradz.herokuapp.com';
 
@@ -47,6 +48,7 @@ const urlGlobale = 'https://sayaradz.herokuapp.com';
     ReactiveFormsModule,
     FormsModule,
     GestionModule,
+    TarifsModule,
     MDBBootstrapModule.forRoot()
   ],
   entryComponents: [ConfirmationDialogComponent],
