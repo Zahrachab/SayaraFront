@@ -24,20 +24,21 @@ export class GestionCouleurComponent implements OnInit {
 
   constructor(private couleurService: CouleurService,
               private modalService: MatDialog,
-              private _Activatedroute: ActivatedRoute,
+              private activatedroute: ActivatedRoute,
               private modeleService: ModeleService,
               private matDialog: MatDialog,
               private dialogValidation: MatDialog) {}
   ngOnInit() {
     try {
-      this.codeModele = this._Activatedroute.snapshot.params.CodeModele; /*récupérer le code modèle passé en paramètre dans l'url*/
+      this.codeModele = this.activatedroute.snapshot.params.CodeModele; /*récupérer le code modèle passé en paramètre dans l'url*/
+      this.refreshData();
+
     } catch {
       this.codeModele = null;
     }
     this.modeleService.getModeles().subscribe(modeles => {
       this.modeles = modeles as ModeleDetail[];
     });
-    this.refreshData();
 
   }
 

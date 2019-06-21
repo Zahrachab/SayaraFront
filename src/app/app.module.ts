@@ -23,6 +23,7 @@ import {LoginErrorInterceptor} from './EroorsInterceptors/LoginEroor.interceptor
 import { AlertComponent } from './components/alert/alert.component';
 import {TarifsModule} from './pages/tarifs/tarifs.module';
 
+
 const urlGlobale = 'https://sayaradz.herokuapp.com';
 
 @NgModule({

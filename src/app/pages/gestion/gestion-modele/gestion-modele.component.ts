@@ -6,6 +6,8 @@ import {MatDialog, MatDialogRef, MatPaginator, MatSort, MatTableDataSource} from
 import {SupprimerModeleComponent} from './supprimer-modele/supprimer-modele.component';
 import {ModeleDetail} from '../../../services/entites/modeleDetail.model';
 import {ModifierModeleComponent} from './modifier-modele/modifier-modele.component';
+import {ModifierVerionComponent} from '../gestion-version/modifier-verion/modifier-verion.component';
+import {FicheModeleComponent} from './fiche-modele/fiche-modele.component';
 
 @Component({
   selector: 'app-gestion-modele',
@@ -36,10 +38,11 @@ export class GestionModeleComponent implements OnInit, AfterViewInit {
    * Constructeur de la classe, il redefinit le filtre de recherche pour inclure les sous-objets (options et versions)
    * @param modeleService
    * Il va permettre d'avoir les modeles a afficher
-   * @param modalService
+   * @param matDialog
    * Un service qui va permettre d'ouvrir les boites de dialogues pour ajouter, supprimer et modifier
    */
-  constructor(private modeleService: ModeleService, private modalService: MatDialog) {
+  constructor(private modeleService: ModeleService,
+              private matDialog: MatDialog) {
     // Redéfinition du filtre pour prendre en compte les sous objets
     this.dataSource.filterPredicate = (order: any, filter: string) => {
       const transformedFilter = filter.trim().toLowerCase();
@@ -85,7 +88,7 @@ export class GestionModeleComponent implements OnInit, AfterViewInit {
    */
   ajouterModele() {
     // Ouverture de la boite de dialogue, composant AjouterModele
-    const dialogRef: MatDialogRef<AjouterModeleComponent> = this.modalService.open(AjouterModeleComponent, {
+    const dialogRef: MatDialogRef<AjouterModeleComponent> = this.matDialog.open(AjouterModeleComponent, {
       width: '850px',
       height: 'auto'
     });
@@ -102,7 +105,7 @@ export class GestionModeleComponent implements OnInit, AfterViewInit {
    */
   modifierModele(modele: ModeleDetail) {
     // Ouverture de la boite de dialogue, composant ModifierModele
-    const dialogRef: MatDialogRef<ModifierModeleComponent> = this.modalService.open(ModifierModeleComponent, {
+    const dialogRef: MatDialogRef<ModifierModeleComponent> = this.matDialog.open(ModifierModeleComponent, {
       width: '800px',
       data: {modele}
     });
@@ -119,7 +122,7 @@ export class GestionModeleComponent implements OnInit, AfterViewInit {
    */
   supprimerModele(modele) {
     // Ouverture de la boite de dialogue, composant SupprimerModele
-    const dialogRef: MatDialogRef<SupprimerModeleComponent> = this.modalService.open(SupprimerModeleComponent, {
+    const dialogRef: MatDialogRef<SupprimerModeleComponent> = this.matDialog.open(SupprimerModeleComponent, {
       width: '800px',
       data: {modele}
     });
@@ -146,6 +149,10 @@ export class GestionModeleComponent implements OnInit, AfterViewInit {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
 
+  afficherFiche(modele: ModeleDetail) {
+    const dialogRef: MatDialogRef<FicheModeleComponent> = this.matDialog.open(FicheModeleComponent, {width: '800px', height: '80%'});
+    dialogRef.componentInstance.modele = modele;
+  }
 
 }
 

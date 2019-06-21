@@ -8,6 +8,7 @@ import {ModifierVerionComponent} from './modifier-verion/modifier-verion.compone
 import {MatDialog, MatDialogRef, MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {VersionDetail} from '../../../services/entites/versionDetail.model';
 import {InfosDialogComponent} from './infos-dialog/infos-dialog.component';
+import {ActivatedRoute} from '@angular/router';
 
 
 
@@ -51,7 +52,10 @@ export class GestionVersionComponent implements OnInit, AfterViewInit {
    * @param matDialog
    * Un service qui va permettre d'ouvrir les boites de dialogues pour ajouter, supprimer et modifier
    */
-  constructor(private versionService: VersionService, private modeleService: ModeleService, private matDialog: MatDialog) {
+  constructor(private versionService: VersionService,
+              private modeleService: ModeleService,
+              private activatedroute: ActivatedRoute,
+              private matDialog: MatDialog) {
     this.versionDataSource.filterPredicate = (order: any, filter: string) => {
       const transformedFilter = filter.trim().toLowerCase();
       const listAsFlatString = (obj): string => {
@@ -72,8 +76,21 @@ export class GestionVersionComponent implements OnInit, AfterViewInit {
    *  Executé a l'initialisation du composant, récupere les données et initialise la pagination
    */
   ngOnInit() {
+    try {
+      this.codeModele = this.activatedroute.snapshot.params.CodeModele; /*récupérer le code modèle passé en paramètre dans l'url*/
+    } catch {
+      this.codeModele = null;
+    }
+    this.refreshData();
+
     this.modeleService.getModeles().subscribe(modeles => {
       this.modeles = modeles as ModeleDetail[];
+    });
+  }
+
+  refreshData() {
+    this.versionService.getVersions(this.codeModele).subscribe(resultat => {
+      this.versionDataSource.data = resultat as VersionDetail[];
     });
   }
 
@@ -99,9 +116,7 @@ export class GestionVersionComponent implements OnInit, AfterViewInit {
       });
       dialogRef.componentInstance.codeModele = this.codeModele;
       dialogRef.afterClosed().subscribe(() => {
-        this.versionService.getVersions(this.codeModele).subscribe(resultat => {
-          this.versionDataSource.data = resultat as VersionDetail[];
-        });
+        this.refreshData();
       });
     }
   }
@@ -115,9 +130,7 @@ export class GestionVersionComponent implements OnInit, AfterViewInit {
     const dialogRef: MatDialogRef<ModifierVerionComponent> = this.matDialog.open(ModifierVerionComponent, {width: '800px', height: '80%'});
     dialogRef.componentInstance.version = version;
     dialogRef.afterClosed().subscribe(() => {
-      this.versionService.getVersions(this.codeModele).subscribe(resultat => {
-        this.versionDataSource.data = resultat as VersionDetail[];
-      });
+      this.refreshData();
     });
   }
 
@@ -132,9 +145,7 @@ export class GestionVersionComponent implements OnInit, AfterViewInit {
       data: {version}
     });
     dialogRef.afterClosed().subscribe(() => {
-      this.versionService.getVersions(this.codeModele).subscribe(resultat => {
-        this.versionDataSource.data = resultat as VersionDetail[];
-      });
+      this.refreshData();
     });
   }
 

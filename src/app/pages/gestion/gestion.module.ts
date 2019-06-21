@@ -30,6 +30,11 @@ import { GestionCouleurComponent } from './gestion-couleur/gestion-couleur.compo
 import { ModifierCouleurComponent } from './gestion-couleur/modifier-couleur/modifier-couleur.component';
 import { AjouterCouleurComponent } from './gestion-couleur/ajouter-couleur/ajouter-couleur.component';
 import { InfosDialogComponent } from './gestion-version/infos-dialog/infos-dialog.component';
+import { StockComponent } from './stock/stock/stock.component';
+import { StockVehiculesComponent } from './stock/stock-vehicules/stock-vehicules.component';
+import {MatMenuModule} from '@angular/material';
+import { FicheModeleComponent } from './gestion-modele/fiche-modele/fiche-modele.component';
+
 
 @NgModule({
   declarations: [GestionOptionsComponent, GestionComponent, GestionModeleComponent, AjouterModeleComponent,
@@ -45,7 +50,10 @@ import { InfosDialogComponent } from './gestion-version/infos-dialog/infos-dialo
                   AjouterOptionComponent,
                   ModifierOptionComponent,
                   FileSelectDirective,
-                  InfosDialogComponent],
+                  InfosDialogComponent,
+                  StockComponent,
+                  StockVehiculesComponent,
+                  FicheModeleComponent],
 
   imports: [
     CommonModule,
@@ -57,13 +65,14 @@ import { InfosDialogComponent } from './gestion-version/infos-dialog/infos-dialo
     ReactiveFormsModule,
     MaterialModule,
     MatSelectModule,
+    MatMenuModule,
     ColorPickerModule,
     MDBBootstrapModule.forRoot()
   ],
   exports: [NavbarComponent, SidenavComponent, FooterComponent],
   entryComponents: [AjouterModeleComponent, AjouterVersionComponent, ModifierVerionComponent,
     SupprimerModeleComponent, SupprimerVersionComponent, ModifierCouleurComponent, AjouterCouleurComponent,
-    SupprimerOptionsComponent, AjouterOptionComponent, ModifierOptionComponent, ModifierModeleComponent, InfosDialogComponent],
+    SupprimerOptionsComponent, AjouterOptionComponent, ModifierOptionComponent, ModifierModeleComponent, FicheModeleComponent, InfosDialogComponent],
 })
 export class GestionModule {
 }

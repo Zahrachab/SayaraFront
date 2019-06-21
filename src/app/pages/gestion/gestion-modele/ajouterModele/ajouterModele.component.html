@@ -50,12 +50,12 @@
         <div *ngFor="let opt of optionsFormulaire.controls; let i=index" [formGroupName]="i" class="row" style="margin: 0">
           <div class="col-4">
             <label>
-              <input class="inputOption" matInput formControlName="codeOption">
+              <input class="inputOption" matInput formControlName="codeOption" placeholder="Code de l'option">
             </label>
           </div>
           <div class="col-4">
             <label>
-              <input class="inputOption" matInput formControlName="nomOption">
+              <input class="inputOption" matInput formControlName="nomOption" placeholder="Nom de l'option">
             </label>
           </div>
           <div class="col-3">

@@ -86,9 +86,19 @@
           <button mat-icon-button (click)="supprimerModele(modele)">
             <mat-icon class="rouge" >delete</mat-icon>
           </button>
-          <button mat-icon-button>
+
+          <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
             <mat-icon class="bleu">more_vert</mat-icon>
           </button>
+          <mat-menu #menu="matMenu">
+            <a mat-menu-item [routerLink]="['/gestion/versions', modele.CodeModele]">
+              <span>Gérer les versions</span>
+            </a>
+            <button mat-menu-item (click)="afficherFiche(modele)">
+              <span>Fiche technique</span>
+            </button>
+          </mat-menu>
+
         </mat-cell>
       </ng-container>
 

@@ -62,13 +62,14 @@ export class GestionOptionsComponent implements OnInit, AfterViewInit {
    * récupere le parametre passé en url si il y'en a, et récupere les modeles et les options
    */
   ngOnInit() {
+
     try {
-      // Récupération du codeModele a partir de l'url
       this.codeModele = this.activatedroute.snapshot.params.CodeModele; /*récupérer le code modèle passé en paramètre dans l'url*/
-      this.modeleSelectionne = this.activatedroute.snapshot.params.CodeModele;
     } catch {
       this.codeModele = null;
     }
+    this.refreshData();
+
     // Récupération des modeles pour le mat-select
     this.modeleService.getModeles().subscribe(modeles => {
       this.modeles = modeles as ModeleDetail[];
@@ -105,7 +106,8 @@ export class GestionOptionsComponent implements OnInit, AfterViewInit {
    * L'option a supprimer
    */
   supprimerOption(option) {
-        this.modalService.open(SupprimerOptionsComponent, {width: '800px', data: {option, modele: this.modeleSelectionne}});
+        this.modalService.open(SupprimerOptionsComponent, {width: '800px', data: {option, modele: 12}});
+        this.refreshData();
   }
 
   /**

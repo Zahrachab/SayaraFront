@@ -1,0 +1,36 @@
+<mat-dialog-content>
+  <div  fxLayout="row" fxLayoutAlign="space-between start" >
+    <div fxLayout="column">
+      <h1 mat-dialog-title style="margin: 0">Fiche technique du modèle {{modele.NomModele}}</h1>
+      <div id="trait"></div>
+    </div>
+    <button mat-icon-button type="submit" (click)="Fermer()" mat-dialog-close [disabled]="formisvalid">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <div>
+    <h4>Les options compatibles : </h4>
+    <ul>
+      <li *ngFor="let option of modele.options ">
+        {{option.NomOption}}
+      </li>
+    </ul>
+   <br>
+    <h4>Les versions : </h4>
+    <ul>
+      <li *ngFor="let version of modele.versions">
+        {{version.NomVersion}}
+      </li>
+    </ul>
+    <h4>Les couleurs :</h4>
+    <div fxLayout="row wrap" *ngFor="let couleur of modele.couleurs" class="row" >
+      <label fxLayoutAlign="center center" fxFlex="20">{{couleur.NomCouleur}}</label>
+      <div fxLayout="column" class="circle-color" formControlName="codeHexa"
+           [(colorPicker)]="couleur.CodeHexa" [style.background]="couleur.CodeHexa" disabled>
+        </div>
+    </div>
+  </div>
+
+
+</mat-dialog-content>
