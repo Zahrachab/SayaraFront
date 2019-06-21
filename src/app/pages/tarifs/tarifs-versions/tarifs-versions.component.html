@@ -1,0 +1,58 @@
+<div class="gestion">
+  <h2>Gestion des Tarifs </h2>
+  <div id="trait"></div>
+  <div fxLayout="row">
+    <div fxFlex="70">
+      <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <input matInput type="text" (keyup)="appliquerFiltre($event.target.value)" placeholder="Rechercher une version" value="">
+        </mat-form-field>
+      </form>
+    </div>
+  </div>
+  <div class="example-container mat-elevation-z8">
+    <mat-table [dataSource]="versionDataSource" matSort>
+      <ng-container matColumnDef='CodeVersion'>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          Code Version
+        </mat-header-cell>
+        <mat-cell *matCellDef="let version"> {{version.CodeVersion}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef='NomVersion'>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          Modele
+        </mat-header-cell>
+        <mat-cell class="gras" *matCellDef="let version"> {{version.modele.NomModele}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef='NomModele'>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          Version
+        </mat-header-cell>
+        <mat-cell class="gras" *matCellDef="let version"> {{version.NomVersion}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef='Apartir'>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          A partir du
+        </mat-header-cell>
+        <mat-cell class="gras" *matCellDef="let version"> <span *ngIf="version.lignetarif!==null">{{version.lignetarif.DateDebut}} </span> </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef='Jusqua'>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          Jusqu'au
+        </mat-header-cell>
+        <mat-cell class="gras" *matCellDef="let version"> <span *ngIf="version.lignetarif!==null">{{version.lignetarif.DateFin}} </span> </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef='Prix'>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          Prix
+        </mat-header-cell>
+        <mat-cell class="gras" *matCellDef="let version"> <span *ngIf="version.lignetarif!==null">{{version.lignetarif.Prix}} </span> </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>
+  <!-- <app-upload-fichier></app-upload-fichier>-->
+
+
+</div>
