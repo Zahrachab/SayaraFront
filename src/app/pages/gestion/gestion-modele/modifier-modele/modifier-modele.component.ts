@@ -265,6 +265,7 @@ export class ModifierModeleComponent implements OnInit {
             this.formulaire.value.code);
         }
 
+
         /* ajouter des couleurs */
         for (let i = 0; i < this.couleursChecked.length; i++) {
           this.couleurService.ajouterCouleurModele(String(this.couleursChecked[i].CodeCouleur), String(this.couleursChecked[i].NomCouleur), String(this.couleursChecked[i].CodeHexa),

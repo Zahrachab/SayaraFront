@@ -29,8 +29,6 @@ import { ColorPickerModule } from 'ngx-color-picker';
 import { GestionCouleurComponent } from './gestion-couleur/gestion-couleur.component';
 import { ModifierCouleurComponent } from './gestion-couleur/modifier-couleur/modifier-couleur.component';
 import { AjouterCouleurComponent } from './gestion-couleur/ajouter-couleur/ajouter-couleur.component';
-import { StockComponent } from './stock/stock.component';
-import { StockVehiculesComponent } from './stock/stock-vehicules/stock-vehicules.component';
 import { InfosDialogComponent } from './gestion-version/infos-dialog/infos-dialog.component';
 
 @NgModule({
@@ -47,8 +45,6 @@ import { InfosDialogComponent } from './gestion-version/infos-dialog/infos-dialo
                   AjouterOptionComponent,
                   ModifierOptionComponent,
                   FileSelectDirective,
-                  StockComponent,
-                  StockVehiculesComponent,
                   InfosDialogComponent],
 
   imports: [

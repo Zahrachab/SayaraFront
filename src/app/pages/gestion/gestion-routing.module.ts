@@ -5,13 +5,14 @@ import {GestionModeleComponent} from './gestion-modele/gestion-modele.component'
 import {GestionOptionsComponent} from './gestion-options/gestion-options.component';
 import {GestionVersionComponent} from './gestion-version/gestion-version.component';
 import {GestionCouleurComponent} from './gestion-couleur/gestion-couleur.component';
-import {StockComponent} from './stock/stock.component';
-import {StockVehiculesComponent} from './stock/stock-vehicules/stock-vehicules.component';
+import {UtilisateurGuard} from '../../guards/utilisateur.guard';
+
 
 const routes: Routes = [
   {
     path: 'gestion',
     component: GestionComponent,
+    canActivate: [UtilisateurGuard],
     children: [
       {
         path: 'modeles',
@@ -41,17 +42,7 @@ const routes: Routes = [
         path: 'couleurs',
         component: GestionCouleurComponent,
         pathMatch: 'full'
-      },
-
-      {
-        path: 'stock',
-        component: StockComponent,
-      },
-      {
-        path: 'stock/vehicules',
-        component: StockVehiculesComponent,
-      }
-    ]
+      }]
   }
 ];
 
