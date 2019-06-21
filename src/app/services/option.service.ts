@@ -40,7 +40,6 @@ export class OptionService {
 
   getOptions(codeModele): Observable<Option[]> {
     let options;
-    alert(this.serviceUrlOptions + codeModele);
     this.http.get<ModeleDetail>(this.serviceUrlOptions + codeModele).subscribe(modele => {
       options = (modele as ModeleDetail).options as Option[];
     });
@@ -57,7 +56,6 @@ export class OptionService {
   }
   supprimerDuModele(code: string, codeModele: string) {
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
-    alert(this.url + '/Marques/Modeles/' + codeModele + '/Options/' + code);
     return this.http.delete(this.url + '/Marques/Modeles/' + codeModele + '/Options/' + code,
       {headers: tokenHeader}).pipe();
   }

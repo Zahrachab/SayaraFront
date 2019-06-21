@@ -13,8 +13,7 @@ export class UtilisateurGuard implements CanActivate {
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    const currentUser = AuthentificationService.currentUserValue;
-    alert(currentUser);
+    const currentUser = localStorage.getItem('utilisateur') || null;
     if (currentUser) {
       return true;
     }
