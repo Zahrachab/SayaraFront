@@ -3,7 +3,7 @@ import {
   FormBuilder
 } from '@angular/forms';
 import { AjouterModeleComponent } from './ajouterModele.component';
-import {NO_ERRORS_SCHEMA} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA} from '@angular/core';
 import {ModeleService} from '../../../../services/modele.service';
 import {HttpClientModule} from '@angular/common/http';
 import {ModeleServiceMock} from '../../../../mocks/Modele.Service.mock';
@@ -16,7 +16,7 @@ import {VersionServiceMock} from '../../../../mocks/Version.Service.mock';
 import {MatDialogRef} from '@angular/material';
 
 
-describe('AjouterModeleComponent', () => {
+fdescribe('AjouterModeleComponent', () => {
   let component: AjouterModeleComponent;
   let fixture: ComponentFixture<AjouterModeleComponent>;
 
@@ -32,7 +32,7 @@ describe('AjouterModeleComponent', () => {
         {provide : VersionService , useClass : VersionServiceMock},
         { provide: MatDialogRef, useValue: {} }
       ],
-      schemas: [NO_ERRORS_SCHEMA]
+      schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
   }));

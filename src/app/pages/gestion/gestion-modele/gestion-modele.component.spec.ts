@@ -14,6 +14,7 @@ import {VersionService} from '../../../services/version.service';
 import {VersionServiceMock} from '../../../mocks/Version.Service.mock';
 import {MatPaginatorModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatMenuModule} from '@angular/material';
 import {Observable} from 'rxjs';
 import {ModeleDetail} from '../../../services/entites/modeleDetail.model';
 
@@ -26,7 +27,7 @@ fdescribe('GestionModeleComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
 
-      imports: [HttpClientModule, MatTableModule, MatPaginatorModule, BrowserAnimationsModule],
+      imports: [HttpClientModule, MatTableModule, MatPaginatorModule, BrowserAnimationsModule, MatMenuModule],
       declarations: [ GestionModeleComponent ],
       providers: [
         {provide : ModeleService , useClass : ModeleServiceMock},

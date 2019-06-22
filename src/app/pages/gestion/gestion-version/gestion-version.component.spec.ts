@@ -3,6 +3,7 @@ import { GestionVersionComponent } from './gestion-version.component';
 import {VersionServiceMock} from '../../../mocks/Version.Service.mock';
 import {VersionDetail} from '../../../services/entites/versionDetail.model';
 import {HttpClientModule} from '@angular/common/http';
+import {MatMenuModule} from '@angular/material';
 import {
   MatDialog,
   MatInputModule,
@@ -17,6 +18,7 @@ import {OptionService} from '../../../services/option.service';
 import {OptionServiceMock} from '../../../mocks/Option.Service.mock';
 import {CouleurService} from '../../../services/couleur.service';
 import {CouleurServiceMock} from '../../../mocks/Couleur.Service.mock';
+import {RouterTestingModule} from '@angular/router/testing';
 import {VersionService} from '../../../services/version.service';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
 import {By} from '@angular/platform-browser';
@@ -27,7 +29,7 @@ fdescribe('GestionVersionComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientModule, MatTableModule, MatPaginatorModule, BrowserAnimationsModule, MatSelectModule, MatInputModule],
+      imports: [HttpClientModule, MatTableModule, MatPaginatorModule, RouterTestingModule, BrowserAnimationsModule, MatMenuModule, MatSelectModule, MatInputModule],
       declarations: [ GestionVersionComponent ],
       providers: [
         {provide : ModeleService , useClass : ModeleServiceMock},
