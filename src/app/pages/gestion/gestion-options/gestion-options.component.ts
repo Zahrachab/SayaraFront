@@ -95,7 +95,7 @@ export class GestionOptionsComponent implements OnInit, AfterViewInit {
    */
   changerOptions($event) {
     this.codeModele = $event.value;
-    if ((this.codeModele !== '') || (this.codeModele != null)) {
+    if ((this.codeModele !== '')  && (this.codeModele != null)) {
       this.optionService.getOptions($event.value).subscribe(res => {
         this.dataSource.data = res as Option[];
       });
@@ -122,15 +122,20 @@ export class GestionOptionsComponent implements OnInit, AfterViewInit {
    * Ajouter une option, invoque le composant ajouterOption
    */
   ajouterOption() {
-    // Ouverture de la boite de dialogue, composant Ajouter Option
-    const dialogRef: MatDialogRef<AjouterOptionComponent> = this.modalService.open(AjouterOptionComponent, {
-      width: '800px',
-      data: {modele: this.codeModele}
-    });
-    // Rafraichissement de la page apres fermeture de la boite de dialogue
-    dialogRef.afterClosed().subscribe(() => {
-      this.refreshData();
-    });
+
+    if ((this.codeModele !== '') && (this.codeModele != null)) {
+      // Ouverture de la boite de dialogue, composant Ajouter Option
+      const dialogRef: MatDialogRef<AjouterOptionComponent> = this.modalService.open(AjouterOptionComponent, {
+        width: '800px',
+        data: {modele: this.codeModele}
+      });
+      // Rafraichissement de la page apres fermeture de la boite de dialogue
+      dialogRef.afterClosed().subscribe(() => {
+        this.refreshData();
+      });
+    } else {
+      alert('veuillez choisir un modèle');
+    }
 
   }
 

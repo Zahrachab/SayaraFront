@@ -89,9 +89,11 @@ export class GestionVersionComponent implements OnInit, AfterViewInit {
   }
 
   refreshData() {
-    this.versionService.getVersions(this.codeModele).subscribe(resultat => {
-      this.versionDataSource.data = resultat as VersionDetail[];
-    });
+    if ((this.codeModele !== '') && (this.codeModele != null )) {
+      this.versionService.getVersions(this.codeModele).subscribe(resultat => {
+        this.versionDataSource.data = resultat as VersionDetail[];
+      });
+    }
   }
 
   /**
@@ -110,7 +112,7 @@ export class GestionVersionComponent implements OnInit, AfterViewInit {
    * Ajouter une version, invoque le composant ajouterVersion
    */
   ajouterVersion() {
-    if (this.codeModele != null) {
+    if ((this.codeModele !== '') && (this.codeModele != null )) {
       const dialogRef: MatDialogRef<AjouterVersionComponent> = this.matDialog.open(AjouterVersionComponent, {
         width: '800px',
       });
@@ -118,6 +120,8 @@ export class GestionVersionComponent implements OnInit, AfterViewInit {
       dialogRef.afterClosed().subscribe(() => {
         this.refreshData();
       });
+    } else {
+      alert("Veuillez choisir un modèle");
     }
   }
 

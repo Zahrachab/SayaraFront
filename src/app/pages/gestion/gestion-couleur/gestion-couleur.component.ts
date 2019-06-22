@@ -62,7 +62,7 @@ export class GestionCouleurComponent implements OnInit {
 
   /* Ouvrir un mat dialog pour l'ajout d'une couleur au modèle courant */
   ajouterCouleur() {
-    if (this.codeModele != null) {
+    if ((this.codeModele !== '') && (this.codeModele != null )){
       const dialogRef: MatDialogRef<AjouterCouleurComponent> = this.matDialog.open(AjouterCouleurComponent, {
         width: '800px',
       });
