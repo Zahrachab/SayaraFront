@@ -9,6 +9,8 @@ import {MatDialog, MatDialogRef, MatPaginator, MatSort, MatTableDataSource} from
 import {VersionDetail} from '../../../services/entites/versionDetail.model';
 import {InfosDialogComponent} from './infos-dialog/infos-dialog.component';
 import {ActivatedRoute} from '@angular/router';
+import {FicheModeleComponent} from '../gestion-modele/fiche-modele/fiche-modele.component';
+import {FicheVersionComponent} from './fiche-version/fiche-version.component';
 
 
 
@@ -176,5 +178,10 @@ export class GestionVersionComponent implements OnInit, AfterViewInit {
    */
   appliquerFiltre = (value: string) => {
     this.versionDataSource.filter = value.trim().toLocaleLowerCase();
+  }
+
+  afficherFiche(version: VersionDetail) {
+    const dialogRef: MatDialogRef<FicheVersionComponent> = this.matDialog.open(FicheVersionComponent, {width: '800px', height: '80%'});
+    dialogRef.componentInstance.version = version;
   }
 }

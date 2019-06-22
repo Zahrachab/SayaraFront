@@ -74,7 +74,7 @@ import { FicheVersionComponent } from './gestion-version/fiche-version/fiche-ver
   exports: [NavbarComponent, SidenavComponent, FooterComponent, FileSelectDirective],
   entryComponents: [AjouterModeleComponent, AjouterVersionComponent, ModifierVerionComponent,
     SupprimerModeleComponent, SupprimerVersionComponent, ModifierCouleurComponent, AjouterCouleurComponent,
-    SupprimerOptionsComponent, AjouterOptionComponent, ModifierOptionComponent, ModifierModeleComponent, FicheModeleComponent, InfosDialogComponent],
+    SupprimerOptionsComponent, AjouterOptionComponent, ModifierOptionComponent, ModifierModeleComponent, FicheVersionComponent, FicheModeleComponent, InfosDialogComponent],
 })
 export class GestionModule {
 }
