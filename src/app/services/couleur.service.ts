@@ -29,9 +29,7 @@ export class CouleurService {
   ajouterCouleurModele(code: string, designation: string, hexa: string, codeModele: string) {
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
     return this.http.post(this.url + '/Marques/Modeles/' + codeModele + '/Couleurs',
-      {CodeCouleur: code, NomCouleur: designation, CodeHexa: hexa}, {headers: tokenHeader}).subscribe(() => {
-
-    });
+      {CodeCouleur: code, NomCouleur: designation, CodeHexa: hexa}, {headers: tokenHeader}).pipe();
   }
 
   /* récupérer les couleurs associées à un modèle */
@@ -51,7 +49,7 @@ export class CouleurService {
   modifierCouleur(code: string, nom: string, codeHexa: string) {
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
     return this.http.put(this.url + '/Marques/Modeles/Versions/Couleurs/' + code,
-      {CodeCouleur: code, NomCouleur: nom, CodeHexa: codeHexa}, {headers: tokenHeader}).subscribe( res => {});
+      {CodeCouleur: code, NomCouleur: nom, CodeHexa: codeHexa}, {headers: tokenHeader}).pipe();
   }
 
   /* récupérer la liste des couleurs associés à tous les modèles d'une marque */

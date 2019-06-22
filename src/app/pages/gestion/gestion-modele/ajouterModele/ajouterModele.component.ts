@@ -210,23 +210,23 @@ export class AjouterModeleComponent implements OnInit {
       // Ajout des nouvelles options
       for (const option of this.formulaire.value.options) {
         this.optionService.ajouterOptionModele(option.codeOption, option.nomOption,
-          this.formulaire.value.code);
+          this.formulaire.value.code).subscribe();
       }
 
       // Ajout des options
       for (const opt of this.optionsChecked) {
         this.optionService.ajouterOptionModele(String(opt.CodeOption), String(opt.NomOption),
-          this.formulaire.value.code);
+          this.formulaire.value.code).subscribe();
       }
       // Ajout des couleurs
       for (const couleur of this.couleursChecked) {
         this.couleurService.ajouterCouleurModele(String(couleur.CodeCouleur), String(couleur.NomCouleur), String(couleur.CodeHexa),
-          this.formulaire.value.code);
+          this.formulaire.value.code).subscribe();
       }
       // ajout des nouvelles couleurs
       for (const couleur of this.formulaire.value.couleurs) {
         this.couleurService.ajouterCouleurModele(couleur.codeCouleur, couleur.nomCouleur, couleur.codeHexa,
-          this.formulaire.value.code);
+          this.formulaire.value.code).subscribe();
       }
     });
     this.dialogRef.close();

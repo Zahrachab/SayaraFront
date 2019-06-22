@@ -127,7 +127,6 @@ export class AjouterVersionComponent implements OnInit {
           this.formulaire.value.nom, this.codeModele).subscribe(
           () => {
             for (i = 0; i < this.optionsChoisies.length; i++) {
-              console.log(i);
               this.optionservice.ajouter(String(this.optionsChoisies[i].CodeOption), String(this.optionsChoisies[i].NomOption), codeVersion
               ).subscribe();
             }

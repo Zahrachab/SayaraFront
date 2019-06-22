@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {MatDialog, MatDialogRef} from '@angular/material';
+import {MatDialog, MatDialogRef, MatTableDataSource} from '@angular/material';
 import {ActivatedRoute} from '@angular/router';
 import {CouleurDataSource} from '../../../dataSources/CouleurDataSource';
 import {ModeleDetail} from '../../../services/entites/modeleDetail.model';
@@ -8,6 +8,8 @@ import {CouleurService} from '../../../services/couleur.service';
 import {ModifierCouleurComponent} from './modifier-couleur/modifier-couleur.component';
 import {AjouterCouleurComponent} from './ajouter-couleur/ajouter-couleur.component';
 import {ConfirmationDialogComponent} from '../../shared/confirmation-dialog/confirmation-dialog.component';
+import {Option} from '../../../services/entites/option.model';
+import {Couleur} from '../../../services/entites/couleur.model';
 
 @Component({
   selector: 'app-gestion-couleur',
@@ -16,7 +18,7 @@ import {ConfirmationDialogComponent} from '../../shared/confirmation-dialog/conf
 })
 export class GestionCouleurComponent implements OnInit {
 
-  public dataSource: CouleurDataSource;
+  private dataSource = new MatTableDataSource<Couleur>();
   private codeModele: any;
   private modeles: ModeleDetail[];
   interval: any;
@@ -44,13 +46,17 @@ export class GestionCouleurComponent implements OnInit {
 
   refreshData() {
     if ((this.codeModele !== '') && (this.codeModele != null )) {
-      this.dataSource = new CouleurDataSource(this.couleurService, this.codeModele);
+      this.couleurService.getCouleurs(this.codeModele).subscribe(res => {
+        this.dataSource.data = res as Couleur[];
+      });
     }
   }
 
   /*Fonction à exécuter lors de la séléction d'un modèle pour rafraichir la liste des couleurs associées */
   changerCouleurs($event) {
-    this.dataSource = new CouleurDataSource(this.couleurService, $event.value);
+    this.couleurService.getCouleurs($event.value).subscribe(res => {
+      this.dataSource.data = res as Couleur[];
+    });
     this.codeModele = $event.value;
   }
 
@@ -92,6 +98,10 @@ export class GestionCouleurComponent implements OnInit {
         });
       }
     });
+  }
+
+  appliquerFiltre = (value: string) => {
+    this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
 
 

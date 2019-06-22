@@ -94,6 +94,7 @@ export class GestionOptionsComponent implements OnInit, AfterViewInit {
    * L'evenement de changement
    */
   changerOptions($event) {
+    this.codeModele = $event.value;
     if ((this.codeModele !== '') || (this.codeModele != null)) {
       this.optionService.getOptions($event.value).subscribe(res => {
         this.dataSource.data = res as Option[];
@@ -106,8 +107,15 @@ export class GestionOptionsComponent implements OnInit, AfterViewInit {
    * L'option a supprimer
    */
   supprimerOption(option) {
-        this.modalService.open(SupprimerOptionsComponent, {width: '800px', data: {option, modele: 12}});
-        this.refreshData();
+    // Ouverture de la boite de dialogue, composant Ajouter Option
+    const dialogRef: MatDialogRef<SupprimerOptionsComponent> = this.modalService.open(SupprimerOptionsComponent, {
+      width: '800px',
+      data: {option, modele: this.codeModele}
+    });
+    // Rafraichissement de la page apres fermeture de la boite de dialogue
+    dialogRef.afterClosed().subscribe(() => {
+      this.refreshData();
+    });
   }
 
   /**
@@ -117,7 +125,7 @@ export class GestionOptionsComponent implements OnInit, AfterViewInit {
     // Ouverture de la boite de dialogue, composant Ajouter Option
     const dialogRef: MatDialogRef<AjouterOptionComponent> = this.modalService.open(AjouterOptionComponent, {
       width: '800px',
-      data: {modele: this.modeleSelectionne}
+      data: {modele: this.codeModele}
     });
     // Rafraichissement de la page apres fermeture de la boite de dialogue
     dialogRef.afterClosed().subscribe(() => {

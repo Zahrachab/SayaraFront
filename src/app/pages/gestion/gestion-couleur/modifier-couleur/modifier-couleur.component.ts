@@ -40,10 +40,12 @@ export class ModifierCouleurComponent implements OnInit {
       if (result) {
         /* modifier le nom de la version */
 
-        this.couleurService.modifierCouleur(this.formulaire.value.code, this.formulaire.value.nom, this.color);
+        this.couleurService.modifierCouleur(this.formulaire.value.code, this.formulaire.value.nom,
+          this.color).subscribe(() => {
+          this.dialogRef.close();
+        });
       }
     });
-    this.dialogRef.close();
   }
 
 

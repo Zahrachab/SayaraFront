@@ -7,7 +7,7 @@
     <div fxFlex="70">
       <form class="example-form">
         <mat-form-field class="example-full-width">
-          <input matInput  placeholder="Rechercher une option" value="">
+          <input matInput  placeholder="Rechercher une option" (keyup)="appliquerFiltre($event.target.value)" value="">
         </mat-form-field>
       </form>
     </div>
@@ -46,9 +46,6 @@
           <button mat-icon-button (click)="supprimerOption(option)">
             <mat-icon class="rouge">delete</mat-icon>
           </button>
-          <a routerLink=".">
-            <mat-icon>more_vert</mat-icon>
-          </a>
         </mat-cell>
       </ng-container>
 

@@ -14,6 +14,7 @@ export class StockComponent implements OnInit {
   });
 
   private el: HTMLElement
+  private file: string;
   private files: Array<File> = [];
 
   constructor() { }

@@ -79,6 +79,7 @@ export class ModifierModeleComponent implements OnInit {
     // Liaison avec le Html
     this.formulaire.valueChanges.subscribe();
   }
+
   /**
    * Ajouter une option compatible avec le modele
    */
@@ -140,6 +141,7 @@ export class ModifierModeleComponent implements OnInit {
       });
     });
   }
+
   ajouterOption() {
     const option = this.constructeurFormulaire.group({
       codeOption: [],
@@ -184,7 +186,6 @@ export class ModifierModeleComponent implements OnInit {
   }
 
 
-
   gererCouleurs(event, couleur) {
     couleur.Checked = !couleur.Checked;
     if (couleur.Checked) {
@@ -219,7 +220,7 @@ export class ModifierModeleComponent implements OnInit {
     }
   }
 
-  changerCouleur(i , color) {
+  changerCouleur(i, color) {
     this.formulaire.value.couleurs[i].codeHexa = color;
   }
 
@@ -239,50 +240,44 @@ export class ModifierModeleComponent implements OnInit {
         let trouv = false;
         // Modifier un modele
         this.modeleService.modifier(this.data.modele.CodeModele, this.formulaire.value.nom).subscribe((res) => {
-            this.dialogReference.close();
+          /* ajouter des options */
+          for (let i = 0; i < this.optionsChecked.length; i++) {
+            this.optionservice.ajouterOptionModele(String(this.optionsChecked[i].CodeOption),
+              String(this.optionsChecked[i].NomOption), this.formulaire.value.code).subscribe();
           }
-        );
-        // Modification des options
-        for (const option of this.formulaire.value.options) {
-            // Inserer l'option et l'association
-            this.optionservice.ajouterOptionModele(option.codeOption, option.nomOption, this.data.modele.CodeModele);
-        }
+          /* supprimer des options*/
+          for (let i = 0; i < this.optionsSupp.length; i++) {
+            this.optionservice.supprimerDuModele(String(this.optionsSupp[i].CodeOption),
+              this.formulaire.value.code).subscribe(() => {
+            });
+          }
+          /* ajouter les options ajoutés à partir du formulaire */
+          for (const option of this.formulaire.value.options) {
+            this.optionservice.ajouterOptionModele(option.codeOption, option.NomOption,
+              this.formulaire.value.code).subscribe();
+          }
 
 
-        /* ajouter des options */
-        for (let i = 0; i < this.optionsChecked.length; i++) {
-          this.optionservice.ajouterOptionModele(String(this.optionsChecked[i].CodeOption), String(this.optionsChecked[i].NomOption), this.formulaire.value.code);
-        }
-        /* supprimer des options*/
-        for (let i = 0; i < this.optionsSupp.length; i++) {
-          this.optionservice.supprimerDuModele(String(this.optionsSupp[i].CodeOption),
-            this.formulaire.value.code).subscribe(() => {
+          /* ajouter des couleurs */
+          for (let i = 0; i < this.couleursChecked.length; i++) {
+            this.couleurService.ajouterCouleurModele(String(this.couleursChecked[i].CodeCouleur), String(this.couleursChecked[i].NomCouleur), String(this.couleursChecked[i].CodeHexa),
+              this.formulaire.value.code).subscribe();
+          }
+          /* supprimer des couleurs */
+          for (let i = 0; i < this.couleursSupp.length; i++) {
+            this.couleurService.supprimerCouleurModele(String(this.couleursSupp[i].CodeCouleur),
+              this.formulaire.value.code).subscribe();
+          }
+
+            /* ajouter les couleurs ajoutés à partir du formulaire */
+            for (const couleur of this.formulaire.value.couleurs) {
+              this.couleurService.ajouterCouleurModele(couleur.codeCouleur, couleur.nomCouleur, couleur.codeHexa,
+                this.formulaire.value.code).subscribe();
+            }
+            this.dialogReference.close();
+
           });
-        }
-        /* ajouter les options ajoutés à partir du formulaire */
-        for (const option of this.formulaire.value.options) {
-          this.optionservice.ajouterOptionModele(option.codeOption, option.NomOption,
-            this.formulaire.value.code);
-        }
-
-
-        /* ajouter des couleurs */
-        for (let i = 0; i < this.couleursChecked.length; i++) {
-          this.couleurService.ajouterCouleurModele(String(this.couleursChecked[i].CodeCouleur), String(this.couleursChecked[i].NomCouleur), String(this.couleursChecked[i].CodeHexa),
-            this.formulaire.value.code);
-        }
-        /* supprimer des couleurs */
-        for (let i = 0; i < this.couleursSupp.length; i++) {
-          this.couleurService.supprimerCouleurModele(String(this.couleursSupp[i].CodeCouleur),
-            this.formulaire.value.code).subscribe(() => {
-          });
-        }
-        /* ajouter les couleurs ajoutés à partir du formulaire */
-        for (const couleur of this.formulaire.value.couleurs) {
-          this.couleurService.ajouterCouleurModele(couleur.codeCouleur, couleur.nomCouleur, couleur.codeHexa,
-            this.formulaire.value.code);
-        }
       }
     });
-}
+  }
 }

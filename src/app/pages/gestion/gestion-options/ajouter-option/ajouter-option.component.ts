@@ -51,8 +51,9 @@ export class AjouterOptionComponent implements OnInit {
    */
   ajouterOption() {
     this.optionservice.ajouterOptionModele(this.formulaire.value.code, this.formulaire.value.nom,
-      this.data.modele);
-    this.fermer();
+      this.data.modele).subscribe(() => {
+      this.fermer();
+    });
   }
 
   /**

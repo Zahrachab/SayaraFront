@@ -39,10 +39,12 @@ export class AjouterCouleurComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.couleurService.ajouterCouleurModele(this.formulaire.value.code, this.formulaire.value.nom, this.clr, this.codeModele);
+        this.couleurService.ajouterCouleurModele(this.formulaire.value.code, this.formulaire.value.nom,
+          this.clr, this.codeModele).subscribe(() => {
+          this.dialogRef.close();
+          });
       }
     });
-    this.dialogRef.close();
 
   }
 

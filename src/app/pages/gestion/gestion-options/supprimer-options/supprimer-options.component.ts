@@ -45,7 +45,7 @@ export class SupprimerOptionsComponent implements OnInit {
    */
   supprimerOption() {
     this.optionService.supprimerDuModele(this.data.option.CodeOption, this.data.modele).subscribe(() => {
+      this.fermer();
     });
-    this.fermer();
   }
 }

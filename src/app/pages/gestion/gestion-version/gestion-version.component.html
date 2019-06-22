@@ -7,7 +7,7 @@
     <div fxFlex="70">
       <form class="example-form">
         <mat-form-field class="example-full-width">
-          <input matInput  placeholder="Rechercher une version" value="">
+          <input matInput  (keyup)="appliquerFiltre($event.target.value)" value="" placeholder="Rechercher une version" value="">
         </mat-form-field>
       </form>
     </div>

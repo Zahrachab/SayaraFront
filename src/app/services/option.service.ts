@@ -33,9 +33,7 @@ export class OptionService {
   ajouterOptionModele(code: string, designation: string, codeModele: string) {
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
     return this.http.post(this.url + '/Marques/Modeles/' + codeModele + '/Options',
-      {CodeOption: code, NomOption: designation}, {headers: tokenHeader}).subscribe(() => {
-
-    });
+      {CodeOption: code, NomOption: designation}, {headers: tokenHeader}).pipe();
   }
 
   getOptions(codeModele): Observable<Option[]> {
