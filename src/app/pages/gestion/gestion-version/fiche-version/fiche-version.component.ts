@@ -25,8 +25,6 @@ export class FicheVersionComponent implements OnInit {
   loadFile() {
     for (let j = 0; j < this.version.images.length; j++) {
       this.selectedFile[j] = new ImageSnippet(null , null);
-      this.selectedFile[j].status = 'ok';
-      this.selectedFile[j].new = false;
       this.selectedFile[j].src = String(this.version.images[j].CheminImage);
       this.selectedFile[j].id = String(this.version.images[j].idImage);
     }
@@ -43,9 +41,8 @@ export class FicheVersionComponent implements OnInit {
 
 }
 
- //Image Snippet
+// classe image
 class ImageSnippet {
-  pending = false;
   status = 'init';
   new = true;
   id;

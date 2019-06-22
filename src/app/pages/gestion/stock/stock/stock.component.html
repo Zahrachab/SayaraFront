@@ -32,10 +32,10 @@
         <div fxLayout="row" id="inputDiv">
           <label  class="image-upload-container btn btn-bwm">
             <span>  Upload Fichier  </span>
-            <input  ng2FileSelect accept=".png" [uploader]="uploader" id="fileInput"
+            <input  ng2FileSelect [uploader]="uploader" id="fileInput"
                     type="file"
-                    accept="*"
-                    (change)="processFile(csvInput)" multiple/><br/>
+                    accept=".csv"
+                    (change)="processFile(csvInput)"><br/>
           </label>
         </div>
       </div>

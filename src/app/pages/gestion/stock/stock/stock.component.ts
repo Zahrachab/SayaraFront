@@ -22,15 +22,13 @@ export class StockComponent implements OnInit {
   ngOnInit() {
   }
 
-  // Uploader des images depuis l'ordinateur
+  // Uploader le csv
   processFile(csvInput: any) {
     this.el = document.getElementById('progress-bar');
-    for (let j = 0; j < this.uploader.queue.length; j++) {
-      const reader = new FileReader();
-      const fileItem = this.uploader.queue[j]._file;
-      reader.readAsDataURL(fileItem);
-      this.files.push(this.uploader.queue[j]._file);
-    }
+    const reader = new FileReader();
+    const fileItem = this.uploader.queue[0]._file;
+    reader.readAsDataURL(fileItem);
+    this.file = this.uploader.queue[0]._file.name;
     this.uploader.clearQueue();
     this.el.setAttribute('mode', 'indeterminate');
 

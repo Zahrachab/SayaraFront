@@ -205,7 +205,6 @@ export class ModifierVerionComponent implements OnInit {
         }
         this.dialogRef.close();
       }
-      this.dialogRef.close();
     });
     }
 
