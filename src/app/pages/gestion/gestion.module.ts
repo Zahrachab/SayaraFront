@@ -34,6 +34,7 @@ import { StockComponent } from './stock/stock/stock.component';
 import { StockVehiculesComponent } from './stock/stock-vehicules/stock-vehicules.component';
 import {MatMenuModule} from '@angular/material';
 import { FicheModeleComponent } from './gestion-modele/fiche-modele/fiche-modele.component';
+import { FicheVersionComponent } from './gestion-version/fiche-version/fiche-version.component';
 
 
 @NgModule({
@@ -52,8 +53,9 @@ import { FicheModeleComponent } from './gestion-modele/fiche-modele/fiche-modele
                   FileSelectDirective,
                   InfosDialogComponent,
                   StockComponent,
-                  StockVehiculesComponent,FileSelectDirective,
-                  FicheModeleComponent],
+                  StockVehiculesComponent, FileSelectDirective,
+                  FicheModeleComponent,
+                  FicheVersionComponent],
 
   imports: [
     CommonModule,
