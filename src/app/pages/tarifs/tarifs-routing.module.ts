@@ -4,6 +4,7 @@ import {UtilisateurGuard} from '../../guards/utilisateur.guard';
 import {TarifsVersionsComponent} from './tarifs-versions/tarifs-versions.component';
 import {TarifsComponent} from './tarifs/tarifs.component';
 import {TarifsOptionsComponent} from './tarifs-options/tarifs-options.component';
+import {UploadFichierTarifComponent} from './upload-fichier-tarif/upload-fichier-tarif.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,10 @@ const routes: Routes = [
       {
         path: 'options',
         component: TarifsOptionsComponent
+      },
+      {
+        path: 'upload',
+        component: UploadFichierTarifComponent
       }
     ]
   }

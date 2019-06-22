@@ -52,7 +52,7 @@ import { FicheModeleComponent } from './gestion-modele/fiche-modele/fiche-modele
                   FileSelectDirective,
                   InfosDialogComponent,
                   StockComponent,
-                  StockVehiculesComponent,
+                  StockVehiculesComponent,FileSelectDirective,
                   FicheModeleComponent],
 
   imports: [
@@ -69,7 +69,7 @@ import { FicheModeleComponent } from './gestion-modele/fiche-modele/fiche-modele
     ColorPickerModule,
     MDBBootstrapModule.forRoot()
   ],
-  exports: [NavbarComponent, SidenavComponent, FooterComponent],
+  exports: [NavbarComponent, SidenavComponent, FooterComponent, FileSelectDirective],
   entryComponents: [AjouterModeleComponent, AjouterVersionComponent, ModifierVerionComponent,
     SupprimerModeleComponent, SupprimerVersionComponent, ModifierCouleurComponent, AjouterCouleurComponent,
     SupprimerOptionsComponent, AjouterOptionComponent, ModifierOptionComponent, ModifierModeleComponent, FicheModeleComponent, InfosDialogComponent],

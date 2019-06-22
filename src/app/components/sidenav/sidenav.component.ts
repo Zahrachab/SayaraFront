@@ -43,6 +43,10 @@ export class SidenavComponent implements OnInit {
         {
           nom: 'Couleurs',
           lien: '/tarifs/couleurs'
+        },
+        {
+          nom: 'Upload Fichier',
+          lien: '/tarifs/upload'
         }
       ];
     }

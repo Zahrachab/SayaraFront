@@ -1,0 +1,159 @@
+div.gestion {
+  width: 1100px;
+  padding-top: 30px;
+
+  .gras {
+    font-weight: bold;
+  }
+
+  h2 {
+    margin-bottom: 6px;
+    font-family: 'Roboto-Thin', 'Sherif', serif;
+    font-weight: 100;
+  }
+
+  div#import {
+    margin-left: 30px;
+  }
+
+  div#trait {
+    width: 60px;
+    border-top: 3px solid #3498d8;
+    margin-bottom: 25px;
+    margin-left: 2px
+  }
+
+  div.container {
+    width: 90%;
+    margin-bottom: 30px;
+
+
+
+    .example-card {
+      background-color: transparent;
+      width: 85%;
+      border-radius: initial;
+      padding: 5px;
+      font-family: 'Roboto-Medium', 'Sherif';
+      color: #000000;
+
+
+      mat-card-header {
+        color: black;
+
+        mat-card-title {
+          font-family: 'Roboto-Bold', 'Sherif';
+          font-weight: bold;
+          font-size: 14px;
+          margin-left: 10px;
+        }
+
+        .bleu {
+          color: #3498d8;
+        }
+
+        .vert {
+          color: #1abc9c;
+        }
+
+        mat-card-subtitle {
+          font-size: 12px;
+        }
+      }
+    }
+
+    mat-card.bleu {
+      border-left: 5px solid #3498d8;
+    }
+    mat-card.vert {
+      border-left: 5px solid #1abc9c;
+    }
+
+
+  }
+
+  div.drag {
+    p{
+      font-family: 'Roboto-Thin', 'Sherif';
+      font-weight: 100;
+      font-size: 14px;
+      color: #bdc3c7;
+    }
+
+    span {
+      margin-left: 6px;
+      margin-right: 6px;
+    }
+
+    div#inputDiv {
+      margin-top: 20px;
+      width: 70%;
+
+      .image-upload-container {
+        cursor: pointer;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: #1abc9c;
+        color: white;
+        line-height: 2.1;
+        border-radius: 4px;
+      }
+
+      #fileInput {
+        display: none;
+      }
+    }
+
+    div#dragFile {
+      border: 1px dashed #95a5a6;
+      width: 70%;
+      height: 270px;
+      border-radius: 10px;
+
+      mat-icon {
+        width: 100%;
+        height: 100%;
+        align-content: center;
+        font-size: 60px;
+        color:#1abc9c;
+      }
+
+    }
+
+
+    div#progress {
+      width: 100%;
+      padding: 0px 8%;
+
+      #btnDiv {
+        width: 80%;
+      }
+
+      h4 {
+        font-family: 'Roboto-Medium', 'Sherif';
+        font-size: 17px;
+      }
+
+      .divFile {
+        width: 100%;
+        border-bottom: 2px solid #bdc3c7;
+        mat-progress-bar {
+          width: 200px;
+        }
+
+        mat-icon {
+          height: 100%;
+          font-size: 40px;
+          color:#95a5a6;
+        }
+      }
+
+      a#voirStock {
+        box-shadow: #3498d8;
+        background-color: white;
+        color: #3498d8;
+      }
+    }
+
+  }
+}
