@@ -1,0 +1,66 @@
+<div class="gestion">
+  <div fxLayout="column" fxLayoutGap="10px" class="container" fxLayoutAlign="center center">
+    <mat-card class="example-card vert" >
+      <mat-card-header >
+        <mat-card-title class="vert">Astuce</mat-card-title>
+        <mat-card-subtitle>Vérifiez que vous avez importé le scv dans le bon format</mat-card-subtitle>
+      </mat-card-header>
+    </mat-card>
+
+    <mat-card class="example-card bleu">
+      <mat-card-header>
+        <mat-card-title class="bleu">Astuce</mat-card-title>
+        <mat-card-subtitle>Vérifiez que vous avez importé le scv dans le bon format</mat-card-subtitle>
+      </mat-card-header>
+    </mat-card>
+  </div>
+
+  <div id="import">
+    <h2>Importer des fichiers </h2>
+    <div id="trait"></div>
+  </div>
+  <div fxLayout="row wrap" class="container drag">
+    <div fxFlex="40"
+         fxFlex.xs="100" fxLayout="column" fxLayoutGap="30px">
+      <div fxLayout="column" fxLayoutAlign="end end">
+
+        <div id="dragFile" fxLayout="column" fxLayoutAlign="center center">
+          <mat-icon fxLayoutAlign="center center"> insert_drive_file</mat-icon>
+          <p> Importez votre fichier </p>
+        </div>
+
+        <div fxLayout="row" id="inputDiv">
+          <label  class="image-upload-container btn btn-bwm">
+            <span>  Upload Fichier  </span>
+            <input  ng2FileSelect [uploader]="uploader" id="fileInput"
+                    type="file"
+                    accept=".csv"
+                    (change)="processFile(csvInput)"><br/>
+          </label>
+        </div>
+      </div>
+
+
+
+    </div>
+    <div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="30px" fxFlex="60"
+         fxFlex.xs="100" id="progress">
+      <h4> Importation </h4>
+      <div fxLayout="row" fxLayoutGap="25px" class="divFile">
+
+        <mat-icon fxLayoutAlign="center center"> insert_drive_file
+        </mat-icon>
+
+        <div fxLayout="column" fxLayoutAlign="start start">
+          <p>{{file}}</p>
+          <mat-progress-bar id="progress-bar"></mat-progress-bar>
+          <p></p>
+        </div>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="end end " id="btnDiv">
+        <a  mat-button  mat-raised-button id="voirStock" routerLink="/gestion/stock/vehicules">Vérefier le stock</a>
+      </div>
+    </div>
+  </div>
+</div>
