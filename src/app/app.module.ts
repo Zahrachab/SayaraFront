@@ -22,7 +22,7 @@ import { ConfirmationDialogComponent } from './pages/shared/confirmation-dialog/
 import {LoginErrorInterceptor} from './EroorsInterceptors/LoginEroor.interceptor';
 import { AlertComponent } from './components/alert/alert.component';
 import {TarifsModule} from './pages/tarifs/tarifs.module';
-
+import {StockModule} from './pages/stock/stock.module';
 
 
 const urlGlobale = 'https://sayaradz.herokuapp.com';
@@ -51,6 +51,7 @@ const urlGlobale = 'https://sayaradz.herokuapp.com';
     FormsModule,
     GestionModule,
     TarifsModule,
+    StockModule,
     MDBBootstrapModule.forRoot()
   ],
   entryComponents: [ConfirmationDialogComponent],
