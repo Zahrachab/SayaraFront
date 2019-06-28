@@ -8,8 +8,8 @@ import {Observable } from 'rxjs';
 export class ModeleService {
 
   private url = this.injector.get('url');
-  private serviceUrlModeles = this.url + '/marques/' + JSON.parse(localStorage.getItem('utilisateur')).utilfab.Fabricant + '/modeles';
-  private serviceUrlModele =  this.url + '/marques/modeles/';
+  public serviceUrlModeles = this.url + '/marques/' + JSON.parse(localStorage.getItem('utilisateur')).utilfab.Fabricant + '/modeles';
+  public serviceUrlModele =  this.url + '/marques/modeles/';
 
   constructor(private http: HttpClient, private injector: Injector) {
   }

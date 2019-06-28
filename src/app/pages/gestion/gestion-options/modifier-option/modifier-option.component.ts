@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, OnInit, Optional} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {OptionService} from '../../../../services/option.service';
 import {FormBuilder, FormGroup} from '@angular/forms';
@@ -17,6 +17,7 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 export class ModifierOptionComponent implements OnInit {
   // Réference vers le formulaire html
   formulaire: FormGroup;
+  formValid =true;
 
   /**
    * Constructeur de la classe, déclare les attributs de la classe
@@ -31,19 +32,22 @@ export class ModifierOptionComponent implements OnInit {
    */
   constructor(private constructeurFormulaire: FormBuilder,
               private dialogReference: MatDialogRef<ModifierOptionComponent>,
-              @Inject(MAT_DIALOG_DATA) private data: any, private optionService: OptionService) { }
+              @Optional()@Inject(MAT_DIALOG_DATA) private data: any, private optionService: OptionService) { }
 
   /**
    *  Executé a l'initialisation du composant, Construit le formulaire et fait la lsiasion avec le html
    */
   ngOnInit() {
+    console.log(this.data);
     // Construction du formulaire
     this.formulaire = this.constructeurFormulaire.group({
       code: this.data.option.CodeOption,
       nom: this.data.option.NomOption,
     });
     // Liaison avec le Html
-    this.formulaire.valueChanges.subscribe();
+    this.formulaire.valueChanges.subscribe(() => {
+      this.formValid = this.formulaire.valid;
+    });
   }
 
   /**
@@ -61,6 +65,13 @@ export class ModifierOptionComponent implements OnInit {
           this.fermer();
       }
     );
+  }
 
+  public getData() {
+    return this.data;
+  }
+  public setData(code, nom) {
+    this.data.option.CodeOption = code;
+    this.data.option.NomOption = nom;
   }
 }

@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {OptionService} from '../../../../services/option.service';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 
@@ -17,6 +17,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 export class AjouterOptionComponent implements OnInit {
   // Réference vers le formulaire html
   formulaire: FormGroup;
+  formValid = true;
 
   /**
    * Constructeur de la classe, déclare seulement les attributs privés de la classe
@@ -39,11 +40,14 @@ export class AjouterOptionComponent implements OnInit {
   ngOnInit() {
     // Construction du formulaire
     this.formulaire = this.constructeurFormulaire.group({
-      code: '',
-      nom: '',
+      code: ['', Validators.required],
+      nom: ['', Validators.required],
     });
     // Liaison avec l'Html
-    this.formulaire.valueChanges.subscribe();
+    this.formulaire.valueChanges.subscribe(() => {
+      this.formValid = this.formulaire.valid;
+
+    });
   }
 
   /**

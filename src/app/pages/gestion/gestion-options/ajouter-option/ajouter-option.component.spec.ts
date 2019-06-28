@@ -22,4 +22,48 @@ describe('AjouterOptionComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  /**
+   * Remplir les champs du formulaire
+   */
+  function remplirForm(code , nom) {
+    component.formulaire.controls.code.setValue(code);
+    component.formulaire.controls.nom.setValue(nom);
+  }
+
+  /**
+   * Tester la validité du form si le champs nom est vide
+   */
+  it('Le formulaire doit être invalide si le champs nom est vide', () => {
+    remplirForm('997', '');
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      expect(component).toBeFalsy();
+    });
+  });
+
+  /**
+   * Tester la validité du form si le champs code est vide
+   */
+  it('Le formulaire doit être invalide si le champs code est vide', () => {
+    remplirForm('', 'AirBag');
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      expect(component).toBeFalsy();
+    });
+  });
+
+  /**
+   * Tester la validité du form si les champs sont remplies
+   */
+  it('Le formulaire doit être valide si aucun champs est vide', () => {
+    remplirForm('98765', 'AirBag');
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      expect(component).toBeTruthy();
+    });
+  });
+
+
+
 });
