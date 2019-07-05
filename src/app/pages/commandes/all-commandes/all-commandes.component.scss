@@ -55,9 +55,6 @@ div.gestion {
       font-size: 13px;
     }
 
-    button.ajouter {
-      background-color: #2980b9;
-    }
   }
 
 
@@ -87,8 +84,26 @@ div.gestion {
         }
 
         mat-cell {
+
+          button.accepter{
+            background: #1ABC9C;
+            color: #ffffff;
+          }
+          button.refuse {
+            background: #ECF0F1;
+            color: #1ABC9C;
+            border-radius: 15px;
+            border-width: 0px;
+          }
+
+          button.accepte {
+            background: #ECF0F1;
+            color: #A40A0A;
+            border-radius: 15px;
+            border-width: 0px;
+          }
           padding: 0 2%;
-          button{;
+          button{
             mat-icon {
               margin-right: 3%
             }

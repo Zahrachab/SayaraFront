@@ -18,7 +18,7 @@ const data: Commande[] = [
     Prix: 1500000,
     Reserve: true,
     PrixPaye: 12000,
-    Accepte: true,
+    Accepte: false,
     Refuse: false,
   },
   {
@@ -35,6 +35,21 @@ const data: Commande[] = [
     PrixPaye: 0,
     Accepte: true,
     Refuse: false,
+  },
+  {
+    Date: '12/12/2018',
+    Client: {
+      NomClient: 'Chabane Zahra',
+      WilayaClient: 'Alger',
+      NumClient: '0543 76 87 98',
+    },
+    NomModele: 'Golf',
+    NomVersion: 'Série 6',
+    Prix: 1500000,
+    Reserve: false,
+    PrixPaye: 0,
+    Accepte: false,
+    Refuse: true,
   }
 ];
 @Component({
