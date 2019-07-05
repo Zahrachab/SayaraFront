@@ -23,6 +23,7 @@ import {LoginErrorInterceptor} from './EroorsInterceptors/LoginEroor.interceptor
 import { AlertComponent } from './components/alert/alert.component';
 import {TarifsModule} from './pages/tarifs/tarifs.module';
 import {StockModule} from './pages/stock/stock.module';
+import {CommandesModule} from './pages/commandes/commandes.module';
 
 
 const urlGlobale = 'https://sayaradz.herokuapp.com';
@@ -52,6 +53,7 @@ const urlGlobale = 'https://sayaradz.herokuapp.com';
     GestionModule,
     TarifsModule,
     StockModule,
+    CommandesModule,
     MDBBootstrapModule.forRoot()
   ],
   entryComponents: [ConfirmationDialogComponent],

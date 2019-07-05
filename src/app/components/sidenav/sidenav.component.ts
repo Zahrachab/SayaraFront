@@ -30,7 +30,7 @@ export class SidenavComponent implements OnInit {
             lien: '/gestion/couleurs'
           }
         ];
-    } else {
+    } else if (this.router.url.split('/')[1] === 'stock') {
       this.sousMenus = [
         {
           nom: 'Versions',
@@ -47,6 +47,25 @@ export class SidenavComponent implements OnInit {
         {
           nom: 'Upload Fichier',
           lien: '/tarifs/upload'
+        }
+      ];
+    } else if (this.router.url.split('/')[1] === 'commandes') {
+      this.sousMenus = [
+        {
+          nom: 'tous',
+          lien: '/commandes/tous'
+        },
+        {
+          nom: 'prépayées',
+          lien: '/commandes/prépayées'
+        },
+        {
+          nom: 'annulées',
+          lien: '/commandes/annulées'
+        },
+        {
+          nom: 'nouvelles',
+          lien: '/commandes/nouvelles'
         }
       ];
     }
