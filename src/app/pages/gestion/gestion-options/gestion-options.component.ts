@@ -110,8 +110,9 @@ export class GestionOptionsComponent implements OnInit, AfterViewInit {
     // Ouverture de la boite de dialogue, composant Ajouter Option
     const dialogRef: MatDialogRef<SupprimerOptionsComponent> = this.modalService.open(SupprimerOptionsComponent, {
       width: '800px',
-      data: {option, modele: this.codeModele}
     });
+    dialogRef.componentInstance.modele = this.codeModele;
+    dialogRef.componentInstance.option = option;
     // Rafraichissement de la page apres fermeture de la boite de dialogue
     dialogRef.afterClosed().subscribe(() => {
       this.refreshData();
@@ -127,8 +128,8 @@ export class GestionOptionsComponent implements OnInit, AfterViewInit {
       // Ouverture de la boite de dialogue, composant Ajouter Option
       const dialogRef: MatDialogRef<AjouterOptionComponent> = this.modalService.open(AjouterOptionComponent, {
         width: '800px',
-        data: {modele: this.codeModele}
       });
+      dialogRef.componentInstance.modele = this.codeModele;
       // Rafraichissement de la page apres fermeture de la boite de dialogue
       dialogRef.afterClosed().subscribe(() => {
         this.refreshData();
@@ -148,8 +149,8 @@ export class GestionOptionsComponent implements OnInit, AfterViewInit {
     // Ouverture de la boite de dialogue, composant Modifier Option
     const dialogRef: MatDialogRef<ModifierOptionComponent> = this.modalService.open(ModifierOptionComponent,
       {
-        width: '800px',
-        data: {option}});
+        width: '800px'});
+    dialogRef.componentInstance.setData(option);
 
     // Rafraichissement de la page apres fermeture de la boite de dialogue
     dialogRef.afterClosed().subscribe(() => {

@@ -23,7 +23,7 @@ import {VersionService} from '../../../services/version.service';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
 import {By} from '@angular/platform-browser';
 
-fdescribe('GestionVersionComponent', () => {
+describe('GestionVersionComponent', () => {
   let component: GestionVersionComponent;
   let fixture: ComponentFixture<GestionVersionComponent>;
 

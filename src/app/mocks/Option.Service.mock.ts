@@ -22,7 +22,7 @@ export class OptionServiceMock {
    return true;
   }
 
-  getOptions(codeModele): Observable<Option[]> {
+  public getOptions(codeModele): Observable<Option[]> {
     return Observable.of([
       {
         CodeOption: '10',

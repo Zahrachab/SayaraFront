@@ -3,14 +3,13 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import {ModeleDetail} from './entites/modeleDetail.model';
 import {Option} from './entites/option.model';
-import {VersionDetail} from './entites/versionDetail.model';
 import {OptionDetail} from './entites/optionDetail.model';
 @Injectable({
   providedIn: 'root'
 })
 export class OptionService {
 
-  private url = this.injector.get('url');
+  public url = 'https://sayaradz.herokuapp.com';
   private serviceUrlOptions = this.url + '/marques/modeles/';
   private options: Option[];
 
@@ -38,7 +37,7 @@ export class OptionService {
 
   getOptions(codeModele): Observable<Option[]> {
     let options;
-    this.http.get<ModeleDetail>(this.serviceUrlOptions + codeModele).subscribe(modele => {
+    this.http.get<ModeleDetail>(`https://sayaradz.herokuapp.com/marques/modeles/${codeModele}`).subscribe(modele => {
       options = (modele as ModeleDetail).options as Option[];
     });
     return new Observable(observer => {

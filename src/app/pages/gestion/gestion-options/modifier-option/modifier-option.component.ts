@@ -2,6 +2,7 @@ import {Component, Inject, OnInit, Optional} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {OptionService} from '../../../../services/option.service';
 import {FormBuilder, FormGroup} from '@angular/forms';
+import {Option} from '../../../../services/entites/option.model';
 
 @Component({
   selector: 'app-modifier-option',
@@ -17,7 +18,8 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 export class ModifierOptionComponent implements OnInit {
   // Réference vers le formulaire html
   formulaire: FormGroup;
-  formValid =true;
+  option: Option;
+  formValid = true;
 
   /**
    * Constructeur de la classe, déclare les attributs de la classe
@@ -32,17 +34,16 @@ export class ModifierOptionComponent implements OnInit {
    */
   constructor(private constructeurFormulaire: FormBuilder,
               private dialogReference: MatDialogRef<ModifierOptionComponent>,
-              @Optional()@Inject(MAT_DIALOG_DATA) private data: any, private optionService: OptionService) { }
+              private optionService: OptionService) { }
 
   /**
    *  Executé a l'initialisation du composant, Construit le formulaire et fait la lsiasion avec le html
    */
   ngOnInit() {
-    console.log(this.data);
     // Construction du formulaire
     this.formulaire = this.constructeurFormulaire.group({
-      code: this.data.option.CodeOption,
-      nom: this.data.option.NomOption,
+      code: this.option.CodeOption,
+      nom: this.option.NomOption,
     });
     // Liaison avec le Html
     this.formulaire.valueChanges.subscribe(() => {
@@ -61,17 +62,16 @@ export class ModifierOptionComponent implements OnInit {
    * Modifier une option
    */
   modifierOption() {
-    this.optionService.modifier(this.data.option.CodeOption, this.formulaire.value.nom).subscribe((res) => {
+    this.optionService.modifier(this.option.CodeOption, this.formulaire.value.nom).subscribe((res) => {
           this.fermer();
       }
     );
   }
 
   public getData() {
-    return this.data;
+    return this.option;
   }
-  public setData(code, nom) {
-    this.data.option.CodeOption = code;
-    this.data.option.NomOption = nom;
+  public setData(data: Option) {
+    this.option = data;
   }
 }

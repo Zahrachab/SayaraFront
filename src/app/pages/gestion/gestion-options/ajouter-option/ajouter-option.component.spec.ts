@@ -1,69 +1,140 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AjouterOptionComponent } from './ajouter-option.component';
+import {Component, CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
+import {OptionService} from '../../../../services/option.service';
+import {HttpClientModule} from '@angular/common/http';
+import {MatDialog, MatDialogModule, MatDialogRef, MatIconModule, MatInputModule} from '@angular/material';
+import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {OptionServiceMock} from '../../../../mocks/Option.Service.mock';
+import {OverlayContainer} from '@angular/cdk/overlay';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {CommonModule} from '@angular/common';
 
-describe('AjouterOptionComponent', () => {
-  let component: AjouterOptionComponent;
-  let fixture: ComponentFixture<AjouterOptionComponent>;
+fdescribe('AjouterOptionComponent', () => {
+  let dialog: MatDialog;
+  let dialogRef: MatDialogRef<AjouterOptionComponent>;
+  let overlayContainerElement: HTMLElement;
+  let noop: ComponentFixture<NoopComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ AjouterOptionComponent ]
-    })
-    .compileComponents();
-  }));
+  // spy for mat dialog
+  let dialogSpyOpen: jasmine.Spy;
+  let dialogSpyClose: jasmine.Spy;
+  let dialogSpyAjouter: jasmine.Spy;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AjouterOptionComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    TestBed.configureTestingModule({
+      imports: [ DialogTestModule, HttpClientModule, MatInputModule ],
+      providers: [
+        FormBuilder,
+        { provide: OverlayContainer, useFactory: () => {
+            overlayContainerElement = document.createElement('div');
+            return { getContainerElement: () => overlayContainerElement };
+          }},
+        {provide: OptionService, useClass: OptionServiceMock}
+      ],
+      schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
+    });
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+
+
+  beforeEach( () => {
+    dialog = TestBed.get(MatDialog);
+    noop = TestBed.createComponent(NoopComponent);
+    dialogRef = dialog.open(AjouterOptionComponent);
+    dialogSpyOpen = spyOn(dialog, 'open');
+    dialogSpyClose = spyOn(dialogRef, 'close');
+    dialogSpyAjouter = spyOn(dialogRef.componentInstance, 'ajouterOption');
+    dialogRef.componentInstance.modele = '1';
+    noop.detectChanges();
   });
 
   /**
-   * Remplir les champs du formulaire
+   * Modifier le champs Nom
    */
-  function remplirForm(code , nom) {
-    component.formulaire.controls.code.setValue(code);
-    component.formulaire.controls.nom.setValue(nom);
+  function remplirForm(code, nom) {
+    dialogRef.componentInstance.formulaire.controls.code.setValue(code);
+    dialogRef.componentInstance.formulaire.controls.nom.setValue(nom);
   }
 
+  it('should create', () => {
+    expect(dialogRef.componentInstance).toBeTruthy();
+  });
+
+
+
   /**
-   * Tester la validité du form si le champs nom est vide
+   * Tester que le formulaire est valide si le nom et le code ne sont pas vides
    */
-  it('Le formulaire doit être invalide si le champs nom est vide', () => {
-    remplirForm('997', '');
-    fixture.detectChanges();
-    fixture.whenStable().then(() => {
-      expect(component).toBeFalsy();
+  it('Le formulaire doit être valide si le nom et le code ne sont pas vides', () => {
+    remplirForm('123', 'toit ouvrant');
+    noop.detectChanges();
+    noop.whenStable().then( () => {
+      expect(dialogRef.componentInstance.formValid).toBeTruthy();
+    });
+  });
+  /**
+   * Tester que le formulaire est invalide si le nom  est vide
+   */
+  it('Le formulaire doit être invalide si le nom est vide', () => {
+    remplirForm('12' , '');
+    noop.detectChanges();
+    noop.whenStable().then( () => {
+      expect(dialogRef.componentInstance.formValid).toBeFalsy();
     });
   });
 
   /**
-   * Tester la validité du form si le champs code est vide
+   * Tester que le formulaire est invalide si le code est vide
    */
-  it('Le formulaire doit être invalide si le champs code est vide', () => {
-    remplirForm('', 'AirBag');
-    fixture.detectChanges();
-    fixture.whenStable().then(() => {
-      expect(component).toBeFalsy();
+  it('Le formulaire doit être invalide si le code est vide', () => {
+    remplirForm('', 'toit ouvrant');
+    noop.detectChanges();
+    noop.whenStable().then( () => {
+      expect(dialogRef.componentInstance.formValid).toBeFalsy();
     });
   });
+
 
   /**
-   * Tester la validité du form si les champs sont remplies
+   * Tester la fermeture après l'envoi de la donnée
    */
-  it('Le formulaire doit être valide si aucun champs est vide', () => {
-    remplirForm('98765', 'AirBag');
-    fixture.detectChanges();
-    fixture.whenStable().then(() => {
-      expect(component).toBeTruthy();
+  it('la méthode dialogRef.close  être invoquée si le bouton submit est cliqué avec des données correctes', () => {
+    // remplir le formulaire avec des données correctes
+    remplirForm('123', 'toit ouvrant');
+    const button = overlayContainerElement.querySelector('button');
+    button.click();
+    noop.detectChanges();
+    noop.whenStable().then( () => {
+      // Tester l'invocation de la méthode ajouterOption
+      expect(dialogSpyAjouter).toHaveBeenCalled();
+      // Tester la fermeture du dialog
+      expect(dialogSpyClose).toHaveBeenCalled();
     });
   });
-
-
 
 });
+
+// Noop component is only a workaround to trigger change detection
+@Component({
+  template: ''
+})
+class NoopComponent {}
+
+const TEST_DIRECTIVES = [
+  AjouterOptionComponent,
+  NoopComponent
+];
+
+@NgModule({
+  imports: [MatDialogModule, NoopAnimationsModule, MatIconModule, CommonModule,
+    FormsModule,
+    ReactiveFormsModule],
+  exports: TEST_DIRECTIVES,
+  declarations: TEST_DIRECTIVES,
+  entryComponents: [
+    AjouterOptionComponent
+  ],
+})
+class DialogTestModule { }

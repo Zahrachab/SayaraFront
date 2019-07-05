@@ -18,7 +18,7 @@ export class AjouterOptionComponent implements OnInit {
   // Réference vers le formulaire html
   formulaire: FormGroup;
   formValid = true;
-
+  modele: any;
   /**
    * Constructeur de la classe, déclare seulement les attributs privés de la classe
    * @param constructeurFormulaire
@@ -31,7 +31,7 @@ export class AjouterOptionComponent implements OnInit {
    * Les données recues du composant gestion-option
    */
   constructor(private constructeurFormulaire: FormBuilder, private optionservice: OptionService,
-              @Inject(MAT_DIALOG_DATA) private data: any, private dialogReference: MatDialogRef<AjouterOptionComponent>) { }
+              private dialogReference: MatDialogRef<AjouterOptionComponent>) { }
 
 
   /**
@@ -48,6 +48,7 @@ export class AjouterOptionComponent implements OnInit {
       this.formValid = this.formulaire.valid;
 
     });
+
   }
 
   /**
@@ -55,7 +56,7 @@ export class AjouterOptionComponent implements OnInit {
    */
   ajouterOption() {
     this.optionservice.ajouterOptionModele(this.formulaire.value.code, this.formulaire.value.nom,
-      this.data.modele).subscribe(() => {
+      this.modele).subscribe(() => {
       this.fermer();
     });
   }

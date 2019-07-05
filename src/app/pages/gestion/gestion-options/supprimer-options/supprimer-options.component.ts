@@ -1,6 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {OptionService} from '../../../../services/option.service';
+import {Option} from '../../../../services/entites/option.model';
 
 @Component({
   selector: 'app-supprimer-options',
@@ -14,6 +15,9 @@ import {OptionService} from '../../../../services/option.service';
  *
  */
 export class SupprimerOptionsComponent implements OnInit {
+
+  modele: string;
+  option: Option;
   /**
    * Constructeur de la classe, déclare les attributs de la classe
    * @param dialogReference
@@ -24,7 +28,7 @@ export class SupprimerOptionsComponent implements OnInit {
    * Les données récues du composant gestion-option : l'option a supprimer
    */
   constructor(private dialogReference: MatDialogRef<SupprimerOptionsComponent>,
-              @Inject(MAT_DIALOG_DATA) private data: any, private optionService: OptionService) { }
+              private optionService: OptionService) { }
 
 
   /**
@@ -44,7 +48,7 @@ export class SupprimerOptionsComponent implements OnInit {
    * Supprimer l'option
    */
   supprimerOption() {
-    this.optionService.supprimerDuModele(this.data.option.CodeOption, this.data.modele).subscribe(() => {
+    this.optionService.supprimerDuModele(this.option.CodeOption, this.modele).subscribe(() => {
       this.fermer();
     });
   }
