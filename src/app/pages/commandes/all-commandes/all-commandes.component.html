@@ -58,13 +58,13 @@
         </mat-header-cell>
         <mat-cell *matCellDef="let commande">
           <div *ngIf="(commande.Reserve) == true">
-            <div fxLayout="column" fxLayoutAlign="center center">
+            <div fxLayout="column" fxLayoutAlign="space-between">
               <mat-icon class="vert-check">check-circle</mat-icon>
               {{commande.PrixPaye}} DZA
             </div>
           </div>
           <div *ngIf="(commande.Reserve) == false">
-            <div fxLayout="column" fxLayoutAlign="center center" class="jaune-check">
+            <div fxLayout="row" fxLayoutAlign="space-between" class="jaune-check">
               <mat-icon >check-circle</mat-icon> Aucune
             </div>
           </div>
