@@ -73,7 +73,18 @@
 
       <ng-container matColumnDef="gestion">
         <mat-header-cell *matHeaderCellDef id="gestion"><i class="material-icons">tune</i> GESTION</mat-header-cell>
-        <mat-cell *matCellDef="let modele">
+        <mat-cell *matCellDef="let commande" fxLayout="row">
+          <div fxFlex='90' *ngIf="((commande.Accepte) == false && (commande.Refuse) == false)" >
+            <button mat-button  mat-stroked-button class="accepter">Accpeter</button>
+          </div>
+          <div fxFlex='90' *ngIf="(commande.Refuse) == true" >
+            <button mat-button  mat-stroked-button class="refuse">Refusée</button>
+          </div>
+          <div fxFlex='90' *ngIf="(commande.Accepte) == true" >
+            <button mat-button  mat-stroked-button class="accepte">Acceptée</button>
+          </div>
+
+
           <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
             <mat-icon>more_vert</mat-icon>
           </button>
