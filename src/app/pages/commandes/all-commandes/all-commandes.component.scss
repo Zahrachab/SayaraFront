@@ -77,6 +77,14 @@ div.gestion {
       mat-row {
         padding: 1% 0;
         border-bottom: 3px solid #ecf0f1;
+        
+        .vert-check{
+          color: #74e8a0;
+        }
+        
+        .jaune-check{
+          color: #fffb88;
+        }
 
         mat-cell {
           padding: 0 2%;

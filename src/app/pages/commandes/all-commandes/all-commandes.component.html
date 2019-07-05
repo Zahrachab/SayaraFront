@@ -1,0 +1,92 @@
+<div class="gestion">
+  <h2>Commandes </h2>
+  <div id="trait"></div>
+  <div fxLayout="row">
+    <div fxFlex="70">
+      <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <input matInput type="text" (keyup)="appliquerFiltre($event.target.value)" placeholder="Rechercher une commande" value="">
+        </mat-form-field>
+      </form>
+    </div>
+  </div>
+  <div class="example-container mat-elevation-z8">
+    <mat-table [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef='Date'>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          <mat-icon>today</mat-icon>
+          DATE
+        </mat-header-cell>
+        <mat-cell *matCellDef="let commande"> {{commande.Date}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef='Client'>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          <mat-icon>perm_identity</mat-icon>
+          CLIENT
+        </mat-header-cell>
+        <mat-cell *matCellDef="let commande">
+            {{commande.Client.NomClient}}
+            {{commande.Client.WilayaClient}}
+            {{commande.Client.NumClient}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef='Vehicule'>
+        <mat-header-cell *matHeaderCellDef>
+          <mat-icon>time_to_leave</mat-icon>
+          VEHICULE
+        </mat-header-cell>
+        <mat-cell *matCellDef="let commande"> {{commande.NomModele}} {{commande.NomVersion}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef='Prix'>
+        <mat-header-cell *matHeaderCellDef>
+          <mat-icon>info</mat-icon>
+          PRIX
+        </mat-header-cell>
+        <mat-cell *matCellDef="let commande">
+          {{commande.Prix}} DZA
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef='Reservation'>
+        <mat-header-cell *matHeaderCellDef>
+          <mat-icon>bookmark</mat-icon>
+          RESERVATION
+        </mat-header-cell>
+        <mat-cell *matCellDef="let commande">
+          <div *ngIf="(commande.Reserve) == true">
+            <div fxLayout="column" fxLayoutAlign="center center">
+              <mat-icon class="vert-check">check-circle</mat-icon>
+              {{commande.PrixPaye}} DZA
+            </div>
+          </div>
+          <div *ngIf="(commande.Reserve) == false">
+            <div fxLayout="column" fxLayoutAlign="center center" class="jaune-check">
+              <mat-icon >check-circle</mat-icon> Aucune
+            </div>
+          </div>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="gestion">
+        <mat-header-cell *matHeaderCellDef id="gestion"><i class="material-icons">tune</i> GESTION</mat-header-cell>
+        <mat-cell *matCellDef="let modele">
+          <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+          </mat-menu>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+
+
+</div>
