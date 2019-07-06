@@ -11,6 +11,18 @@ const routes: Routes = [
       {
         path: 'tous',
         component: AllCommandesComponent,
+      },
+      {
+        path: 'prépayées',
+        component: AllCommandesComponent,
+      },
+      {
+        path: 'annulées',
+        component: AllCommandesComponent,
+      },
+      {
+        path: 'nouvelles',
+        component: AllCommandesComponent,
       }
     ]
   }];

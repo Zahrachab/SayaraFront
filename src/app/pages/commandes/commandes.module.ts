@@ -7,13 +7,12 @@ import {BrowserModule} from '@angular/platform-browser';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {GestionModule} from '../gestion/gestion.module';
 import {MaterialModule} from '../../material.module';
-import {MDBBootstrapModule} from 'angular-bootstrap-md';
 import { CommandesComponent } from './commandes/commandes.component';
 import { AllCommandesComponent } from './all-commandes/all-commandes.component';
 import {GestionRoutingModule} from '../gestion/gestion-routing.module';
-import {HttpClientModule} from '@angular/common/http';
-import {MatMenuModule, MatSelectModule} from '@angular/material';
+import {MatMenuModule} from '@angular/material';
 import {ColorPickerModule} from 'ngx-color-picker';
+
 
 @NgModule({
   declarations: [CommandesComponent, AllCommandesComponent],
@@ -25,7 +24,6 @@ import {ColorPickerModule} from 'ngx-color-picker';
     FlexLayoutModule,
     GestionModule,
     MaterialModule,
-    MDBBootstrapModule.forRoot(),
     CommonModule,
     GestionRoutingModule,
     ReactiveFormsModule,

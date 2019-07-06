@@ -1,80 +1,94 @@
-import { Component, OnInit } from '@angular/core';
-import {DataSource} from '@angular/cdk/table';
-import {Observable, of} from 'rxjs';
-import {Stock} from '../../../services/entites/stock.modele';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {Commande} from '../../../services/entites/commande.model';
+import {MatDialog, MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {CommandeServiceMock} from '../../../mocks/commande.Service.mock';
+import {Router} from '@angular/router';
 
 
-const data: Commande[] = [
-  {
-    Date: '12/12/2018',
-    Client: {
-      NomClient: 'Chabane Zahra',
-      WilayaClient: 'Alger',
-      NumClient: '0543 76 87 98',
-    },
-    NomModele: 'Golf',
-    NomVersion: 'Série 6',
-    Prix: 1500000,
-    Reserve: true,
-    PrixPaye: 12000,
-    Accepte: false,
-    Refuse: false,
-  },
-  {
-    Date: '12/12/2018',
-    Client: {
-      NomClient: 'Chabane Zahra',
-      WilayaClient: 'Alger',
-      NumClient: '0543 76 87 98',
-    },
-    NomModele: 'Golf',
-    NomVersion: 'Série 6',
-    Prix: 1500000,
-    Reserve: false,
-    PrixPaye: 0,
-    Accepte: true,
-    Refuse: false,
-  },
-  {
-    Date: '12/12/2018',
-    Client: {
-      NomClient: 'Chabane Zahra',
-      WilayaClient: 'Alger',
-      NumClient: '0543 76 87 98',
-    },
-    NomModele: 'Golf',
-    NomVersion: 'Série 6',
-    Prix: 1500000,
-    Reserve: false,
-    PrixPaye: 0,
-    Accepte: false,
-    Refuse: true,
-  }
-];
 @Component({
   selector: 'app-all-commandes',
   templateUrl: './all-commandes.component.html',
-  styleUrls: ['./all-commandes.component.scss']
+  styleUrls: ['./all-commandes.component.scss'],
 })
-export class AllCommandesComponent implements OnInit {
-  dataSource = new ExampleDataSource();
-  displayedColumns = ['Date', 'Client', 'Vehicule', 'Prix', 'Reservation', 'gestion'];
+export class AllCommandesComponent implements OnInit, AfterViewInit {
 
-  constructor() { }
+  // Le data source qui contient les informations a afficher dans le mat-table
+  public dataSource = new MatTableDataSource<Commande>();
+  // les colonnes à afficher
+  displayedColumns = ['Date', 'Client', 'Vehicule', 'Prix', 'Reservation', 'gestion'];
+  // Réference vers le mat-sort
+  @ViewChild(MatSort) sort: MatSort;
+
+  // Réference vers le mat-paginator
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+
+
+  constructor(private matDialog: MatDialog,
+              private commandeService: CommandeServiceMock,
+              private router: Router) {
+    this.redefineFilter();
+  }
 
   ngOnInit() {
+    if (this.router.url.split('/')[2] === 'tous') {
+      this.commandeService.getAllCommandes().subscribe(res => {
+        this.dataSource.data = res as Commande[];
+      });
+    } else if (this.router.url.split('/')[2] === 'prépayées') {
+      this.commandeService.getCommandesPrepayes().subscribe(res => {
+        this.dataSource.data = res as Commande[];
+      });
+    } else if (this.router.url.split('/')[2] === 'annulées') {
+      this.commandeService.getCommandesAnnulles().subscribe(res => {
+        this.dataSource.data = res as Commande[];
+      });
+    } else {
+      this.commandeService.getCommandesNouvelles().subscribe(res => {
+        this.dataSource.data = res as Commande[];
+      });
+    }
   }
 
-}
 
-export class ExampleDataSource extends DataSource<any> {
-  /** Connect function called by the table to retrieve one stream containing the data to render. */
-  connect(): Observable<Stock[]> {
-    const rows = [];
-    data.forEach(element => rows.push(element));
-    return of(rows);
+
+
+  /**
+   *  Association du sort et de la pagination au dataSource
+   */
+  ngAfterViewInit(): void {
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
   }
 
-  disconnect() { }
+  /**
+   * Application du filtre entré dans la recherche
+   * @param value
+   * La valeur entrée dans la recherche
+   */
+  appliquerFiltre = (value: string) => {
+    this.dataSource.filter = value.trim().toLocaleLowerCase();
+  }
+
+  /**
+   *  Redéfinition du filtre pour prendre en compte les sous objets
+   */
+  redefineFilter() {
+    this.dataSource.filterPredicate = (order: any, filter: string) => {
+      const transformedFilter = filter.trim().toLowerCase();
+      const listAsFlatString = (obj): string => {
+        let returnVal = '';
+        Object.values(obj).forEach((val) => {
+          if (typeof val !== 'object') { // Si ce n'est pas un objet
+            returnVal = returnVal + ' ' + val;
+          } else if (val !== null) { // Si c'est un objet non null
+            returnVal = returnVal + ' ' + listAsFlatString(val);
+          }
+        });
+        return returnVal.trim().toLowerCase();
+      };
+      return listAsFlatString(order).includes(transformedFilter);
+    };
+  }
+
 }

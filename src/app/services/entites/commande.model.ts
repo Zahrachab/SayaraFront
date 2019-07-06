@@ -12,4 +12,5 @@ export interface Commande {
   PrixPaye: number;
   Accepte: boolean;
   Refuse: boolean;
+  annule: boolean;
 }

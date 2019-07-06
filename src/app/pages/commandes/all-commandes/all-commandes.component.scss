@@ -74,20 +74,37 @@ div.gestion {
       mat-row {
         padding: 1% 0;
         border-bottom: 3px solid #ecf0f1;
+
+        img {
+          width: 20px;
+          height: 20px;
+          margin-right: 5px;
+        }
         
         .vert-check{
           color: #74e8a0;
         }
         
         .jaune-check{
-          color: #DCB740;
+          color: #DCB32D;
         }
 
         mat-cell {
+          button {
+            padding-left: 5px;
+            padding-right: 5px;
+          }
 
           button.accepter{
             background: #1ABC9C;
             color: #ffffff;
+            font-size: 11px;
+            margin-bottom: 3px;
+          }
+          button.refuser{
+            background: #A40A0A;
+            color: #ffffff;
+            font-size: 11px;
           }
           button.refuse {
             background: #ECF0F1;
@@ -162,7 +179,6 @@ div.gestion {
         justify-content: center;
 
         mat-header-cell {
-          padding-left: 40px;
           color: #2c3e50;
           font-size: 80%;
           font-family: 'Roboto-Bold', serif;
@@ -171,6 +187,7 @@ div.gestion {
             margin-right: 5px;
           }
         }
+
 
       }
 

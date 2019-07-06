@@ -54,18 +54,18 @@
       <ng-container matColumnDef='Reservation'>
         <mat-header-cell *matHeaderCellDef>
           <mat-icon>bookmark</mat-icon>
-          RESERVATION
+          RESERVATIONS
         </mat-header-cell>
         <mat-cell *matCellDef="let commande">
           <div *ngIf="(commande.Reserve) == true">
-            <div fxLayout="column" fxLayoutAlign="space-between">
-              <mat-icon class="vert-check">check-circle</mat-icon>
+            <div fxLayout="column" fxLayoutAlign="center center">
+              <img src="./assets/images/Icons/checked.svg">
               {{commande.PrixPaye}} DZA
             </div>
           </div>
           <div *ngIf="(commande.Reserve) == false">
-            <div fxLayout="row" fxLayoutAlign="space-between" class="jaune-check">
-              <mat-icon >check-circle</mat-icon> Aucune
+            <div fxLayout="row" fxLayoutAlign="center center" class="jaune-check">
+              <img src="./assets/images/Icons/jaune.svg">  Aucune
             </div>
           </div>
         </mat-cell>
@@ -74,8 +74,9 @@
       <ng-container matColumnDef="gestion">
         <mat-header-cell *matHeaderCellDef id="gestion"><i class="material-icons">tune</i> GESTION</mat-header-cell>
         <mat-cell *matCellDef="let commande" fxLayout="row">
-          <div fxFlex='90' *ngIf="((commande.Accepte) == false && (commande.Refuse) == false)" >
+          <div fxFlex='90' *ngIf="((commande.Accepte) == false && (commande.Refuse) == false)" fxLayout="column" fxLayoutAlign="space-around center" >
             <button mat-button  mat-stroked-button class="accepter">Accpeter</button>
+            <button mat-button  mat-stroked-button class="refuser">refuser</button>
           </div>
           <div fxFlex='90' *ngIf="(commande.Refuse) == true" >
             <button mat-button  mat-stroked-button class="refuse">Refusée</button>
