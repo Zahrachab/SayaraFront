@@ -4,10 +4,10 @@ import {ActivatedRoute} from '@angular/router';
 import {OptionService} from '../../../services/option.service';
 import {ModeleDetail} from '../../../services/entites/modeleDetail.model';
 import {ModeleService} from '../../../services/modele.service';
-import {SupprimerOptionsComponent} from './supprimer-options/supprimer-options.component';
 import {AjouterOptionComponent} from './ajouter-option/ajouter-option.component';
 import {ModifierOptionComponent} from './modifier-option/modifier-option.component';
 import {Option} from '../../../services/entites/option.model';
+import {ConfirmationDialogComponent} from '../../shared/confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-gestion-options',
@@ -55,7 +55,8 @@ export class GestionOptionsComponent implements OnInit, AfterViewInit {
    */
   constructor(private optionService: OptionService, private modalService: MatDialog,
               private activatedroute: ActivatedRoute,
-              private modeleService: ModeleService) {
+              private modeleService: ModeleService,
+              private dialogValidation: MatDialog) {
   }
 
   /**
@@ -107,15 +108,16 @@ export class GestionOptionsComponent implements OnInit, AfterViewInit {
    * L'option a supprimer
    */
   supprimerOption(option) {
-    // Ouverture de la boite de dialogue, composant Ajouter Option
-    const dialogRef: MatDialogRef<SupprimerOptionsComponent> = this.modalService.open(SupprimerOptionsComponent, {
-      width: '800px',
+    const dialogRef: MatDialogRef<ConfirmationDialogComponent> = this.dialogValidation.open(ConfirmationDialogComponent, {
+      width: '350px',
+      data: 'Voulez vous vraiment supprimer cette option?'
     });
-    dialogRef.componentInstance.modele = this.codeModele;
-    dialogRef.componentInstance.option = option;
-    // Rafraichissement de la page apres fermeture de la boite de dialogue
-    dialogRef.afterClosed().subscribe(() => {
-      this.refreshData();
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.optionService.supprimerDuModele(option.CodeOption, this.codeModele).subscribe(() => {
+          this.refreshData();
+        });
+      }
     });
   }
 

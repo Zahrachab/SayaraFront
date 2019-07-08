@@ -11,6 +11,7 @@ import {InfosDialogComponent} from './infos-dialog/infos-dialog.component';
 import {ActivatedRoute} from '@angular/router';
 import {FicheModeleComponent} from '../gestion-modele/fiche-modele/fiche-modele.component';
 import {FicheVersionComponent} from './fiche-version/fiche-version.component';
+import {ConfirmationDialogComponent} from '../../shared/confirmation-dialog/confirmation-dialog.component';
 
 
 
@@ -123,7 +124,7 @@ export class GestionVersionComponent implements OnInit, AfterViewInit {
         this.refreshData();
       });
     } else {
-      alert("Veuillez choisir un modèle");
+      alert('Veuillez choisir un modèle');
     }
   }
 
@@ -146,15 +147,18 @@ export class GestionVersionComponent implements OnInit, AfterViewInit {
    * La version a supprimer
    */
   supprimerVersion(version) {
-    const dialogRef: MatDialogRef<SupprimerVersionComponent> = this.matDialog.open(SupprimerVersionComponent, {
-      width: '800px',
-      data: {version}
+    const dialogRef: MatDialogRef<ConfirmationDialogComponent> = this.matDialog.open(ConfirmationDialogComponent, {
+      width: '350px',
+      data: 'Voulez vous vraiment supprimer cette version?'
     });
-    dialogRef.afterClosed().subscribe(() => {
-      this.refreshData();
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.versionService.supprimerVersion(version.CodeVersion).subscribe(() => {
+          this.refreshData();
+        });
+      }
     });
   }
-
 
   afficherTousOptions(version) {
     const dialogRef: MatDialogRef<InfosDialogComponent> = this.matDialog.open(InfosDialogComponent, {width: '800px', height: '60%'});

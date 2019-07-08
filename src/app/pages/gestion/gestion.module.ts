@@ -16,13 +16,11 @@ import {FooterComponent} from '../../components/footer/footer.component';
 import {GestionVersionComponent } from './gestion-version/gestion-version.component';
 import {MatSelectModule} from '@angular/material/select';
 import { SupprimerModeleComponent } from './gestion-modele/supprimer-modele/supprimer-modele.component';
-import { SupprimerVersionComponent } from './gestion-version/supprimer-version/supprimer-version.component';
 import { GestionOptionsComponent } from './gestion-options/gestion-options.component';
 import {AjouterVersionComponent} from './gestion-version/ajouter-version/ajouter-version.component';
 import { ModifierVerionComponent } from './gestion-version/modifier-verion/modifier-verion.component';
 import {FileSelectDirective} from 'ng2-file-upload';
 import { ModifierModeleComponent } from './gestion-modele/modifier-modele/modifier-modele.component';
-import { SupprimerOptionsComponent } from './gestion-options/supprimer-options/supprimer-options.component';
 import { AjouterOptionComponent } from './gestion-options/ajouter-option/ajouter-option.component';
 import { ModifierOptionComponent } from './gestion-options/modifier-option/modifier-option.component';
 import { ColorPickerModule } from 'ngx-color-picker';
@@ -40,14 +38,13 @@ import { FicheVersionComponent } from './gestion-version/fiche-version/fiche-ver
 @NgModule({
   declarations: [GestionOptionsComponent, GestionComponent, GestionModeleComponent, AjouterModeleComponent,
                   NavbarComponent, SidenavComponent, FooterComponent, GestionVersionComponent, SupprimerModeleComponent,
-                  SupprimerVersionComponent, AjouterVersionComponent, ModifierVerionComponent,
+                  AjouterVersionComponent, ModifierVerionComponent,
                   FileSelectDirective,
                   GestionCouleurComponent,
                   ModifierCouleurComponent,
                   AjouterCouleurComponent,
-                  SupprimerVersionComponent, GestionOptionsComponent,
+                  GestionOptionsComponent,
                   ModifierModeleComponent,
-                  SupprimerOptionsComponent,
                   AjouterOptionComponent,
                   ModifierOptionComponent,
                   FileSelectDirective,
@@ -73,8 +70,8 @@ import { FicheVersionComponent } from './gestion-version/fiche-version/fiche-ver
   ],
   exports: [NavbarComponent, SidenavComponent, FooterComponent, FileSelectDirective],
   entryComponents: [AjouterModeleComponent, AjouterVersionComponent, ModifierVerionComponent,
-    SupprimerModeleComponent, SupprimerVersionComponent, ModifierCouleurComponent, AjouterCouleurComponent,
-    SupprimerOptionsComponent, AjouterOptionComponent, ModifierOptionComponent, ModifierModeleComponent, FicheVersionComponent, FicheModeleComponent, InfosDialogComponent],
+    SupprimerModeleComponent, ModifierCouleurComponent, AjouterCouleurComponent,
+    AjouterOptionComponent, ModifierOptionComponent, ModifierModeleComponent, FicheVersionComponent, FicheModeleComponent, InfosDialogComponent],
 })
 export class GestionModule {
 }
