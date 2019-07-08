@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit, Optional} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {OptionService} from '../../../../services/option.service';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Option} from '../../../../services/entites/option.model';
 
 @Component({
@@ -42,8 +42,8 @@ export class ModifierOptionComponent implements OnInit {
   ngOnInit() {
     // Construction du formulaire
     this.formulaire = this.constructeurFormulaire.group({
-      code: this.option.CodeOption,
-      nom: this.option.NomOption,
+      code: new FormControl({value: this.option.CodeOption, disabled: true}, Validators.required),
+      nom:  new FormControl({value: this.option.CodeOption}, Validators.required),
     });
     // Liaison avec le Html
     this.formulaire.valueChanges.subscribe(() => {

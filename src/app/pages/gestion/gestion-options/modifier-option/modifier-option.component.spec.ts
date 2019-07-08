@@ -1,28 +1,32 @@
-import {async, ComponentFixture, inject, TestBed} from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ModifierOptionComponent } from './modifier-option.component';
-import {HttpClientModule} from '@angular/common/http';
-import {MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef, MatIconModule, MatInputModule} from '@angular/material';
-import {OptionService} from '../../../../services/option.service';
-import {OptionServiceMock} from '../../../../mocks/Option.Service.mock';
 import {Component, CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
+import {OptionService} from '../../../../services/option.service';
+import {HttpClientModule} from '@angular/common/http';
+import {MatDialog, MatDialogModule, MatDialogRef, MatIconModule, MatInputModule} from '@angular/material';
 import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {Observable} from 'rxjs';
-import {Option} from '../../../../services/entites/option.model';
-import {OverlayContainer} from '@angular/cdk/overlay';
+import {OptionServiceMock} from '../../../../mocks/Option.Service.mock';
+import {OverlayContainer} from '@angular/cdk/overlay'
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {CommonModule} from '@angular/common';
+import {ModifierOptionComponent} from './modifier-option.component';
+import {Observable} from 'rxjs';
+import {Option} from '../../../../services/entites/option.model';
 
-describe('ModifierOptionComponent', () => {
+fdescribe('ModifierOptionComponent', () => {
   let dialog: MatDialog;
   let dialogRef: MatDialogRef<ModifierOptionComponent>;
   let overlayContainerElement: HTMLElement;
   let noop: ComponentFixture<NoopComponent>;
-  let option;
 
+  // spy for mat dialog
+  let dialogSpyOpen: jasmine.Spy;
+  let dialogSpyClose: jasmine.Spy;
+  let dialogSpyAjouter: jasmine.Spy;
 
-  function  getOption(): Observable<Option> {
-    return   Observable.of (
+  let option: Option;
+  function getOption(): Observable<Option> {
+    return  Observable.of(
       {
         CodeOption: '10',
         NomOption: 'radar avant',
@@ -32,8 +36,7 @@ describe('ModifierOptionComponent', () => {
           CodeOption: '',
         },
         Checked: true
-      }
-    );
+      });
   }
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -52,14 +55,15 @@ describe('ModifierOptionComponent', () => {
 
 
 
-  beforeEach(() => {
+  beforeEach( () => {
     dialog = TestBed.get(MatDialog);
-    getOption().subscribe(res => {
-      option = res as Option;
-    });
     noop = TestBed.createComponent(NoopComponent);
     dialogRef = dialog.open(ModifierOptionComponent);
-    dialogRef.componentInstance.setData(option);
+    dialogSpyOpen = spyOn(dialog, 'open');
+    dialogSpyClose = spyOn(dialogRef, 'close');
+    dialogSpyAjouter = spyOn(dialogRef.componentInstance, 'modifierOption');
+    getOption().subscribe((res) => {option = res as Option; });
+    dialogRef.componentInstance.option = option;
     noop.detectChanges();
   });
 
@@ -74,30 +78,22 @@ describe('ModifierOptionComponent', () => {
     expect(dialogRef.componentInstance).toBeTruthy();
   });
 
-  /**
-   * Tester que le formulaire est initialisé avec les infos de l'option
-   */
-  it('Le formulaire doit être initialisé', () => {
-    expect(dialogRef.componentInstance.formulaire.controls.code = option.codeOption);
-    expect(dialogRef.componentInstance.formulaire.controls.nom = option.codeOption);
-
-  });
 
 
   /**
    * Tester que le formulaire est valide si le nom n'est pas vide
    */
   it('Le formulaire doit être valide si le nom n\'est pas vide', () => {
-   remplirForm('toit ouvrant');
-   noop.detectChanges();
-   noop.whenStable().then( () => {
-     expect(dialogRef.componentInstance.formValid).toBeTruthy();
+    remplirForm('toit ouvrant');
+    noop.detectChanges();
+    noop.whenStable().then( () => {
+      expect(dialogRef.componentInstance.formValid).toBeTruthy();
     });
   });
   /**
-   * Tester que le formulaire est invalide si le nom modifié est vide
+   * Tester que le formulaire est invalide si le nom  est vide
    */
-  it('Le formulaire doit être invalide si le nom entré est null', () => {
+  it('Le formulaire doit être invalide si le nom est vide', () => {
     remplirForm('');
     noop.detectChanges();
     noop.whenStable().then( () => {
@@ -106,27 +102,17 @@ describe('ModifierOptionComponent', () => {
   });
 
   /**
-   * Tester que le formulaire est valide si le nom entré n'est pas vide
+   * Tester la fermeture après l'envoi de la donnée
    */
-  it('Le formulaire doit être valide si le nom entré n\est pas vide', () => {
-    remplirForm('toit ouvrant');
-    noop.detectChanges();
-    noop.whenStable().then( () => {
-      expect(dialogRef.componentInstance.formValid).toBeTruthy();
-    });
-  });
-
-
-  /**
-   * Tester l'envoie de la donnée
-   */
-  it('Le formulaire doit être valide si le nom entré n\est pas vide', () => {
+  it('la méthode dialogRef.close  être invoquée si le bouton submit est cliqué avec des données correctes', () => {
+    // remplir le formulaire avec des données correctes
     remplirForm('toit ouvrant');
     const button = overlayContainerElement.querySelector('button');
     button.click();
     noop.detectChanges();
     noop.whenStable().then( () => {
-      expect(dialogRef.componentInstance.modifierOption).toHaveBeenCalled();
+      // Tester la fermeture du dialog
+      expect(dialogSpyClose).toHaveBeenCalled();
     });
   });
 

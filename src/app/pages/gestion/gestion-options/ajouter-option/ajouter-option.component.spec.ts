@@ -107,8 +107,6 @@ fdescribe('AjouterOptionComponent', () => {
     button.click();
     noop.detectChanges();
     noop.whenStable().then( () => {
-      // Tester l'invocation de la méthode ajouterOption
-      expect(dialogSpyAjouter).toHaveBeenCalled();
       // Tester la fermeture du dialog
       expect(dialogSpyClose).toHaveBeenCalled();
     });
