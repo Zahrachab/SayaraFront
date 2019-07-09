@@ -2,14 +2,12 @@ import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {ModeleService} from '../../../services/modele.service';
 import {ModeleDetail} from '../../../services/entites/modeleDetail.model';
 import {VersionService} from '../../../services/version.service';
-import {SupprimerVersionComponent} from './supprimer-version/supprimer-version.component';
 import {AjouterVersionComponent} from './ajouter-version/ajouter-version.component';
 import {ModifierVerionComponent} from './modifier-verion/modifier-verion.component';
 import {MatDialog, MatDialogRef, MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {VersionDetail} from '../../../services/entites/versionDetail.model';
 import {InfosDialogComponent} from './infos-dialog/infos-dialog.component';
 import {ActivatedRoute} from '@angular/router';
-import {FicheModeleComponent} from '../gestion-modele/fiche-modele/fiche-modele.component';
 import {FicheVersionComponent} from './fiche-version/fiche-version.component';
 import {ConfirmationDialogComponent} from '../../shared/confirmation-dialog/confirmation-dialog.component';
 
