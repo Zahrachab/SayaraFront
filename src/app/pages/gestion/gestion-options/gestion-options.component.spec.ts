@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import {VersionServiceMock} from '../../../mocks/Version.Service.mock';
 import {HttpClientModule} from '@angular/common/http';
 import {
-  MatDialog,
+  MatDialog, MatDialogRef,
   MatInputModule,
   MatPaginatorModule,
   MatSelectModule,
@@ -27,6 +27,13 @@ fdescribe('GestionOptionsComponent', () => {
   let component: GestionOptionsComponent;
   let fixture: ComponentFixture<GestionOptionsComponent>;
 
+
+  let dialogSpyOpen: jasmine.Spy;
+  let dialogSpySupprimer: jasmine.Spy;
+
+  let dialog: MatDialog;
+  let data: Option[];
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientModule,
@@ -36,14 +43,14 @@ fdescribe('GestionOptionsComponent', () => {
         MatSelectModule,
         MatInputModule,
         RouterModule.forRoot([])],
-      declarations: [ GestionOptionsComponent ],
+      declarations: [GestionOptionsComponent],
       providers: [
-        {provide : ModeleService , useClass : ModeleServiceMock},
-        {provide : OptionService , useClass : OptionServiceMock},
-        {provide : VersionService , useClass : VersionServiceMock},
-        {provide : CouleurService , useClass : CouleurServiceMock},
-        {provide: MatDialog, useValue: {} },
-        {provide: APP_BASE_HREF, useValue : '/' }
+        {provide: ModeleService, useClass: ModeleServiceMock},
+        {provide: OptionService, useClass: OptionServiceMock},
+        {provide: VersionService, useClass: VersionServiceMock},
+        {provide: CouleurService, useClass: CouleurServiceMock},
+        {provide: MatDialog, useValue: {}},
+        {provide: APP_BASE_HREF, useValue: '/'}
       ],
       schemas: [NO_ERRORS_SCHEMA]
     })
@@ -53,6 +60,7 @@ fdescribe('GestionOptionsComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(GestionOptionsComponent);
     component = fixture.componentInstance;
+    dialogSpySupprimer = spyOn(component, 'supprimerOption');
     fixture.detectChanges();
   });
 
@@ -60,16 +68,17 @@ fdescribe('GestionOptionsComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  /*Tester si le tableau est bien affiché avec des données renvoyées par le service VersionServiceMock */
+  /**
+   * Tester si le tableau est bien affiché avec des données renvoyées par le service OptionServiceMock
+   **/
   it('should test the table ', () => {
-    // Le mock du service VersionService
+    // Le mock du service OptionService
     const optionsService = new OptionServiceMock();
-    // La liste des versions renvoyée par VersionServiceMock
-    let data: Option[];
+    // La liste des options renvoyée par OptionServiceMock
     optionsService.getOptions(1).subscribe(res => {
       data = res as Option[];
     });
-    fixture.detectChanges();
+
     // tester le clique sur le mat-select
     const trigger = fixture.debugElement.query(By.css('.mat-select-trigger')).nativeElement;
     trigger.click();
@@ -99,8 +108,12 @@ fdescribe('GestionOptionsComponent', () => {
       });
     });
   });
-  // tester le clique sur le bouton ajouter une nouvelle version
-  it('should test button ajouter Version', async(() => {
+
+
+  /**
+   * tester le clique sur le bouton ajouter une nouvelle version
+   **/
+  it('should test button ajouter Option', async(() => {
     spyOn(component, 'ajouterOption');
     const button = fixture.debugElement.nativeElement.querySelector('button');
     button.click();
@@ -108,4 +121,32 @@ fdescribe('GestionOptionsComponent', () => {
       expect(component.ajouterOption).toHaveBeenCalled();
     });
   }));
+
+
+  /**
+   * Tester l'invocation de la méthode suprimerOption lors d'un clique sur l'icon supprimer
+   **/
+
+  it('doit supprimer une option', () => {
+
+    //le clique sur le mat-select
+    const trigger = fixture.debugElement.query(By.css('.mat-select-trigger')).nativeElement;
+    trigger.click();
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      // clique sur le premier modèle qui apparait dans le mat-select
+      const matOption = fixture.debugElement.queryAll(By.css('.mat-option'));
+      matOption[1].nativeElement.click();
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        // cliquer sur l'icon supprimer de la nouvelle ligne
+        const trigger = fixture.debugElement.query(By.css('.supp')).nativeElement;
+        trigger.click();
+        // tester l'invocation de la méthode supprimer option
+        expect(dialogSpySupprimer).toHaveBeenCalledWith(data[0],component.getModele());
+      });
+    });
+
+  });
+
 });

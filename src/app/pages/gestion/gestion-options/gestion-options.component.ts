@@ -176,6 +176,10 @@ export class GestionOptionsComponent implements OnInit, AfterViewInit {
   appliquerFiltre = (value: string) => {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
+
+  getModele = () => {
+    return this.codeModele;
+  }
 }
 
 
