@@ -104,7 +104,9 @@ export class GestionCouleurComponent implements OnInit {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
 
-
+  getModele = () => {
+    return this.codeModele;
+  }
 }
 
 

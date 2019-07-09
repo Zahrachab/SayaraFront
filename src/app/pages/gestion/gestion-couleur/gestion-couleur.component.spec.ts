@@ -26,6 +26,8 @@ import {Couleur} from '../../../services/entites/couleur.model';
 fdescribe('GestionCouleursComponent', () => {
   let component: GestionCouleurComponent;
   let fixture: ComponentFixture<GestionCouleurComponent>;
+  let spySupprimer: jasmine.Spy;
+  let data: Couleur [];
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -53,6 +55,7 @@ fdescribe('GestionCouleursComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(GestionCouleurComponent);
     component = fixture.componentInstance;
+    spySupprimer = spyOn(component, 'supprimerCouleur');
     fixture.detectChanges();
   });
 
@@ -65,7 +68,6 @@ fdescribe('GestionCouleursComponent', () => {
     // Le mock du service VersionService
     const couleursService = new CouleurServiceMock();
     // La liste des versions renvoyée par VersionServiceMock
-    let data: Couleur [];
     couleursService.getCouleurs(1).subscribe(res => {
       data = res as Couleur [];
     });
@@ -122,4 +124,30 @@ fdescribe('GestionCouleursComponent', () => {
       b: parseInt(result[3], 16)
     } : null;
   }
+
+  /**
+   * Tester l'invocation de la méthode suprimerCouleur lors d'un clique sur l'icon supprimer
+   **/
+
+  it('doit supprimer une couleur', () => {
+
+    //le clique sur le mat-select
+    const trigger = fixture.debugElement.query(By.css('.mat-select-trigger')).nativeElement;
+    trigger.click();
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      // clique sur le premier modèle qui apparait dans le mat-select
+      const matOption = fixture.debugElement.queryAll(By.css('.mat-option'));
+      matOption[1].nativeElement.click();
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        // cliquer sur l'icon supprimer de la nouvelle lignew
+        const trigger = fixture.debugElement.query(By.css('.supp')).nativeElement;
+        trigger.click();
+        // tester l'invocation de la méthode supprimer version
+        expect(spySupprimer).toHaveBeenCalledWith(data[0],component.getModele());
+      });
+    });
+
+  });
 });

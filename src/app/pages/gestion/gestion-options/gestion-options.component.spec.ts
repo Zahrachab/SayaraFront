@@ -28,10 +28,8 @@ fdescribe('GestionOptionsComponent', () => {
   let fixture: ComponentFixture<GestionOptionsComponent>;
 
 
-  let dialogSpyOpen: jasmine.Spy;
   let dialogSpySupprimer: jasmine.Spy;
 
-  let dialog: MatDialog;
   let data: Option[];
 
   beforeEach(async(() => {
