@@ -8,10 +8,10 @@ export class CommandeService {
 
   private url = this.injector.get('url') + '/vehicules/commandes';
   private  fabriquant = JSON.parse(localStorage.getItem('utilisateur')).utilfab.Fabricant ;
-  private urlCommandes =  this.url + '?fabriquant='+ this.fabriquant;
-  private urlNouvellesCommandes =  this.url + '/nonvalidees?fabriquant='+ this.fabriquant;
-  private  urlCommandesAnnulles =  this.url + '/annulees?fabriquant='+ this.fabriquant;
-  private  urlCommandesValides =  this.url + '/validees?fabriquant='+ this.fabriquant;
+  private urlCommandes =  this.url + '?fabricant='+ this.fabriquant;
+  private urlNouvellesCommandes =  this.url + '/nonvalidees?fabricant='+ this.fabriquant;
+  private  urlCommandesAnnulles =  this.url + '/annulees?fabricant='+ this.fabriquant;
+  private  urlCommandesValides =  this.url + '/validees?fabricant='+ this.fabriquant;
   constructor(private http: HttpClient, private injector: Injector) { }
 
   /**
