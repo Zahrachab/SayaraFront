@@ -23,7 +23,7 @@ import {GestionOptionsComponent} from './gestion-options.component';
 import {RouterModule} from '@angular/router';
 import {Option} from '../../../services/entites/option.model';
 
-fdescribe('GestionOptionsComponent', () => {
+describe('GestionOptionsComponent', () => {
   let component: GestionOptionsComponent;
   let fixture: ComponentFixture<GestionOptionsComponent>;
 

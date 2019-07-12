@@ -20,7 +20,7 @@ import {CouleurService} from '../../../../services/couleur.service';
 
 
 
-fdescribe('AjouterModeleComponent', () => {
+describe('AjouterModeleComponent', () => {
   let component: AjouterModeleComponent;
 
   let dialog: MatDialog;

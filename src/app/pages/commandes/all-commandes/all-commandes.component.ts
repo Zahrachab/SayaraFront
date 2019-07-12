@@ -38,13 +38,12 @@ export class AllCommandesComponent implements OnInit, AfterViewInit {
     this.refreshData();
   }
 
-
+  /**
+   * Récupérer les commandes à partir du web service
+   */
   refreshData() {
-    if (this.router.url.split('/')[2] === 'tous') {
-      this.commandeService.getAllCommandes().subscribe(res => {
-        this.dataSource.data = res as Commande[];
-      });
-    } else if (this.router.url.split('/')[2] === 'prepayees') {
+
+    if (this.router.url.split('/')[2] === 'prepayees') {
       this.commandeService.getCommandesPrepayes().subscribe(res => {
         this.dataSource.data = res as Commande[];
       });
@@ -52,11 +51,16 @@ export class AllCommandesComponent implements OnInit, AfterViewInit {
       this.commandeService.getCommandesAnnulles().subscribe(res => {
         this.dataSource.data = res as Commande[];
       });
-    } else if (this.router.url.split('/')[2] === 'nouvelles'){
+    } else if (this.router.url.split('/')[2] === 'nouvelles') {
       this.commandeService.getCommandesNouvelles().subscribe(res => {
         this.dataSource.data = res as Commande[];
       });
     }
+     else {
+          this.commandeService.getAllCommandes().subscribe(res => {
+            this.dataSource.data = res as Commande[];
+          });
+     }
   }
 
 

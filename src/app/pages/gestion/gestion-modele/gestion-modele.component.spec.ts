@@ -20,7 +20,7 @@ import {ModeleDetail} from '../../../services/entites/modeleDetail.model';
 
 
 
-fdescribe('GestionModeleComponent', () => {
+describe('GestionModeleComponent', () => {
   let component: GestionModeleComponent;
   let fixture: ComponentFixture<GestionModeleComponent>;
   beforeEach(async(() => {

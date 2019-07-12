@@ -11,7 +11,7 @@ import {OverlayContainer} from '@angular/cdk/overlay';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {CommonModule} from '@angular/common';
 
-fdescribe('AjouterOptionComponent', () => {
+describe('AjouterOptionComponent', () => {
   let dialog: MatDialog;
   let dialogRef: MatDialogRef<AjouterOptionComponent>;
   let overlayContainerElement: HTMLElement;

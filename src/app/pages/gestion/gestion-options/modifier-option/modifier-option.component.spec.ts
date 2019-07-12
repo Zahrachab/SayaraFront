@@ -13,7 +13,7 @@ import {ModifierOptionComponent} from './modifier-option.component';
 import {Observable} from 'rxjs';
 import {Option} from '../../../../services/entites/option.model';
 
-fdescribe('ModifierOptionComponent', () => {
+describe('ModifierOptionComponent', () => {
   let dialog: MatDialog;
   let dialogRef: MatDialogRef<ModifierOptionComponent>;
   let overlayContainerElement: HTMLElement;
