@@ -57,11 +57,11 @@ export class SidenavComponent implements OnInit {
         },
         {
           nom: 'prépayées',
-          lien: '/commandes/prépayées'
+          lien: '/commandes/prepayees'
         },
         {
           nom: 'annulées',
-          lien: '/commandes/annulées'
+          lien: '/commandes/annulees'
         },
         {
           nom: 'nouvelles',

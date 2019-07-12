@@ -5,7 +5,7 @@ import {OptionService} from '../../../../services/option.service';
 import {CouleurService} from '../../../../services/couleur.service';
 import {Couleur} from '../../../../services/entites/couleur.model';
 import {ModeleDetail} from '../../../../services/entites/modeleDetail.model';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
+import {MatDialogRef} from '@angular/material';
 import {Option} from '../../../../services/entites/option.model';
 
 @Component({
@@ -72,7 +72,6 @@ export class AjouterModeleComponent implements OnInit {
     // Construction du formulaire
     this.formulaire = this.constructeurFormulaire.group({
       code: ['', Validators.required],
-      description: ['', Validators.required],
       nom: ['', Validators.required],
       options: this.constructeurFormulaire.array([]),
       couleurs: this.constructeurFormulaire.array([]),
@@ -184,6 +183,10 @@ export class AjouterModeleComponent implements OnInit {
   }
 
 
+  /**
+   * @param event
+   * @param couleur , couleur sélectionnée ou déselectionnée
+   */
   gererCouleurs(event, couleur) {
     couleur.Checked = !couleur.Checked;
     if (couleur.Checked) {
@@ -191,7 +194,7 @@ export class AjouterModeleComponent implements OnInit {
     } else {
         this.couleursChecked.splice(this.couleursChecked.indexOf(couleur), 1);
       }
-    }
+  }
 
   gererOptions(event, opt) {
     opt.Checked = !opt.Checked;
@@ -200,7 +203,7 @@ export class AjouterModeleComponent implements OnInit {
     } else {
         this.optionsChecked.splice(this.optionsChecked.indexOf(opt), 1);
       }
-    }
+  }
   /**
    * L'ajout du modele, ajoute le modele, puis les options et les couleurs puis les associations entre eux
    */

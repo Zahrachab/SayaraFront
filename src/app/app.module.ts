@@ -24,6 +24,7 @@ import { AlertComponent } from './components/alert/alert.component';
 import {TarifsModule} from './pages/tarifs/tarifs.module';
 import {StockModule} from './pages/stock/stock.module';
 import {CommandesModule} from './pages/commandes/commandes.module';
+import {CommandeService} from './services/commande.service';
 
 
 const urlGlobale = 'https://sayaradz.herokuapp.com';
@@ -58,8 +59,8 @@ const urlGlobale = 'https://sayaradz.herokuapp.com';
   ],
   entryComponents: [ConfirmationDialogComponent],
   schemas: [NO_ERRORS_SCHEMA],
-  providers: [ModeleService, {provide: 'url', useValue: urlGlobale},
-              { provide: HTTP_INTERCEPTORS, useClass: LoginErrorInterceptor, multi: true }, ],
+  providers: [ModeleService, CommandeService, {provide: 'url', useValue: urlGlobale},
+    { provide: HTTP_INTERCEPTORS, useClass: LoginErrorInterceptor, multi: true }, ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

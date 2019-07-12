@@ -23,9 +23,9 @@
         <img class="jpg-icon" src="./assets/images/Icons/try3.png" alt="logo">
       </button>
 
-      <div fxFlex="row" fxLayoutAlign="start" fxHide.xs fxLayout>
-        <div fxFlex="22"></div>
-        <ul fxLayout fxLayoutGap="50px" class="navigation-items" fxFlex="70">
+      <div fxFlex="row"  fxHide.xs fxLayout fxLayoutGap="20px">
+        <div fxFlex="10"></div>
+        <ul fxLayout fxLayoutGap="50px" class="navigation-items">
 
           <li>
             <a>
@@ -63,8 +63,20 @@
               <span class="label">Commande</span>
             </a>
           </li>
-
         </ul>
+        <ul fxLayout fxLayoutGap="20px" class="navigation-items">
+          <li>
+            <button mat-icon-button  >
+              <mat-icon>notifications</mat-icon>
+            </button>
+          </li>
+          <li>
+            <button mat-icon-button   >
+              <mat-icon>account_circle</mat-icon>
+            </button>
+          </li>
+        </ul>
+
         <a mat-stroked-button routerLink="." class="loginBtn" (click)="logout()">Se déconnecter</a>
 
       </div>

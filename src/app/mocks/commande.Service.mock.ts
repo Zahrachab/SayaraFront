@@ -5,221 +5,266 @@ import {Commande} from '../services/entites/commande.model';
 
 const data1: Commande[] = [
   {
+    idCommande: '12',
     Date: '12/12/2018',
-    Client: {
-      NomClient: 'Chabane Zahra',
-      WilayaClient: 'Alger',
-      NumClient: '0543 76 87 98',
+    automobiliste: {
+      idAutomobiliste: '12',
+      Nom: 'Chabane',
+      NumTel: '0543 76 87 98',
+      Prenom: 'zahra'
     },
-    NomModele: 'Golf',
-    NomVersion: 'Série 6',
-    Prix: 1500000,
-    Reserve: true,
-    PrixPaye: 12000,
-    Accepte: false,
-    Refuse: false,
-    annule: false
+    vehicule: {
+      NomModele: 'Golf',
+      NomVersion: 'Série 6',
+      NumChassis: '09654AZRTYHH',
+      NomMarque: 'Wolswagen'
+    },
+
+    Montant: 1500000,
+    Reservation: null,
+    Etat: 0
   },
   {
+    idCommande: '12',
     Date: '12/12/2018',
-    Client: {
-      NomClient: 'Chabane Zahra',
-      WilayaClient: 'Alger',
-      NumClient: '0543 76 87 98',
+    automobiliste: {
+      idAutomobiliste: '12',
+      Nom: 'Chabane',
+      NumTel: '0543 76 87 98',
+      Prenom: 'zahra'
     },
-    NomModele: 'Golf',
-    NomVersion: 'Série 6',
-    Prix: 1500000,
-    Reserve: false,
-    PrixPaye: 0,
-    Accepte: true,
-    Refuse: false,
-    annule: false
+    vehicule: {
+      NomModele: 'Golf',
+      NomVersion: 'Série 6',
+      NumChassis: '09654AZRTYHH',
+      NomMarque: 'Wolswagen'
+    },
+
+    Montant: 1500000,
+    Reservation:  12000,
+    Etat: 2
   },
-  {
+  {idCommande: '12',
     Date: '12/12/2018',
-    Client: {
-      NomClient: 'Chabane Zahra',
-      WilayaClient: 'Alger',
-      NumClient: '0543 76 87 98',
+    automobiliste: {
+      idAutomobiliste: '12',
+      Nom: 'Chabane',
+      NumTel: '0543 76 87 98',
+      Prenom: 'zahra'
     },
-    NomModele: 'Dacia',
-    NomVersion: 'Série 6',
-    Prix: 1500000,
-    Reserve: false,
-    PrixPaye: 0,
-    Accepte: false,
-    Refuse: true,
-    annule: false
+    vehicule: {
+      NomModele: 'Golf',
+      NomVersion: 'Série 6',
+      NumChassis: '09654AZRTYHH',
+      NomMarque: 'Wolswagen'
+    },
+    Montant: 1500000,
+    Reservation: null,
+    Etat: 1
   }
+
 ];
 
 const data2: Commande[] = [
   {
+    idCommande: '12',
     Date: '12/12/2018',
-    Client: {
-      NomClient: 'Chabane Zahra',
-      WilayaClient: 'Alger',
-      NumClient: '0543 76 87 98',
+    automobiliste: {
+      idAutomobiliste: '12',
+      Nom: 'Chabane',
+      NumTel: '0543 76 87 98',
+      Prenom: 'zahra'
     },
-    NomModele: 'Golf',
-    NomVersion: 'Série 6',
-    Prix: 1500000,
-    Reserve: true,
-    PrixPaye: 12000,
-    Accepte: false,
-    Refuse: false,
-    annule: false
+    vehicule: {
+      NomModele: 'Golf',
+      NomVersion: 'Série 6',
+      NumChassis: '09654AZRTYHH',
+      NomMarque: 'Wolswagen'
+    },
+    Montant: 1500000,
+    Reservation: 12000,
+    Etat: 0
   },
   {
+    idCommande: '12',
     Date: '12/12/2018',
-    Client: {
-      NomClient: 'Chabane Zahra',
-      WilayaClient: 'Alger',
-      NumClient: '0543 76 87 98',
+    automobiliste: {
+      idAutomobiliste: '12',
+      Nom: 'Chabane',
+      NumTel: '0543 76 87 98',
+      Prenom: 'zahra'
     },
-    NomModele: 'Golf',
-    NomVersion: 'Série 6',
-    Prix: 1500000,
-    Reserve: true,
-    PrixPaye: 12000,
-    Accepte: false,
-    Refuse: false,
-    annule: false
+    vehicule: {
+      NomModele: 'Golf',
+      NomVersion: 'Série 6',
+      NumChassis: '09654AZRTYHH',
+      NomMarque: 'Wolswagen'
+    },
+    Montant: 1500000,
+    Reservation: 14000,
+    Etat: 3
   },
   {
+    idCommande: '12',
     Date: '12/12/2018',
-    Client: {
-      NomClient: 'Chabane Zahra',
-      WilayaClient: 'Alger',
-      NumClient: '0543 76 87 98',
+    automobiliste: {
+      idAutomobiliste: '12',
+      Nom: 'Chabane',
+      NumTel: '0543 76 87 98',
+      Prenom: 'zahra'
     },
-    NomModele: 'Golf',
-    NomVersion: 'Série 6',
-    Prix: 1500000,
-    Reserve: true,
-    PrixPaye: 12000,
-    Accepte: false,
-    Refuse: false,
-    annule: false
+    vehicule: {
+      NomModele: 'Golf',
+      NomVersion: 'Série 6',
+      NumChassis: '09654AZRTYHH',
+      NomMarque: 'Wolswagen'
+    },
+    Montant: 1500000,
+    Reservation: 13000,
+    Etat: 3
   },
   {
+    idCommande: '12',
     Date: '12/12/2018',
-    Client: {
-      NomClient: 'Chabane Zahra',
-      WilayaClient: 'Alger',
-      NumClient: '0543 76 87 98',
+    automobiliste: {
+      idAutomobiliste: '12',
+      Nom: 'Chabane',
+      NumTel: '0543 76 87 98',
+      Prenom: 'zahra'
     },
-    NomModele: 'Golf',
-    NomVersion: 'Série 6',
-    Prix: 1500000,
-    Reserve: true,
-    PrixPaye: 120000,
-    Accepte: false,
-    Refuse: false,
-    annule: false
-  },
-  {
-    Date: '12/12/2018',
-    Client: {
-      NomClient: 'Chabane Zahra',
-      WilayaClient: 'Alger',
-      NumClient: '0543 76 87 98',
+    vehicule: {
+      NomModele: 'Golf',
+      NomVersion: 'Série 6',
+      NumChassis: '09654AZRTYHH',
+      NomMarque: 'Wolswagen'
     },
-    NomModele: 'Dacia',
-    NomVersion: 'Série 6',
-    Prix: 1500000,
-    Reserve: true,
-    PrixPaye: 120000,
-    Accepte: false,
-    Refuse: false,
-    annule: false
+    Montant: 1500000,
+    Reservation: null,
+    Etat: 0
   }
 ];
-
 
 const data3: Commande[] = [
   {
+    idCommande: '12',
     Date: '12/12/2018',
-    Client: {
-      NomClient: 'Chabane Zahra',
-      WilayaClient: 'Alger',
-      NumClient: '0543 76 87 98',
+    automobiliste: {
+      idAutomobiliste: '12',
+      Nom: 'Chabane',
+      NumTel: '0543 76 87 98',
+      Prenom: 'zahra'
     },
-    NomModele: 'Golf',
-    NomVersion: 'Série 6',
-    Prix: 1500000,
-    Reserve: true,
-    PrixPaye: 12000,
-    Accepte: false,
-    Refuse: false,
-    annule: true
+    vehicule: {
+      NomModele: 'Golf',
+      NomVersion: 'Série 6',
+      NumChassis: '09654AZRTYHH',
+      NomMarque: 'Wolswagen'
+    },
+    Montant: 1500000,
+    Reservation: null,
+    Etat: 1
   },
   {
+    idCommande: '12',
     Date: '12/12/2018',
-    Client: {
-      NomClient: 'Chabane Zahra',
-      WilayaClient: 'Alger',
-      NumClient: '0543 76 87 98',
+    automobiliste: {
+      idAutomobiliste: '12',
+      Nom: 'Chabane',
+      NumTel: '0543 76 87 98',
+      Prenom: 'zahra'
     },
-    NomModele: 'Golf',
-    NomVersion: 'Série 6',
-    Prix: 1500000,
-    Reserve: true,
-    PrixPaye: 12000,
-    Accepte: false,
-    Refuse: false,
-    annule: true
+    vehicule: {
+      NomModele: 'Golf',
+      NomVersion: 'Série 6',
+      NumChassis: '09654AZRTYHH',
+      NomMarque: 'Wolswagen'
+    },
+    Montant: 1500000,
+    Reservation: null,
+    Etat: 1
   },
   {
+    idCommande: '12',
     Date: '12/12/2018',
-    Client: {
-      NomClient: 'Chabane Zahra',
-      WilayaClient: 'Alger',
-      NumClient: '0543 76 87 98',
+    automobiliste: {
+      idAutomobiliste: '12',
+      Nom: 'Chabane',
+      NumTel: '0543 76 87 98',
+      Prenom: 'zahra'
     },
-    NomModele: 'Golf',
-    NomVersion: 'Série 6',
-    Prix: 1500000,
-    Reserve: true,
-    PrixPaye: 12000,
-    Accepte: false,
-    Refuse: false,
-    annule: true
+    vehicule: {
+      NomModele: 'Golf',
+      NomVersion: 'Série 6',
+      NumChassis: '09654AZRTYHH',
+      NomMarque: 'Wolswagen'
+    },
+    Montant: 1500000,
+    Reservation: null,
+    Etat: 1
   },
-  {
-    Date: '12/12/2018',
-    Client: {
-      NomClient: 'Chabane Zahra',
-      WilayaClient: 'Alger',
-      NumClient: '0543 76 87 98',
-    },
-    NomModele: 'Golf',
-    NomVersion: 'Série 6',
-    Prix: 1500000,
-    Reserve: false,
-    PrixPaye: 0,
-    Accepte: false,
-    Refuse: false,
-    annule: true
-  },
-  {
-    Date: '12/12/2018',
-    Client: {
-      NomClient: 'Chabane Zahra',
-      WilayaClient: 'Alger',
-      NumClient: '0543 76 87 98',
-    },
-    NomModele: 'Dacia',
-    NomVersion: 'Série 6',
-    Prix: 1500000,
-    Reserve: false,
-    PrixPaye: 0,
-    Accepte: false,
-    Refuse: false,
-    annule: true
-  }
 ];
+
+const data4: Commande[] = [
+  {
+    idCommande: '12',
+    Date: '12/12/2018',
+    automobiliste: {
+      idAutomobiliste: '12',
+      Nom: 'Chabane',
+      NumTel: '0543 76 87 98',
+      Prenom: 'zahra'
+    },
+    vehicule: {
+      NomModele: 'Golf',
+      NomVersion: 'Série 6',
+      NumChassis: '09654AZRTYHH',
+      NomMarque: 'Wolswagen'
+    },
+    Montant: 1500000,
+    Reservation: null,
+    Etat: 0
+  },
+  {
+    idCommande: '12',
+    Date: '12/12/2018',
+    automobiliste: {
+      idAutomobiliste: '12',
+      Nom: 'Chabane',
+      NumTel: '0543 76 87 98',
+      Prenom: 'zahra'
+    },
+    vehicule: {
+      NomModele: 'Golf',
+      NomVersion: 'Série 6',
+      NumChassis: '09654AZRTYHH',
+      NomMarque: 'Wolswagen'
+    },
+    Montant: 1500000,
+    Reservation: null,
+    Etat: 0
+  },
+  {
+    idCommande: '12',
+    Date: '12/12/2018',
+    automobiliste: {
+      idAutomobiliste: '12',
+      Nom: 'Chabane',
+      NumTel: '0543 76 87 98',
+      Prenom: 'zahra'
+    },
+    vehicule: {
+      NomModele: 'Golf',
+      NomVersion: 'Série 6',
+      NumChassis: '09654AZRTYHH',
+      NomMarque: 'Wolswagen'
+    },
+    Montant: 1500000,
+    Reservation: null,
+    Etat: 0
+  },
+];
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -254,7 +299,7 @@ export class CommandeServiceMock {
    * Récupérer toutes les nouvelles commandes  de la marque ordonnées par date
    */
   getCommandesNouvelles(): Observable<Commande[]> {
-    return Observable.of(data3);
+    return Observable.of(data4);
   }
 }
 

@@ -15,7 +15,6 @@ import {VersionServiceMock} from '../../../mocks/Version.Service.mock';
 import {MatPaginatorModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatMenuModule} from '@angular/material';
-import {Observable} from 'rxjs';
 import {ModeleDetail} from '../../../services/entites/modeleDetail.model';
 
 

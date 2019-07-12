@@ -13,11 +13,11 @@ const routes: Routes = [
         component: AllCommandesComponent,
       },
       {
-        path: 'prépayées',
+        path: 'prepayees',
         component: AllCommandesComponent,
       },
       {
-        path: 'annulées',
+        path: 'annulees',
         component: AllCommandesComponent,
       },
       {

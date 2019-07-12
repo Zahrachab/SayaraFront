@@ -35,15 +35,15 @@ export class AllCommandesComponent implements OnInit, AfterViewInit {
       this.commandeService.getAllCommandes().subscribe(res => {
         this.dataSource.data = res as Commande[];
       });
-    } else if (this.router.url.split('/')[2] === 'prépayées') {
+    } else if (this.router.url.split('/')[2] === 'prepayees') {
       this.commandeService.getCommandesPrepayes().subscribe(res => {
         this.dataSource.data = res as Commande[];
       });
-    } else if (this.router.url.split('/')[2] === 'annulées') {
+    } else if (this.router.url.split('/')[2] === 'annulees') {
       this.commandeService.getCommandesAnnulles().subscribe(res => {
         this.dataSource.data = res as Commande[];
       });
-    } else {
+    } else if (this.router.url.split('/')[2] === 'nouvelles'){
       this.commandeService.getCommandesNouvelles().subscribe(res => {
         this.dataSource.data = res as Commande[];
       });

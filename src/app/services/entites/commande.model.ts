@@ -1,16 +1,21 @@
 export interface Commande {
+  idCommande: string
   Date: string;
-  Client: {
-    NomClient: string;
-    WilayaClient: string;
-    NumClient: string;
+  automobiliste : {
+    idAutomobiliste: string;
+    Nom: string;
+    NumTel: string;
+    Prenom: string;
   };
-  NomModele: string;
-  NomVersion: string;
-  Prix: number;
-  Reserve: boolean;
-  PrixPaye: number;
-  Accepte: boolean;
-  Refuse: boolean;
-  annule: boolean;
+  vehicule: {
+    NomMarque: string;
+    NumChassis: string
+    NomModele: string;
+    NomVersion: string;
+  }
+
+  Montant: number;
+  Reservation: number;
+  Etat: number;
 }
+
