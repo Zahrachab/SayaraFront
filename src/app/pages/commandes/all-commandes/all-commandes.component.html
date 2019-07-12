@@ -78,8 +78,8 @@
             <button mat-button  mat-stroked-button class="annule">Annulée</button>
           </div>
           <div *ngIf="(commande.Etat) == 0" fxFlex='90' fxLayout="column" fxLayoutAlign="space-around center" >
-              <button mat-button  mat-stroked-button class="accepter">Accpeter</button>
-              <button mat-button  mat-stroked-button class="refuser">refuser</button>
+              <button mat-button  mat-stroked-button class="accepter" (click)="validerCommande(commande)">Accpeter</button>
+              <button mat-button  mat-stroked-button class="refuser" (click)="rejeterCommande(commande)">refuser</button>
           </div>
           <div fxFlex='90' *ngIf="(commande.Etat) == 2" >
               <button mat-button  mat-stroked-button class="refuse">Refusée</button>

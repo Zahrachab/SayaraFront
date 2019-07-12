@@ -1,7 +1,7 @@
 import {Injectable, Injector} from '@angular/core';
 import {Observable} from 'rxjs';
 import {Commande} from './entites/commande.model';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable()
 export class CommandeService {
@@ -42,5 +42,18 @@ export class CommandeService {
   getCommandesNouvelles(): Observable<Commande[]> {
     return this.http.get<Commande[]>(this.urlNouvellesCommandes);
   }
+  validerCommande(commande: Commande) {
+    const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
+    return this.http.put(this.url + '/' + commande.idCommande + '/valider',
+       {headers: tokenHeader});
+  }
+
+  rejeterCommande(commande: Commande) {
+    const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
+    return this.http.put(this.url + '/' + commande.idCommande + '/rejeter',
+      {headers: tokenHeader});
+  }
+
 
 }
+
