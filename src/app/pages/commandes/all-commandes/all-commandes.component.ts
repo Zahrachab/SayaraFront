@@ -3,6 +3,7 @@ import {Commande} from '../../../services/entites/commande.model';
 import {MatDialog, MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {CommandeServiceMock} from '../../../mocks/commande.Service.mock';
 import {Router} from '@angular/router';
+import {CommandeService} from '../../../services/commande.service';
 
 
 @Component({
@@ -25,7 +26,7 @@ export class AllCommandesComponent implements OnInit, AfterViewInit {
 
 
   constructor(private matDialog: MatDialog,
-              private commandeService: CommandeServiceMock,
+              private commandeService: CommandeService,
               private router: Router) {
     this.redefineFilter();
   }
