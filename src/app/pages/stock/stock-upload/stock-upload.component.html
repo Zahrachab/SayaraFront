@@ -52,14 +52,14 @@
         </mat-icon>
 
         <div fxLayout="column" fxLayoutAlign="start start">
-          <p>{{file}}</p>
+          <p class="gras">{{file}}</p>
           <mat-progress-bar id="progress-bar"></mat-progress-bar>
           <p></p>
         </div>
       </div>
 
       <div fxLayout="row" fxLayoutAlign="end end " id="btnDiv">
-        <a  mat-button  mat-raised-button id="voirStock" routerLink="/gestion/stock/vehicules">Vérefier le stock</a>
+        <button  mat-button  mat-raised-button id="voirStock" (click)="uploadCsv()">Uploader le fichier</button>
       </div>
     </div>
   </div>

@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FileUploader} from 'ng2-file-upload';
 import {StockService} from '../../../services/stock.service';
-import {ToastrModule} from 'ng6-toastr-notifications';
+import {ToastrManager, ToastrModule} from 'ng6-toastr-notifications';
+import {mixinColor} from '@angular/material';
 
 @Component({
   selector: 'app-stock',
@@ -9,16 +10,17 @@ import {ToastrModule} from 'ng6-toastr-notifications';
   styleUrls: ['./stock-upload.component.scss']
 })
 export class StockUploadComponent implements OnInit {
+
+  //fichier csv
+  private fichier: File;
   // File uploader
-  public uploader: FileUploader = new FileUploader({
+  private uploader: FileUploader = new FileUploader({
     isHTML5: true
   });
 
   private el: HTMLElement;
   private file: string;
-  private files: Array<File> = [];
-
-  constructor( public stockService: StockService) {
+  constructor( public stockService: StockService, public toastr: ToastrManager) {
   }
 
   ngOnInit() {
@@ -28,12 +30,20 @@ export class StockUploadComponent implements OnInit {
   processFile(csvInput: any) {
     this.el = document.getElementById('progress-bar');
     const reader = new FileReader();
-    const fileItem = this.uploader.queue[0]._file;
-    reader.readAsDataURL(fileItem);
+    this.fichier = this.uploader.queue[0]._file;
+    reader.readAsDataURL(this.fichier);
     this.file = this.uploader.queue[0]._file.name;
     this.uploader.clearQueue();
-    this.el.setAttribute('mode', 'indeterminate');
+  }
 
+  uploadCsv() {
+    if(this.fichier!= null) {
+    this.el.setAttribute('mode', 'indeterminate');
+    this.stockService.uploadCsv(this.fichier).subscribe( () => {
+        this.toastr.successToastr('Importation du fichier ' + this.file + ' réussite', 'Succès!!');
+        this.el.setAttribute('mode', 'buffer');
+      });
+    }
   }
 
 }
