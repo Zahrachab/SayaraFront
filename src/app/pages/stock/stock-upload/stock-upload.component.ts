@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FileUploader} from 'ng2-file-upload';
+import {StockService} from '../../../services/stock.service';
 
 @Component({
   selector: 'app-stock',
@@ -16,7 +17,7 @@ export class StockUploadComponent implements OnInit {
   private file: string;
   private files: Array<File> = [];
 
-  constructor() {
+  constructor( public stockService: StockService) {
   }
 
   ngOnInit() {
@@ -31,6 +32,7 @@ export class StockUploadComponent implements OnInit {
     this.file = this.uploader.queue[0]._file.name;
     this.uploader.clearQueue();
     this.el.setAttribute('mode', 'indeterminate');
+    this.stockService.uploadCsv(this.uploader.queue[0]._file)
   }
 
 }

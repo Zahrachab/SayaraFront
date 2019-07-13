@@ -25,6 +25,7 @@ import {TarifsModule} from './pages/tarifs/tarifs.module';
 import {StockModule} from './pages/stock/stock.module';
 import {CommandesModule} from './pages/commandes/commandes.module';
 import {CommandeService} from './services/commande.service';
+import {SimulationModule} from './pages/simulation/simulation.module';
 
 
 const urlGlobale = 'https://sayaradz.herokuapp.com';
@@ -53,6 +54,7 @@ const urlGlobale = 'https://sayaradz.herokuapp.com';
     FormsModule,
     GestionModule,
     TarifsModule,
+    SimulationModule,
     StockModule,
     CommandesModule,
     MDBBootstrapModule.forRoot()

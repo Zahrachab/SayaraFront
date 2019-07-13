@@ -28,8 +28,6 @@ import { GestionCouleurComponent } from './gestion-couleur/gestion-couleur.compo
 import { ModifierCouleurComponent } from './gestion-couleur/modifier-couleur/modifier-couleur.component';
 import { AjouterCouleurComponent } from './gestion-couleur/ajouter-couleur/ajouter-couleur.component';
 import { InfosDialogComponent } from './gestion-version/infos-dialog/infos-dialog.component';
-import { StockComponent } from './stock/stock/stock.component';
-import { StockVehiculesComponent } from './stock/stock-vehicules/stock-vehicules.component';
 import {MatMenuModule} from '@angular/material';
 import { FicheModeleComponent } from './gestion-modele/fiche-modele/fiche-modele.component';
 import { FicheVersionComponent } from './gestion-version/fiche-version/fiche-version.component';
@@ -49,8 +47,7 @@ import { FicheVersionComponent } from './gestion-version/fiche-version/fiche-ver
                   ModifierOptionComponent,
                   FileSelectDirective,
                   InfosDialogComponent,
-                  StockComponent,
-                  StockVehiculesComponent, FileSelectDirective,
+                  FileSelectDirective,
                   FicheModeleComponent,
                   FicheVersionComponent],
 

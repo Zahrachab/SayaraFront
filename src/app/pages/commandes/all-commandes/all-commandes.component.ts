@@ -1,8 +1,11 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {Commande} from '../../../services/entites/commande.model';
-import {MatDialog, MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {MatDialog, MatDialogRef, MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {CommandeServiceMock} from '../../../mocks/commande.Service.mock';
 import {Router} from '@angular/router';
+import {CommandeService} from '../../../services/commande.service';
+import {ConfirmationDialogComponent} from '../../shared/confirmation-dialog/confirmation-dialog.component';
+import {Couleur} from '../../../services/entites/couleur.model';
 
 
 @Component({
@@ -25,17 +28,22 @@ export class AllCommandesComponent implements OnInit, AfterViewInit {
 
 
   constructor(private matDialog: MatDialog,
-              private commandeService: CommandeServiceMock,
+              private commandeService: CommandeService,
+              private dialogValidation: MatDialog,
               private router: Router) {
     this.redefineFilter();
   }
 
   ngOnInit() {
-    if (this.router.url.split('/')[2] === 'tous') {
-      this.commandeService.getAllCommandes().subscribe(res => {
-        this.dataSource.data = res as Commande[];
-      });
-    } else if (this.router.url.split('/')[2] === 'prepayees') {
+    this.refreshData();
+  }
+
+  /**
+   * Récupérer les commandes à partir du web service
+   */
+  refreshData() {
+
+    if (this.router.url.split('/')[2] === 'prepayees') {
       this.commandeService.getCommandesPrepayes().subscribe(res => {
         this.dataSource.data = res as Commande[];
       });
@@ -43,14 +51,17 @@ export class AllCommandesComponent implements OnInit, AfterViewInit {
       this.commandeService.getCommandesAnnulles().subscribe(res => {
         this.dataSource.data = res as Commande[];
       });
-    } else if (this.router.url.split('/')[2] === 'nouvelles'){
+    } else if (this.router.url.split('/')[2] === 'nouvelles') {
       this.commandeService.getCommandesNouvelles().subscribe(res => {
         this.dataSource.data = res as Commande[];
       });
     }
+     else {
+          this.commandeService.getAllCommandes().subscribe(res => {
+            this.dataSource.data = res as Commande[];
+          });
+     }
   }
-
-
 
 
   /**
@@ -89,6 +100,42 @@ export class AllCommandesComponent implements OnInit, AfterViewInit {
       };
       return listAsFlatString(order).includes(transformedFilter);
     };
+  }
+
+  /**
+   * Valider une commande
+   * @param commande
+   */
+  validerCommande(commande) {
+    const dialogRef: MatDialogRef<ConfirmationDialogComponent> = this.dialogValidation.open(ConfirmationDialogComponent, {
+      width: '350px',
+      data: 'Voulez vous vraiment valider cette commande?'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.commandeService.validerCommande(commande).subscribe(() => {
+          this.refreshData();
+        });
+      }
+    });
+  }
+
+  /**
+   * Rejeter une commande
+   * @param commande
+   */
+  rejeterCommande(commande) {
+    const dialogRef: MatDialogRef<ConfirmationDialogComponent> = this.dialogValidation.open(ConfirmationDialogComponent, {
+      width: '350px',
+      data: 'Voulez vous vraiment rejeter cette commande?'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.commandeService.rejeterCommande(commande).subscribe(() => {
+          this.refreshData();
+        });
+      }
+    });
   }
 
 }

@@ -17,7 +17,7 @@
           <mat-icon>today</mat-icon>
           DATE
         </mat-header-cell>
-        <mat-cell *matCellDef="let commande"> {{commande.Date}} </mat-cell>
+        <mat-cell *matCellDef="let commande"> {{commande.Date.substring(0,10)}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef='Client'>
@@ -75,17 +75,17 @@
         <mat-header-cell *matHeaderCellDef id="gestion"><i class="material-icons">tune</i> GESTION</mat-header-cell>
         <mat-cell *matCellDef="let commande" fxLayout="row">
           <div fxFlex='90' *ngIf="(commande.Etat) == 1" >
-            <button mat-button  mat-stroked-button class="annule">Annulée</button>
+            <button mat-button  mat-stroked-button class="annule" disabled>Annulée</button>
           </div>
           <div *ngIf="(commande.Etat) == 0" fxFlex='90' fxLayout="column" fxLayoutAlign="space-around center" >
-              <button mat-button  mat-stroked-button class="accepter">Accpeter</button>
-              <button mat-button  mat-stroked-button class="refuser">refuser</button>
+              <button mat-button  mat-stroked-button class="accepter" (click)="validerCommande(commande)">Accepter</button>
+              <button mat-button  mat-stroked-button class="refuser" (click)="rejeterCommande(commande)">Refuser</button>
           </div>
           <div fxFlex='90' *ngIf="(commande.Etat) == 2" >
-              <button mat-button  mat-stroked-button class="refuse">Refusée</button>
+              <button mat-button  mat-stroked-button class="refuse" disabled>Refusée</button>
           </div>
           <div fxFlex='90' *ngIf="(commande.Etat) == 3" >
-              <button mat-button  mat-stroked-button class="accepte">Acceptée</button>
+              <button mat-button  mat-stroked-button class="accepte" disabled>Acceptée</button>
           </div>
 
 

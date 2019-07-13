@@ -1,17 +1,17 @@
 import {Injectable, Injector} from '@angular/core';
 import {Observable} from 'rxjs';
 import {Commande} from './entites/commande.model';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable()
 export class CommandeService {
 
   private url = this.injector.get('url') + '/vehicules/commandes';
   private  fabriquant = JSON.parse(localStorage.getItem('utilisateur')).utilfab.Fabricant ;
-  private urlCommandes =  this.url + '?fabriquant='+ this.fabriquant;
-  private urlNouvellesCommandes =  this.url + '/nonvalidees?fabriquant='+ this.fabriquant;
-  private  urlCommandesAnnulles =  this.url + '/annulees?fabriquant='+ this.fabriquant;
-  private  urlCommandesValides =  this.url + '/validees?fabriquant='+ this.fabriquant;
+  private urlCommandes =  this.url + '?fabricant='+ this.fabriquant;
+  private urlNouvellesCommandes =  this.url + '/nonvalidees?fabricant='+ this.fabriquant;
+  private  urlCommandesAnnulles =  this.url + '/annulees?fabricant='+ this.fabriquant;
+  private  urlCommandesValides =  this.url + '/validees?fabricant='+ this.fabriquant;
   constructor(private http: HttpClient, private injector: Injector) { }
 
   /**
@@ -42,5 +42,18 @@ export class CommandeService {
   getCommandesNouvelles(): Observable<Commande[]> {
     return this.http.get<Commande[]>(this.urlNouvellesCommandes);
   }
+  validerCommande(commande: Commande) {
+    const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
+    return this.http.put(this.url + '/' + commande.idCommande + '/valider',
+       {headers: tokenHeader});
+  }
+
+  rejeterCommande(commande: Commande) {
+    const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
+    return this.http.put(this.url + '/' + commande.idCommande + '/rejeter',
+      {headers: tokenHeader});
+  }
+
 
 }
+
