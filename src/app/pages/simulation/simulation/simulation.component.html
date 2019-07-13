@@ -1,0 +1,37 @@
+<div class="wrapper" id="globalWrapper">
+  <app-navbar></app-navbar>
+</div>
+<div fxLayout="row" class="global">
+  <app-sidenav fxFlex="17"></app-sidenav>
+  <div class="globalContainer">
+    <h2>Simuler vos véhicules </h2>
+    <div class="trait"></div>
+    <mat-card fxLayoutAlign="start start" class="simuler" fxLayout="row">
+      <div fxFlex="70" class="big-img" fxLayout="column" fxLayoutAlign="start center">
+        <h4> Choix d'un modèle </h4>
+        <div class="trait vert"></div>
+        <mat-card class="big-card">
+          <img mat-card-image src={{image}} alt="">
+        </mat-card>
+      </div>
+      <div fxFlex="30" fxLayout="column" class="list" fxLayoutAlign="start center">
+        <div fxLayout="column" fxLayoutAlign="start start">
+          <h4> Modèles </h4>
+          <div class="trait"></div>
+        </div>
+        <div  *ngFor="let img of listModelesImages">
+          <mat-card class="example-card" (click)="choisirImage(img)">
+            <img mat-card-image src={{img}} alt="">
+          </mat-card>
+        </div>
+      </div>
+
+
+
+    </mat-card>
+
+  </div>
+</div>
+<div>
+  <app-footer></app-footer>
+</div>
