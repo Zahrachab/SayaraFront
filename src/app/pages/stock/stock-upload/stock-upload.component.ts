@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FileUploader} from 'ng2-file-upload';
 import {StockService} from '../../../services/stock.service';
+import {ToastrModule} from 'ng6-toastr-notifications';
 
 @Component({
   selector: 'app-stock',
@@ -32,7 +33,7 @@ export class StockUploadComponent implements OnInit {
     this.file = this.uploader.queue[0]._file.name;
     this.uploader.clearQueue();
     this.el.setAttribute('mode', 'indeterminate');
-    this.stockService.uploadCsv(this.uploader.queue[0]._file)
+
   }
 
 }

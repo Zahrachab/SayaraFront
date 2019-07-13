@@ -13,6 +13,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {MatSelectModule} from '@angular/material';
 import {MDBBootstrapModule} from 'angular-bootstrap-md';
 import { StockUploadComponent } from './stock-upload/stock-upload.component';
+import {ToastrModule} from 'ng6-toastr-notifications';
 
 @NgModule({
   declarations: [StockComponent, StockVehiculesComponent, StockUploadComponent],
@@ -26,6 +27,7 @@ import { StockUploadComponent } from './stock-upload/stock-upload.component';
     MaterialModule,
     ColorPickerModule,
     MatSelectModule,
+    ToastrModule.forRoot(),
     MDBBootstrapModule.forRoot()
   ]
 })
