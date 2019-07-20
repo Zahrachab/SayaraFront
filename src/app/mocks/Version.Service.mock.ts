@@ -14,8 +14,8 @@ export class VersionServiceMock {
   }
 
   getVersions(codeModele): Observable<VersionDetail[]> {
-     return Observable.of ([
-       {
+     return Observable.of (null);
+       /* {
          CodeVersion: '100015',
          CodeModele: '1',
          NomVersion: 'GT Line',
@@ -66,7 +66,7 @@ export class VersionServiceMock {
            CodeImage: '',
            Type: '',
            CheminImage: ''
-         }]
+         }],
        },
        {
          CodeVersion: '89451',
@@ -119,9 +119,9 @@ export class VersionServiceMock {
            CodeImage: '',
            Type: '',
            CheminImage: ''
-         }]
+         }],
        }
-       ]);
+       ]);*/
   }
 
   supprimerVersion(codeVersion) {

@@ -34,16 +34,8 @@ export class CouleurService {
 
   /* récupérer les couleurs associées à un modèle */
   getCouleurs(codeModele): Observable<Couleur[]> {
-    let couleurs;
-    this.http.get<ModeleDetail>(this.serviceUrlOptions + codeModele).subscribe(modele => {
-      couleurs = (modele as ModeleDetail).couleurs as Couleur[];
-    });
-    return new Observable(observer => {
-      setTimeout(() => {
-        observer.next(couleurs);
-        observer.complete();
-      }, 2000);
-    });
+    return this.http.get<Couleur[]>(this.serviceUrlOptions + codeModele + '/couleurs');
+
   }
   /* Modifier un couleur */
   modifierCouleur(code: string, nom: string, codeHexa: string) {

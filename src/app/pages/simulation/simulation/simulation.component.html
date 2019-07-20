@@ -6,7 +6,7 @@
   <div class="globalContainer">
     <h2>Simuler vos véhicules </h2>
     <div class="trait"></div>
-    <div fxLayout="row" fxLayoutAlign="start start">
+    <div fxLayout="row wrap" fxLayoutAlign="space-between start">
         <mat-card *ngIf="etape==1" fxLayoutAlign="start start" class="simuler" fxLayout="row">
           <div fxFlex="70" class="big-img" fxLayout="column" fxLayoutAlign="start center">
             <div fxLayout="row" fxLayoutAlign="start start">
@@ -88,7 +88,7 @@
               <h4> Couleurs </h4>
               <div class="trait"></div>
             </div>
-            <div  *ngFor="let clr of modeleChoisi.couleurs" fxLayoutAlign="start center" fxLayout="column">
+            <div  *ngFor="let clr of listCouleurs" fxLayoutAlign="start center" fxLayout="column">
               <mat-card class="example-card" (click)="choisirCouleur(clr)">
                 <img mat-card-image src={{img}} alt="">
               </mat-card>
@@ -97,9 +97,48 @@
           </div>
         </mat-card>
 
+      <mat-card *ngIf="etape==4" fxLayoutAlign="start center" class="simuler" fxLayout="column">
+        <div fxLayout="row" fxLayoutAlign="start start">
+          <button mat-icon-button (click)="revenirEtape3()" class="supp">
+            <mat-icon class="rouge">navigate_before</mat-icon>
+          </button>
+          <h4> Choix des options</h4>
+        </div>
+        <div class="trait vert"></div>
+        <div fxLayout="column" fxLayoutAlign="center start" id="options"  >
+          <mat-checkbox *ngFor="let option of optionsVersion" color="primary" [value]="option.CodeOption"   (change)="choisirOptions($event, option)">{{option.NomOption}}  {{option.lignetarif.Prix}}</mat-checkbox>
+        </div>
+      </mat-card>
+
+        <form fxLayoutAlign="center center" fxLayout="column">
+            <div *ngIf="etape !=1"  fxLayout="column" fxLayoutAlign="space-between center">
+              <span class="label">Prix de la version</span>
+              <input matNativeControl matInput disabled class="input" value="{{versionChoisie.lignetarif.Prix}}">
+              <div class="trait"></div>
+            </div>
+
+
+            <div *ngIf="etape ==3 || etape ==4 "  fxLayout="column" fxLayoutAlign="space-between center"  >
+              <span class="label">Prix de la couleur :</span>
+              <input matNativeControl matInput disabled class="input" value=" {{couleurChoisie.lignetarif.Prix}}">
+              <div class="trait"></div>
+            </div>
+
+            <div *ngIf="etape== 4"
+                 fxLayout="column" fxLayoutAlign="space-between center">
+              <span class="label">Prix des options: </span>
+              <input matNativeControl matInput disabled class="input" value="{{prixOptions}}">
+              <div class="trait"></div>
+            </div>
+
+            <div  fxLayout="column"  fxLayoutAlign="space-between center">
+              <span class="label">Prix Total </span>
+              <input matNativeControl matInput disabled class="input" value="{{prixTotal}}">
+            </div>
+
+        </form>
+
     </div>
-
-
 
   </div>
 </div>

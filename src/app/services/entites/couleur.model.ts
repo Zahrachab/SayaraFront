@@ -3,4 +3,12 @@ export interface Couleur {
     NomCouleur: string;
     CodeHexa: string;
     Checked: boolean;
+  lignetarif: {
+    idLigneTarif: number,
+    Type: number,
+    Code: string,
+    DateDebut: string,
+    DateFin: string,
+    Prix: number
+  };
 }

@@ -19,12 +19,12 @@ export class CouleurServiceMock {
 
   /* récupérer les couleurs associées à un modèle */
   getCouleurs(codeModele): Observable<Couleur[]> {
-     return Observable.of (
-       [{
+     return Observable.of (null);
+    /*   [{
          CodeCouleur: '13466',
          NomCouleur: 'Gris',
          CodeHexa: '#5e5e5e',
-         Checked: true
+         Checked: true,
        },
     {
       CodeCouleur: '165788',
@@ -32,7 +32,7 @@ export class CouleurServiceMock {
       CodeHexa: '#000000',
       Checked: true
     }
-    ]);
+    ]);*/
 
   }
   /* Modifier un couleur */

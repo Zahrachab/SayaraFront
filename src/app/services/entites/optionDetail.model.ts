@@ -6,4 +6,12 @@ export interface OptionDetail {
   rel_mod_opt: {
     CodeModele: string;
   };
+  lignetarif: {
+    idLigneTarif: number,
+    Type: number,
+    Code: string,
+    DateDebut: string,
+    DateFin: string,
+    Prix: number
+  };
 }

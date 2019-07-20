@@ -28,4 +28,12 @@ export interface VersionDetail {
     Type: string;
     CheminImage: string;
   }[];
+  lignetarif: {
+    idLigneTarif: number,
+    Type: number,
+    Code: string,
+    DateDebut: string,
+    DateFin: string,
+    Prix: 6550000
+  };
 }
