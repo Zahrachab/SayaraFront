@@ -40,37 +40,42 @@
       </div>
     </div>
 
-
     <div class="row">
       <div class="col-11">
         <i class="material-icons">
-          party_mode
+          bookmarks
         </i>
-        <span class="label">Photos</span>
+        <span class="label">Couleurs</span>
         <br/>
-        <i class="material-icons iajouter" >
-          add
-        </i>
-        <label  class="image-upload-container btn btn-bwm">
-          <span class="ajouter">Ajouter une Photo</span>
-          <input  ng2FileSelect accept=".png" [uploader]="uploader" #imageInput id="imageVersion"
-                  type="file"
-                  accept="image/*"
-                  (change)="processFile(imageInput)" multiple/><br/>
-        </label>
-        <div *ngFor="let selected of selectedFile" class="img-preview-container" fxLayout="row" fxLayoutAlign="center center">
-          <div class="img-preview{{selected.status === 'fail' ? '-error' : ''}}"
-               [ngStyle]="{'background-image': 'url('+ selected.src + ')'}">
-          </div>
+        <div  *ngFor="let clr of couleurs; let index= index"  fxLayout="column" fxLayoutAlign="center start">
+          <div fxLayout="row" fxLayoutAlign="space-around center">
+            <mat-checkbox color="primary" [value]="clr.CodeCouleur"   [checked]="clr.Checked" (change)="gererOptions($event, clr)">{{clr.NomCouleur}}</mat-checkbox>
 
-          <div *ngIf="selected.pending" class="img-loading-overlay">
-            <div class="img-spinning-circle"></div>
-          </div>
-          <button mat-icon-button  (click)="supprimerImage(selected)">
-            <mat-icon class="rouge" >delete</mat-icon>
-          </button>
+            <div fxLayout="row" fxLayoutAlign="start start">
+              <label  class="image-upload-container btn btn-bwm">
+                <span class="ajouter">+</span>
+                <input  ng2FileSelect accept=".png" [uploader]="uploader" #imageInput id="imageVersion"
+                        type="file"
+                        accept="image/*"
+                        (change)="processFile(imageInput, index)" /><br/>
+              </label>
+              <div *ngIf="selectedFile[index]!= null" class="img-preview-container"  fxLayout="row" fxLayoutAlign="space-between start">
+                <div class="img-preview{{selectedFile[index].status === 'fail' ? '-error' : ''}}"
+                     [ngStyle]="{'background-image': 'url('+ selectedFile[index].src + ')'}">
+                </div>
 
+                <div *ngIf="selectedFile[index].pending" class="img-loading-overlay">
+                  <div class="img-spinning-circle"></div>
+                </div>
+                <button mat-icon-button  (click)="supprimerImage(selectedFile[index])">
+                  <mat-icon class="rouge" >delete</mat-icon>
+                </button>
+              </div>
+
+            </div>
+          </div>
         </div>
+
       </div>
       </div>
   </form>

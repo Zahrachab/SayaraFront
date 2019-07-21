@@ -12,7 +12,7 @@ import {ModeleService} from './modele.service';
 })
 export class CouleurService {
   private url = this.injector.get('url');
-  private serviceUrlOptions = this.url + '/marques/modeles/';
+  private serviceUrl= this.url + '/marques/modeles/';
 
   constructor(private http: HttpClient, private injector: Injector, private modeleService: ModeleService) {
   }
@@ -34,17 +34,9 @@ export class CouleurService {
 
   /* récupérer les couleurs associées à un modèle */
   getCouleurs(codeModele): Observable<Couleur[]> {
-    let couleurs;
-    this.http.get<ModeleDetail>(this.serviceUrlOptions + codeModele).subscribe(modele => {
-      couleurs = (modele as ModeleDetail).couleurs as Couleur[];
-    });
-    return new Observable(observer => {
-      setTimeout(() => {
-        observer.next(couleurs);
-        observer.complete();
-      }, 2000);
-    });
+    return this.http.get<Couleur[]>(this.serviceUrl + codeModele + '/couleurs');
   }
+
   /* Modifier un couleur */
   modifierCouleur(code: string, nom: string, codeHexa: string) {
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
@@ -53,7 +45,7 @@ export class CouleurService {
   }
 
   /* récupérer la liste des couleurs associés à tous les modèles d'une marque */
-  getGouleursMarque(): any{
+  getCouleursMarque(): any{
     const couleursMap = new Map();
     let modeles;
     this.modeleService.getModeles().subscribe( res => {

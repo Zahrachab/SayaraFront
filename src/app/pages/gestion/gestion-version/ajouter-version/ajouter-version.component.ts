@@ -8,6 +8,8 @@ import {MatDialog, MatDialogRef} from '@angular/material';
 import {ImageService} from '../../../../services/image.service';
 import {FileUploader} from 'ng2-file-upload';
 import {ConfirmationDialogComponent} from '../../../shared/confirmation-dialog/confirmation-dialog.component';
+import {Couleur} from '../../../../services/entites/couleur.model';
+import {CouleurService} from '../../../../services/couleur.service';
 
 
 @Component({
@@ -22,9 +24,11 @@ import {ConfirmationDialogComponent} from '../../../shared/confirmation-dialog/c
  *
  */
 export class AjouterVersionComponent implements OnInit {
-  // Les options a afficher dans les checkbox
+  // Les options associées au modèle auquel appartient la version
   private options: Option[];
 
+  // Les couleurs associées au modèle auquel appartient la version
+  private couleurs: Couleur[];
   // Réference vers le formulaire html
   private formulaire: FormGroup;
 
@@ -64,23 +68,23 @@ export class AjouterVersionComponent implements OnInit {
               private versionservice: VersionService,
               private dialogRef: MatDialogRef<AjouterVersionComponent>,
               private imageService: ImageService,
+              private couleurService: CouleurService,
               private dialogValidation: MatDialog
   ) {
   }
 
   // Uploader des images depuis l'ordinateur
-  processFile(imageInput: any) {
-    for (let j = 0; j < this.uploader.queue.length; j++) {
-      const reader = new FileReader ();
-      const fileItem = this.uploader.queue[j]._file;
-      reader.addEventListener('load', (event: any) => {
-        this.selectedFile[this.selectedFile.length] = new ImageSnippet(event.target.result, fileItem);
-      });
+  processFile(imageInput: any, index: number) {
+    const reader = new FileReader();
+    const img = this.uploader.queue[0]._file;
+    reader.addEventListener('load', (event: any) => {
+      this.selectedFile[index] = new ImageSnippet(event.target.result, img);
+    });
 
-      reader.readAsDataURL(fileItem);
-      this.images.push(this.uploader.queue[j]._file);
-    }
+    reader.readAsDataURL(img);
+    this.images.push(this.uploader.queue[0]._file);
     this.uploader.clearQueue();
+
   }
 
 
@@ -88,8 +92,12 @@ export class AjouterVersionComponent implements OnInit {
    *  Executé a l'initialisation du composant, Construit le formulaire et fait la lsiasion avec le html
    */
   ngOnInit() {
-    // La liaison avec les checkbox
+    // récuoérer la liste des options
     this.optionservice.getOptions(this.codeModele).subscribe(opts => this.options = opts as Option[]);
+
+    //récupérer la liste des couleurs
+    this.couleurService.getCouleurs(this.codeModele).subscribe(clrs => { this.couleurs = clrs as Couleur[] });
+
     // Construction du formulaire
     this.formulaire = this.constructeurFormulaire.group({
       code: '',
