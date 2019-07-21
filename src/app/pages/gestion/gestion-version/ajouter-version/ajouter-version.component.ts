@@ -133,7 +133,7 @@ export class AjouterVersionComponent implements OnInit {
 
             /*ajouter des photos à une version */
             for (let j = 0; j < this.images.length; j++) {
-              this.imageService.uploadImage(this.images[j], codeVersion).subscribe(resultat => {
+              this.imageService.uploadImage(this.images[j], codeVersion, '1').subscribe(resultat => {
                 this.selectedFile[j].pending = false;
               });
             }

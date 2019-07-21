@@ -193,7 +193,7 @@ export class ModifierVerionComponent implements OnInit {
 
         /*ajouter des photos à une version */
         for (let j = 0; j < this.images.length; j++) {
-          this.imageService.uploadImage(this.images[j], String(this.version.CodeVersion) ).subscribe(res => {
+          this.imageService.uploadImage(this.images[j], String(this.version.CodeVersion), '1' ).subscribe(res => {
             this.selectedFile[j].pending = false;
           });
         }

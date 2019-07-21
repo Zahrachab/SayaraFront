@@ -127,8 +127,8 @@ export class SimulationComponent implements OnInit {
     this.optionService.getOptionsVersion(this.versionChoisie.CodeVersion).subscribe( (res) => {
       this.optionsVersion = res as OptionDetail[];
     });
-
   }
+
 
   revenirEtape3() {
     this.etape = 3;
@@ -136,6 +136,7 @@ export class SimulationComponent implements OnInit {
     this.prixOptions = 0;
     this.optionsVersion = null;
   }
+
   revenirEtape2() {
     this.etape = 2;
     this.prixTotal = this.versionChoisie.lignetarif.Prix;
