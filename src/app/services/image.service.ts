@@ -11,10 +11,11 @@ export class ImageService {
   constructor(private http: HttpClient, private injector: Injector) {}
 
 
-  public uploadImage(image: File, codeVersion: string) {
+  public uploadImage(image: File, codeVersion: string, codeCouleur: string) {
     const formData = new FormData();
 
     formData.append('imageVersion', image);
+    formData.append('CodeCouleur', codeCouleur);
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
     return this.http.post(this.imagesVersionUrl + codeVersion, formData, {headers: tokenHeader});
   }

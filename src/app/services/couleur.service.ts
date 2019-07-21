@@ -32,6 +32,14 @@ export class CouleurService {
       {CodeCouleur: code, NomCouleur: designation, CodeHexa: hexa}, {headers: tokenHeader}).pipe();
   }
 
+
+  /* ajouter une couleur et l'associer à un modèle donnée */
+  ajouterCouleurVersion(code: string, codeVersion: string) {
+    const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
+    return this.http.post(this.url + '/Marques/Modeles/Versions/' + codeVersion + '/Couleurs',
+      {CodeCouleur: code}, {headers: tokenHeader}).pipe();
+  }
+
   /* récupérer les couleurs associées à un modèle */
   getCouleurs(codeModele): Observable<Couleur[]> {
     return this.http.get<Couleur[]>(this.serviceUrl + codeModele + '/couleurs');

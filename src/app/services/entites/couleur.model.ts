@@ -3,4 +3,5 @@ export interface Couleur {
     NomCouleur: string;
     CodeHexa: string;
     Checked: boolean;
+    CheminImage: string;
 }

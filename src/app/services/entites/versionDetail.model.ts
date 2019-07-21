@@ -16,6 +16,8 @@ export interface VersionDetail {
     CodeCouleur: string;
     NomCouleur: string;
     CodeHexa: string;
+    Checked: boolean;
+    CheminImage: string;
     rel_ver_coul: {
       idRelVerCoul: string;
       CodeVersion: string;

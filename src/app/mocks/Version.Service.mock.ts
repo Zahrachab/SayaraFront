@@ -14,7 +14,7 @@ export class VersionServiceMock {
   }
 
   getVersions(codeModele): Observable<VersionDetail[]> {
-     return Observable.of ([
+     return Observable.of (null);/*[
        {
          CodeVersion: '100015',
          CodeModele: '1',
@@ -55,6 +55,7 @@ export class VersionServiceMock {
            CodeCouleur: '1000',
            NomCouleur: 'Gris',
            CodeHexa: '#3456ff',
+           Checked: false,
            rel_ver_coul: {
              idRelVerCoul: 'string',
              CodeVersion: 'string',
@@ -108,6 +109,7 @@ export class VersionServiceMock {
            CodeCouleur: '1000',
            NomCouleur: 'Gris',
            CodeHexa: '#3456ff',
+           Checked: false,
            rel_ver_coul: {
              idRelVerCoul: 'string',
              CodeVersion: 'string',
@@ -121,7 +123,7 @@ export class VersionServiceMock {
            CheminImage: ''
          }]
        }
-       ]);
+       ]);*/
   }
 
   supprimerVersion(codeVersion) {

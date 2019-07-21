@@ -9,6 +9,8 @@ import {VersionService} from '../../../../services/version.service';
 import {ImageService} from '../../../../services/image.service';
 import {FileUploader} from 'ng2-file-upload';
 import {ConfirmationDialogComponent} from '../../../shared/confirmation-dialog/confirmation-dialog.component';
+import {Couleur} from '../../../../services/entites/couleur.model';
+import {CouleurService} from '../../../../services/couleur.service';
 
 
 @Component({
@@ -23,8 +25,20 @@ import {ConfirmationDialogComponent} from '../../../shared/confirmation-dialog/c
  *
  */
 export class ModifierVerionComponent implements OnInit {
-  // Les options pour les checkbox
+  // Les options associées au modèle auquel appartient la version
   private options: Option[];
+
+  // Les couleurs associées au modèle auquel appartient la version
+  private couleurs: Couleur[];
+
+  // Les couleur de la version
+  private clrsVersion: Couleur[];
+
+  // Les couleurs ajoutées
+  private clrsAjoutes: Array<Couleur> = [];
+
+  // Les couleurs supprimées
+  private clrsSupp: Array<Couleur> = [];
 
   // Réference vers le formulaire html
   private formulaire: FormGroup;
@@ -70,6 +84,7 @@ export class ModifierVerionComponent implements OnInit {
    */
   constructor(private constructeurFormulaire: FormBuilder,
               private modeleService: ModeleService,
+              private couleurService: CouleurService,
               private optionService: OptionService,
               private versionService: VersionService,
               private dialogRef: MatDialogRef<ModifierVerionComponent>,
@@ -87,7 +102,9 @@ export class ModifierVerionComponent implements OnInit {
     this.formulaire = this.constructeurFormulaire.group({
       code: this.version.CodeVersion,
       nom: this.version.NomVersion,
-      type:  [null, Validators.compose([Validators.required])]
+      type:  [null, Validators.compose([Validators.required])],
+      couleurs: this.constructeurFormulaire.array([]),
+      options: this.constructeurFormulaire.array([]),
     });
     /*Chargement des images */
     this.loadFile();
@@ -96,6 +113,8 @@ export class ModifierVerionComponent implements OnInit {
     /* Charger les options */
     this.getOptions();
 
+    /*charger les couleurs*/
+   this.getCouleurs();
   }
 
   // Obtention des options
@@ -115,30 +134,50 @@ export class ModifierVerionComponent implements OnInit {
     });
   }
 
+  // Obtention des couleurs
+  getCouleurs() {
+    /*subscribe pour régler le problème de synchronisation*/
+    this.couleurService.getCouleurs(this.version.CodeModele).subscribe(clrs => {
+      this.couleurs = clrs as Couleur[];
+      this.clrsVersion = (this.version as VersionDetail).couleurs as Couleur[];
+      this.clrsVersion.forEach((element) => {
+        this.couleurs.forEach((clr) => {
+          if (String(element.CodeCouleur) === String(clr.CodeCouleur)) {
+            /* séléctionner les options compatibles avec la version parmi ceux associées au modèle */
+            clr.Checked = true;
+            const j = this.couleurs.indexOf(clr);
+            this.selectedFile[j] = new ImageSnippet(null , null);
+            this.selectedFile[j].status = 'ok';
+            this.selectedFile[j].new = false;
+            this.selectedFile[j].src = String(element.CheminImage);
+          }
+        });
+      });
+    });
+  }
+
+
   // Récuperation des images de la version sélectionnée
   loadFile() {
-    for (let j = 0; j < this.version.images.length; j++) {
+   /* for (let j = 0; j < this.couleurs.length; j++) {
+      this.clrsVersion.
       this.selectedFile[j] = new ImageSnippet(null , null);
-      this.selectedFile[j].status = 'ok';
-      this.selectedFile[j].new = false;
-      this.selectedFile[j].src = String(this.version.images[j].CheminImage);
-      this.selectedFile[j].id = String(this.version.images[j].idImage);
-    }
+
+    }*/
   }
 
   // Uploader des images depuis l'ordinateur
-  processFile(imageInput: any) {
-    for (let j = 0; j < this.uploader.queue.length; j++) {
-      const reader = new FileReader ();
-      const fileItem = this.uploader.queue[j]._file;
-      reader.addEventListener('load', (event: any) => {
-        this.selectedFile[this.selectedFile.length] = new ImageSnippet(event.target.result, fileItem);
-      });
+  processFile(imageInput: any, index: number) {
+    const reader = new FileReader();
+    const img = this.uploader.queue[0]._file;
+    reader.addEventListener('load', (event: any) => {
+      this.selectedFile[index] = new ImageSnippet(event.target.result, img);
+    });
 
-      reader.readAsDataURL(fileItem);
-      this.images.push(this.uploader.queue[j]._file);
-    }
+    reader.readAsDataURL(img);
+    this.images.push(this.uploader.queue[0]._file);
     this.uploader.clearQueue();
+
   }
 
   // Gestion des options de versions
@@ -160,6 +199,26 @@ export class ModifierVerionComponent implements OnInit {
 
   }
 
+
+  // Gestion des couleurs d'une version
+  gererCouleurs(event, clr) {
+    clr.Checked = !clr.Checked;
+    if (clr.Checked === true) {
+      if ( this.clrsSupp.indexOf(clr) === -1) {
+        this.clrsAjoutes.push(clr);
+      } else {
+        this.clrsSupp.splice(this.clrsSupp.indexOf(clr) , 1);
+      }
+    } else {
+      if ( this.clrsAjoutes.indexOf(clr) === -1) {
+        this.clrsSupp.push(clr);
+      } else {
+        this.clrsAjoutes.splice(this.clrsAjoutes.indexOf(clr) , 1);
+      }
+    }
+
+  }
+
   // Modification de la version
   onSubmit() {
     const dialogRef: MatDialogRef<ConfirmationDialogComponent> = this.dialogValidation.open(ConfirmationDialogComponent, {
@@ -170,7 +229,9 @@ export class ModifierVerionComponent implements OnInit {
       if (result) {
 
         for (let j = 0; j < this.selectedFile.length; j++) {
-          this.selectedFile[j].pending = true;
+          if(this.selectedFile[j] != null) {
+            this.selectedFile[j].pending = true;
+          }
         }
 
         /* modifier le nom de la version */
@@ -191,12 +252,24 @@ export class ModifierVerionComponent implements OnInit {
           });
         }
 
-        /*ajouter des photos à une version */
-        for (let j = 0; j < this.images.length; j++) {
-          this.imageService.uploadImage(this.images[j], String(this.version.CodeVersion) ).subscribe(res => {
-            this.selectedFile[j].pending = false;
-          });
+        /* ajouter des couleurs */
+        for (let i = 0 ; i < this.clrsAjoutes.length; i++) {
+          this.couleurService.ajouterCouleurVersion(String(this.clrsAjoutes[i].CodeCouleur),
+            this.formulaire.value.code).subscribe((res) => {
+          } , (error) => {});
         }
+
+
+        /*ajouter des photos associées à des couleur à la version */
+        for (let j = 0; j < this.selectedFile.length; j++) {
+          if(this.selectedFile[j] != null)
+          {
+            this.imageService.uploadImage(this.images[j], String(this.version.CodeVersion), this.couleurs[j].CodeCouleur).subscribe(res => {
+              this.selectedFile[j].pending = false;
+            });
+          }
+        }
+
 
         /* supprimer des photos  d'une version */
         for (let j = 0; j < this.imagesSupp.length; j++) {

@@ -37,6 +37,9 @@ export class AjouterVersionComponent implements OnInit {
 
   // Les otpions cochées
   public optionsChoisies: Array<Option> = [];
+
+  // Les couleurs cochées
+  public clrsChoisies: Array<Couleur> = [];
   // Les images sélectionnées
   selectedFile: Array<ImageSnippet> = [];
   images: Array<File> = [];
@@ -127,24 +130,43 @@ export class AjouterVersionComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         let i = 0;
+
         for (let j = 0; j < this.selectedFile.length; j++) {
-          this.selectedFile[j].pending = true;
+          if(this.selectedFile[j] != null) {
+            this.selectedFile[j].pending = true;
+          }
         }
         const codeVersion = this.formulaire.value.code + JSON.parse(localStorage.getItem('utilisateur')).utilfab.Fabricant;
         this.versionservice.ajouter(codeVersion,
           this.formulaire.value.nom, this.codeModele).subscribe(
           () => {
+
+
+            /* ajouter des couleurs */
+            for (let i = 0 ; i < this.clrsChoisies.length; i++) {
+              this.couleurService.ajouterCouleurVersion(String(this.clrsChoisies[i].CodeCouleur),
+                this.formulaire.value.code).subscribe((res) => {
+              } , (error) => {});
+            }
+
+
+            /*ajouter des photos associées à des couleur à la version */
+            for (let j = 0; j < this.selectedFile.length; j++) {
+              if(this.selectedFile[j] != null)
+              {
+                this.imageService.uploadImage(this.images[j], String( this.formulaire.value.code), this.couleurs[j].CodeCouleur).subscribe(res => {
+                  this.selectedFile[j].pending = false;
+                });
+              }
+            }
+
+
+            //ajout des options
             for (i = 0; i < this.optionsChoisies.length; i++) {
               this.optionservice.ajouter(String(this.optionsChoisies[i].CodeOption), String(this.optionsChoisies[i].NomOption), codeVersion
               ).subscribe();
             }
 
-            /*ajouter des photos à une version */
-            for (let j = 0; j < this.images.length; j++) {
-              this.imageService.uploadImage(this.images[j], codeVersion).subscribe(resultat => {
-                this.selectedFile[j].pending = false;
-              });
-            }
             this.dialogRef.close();
           },
           (err) => {

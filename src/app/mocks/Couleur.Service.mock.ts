@@ -24,13 +24,15 @@ export class CouleurServiceMock {
          CodeCouleur: '13466',
          NomCouleur: 'Gris',
          CodeHexa: '#5e5e5e',
-         Checked: true
+         Checked: true,
+         CheminImage: '',
        },
     {
       CodeCouleur: '165788',
         NomCouleur: 'Noir',
       CodeHexa: '#000000',
-      Checked: true
+      Checked: true,
+      CheminImage: '',
     }
     ]);
 
