@@ -145,11 +145,13 @@ export class ModifierVerionComponent implements OnInit {
           if (String(element.CodeCouleur) === String(clr.CodeCouleur)) {
             /* séléctionner les options compatibles avec la version parmi ceux associées au modèle */
             clr.Checked = true;
-            const j = this.couleurs.indexOf(clr);
-            this.selectedFile[j] = new ImageSnippet(null , null);
-            this.selectedFile[j].status = 'ok';
-            this.selectedFile[j].new = false;
-            this.selectedFile[j].src = String(element.CheminImage);
+            if(element.CheminImage!= null) {
+              const j = this.couleurs.indexOf(clr);
+              this.selectedFile[j] = new ImageSnippet(null, null);
+              this.selectedFile[j].status = 'ok';
+              this.selectedFile[j].new = false;
+              this.selectedFile[j].src = String(element.CheminImage);
+            }
           }
         });
       });
