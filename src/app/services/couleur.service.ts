@@ -68,4 +68,13 @@ export class CouleurService {
       return couleursMap;
     });
   }
+
+  //supprimer couleur d'une version
+
+  supprimerVersion(code: string, codeVersion: string) {
+    const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
+    return this.http.delete(this.url + '/Marques/Modeles/Versions/' + codeVersion + '/Couleurs/' + code,
+      {headers: tokenHeader}).pipe();
+
+  }
 }

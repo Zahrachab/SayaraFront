@@ -56,8 +56,7 @@ export class ModifierVerionComponent implements OnInit {
   private optionsSupp: Array<Option> = [];
 
   // Les images sélectionnées
-  selectedFile: Array<ImageSnippet> = [];
-  images: Array<File> = [];
+  selectedFile: Array<ImageSnippet> ;
   imagesSupp: Array<any> = [];
 
   // File uploader
@@ -106,8 +105,7 @@ export class ModifierVerionComponent implements OnInit {
       couleurs: this.constructeurFormulaire.array([]),
       options: this.constructeurFormulaire.array([]),
     });
-    /*Chargement des images */
-    this.loadFile();
+
     /*Liaison avec l'html*/
     this.formulaire.valueChanges.subscribe();
     /* Charger les options */
@@ -138,6 +136,7 @@ export class ModifierVerionComponent implements OnInit {
   getCouleurs() {
     /*subscribe pour régler le problème de synchronisation*/
     this.couleurService.getCouleurs(this.version.CodeModele).subscribe(clrs => {
+      this.selectedFile = new Array<ImageSnippet>(clrs.length);
       this.couleurs = clrs as Couleur[];
       this.clrsVersion = (this.version as VersionDetail).couleurs as Couleur[];
       this.clrsVersion.forEach((element) => {
@@ -159,14 +158,6 @@ export class ModifierVerionComponent implements OnInit {
   }
 
 
-  // Récuperation des images de la version sélectionnée
-  loadFile() {
-   /* for (let j = 0; j < this.couleurs.length; j++) {
-      this.clrsVersion.
-      this.selectedFile[j] = new ImageSnippet(null , null);
-
-    }*/
-  }
 
   // Uploader des images depuis l'ordinateur
   processFile(imageInput: any, index: number) {
@@ -177,7 +168,6 @@ export class ModifierVerionComponent implements OnInit {
     });
 
     reader.readAsDataURL(img);
-    this.images.push(this.uploader.queue[0]._file);
     this.uploader.clearQueue();
 
   }
@@ -231,7 +221,7 @@ export class ModifierVerionComponent implements OnInit {
       if (result) {
 
         for (let j = 0; j < this.selectedFile.length; j++) {
-          if(this.selectedFile[j] != null) {
+          if((this.selectedFile[j] != null) && (this.selectedFile[j].new == true)) {
             this.selectedFile[j].pending = true;
           }
         }
@@ -261,12 +251,20 @@ export class ModifierVerionComponent implements OnInit {
           } , (error) => {});
         }
 
+        /* supprimer des couleurs */
+        for (let i = 0 ; i < this.clrsSupp.length; i++) {
+          this.couleurService.supprimerVersion(String(this.clrsSupp[i].CodeCouleur),
+            this.formulaire.value.code).subscribe(() => {
+          });
+        }
+
 
         /*ajouter des photos associées à des couleur à la version */
         for (let j = 0; j < this.selectedFile.length; j++) {
-          if(this.selectedFile[j] != null)
+          if((this.selectedFile[j]!= null) && (this.selectedFile[j].new == true))
           {
-            this.imageService.uploadImage(this.images[j], String(this.version.CodeVersion), this.couleurs[j].CodeCouleur).subscribe(res => {
+            console.log(j);
+            this.imageService.uploadImage(this.selectedFile[j].file, String(this.version.CodeVersion), this.couleurs[j].CodeCouleur).subscribe(res => {
               this.selectedFile[j].pending = false;
             });
           }
@@ -278,8 +276,10 @@ export class ModifierVerionComponent implements OnInit {
           this.imageService.supprimerImage(this.imagesSupp[j], String(this.version.CodeVersion)).subscribe( res => {});
           this.selectedFile[j].pending = false;
         }
+
         this.dialogRef.close();
-      }
+      } else
+        this.dialogRef.close();
     });
     }
 
@@ -289,8 +289,6 @@ export class ModifierVerionComponent implements OnInit {
     // si l'image appartient déjà à la version (elle est sur le cloud)
     if (selected.new === false) {
         this.imagesSupp.push(selected.id); // pour envoyer un delete lors de la validation
-    } else {
-      this.images.splice(this.images.indexOf(selected.file), 1); // supprimer de la liste destinée au POST
     }
     this.selectedFile.splice(this.selectedFile.indexOf(selected), 1);
   }

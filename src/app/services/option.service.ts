@@ -22,6 +22,8 @@ export class OptionService {
       {CodeOption: code, NomOption: designation}, {headers: tokenHeader}).pipe();
   }
 
+  //supprimer option d'une version
+
   supprimer(code: string, codeVersion: string) {
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
     return this.http.delete(this.url + '/Marques/Modeles/Versions/' + codeVersion + '/Options/' + code,
