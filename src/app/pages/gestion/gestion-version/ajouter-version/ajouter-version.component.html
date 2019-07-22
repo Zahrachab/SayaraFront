@@ -49,7 +49,7 @@
         <br/>
         <div  *ngFor="let clr of couleurs; let index= index"  fxLayout="column" fxLayoutAlign="center start">
           <div fxLayout="row" fxLayoutAlign="space-around center">
-            <mat-checkbox color="primary" [value]="clr.CodeCouleur"   [checked]="clr.Checked" (change)="gererOptions($event, clr)">{{clr.NomCouleur}}</mat-checkbox>
+            <mat-checkbox color="primary" [value]="clr.CodeCouleur"   [checked]="clr.Checked" (change)="gererCouleurs($event, clr)">{{clr.NomCouleur}}</mat-checkbox>
 
             <div fxLayout="row" fxLayoutAlign="start start">
               <label  class="image-upload-container btn btn-bwm">

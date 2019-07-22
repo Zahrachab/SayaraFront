@@ -120,6 +120,16 @@ export class AjouterVersionComponent implements OnInit {
     }
   }
 
+  /* Sélectionner ou déselectionner une option */
+  gererCouleurs(event, clr) {
+    clr.Checked = !clr.Checked;
+    if (clr.Checked === true) {
+      this.clrsChoisies.push(clr);
+    } else {
+      this.clrsChoisies.splice(clr);
+    }
+  }
+
   // Ajout d'une version
   onSubmit() {
 
@@ -145,7 +155,7 @@ export class AjouterVersionComponent implements OnInit {
             /* ajouter des couleurs */
             for (let i = 0 ; i < this.clrsChoisies.length; i++) {
               this.couleurService.ajouterCouleurVersion(String(this.clrsChoisies[i].CodeCouleur),
-                this.formulaire.value.code).subscribe((res) => {
+                codeVersion).subscribe((res) => {
               } , (error) => {});
             }
 
@@ -154,7 +164,7 @@ export class AjouterVersionComponent implements OnInit {
             for (let j = 0; j < this.selectedFile.length; j++) {
               if(this.selectedFile[j] != null)
               {
-                this.imageService.uploadImage(this.images[j], String( this.formulaire.value.code), this.couleurs[j].CodeCouleur).subscribe(res => {
+                this.imageService.uploadImage(this.images[j], codeVersion, this.couleurs[j].CodeCouleur).subscribe(res => {
                   this.selectedFile[j].pending = false;
                 });
               }
