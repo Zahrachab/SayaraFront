@@ -26,9 +26,9 @@
               <h4> Modèles </h4>
               <div class="trait"></div>
             </div>
-            <div  *ngFor="let modele of listModeles" fxLayoutAlign="start center" fxLayout="column">
+            <div  *ngFor="let modele of listModeles; let index=index" fxLayoutAlign="start center" fxLayout="column">
               <mat-card class="example-card" (click)="choisirModele(modele)">
-                <img mat-card-image src={{img}} alt="">
+                <img mat-card-image src={{photosModeles[index]}} alt="">
               </mat-card>
               <h5>{{modele.NomModele}}</h5>
             </div>
@@ -49,7 +49,7 @@
             <div class="trait vert"></div>
             <h3 class="vert">{{versionChoisie.NomVersion}}</h3>
             <mat-card class="big-card">
-              <img mat-card-image src={{versionChoisie.couleurs[0].cheminImage}} alt="">
+              <img mat-card-image src={{image}} alt="">
             </mat-card>
           </div>
           <div fxFlex="30" fxLayout="column" class="list" fxLayoutAlign="start center">
@@ -57,9 +57,9 @@
               <h4> Version  </h4>
               <div class="trait"></div>
             </div>
-            <div  *ngFor="let version of listVersions" fxLayoutAlign="start center" fxLayout="column">
+            <div  *ngFor="let version of listVersions; let index=index" fxLayoutAlign="start center" fxLayout="column">
               <mat-card class="example-card" (click)="choisirVersion(version)">
-                <img mat-card-image src={{img}} alt="">
+                <img mat-card-image src={{photosVersions[index]}} alt="">
               </mat-card>
               <h5>{{version.NomVersion}}</h5>
             </div>
@@ -80,7 +80,7 @@
             <div class="trait vert"></div>
             <h3 class="vert">{{couleurChoisie.NomCouleur}}</h3>
             <mat-card class="big-card">
-              <img mat-card-image src={{image}} alt="">
+              <img mat-card-image src={{couleurChoisie.image[0].CheminImage}} alt="">
             </mat-card>
           </div>
           <div fxFlex="30" fxLayout="column" class="list" fxLayoutAlign="start center">
@@ -90,7 +90,7 @@
             </div>
             <div  *ngFor="let clr of listCouleurs" fxLayoutAlign="start center" fxLayout="column">
               <mat-card class="example-card" (click)="choisirCouleur(clr)">
-                <img mat-card-image src={{img}} alt="">
+                <img mat-card-image src={{clr.image[0].CheminImage}} alt="">
               </mat-card>
               <h5>{{clr.NomCouleur}}</h5>
             </div>

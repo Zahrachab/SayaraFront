@@ -7,6 +7,8 @@ import {Couleur} from '../../../services/entites/couleur.model';
 import {CouleurService} from '../../../services/couleur.service';
 import {OptionDetail} from '../../../services/entites/optionDetail.model';
 import {OptionService} from '../../../services/option.service';
+import {forEach} from '@angular/router/src/utils/collection';
+
 
 @Component({
   selector: 'app-simulation',
@@ -20,6 +22,8 @@ export class SimulationComponent implements OnInit {
   private listCouleurs: Array<Couleur> = [];
   private image: string ;
   private etape= 1;
+  private photosModeles: Array<string> ;
+  private photosVersions: Array<string> ;
   // en attendant les photos par couleur
   private img = 'http://res.cloudinary.com/hftzhatr4/image/upload/v1561067247/Versions/2019-06-20T21-47-27.017Z_voiture.jpg.jpg';
   private modeleChoisi: ModeleDetail = null;
@@ -32,14 +36,44 @@ export class SimulationComponent implements OnInit {
               public versionService: VersionService,
               public couleurService: CouleurService,
               public optionService: OptionService) {
-    modeleService.getModeles().subscribe((res) => {
-      this.listModeles = res as  ModeleDetail[];
-      this.modeleChoisi = this.listModeles[0];
-    });
   }
 
   ngOnInit() {
-    this.image = this.img;
+    this.modeleService.getModeles().subscribe((res) => {
+      this.listModeles = res as  ModeleDetail[];
+      this.modeleChoisi = this.listModeles[0];
+      this.getPhotosModeles();
+      this.image = this.photosModeles[0];
+    });
+
+  }
+
+  /**
+   * Récupérer une photo par modèle
+   */
+  getPhotosModeles() {
+    this.photosModeles = new Array<string>(this.listModeles.length);
+    //parcourir la liste des modèles et récupérer leurs versions
+    this.listModeles.forEach((modele) => {
+      this.versionService.getVersions(modele.CodeModele).subscribe((res) => {
+        const versions = res as VersionDetail [];
+        var ok : boolean = false;
+        var i =0;
+
+        // itérer sur les versions jusqu'à trouver une couleur qui contient une photo
+        while (!ok && i< versions.length) {
+          const clr = versions[i++].couleurs.find(c => c.CheminImage != null);
+          if (clr != null) {
+            this.photosModeles[this.listModeles.indexOf(modele)] = clr.CheminImage;
+            ok = true;
+          }
+        }
+        if (!ok) {
+          // insérer aucune photo s'il n'ya aucune photo trouvée
+          this.photosModeles[this.listModeles.indexOf(modele)] = './assets/images/Pics/aucune.jpg';
+        }
+      });
+    });
   }
 
   /**
@@ -47,6 +81,7 @@ export class SimulationComponent implements OnInit {
    */
   choisirModele(modele: ModeleDetail) {
     this.modeleChoisi = modele;
+    this.image = this.photosModeles[this.listModeles.indexOf(modele)];
   }
 
   /**
@@ -54,6 +89,7 @@ export class SimulationComponent implements OnInit {
    */
   choisirVersion (version) {
     this.versionChoisie = version;
+    this.image = this.photosVersions[this.listVersions.indexOf(version)];
     this.prixTotal = this.versionChoisie.lignetarif.Prix;
   }
 
@@ -92,8 +128,21 @@ export class SimulationComponent implements OnInit {
         if (this.listVersions!= null) {
           this.versionChoisie = this.listVersions[0];
           this.prixTotal = this.versionChoisie.lignetarif.Prix;
+
+          //récupérer les photos des versions du modèle choisi
+          this.photosVersions = new Array<string>(this.listVersions.length);
+          this.listVersions.forEach((vers) => {
+            const clr = vers.couleurs.find(c => c.CheminImage != null);
+            if (clr != null) {
+              this.photosVersions[this.listVersions.indexOf(vers)] = clr.CheminImage;
+            } else {
+              this.photosVersions[this.listVersions.indexOf(vers)] = './assets/images/Pics/aucune.jpg';
+            }
+          });
+          this.image = this.photosVersions[0];
         }
       });
+
     } else {
       alert("Aucun modèle choisi");
     }
@@ -106,7 +155,7 @@ export class SimulationComponent implements OnInit {
   passerEtape3() {
     if (this.versionChoisie!= null) {
       this.etape = 3;
-      this.couleurService.getCouleurs(this.modeleChoisi.CodeModele).subscribe( (res) => {
+      this.couleurService.getCouleursVersion(this.versionChoisie.CodeVersion).subscribe( (res) => {
         this.listCouleurs = res as Couleur[];
         if (this.listCouleurs.length!= 0) {
           this.couleurChoisie = this.listCouleurs[0];

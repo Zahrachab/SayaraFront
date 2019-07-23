@@ -12,7 +12,7 @@ import {ModeleService} from './modele.service';
 })
 export class CouleurService {
   private url = this.injector.get('url');
-  private serviceUrlOptions = this.url + '/marques/modeles/';
+  private serviceUrl = this.url + '/marques/modeles/';
 
   constructor(private http: HttpClient, private injector: Injector, private modeleService: ModeleService) {
   }
@@ -34,9 +34,16 @@ export class CouleurService {
 
   /* récupérer les couleurs associées à un modèle */
   getCouleurs(codeModele): Observable<Couleur[]> {
-    return this.http.get<Couleur[]>(this.serviceUrlOptions + codeModele + '/couleurs');
+    return this.http.get<Couleur[]>(this.serviceUrl + codeModele + '/couleurs');
 
   }
+
+  /* récupérer les couleurs associées à un modèle */
+  getCouleursVersion(codeVersion): Observable<Couleur[]> {
+    return this.http.get<Couleur[]>(this.serviceUrl + 'versions/' + codeVersion + '/couleurs');
+
+  }
+  
   /* Modifier un couleur */
   modifierCouleur(code: string, nom: string, codeHexa: string) {
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
