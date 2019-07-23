@@ -113,3 +113,73 @@ nav.image {
     width: 80%;
   }
 }
+
+.menu-item {
+  color: #333;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 0;
+  direction: ltr;
+  line-height: 1.34;
+  margin: 0 0 0 5%;
+}
+
+::ng-deep a.mat-menu-item {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  outline: 0;
+  border: none;
+  -webkit-tap-highlight-color: transparent;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  /** set line height to desired height */
+  line-height: 18px;
+  /** set height to auto */
+  height: auto;
+  padding: 0 16px;
+  text-align: left;
+  text-decoration: none;
+  max-width: 100%;
+  position: relative;
+}
+
+::ng-deep div.mat-menu-panel {
+  min-width: 500px;
+  /** set width to 500px */
+  max-width: 500px;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  max-height: calc(100vh - 48px);
+  border-radius: 4px;
+  outline: 0;
+}
+
+.titre-commande {
+  font-weight: 600;
+  word-wrap:
+  break-word;
+  color: #1d2129;
+  font-size: 12px;
+  line-height: 1.34;
+}
+
+.clockNotif {
+  float : right;
+  color: #90949c;
+  word-wrap: break-word;
+  font-size: 12px;
+  line-height: 1.34;
+}
+
+.reservationNotif {
+  margin-left : 10%;
+  color: #90949c;
+  word-wrap: break-word;
+  font-size: 12px;
+  line-height: 1.34;
+}
