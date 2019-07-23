@@ -20,15 +20,15 @@ export class SimulationComponent implements OnInit {
   private listModeles : Array<ModeleDetail> = [];
   private listVersions: Array<VersionDetail> =[];
   private listCouleurs: Array<Couleur> = [];
-  private image: string ;
+  private imageModele: string = null;
+  private imageVersion:string = null;
   private etape= 1;
   private photosModeles: Array<string> ;
   private photosVersions: Array<string> ;
   // en attendant les photos par couleur
-  private img = 'http://res.cloudinary.com/hftzhatr4/image/upload/v1561067247/Versions/2019-06-20T21-47-27.017Z_voiture.jpg.jpg';
   private modeleChoisi: ModeleDetail = null;
   private versionChoisie: VersionDetail = null;
-  private couleurChoisie: Couleur=null;
+  private couleurChoisie: Couleur= null;
   private prixTotal : number  = 0;
   private prixOptions: number =0;
 
@@ -43,7 +43,6 @@ export class SimulationComponent implements OnInit {
       this.listModeles = res as  ModeleDetail[];
       this.modeleChoisi = this.listModeles[0];
       this.getPhotosModeles();
-      this.image = this.photosModeles[0];
     });
 
   }
@@ -65,6 +64,7 @@ export class SimulationComponent implements OnInit {
           const clr = versions[i++].couleurs.find(c => c.CheminImage != null);
           if (clr != null) {
             this.photosModeles[this.listModeles.indexOf(modele)] = clr.CheminImage;
+            if(i==1) this.imageModele = clr.CheminImage;
             ok = true;
           }
         }
@@ -81,7 +81,7 @@ export class SimulationComponent implements OnInit {
    */
   choisirModele(modele: ModeleDetail) {
     this.modeleChoisi = modele;
-    this.image = this.photosModeles[this.listModeles.indexOf(modele)];
+    this.imageModele = this.photosModeles[this.listModeles.indexOf(modele)];
   }
 
   /**
@@ -89,7 +89,7 @@ export class SimulationComponent implements OnInit {
    */
   choisirVersion (version) {
     this.versionChoisie = version;
-    this.image = this.photosVersions[this.listVersions.indexOf(version)];
+    this.imageVersion = this.photosVersions[this.listVersions.indexOf(version)];
     this.prixTotal = this.versionChoisie.lignetarif.Prix;
   }
 
@@ -139,7 +139,7 @@ export class SimulationComponent implements OnInit {
               this.photosVersions[this.listVersions.indexOf(vers)] = './assets/images/Pics/aucune.jpg';
             }
           });
-          this.image = this.photosVersions[0];
+          this.imageVersion = this.photosVersions[0];
         }
       });
 
@@ -181,7 +181,7 @@ export class SimulationComponent implements OnInit {
 
   revenirEtape3() {
     this.etape = 3;
-    this.prixTotal -= this.prixOptions;
+    this.prixTotal = 0;
     this.prixOptions = 0;
     this.optionsVersion = null;
   }
@@ -190,12 +190,14 @@ export class SimulationComponent implements OnInit {
     this.etape = 2;
     this.prixTotal = this.versionChoisie.lignetarif.Prix;
     this.listCouleurs = null;
+    this.couleurChoisie = null;
   }
 
   revenirEtape1() {
     this.etape = 1;
-    this.prixTotal = 0;
+    this.prixTotal -= this.versionChoisie.lignetarif.Prix;
     this.listVersions = null;
+    this.photosVersions = null;
   }
 
 

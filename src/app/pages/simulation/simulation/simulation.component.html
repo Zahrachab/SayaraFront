@@ -18,7 +18,7 @@
             <div class="trait vert"></div>
             <h3 *ngIf="modeleChoisi!= null" class="vert">{{modeleChoisi.NomModele}}</h3>
             <mat-card class="big-card">
-              <img mat-card-image src={{image}} alt="">
+              <img *ngIf="imageModele!= null" mat-card-image src={{imageModele}} alt="">
             </mat-card>
           </div>
           <div fxFlex="30" fxLayout="column" class="list" fxLayoutAlign="start center">
@@ -47,9 +47,9 @@
               </button>
             </div>
             <div class="trait vert"></div>
-            <h3 class="vert">{{versionChoisie.NomVersion}}</h3>
+            <h3 *ngIf="versionChoisie!= null" class="vert">{{versionChoisie.NomVersion}}</h3>
             <mat-card class="big-card">
-              <img mat-card-image src={{image}} alt="">
+              <img *ngIf="imageVersion!= null" mat-card-image src={{imageVersion}} alt="">
             </mat-card>
           </div>
           <div fxFlex="30" fxLayout="column" class="list" fxLayoutAlign="start center">
@@ -78,9 +78,10 @@
               </button>
             </div>
             <div class="trait vert"></div>
-            <h3 class="vert">{{couleurChoisie.NomCouleur}}</h3>
+            <h3 *ngIf="couleurChoisie != null" class="vert">{{couleurChoisie.NomCouleur}}</h3>
             <mat-card class="big-card">
-              <img mat-card-image src={{couleurChoisie.image[0].CheminImage}} alt="">
+              <img *ngIf="couleurChoisie.image[0] != null" mat-card-image src={{couleurChoisie.image[0].CheminImage}} alt="">
+              <img *ngIf="couleurChoisie.image[0] == null" mat-card-image src="./assets/images/Pics/aucune.jpg" alt="">
             </mat-card>
           </div>
           <div fxFlex="30" fxLayout="column" class="list" fxLayoutAlign="start center">
@@ -90,7 +91,8 @@
             </div>
             <div  *ngFor="let clr of listCouleurs" fxLayoutAlign="start center" fxLayout="column">
               <mat-card class="example-card" (click)="choisirCouleur(clr)">
-                <img mat-card-image src={{clr.image[0].CheminImage}} alt="">
+                <img *ngIf="clr.image[0] != null" mat-card-image src={{clr.image[0].CheminImage}} alt="">
+                <img *ngIf="clr.image[0] == null" mat-card-image src="./assets/images/Pics/aucune.jpg" alt="">
               </mat-card>
               <h5>{{clr.NomCouleur}}</h5>
             </div>
@@ -111,14 +113,14 @@
       </mat-card>
 
         <form fxLayoutAlign="center center" fxLayout="column">
-            <div *ngIf="etape !=1"  fxLayout="column" fxLayoutAlign="space-between center">
+            <div *ngIf="etape !=1 && versionChoisie!= null"  fxLayout="column" fxLayoutAlign="space-between center">
               <span class="label">Prix de la version</span>
               <input matNativeControl matInput disabled class="input" value="{{versionChoisie.lignetarif.Prix}}">
               <div class="trait"></div>
             </div>
 
 
-            <div *ngIf="etape ==3 || etape ==4 "  fxLayout="column" fxLayoutAlign="space-between center"  >
+            <div *ngIf="(etape ==3 || etape ==4) && couleurChoisie != null"  fxLayout="column" fxLayoutAlign="space-between center"  >
               <span class="label">Prix de la couleur :</span>
               <input matNativeControl matInput disabled class="input" value=" {{couleurChoisie.lignetarif.Prix}}">
               <div class="trait"></div>
