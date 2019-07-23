@@ -198,6 +198,8 @@ export class SimulationComponent implements OnInit {
     this.prixTotal -= this.versionChoisie.lignetarif.Prix;
     this.listVersions = null;
     this.photosVersions = null;
+    this.imageVersion = null;
+    this.versionChoisie = null;
   }
 
 
