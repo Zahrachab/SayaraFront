@@ -4,4 +4,12 @@ export interface Couleur {
     CodeHexa: string;
     Checked: boolean;
     CheminImage: string;
+  lignetarif: {
+    idLigneTarif: number,
+    Type: number,
+    Code: string,
+    DateDebut: string,
+    DateFin: string,
+    Prix: number
+  };
 }

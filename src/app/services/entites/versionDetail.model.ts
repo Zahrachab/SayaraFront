@@ -18,6 +18,14 @@ export interface VersionDetail {
     CodeHexa: string;
     Checked: boolean;
     CheminImage: string;
+    lignetarif: {
+      idLigneTarif: number,
+      Type: number,
+      Code: string,
+      DateDebut: string,
+      DateFin: string,
+      Prix: number
+    };
     rel_ver_coul: {
       idRelVerCoul: string;
       CodeVersion: string;
@@ -30,4 +38,12 @@ export interface VersionDetail {
     Type: string;
     CheminImage: string;
   }[];
+  lignetarif: {
+    idLigneTarif: number,
+    Type: number,
+    Code: string,
+    DateDebut: string,
+    DateFin: string,
+    Prix: 6550000
+  };
 }

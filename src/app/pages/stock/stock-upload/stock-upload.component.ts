@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FileUploader} from 'ng2-file-upload';
 import {StockService} from '../../../services/stock.service';
-import {ToastrManager, ToastrModule} from 'ng6-toastr-notifications';
-import {mixinColor} from '@angular/material';
+import {ToastrManager} from 'ng6-toastr-notifications';
 
 @Component({
   selector: 'app-stock',

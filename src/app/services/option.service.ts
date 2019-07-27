@@ -53,6 +53,11 @@ export class OptionService {
   getOptionsWithLigneTarifs(codeModele): Observable<OptionDetail[]> {
     return this.http.get<OptionDetail[]>(this.serviceUrlOptions + codeModele + '/options');
   }
+
+  getOptionsVersion(codeVersion): Observable<OptionDetail[]> {
+    return this.http.get<OptionDetail[]>(this.serviceUrlOptions + 'versions/' + codeVersion + '/options');
+
+  }
   supprimerDuModele(code: string, codeModele: string) {
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
     return this.http.delete(this.url + '/Marques/Modeles/' + codeModele + '/Options/' + code,

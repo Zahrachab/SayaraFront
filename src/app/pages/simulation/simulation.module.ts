@@ -3,13 +3,11 @@ import { CommonModule } from '@angular/common';
 
 import { SimulationRoutingModule } from './simulation-routing.module';
 import { SimulationComponent } from './simulation/simulation.component';
-import {CommandesRoutingModule} from '../commandes/commandes-routing.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {GestionModule} from '../gestion/gestion.module';
 import {MaterialModule} from '../../material.module';
-import {GestionRoutingModule} from '../gestion/gestion-routing.module';
 import {MatMenuModule} from '@angular/material';
 import {ColorPickerModule} from 'ngx-color-picker';
 

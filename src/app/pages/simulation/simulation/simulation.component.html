@@ -6,29 +6,141 @@
   <div class="globalContainer">
     <h2>Simuler vos véhicules </h2>
     <div class="trait"></div>
-    <mat-card fxLayoutAlign="start start" class="simuler" fxLayout="row">
-      <div fxFlex="70" class="big-img" fxLayout="column" fxLayoutAlign="start center">
-        <h4> Choix d'un modèle </h4>
-        <div class="trait vert"></div>
-        <mat-card class="big-card">
-          <img mat-card-image src={{image}} alt="">
+    <div fxLayout="row wrap" fxLayoutAlign="space-between start">
+        <mat-card *ngIf="etape==1" fxLayoutAlign="start start" class="simuler" fxLayout="row">
+          <div fxFlex="70" class="big-img" fxLayout="column" fxLayoutAlign="start center">
+            <div fxLayout="row" fxLayoutAlign="start start">
+              <h4> Choix d'un modèle </h4>
+              <button mat-icon-button (click)="passerEtape2()" class="supp">
+                <mat-icon class="rouge">navigate_next</mat-icon>
+              </button>
+            </div>
+            <div class="trait vert"></div>
+            <h3 *ngIf="modeleChoisi!= null" class="vert">{{modeleChoisi.NomModele}}</h3>
+            <mat-card class="big-card">
+              <img *ngIf="imageModele!= null" mat-card-image src={{imageModele}} alt="">
+            </mat-card>
+          </div>
+          <div fxFlex="30" fxLayout="column" class="list" fxLayoutAlign="start center">
+            <div fxLayout="column" fxLayoutAlign="start start">
+              <h4> Modèles </h4>
+              <div class="trait"></div>
+            </div>
+            <div  *ngFor="let modele of listModeles; let index=index" fxLayoutAlign="start center" fxLayout="column">
+              <mat-card class="example-card" (click)="choisirModele(modele)">
+                <img mat-card-image src={{photosModeles[index]}} alt="">
+              </mat-card>
+              <h5>{{modele.NomModele}}</h5>
+            </div>
+          </div>
         </mat-card>
-      </div>
-      <div fxFlex="30" fxLayout="column" class="list" fxLayoutAlign="start center">
-        <div fxLayout="column" fxLayoutAlign="start start">
-          <h4> Modèles </h4>
-          <div class="trait"></div>
+
+        <mat-card *ngIf="etape==2" fxLayoutAlign="start start" class="simuler" fxLayout="row">
+          <div fxFlex="70" class="big-img" fxLayout="column" fxLayoutAlign="start center">
+            <div fxLayout="row" fxLayoutAlign="start start">
+              <button mat-icon-button (click)="revenirEtape1()" class="supp">
+                <mat-icon class="rouge">navigate_before</mat-icon>
+              </button>
+              <h4> Choix d'une version </h4>
+              <button mat-icon-button (click)="passerEtape3()" class="supp">
+                <mat-icon class="rouge">navigate_next</mat-icon>
+              </button>
+            </div>
+            <div class="trait vert"></div>
+            <h3 *ngIf="versionChoisie!= null" class="vert">{{versionChoisie.NomVersion}}</h3>
+            <mat-card class="big-card">
+              <img *ngIf="imageVersion!= null" mat-card-image src={{imageVersion}} alt="">
+            </mat-card>
+          </div>
+          <div fxFlex="30" fxLayout="column" class="list" fxLayoutAlign="start center">
+            <div fxLayout="column" fxLayoutAlign="start start">
+              <h4> Version  </h4>
+              <div class="trait"></div>
+            </div>
+            <div  *ngFor="let version of listVersions; let index=index" fxLayoutAlign="start center" fxLayout="column">
+              <mat-card class="example-card" (click)="choisirVersion(version)">
+                <img mat-card-image src={{photosVersions[index]}} alt="">
+              </mat-card>
+              <h5>{{version.NomVersion}}</h5>
+            </div>
+          </div>
+        </mat-card>
+
+        <mat-card *ngIf="etape==3" fxLayoutAlign="start start" class="simuler" fxLayout="row">
+          <div fxFlex="70" class="big-img" fxLayout="column" fxLayoutAlign="start center">
+            <div fxLayout="row" fxLayoutAlign="start start">
+              <button mat-icon-button (click)="revenirEtape2()" class="supp">
+                <mat-icon class="rouge">navigate_before</mat-icon>
+              </button>
+              <h4> Choix d'une couleur</h4>
+              <button mat-icon-button (click)="passerEtape4()" class="supp">
+                <mat-icon class="rouge">navigate_next</mat-icon>
+              </button>
+            </div>
+            <div class="trait vert"></div>
+            <h3 *ngIf="couleurChoisie != null" class="vert">{{couleurChoisie.NomCouleur}}</h3>
+            <mat-card class="big-card">
+              <img *ngIf="couleurChoisie.image[0] != null" mat-card-image src={{couleurChoisie.image[0].CheminImage}} alt="">
+              <img *ngIf="couleurChoisie.image[0] == null" mat-card-image src="./assets/images/Pics/aucune.jpg" alt="">
+            </mat-card>
+          </div>
+          <div fxFlex="30" fxLayout="column" class="list" fxLayoutAlign="start center">
+            <div fxLayout="column" fxLayoutAlign="start start">
+              <h4> Couleurs </h4>
+              <div class="trait"></div>
+            </div>
+            <div  *ngFor="let clr of listCouleurs" fxLayoutAlign="start center" fxLayout="column">
+              <mat-card class="example-card" (click)="choisirCouleur(clr)">
+                <img *ngIf="clr.image[0] != null" mat-card-image src={{clr.image[0].CheminImage}} alt="">
+                <img *ngIf="clr.image[0] == null" mat-card-image src="./assets/images/Pics/aucune.jpg" alt="">
+              </mat-card>
+              <h5>{{clr.NomCouleur}}</h5>
+            </div>
+          </div>
+        </mat-card>
+
+      <mat-card *ngIf="etape==4" fxLayoutAlign="start center" class="simuler" fxLayout="column">
+        <div fxLayout="row" fxLayoutAlign="start start">
+          <button mat-icon-button (click)="revenirEtape3()" class="supp">
+            <mat-icon class="rouge">navigate_before</mat-icon>
+          </button>
+          <h4> Choix des options</h4>
         </div>
-        <div  *ngFor="let img of listModelesImages">
-          <mat-card class="example-card" (click)="choisirImage(img)">
-            <img mat-card-image src={{img}} alt="">
-          </mat-card>
+        <div class="trait vert"></div>
+        <div fxLayout="column" fxLayoutAlign="center start" id="options"  >
+          <mat-checkbox *ngFor="let option of optionsVersion" color="primary" [value]="option.CodeOption"   (change)="choisirOptions($event, option)">{{option.NomOption}}  {{option.lignetarif.Prix}}</mat-checkbox>
         </div>
-      </div>
+      </mat-card>
+
+        <form fxLayoutAlign="center center" fxLayout="column">
+            <div *ngIf="etape !=1 && versionChoisie!= null"  fxLayout="column" fxLayoutAlign="space-between center">
+              <span class="label">Prix de la version</span>
+              <input matNativeControl matInput disabled class="input" value="{{versionChoisie.lignetarif.Prix}}">
+              <div class="trait"></div>
+            </div>
 
 
+            <div *ngIf="(etape ==3 || etape ==4) && couleurChoisie != null"  fxLayout="column" fxLayoutAlign="space-between center"  >
+              <span class="label">Prix de la couleur :</span>
+              <input matNativeControl matInput disabled class="input" value=" {{couleurChoisie.lignetarif.Prix}}">
+              <div class="trait"></div>
+            </div>
 
-    </mat-card>
+            <div *ngIf="etape== 4"
+                 fxLayout="column" fxLayoutAlign="space-between center">
+              <span class="label">Prix des options: </span>
+              <input matNativeControl matInput disabled class="input" value="{{prixOptions}}">
+              <div class="trait"></div>
+            </div>
+
+            <div  fxLayout="column"  fxLayoutAlign="space-between center">
+              <span class="label">Prix Total </span>
+              <input matNativeControl matInput disabled class="input" value="{{prixTotal}}">
+            </div>
+
+        </form>
+
+    </div>
 
   </div>
 </div>
