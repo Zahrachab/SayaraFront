@@ -28,9 +28,10 @@ import { GestionCouleurComponent } from './gestion-couleur/gestion-couleur.compo
 import { ModifierCouleurComponent } from './gestion-couleur/modifier-couleur/modifier-couleur.component';
 import { AjouterCouleurComponent } from './gestion-couleur/ajouter-couleur/ajouter-couleur.component';
 import { InfosDialogComponent } from './gestion-version/infos-dialog/infos-dialog.component';
-import {MatMenuModule} from '@angular/material';
+import {MatBadgeModule, MatMenuModule} from '@angular/material';
 import { FicheModeleComponent } from './gestion-modele/fiche-modele/fiche-modele.component';
 import { FicheVersionComponent } from './gestion-version/fiche-version/fiche-version.component';
+import {DateAgoPipe} from '../../components/pipes/date-ago.pipe';
 
 
 @NgModule({
@@ -49,7 +50,7 @@ import { FicheVersionComponent } from './gestion-version/fiche-version/fiche-ver
                   InfosDialogComponent,
                   FileSelectDirective,
                   FicheModeleComponent,
-                  FicheVersionComponent],
+                  FicheVersionComponent, DateAgoPipe],
 
   imports: [
     CommonModule,
@@ -63,12 +64,14 @@ import { FicheVersionComponent } from './gestion-version/fiche-version/fiche-ver
     MatSelectModule,
     MatMenuModule,
     ColorPickerModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+    MatBadgeModule
   ],
   exports: [NavbarComponent, SidenavComponent, FooterComponent, FileSelectDirective],
   entryComponents: [AjouterModeleComponent, AjouterVersionComponent, ModifierVerionComponent,
     SupprimerModeleComponent, ModifierCouleurComponent, AjouterCouleurComponent,
-    AjouterOptionComponent, ModifierOptionComponent, ModifierModeleComponent, FicheVersionComponent, FicheModeleComponent, InfosDialogComponent],
+    AjouterOptionComponent, ModifierOptionComponent, ModifierModeleComponent, FicheVersionComponent, FicheModeleComponent,
+    InfosDialogComponent],
 })
 export class GestionModule {
 }

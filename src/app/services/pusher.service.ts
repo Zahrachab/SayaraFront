@@ -1,19 +1,20 @@
-
-import { Injectable } from '@angular/core';
-import {environment} from '../../environments/environment';
-import { HttpClient } from '@angular/common/http';
 declare const Pusher: any;
+import { Injectable } from '@angular/core';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class PusherService {
+
   pusher: any;
-  channel: any;
-  constructor(private http: HttpClient) {
-    this.pusher = new Pusher(environment.pusher.key, {
-      cluster: environment.pusher.cluster,
-      encrypted: true
+  commandeChannel: any;
+
+  constructor() {
+     this.pusher = new Pusher('5fa15f062e35d1c1dbad', {
+      cluster: 'eu',
+      forceTLS: true
     });
-    this.channel = this.pusher.subscribe('events-channel');
+     this.commandeChannel = this.pusher.subscribe('commande-channel-' + JSON.parse(localStorage.getItem('utilisateur')).utilfab.Fabricant);
   }
 
 }

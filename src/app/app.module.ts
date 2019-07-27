@@ -25,6 +25,7 @@ import {TarifsModule} from './pages/tarifs/tarifs.module';
 import {StockModule} from './pages/stock/stock.module';
 import {CommandesModule} from './pages/commandes/commandes.module';
 import {CommandeService} from './services/commande.service';
+import {PusherService} from './services/pusher.service';
 import {SimulationModule} from './pages/simulation/simulation.module';
 
 
@@ -41,7 +42,7 @@ const urlGlobale = 'https://sayaradz.herokuapp.com';
     PremierePageComponent,
     LoginComponent,
     ConfirmationDialogComponent,
-    AlertComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +62,7 @@ const urlGlobale = 'https://sayaradz.herokuapp.com';
   ],
   entryComponents: [ConfirmationDialogComponent],
   schemas: [NO_ERRORS_SCHEMA],
-  providers: [ModeleService, CommandeService, {provide: 'url', useValue: urlGlobale},
+  providers: [PusherService, ModeleService, CommandeService, {provide: 'url', useValue: urlGlobale},
     { provide: HTTP_INTERCEPTORS, useClass: LoginErrorInterceptor, multi: true }, ],
   bootstrap: [AppComponent]
 })
