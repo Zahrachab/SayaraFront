@@ -25,7 +25,6 @@ export class NavbarComponent implements OnInit {
               private commandeService: CommandeService, private pushService: PusherService) {
 
     this.pushService.commandeChannel.bind('newCommand', data => {
-      console.log(data.toString());
       this.notifications.unshift(data);
       this.number += 1;
     });
