@@ -2,6 +2,7 @@ import {Injectable, Injector} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Stock} from './entites/stock.modele';
+import {Vehicule} from './entites/Vehicule.model';
 
 @Injectable({
   providedIn: 'root'
@@ -33,5 +34,12 @@ export class StockService {
     formData.append('stockFile', csv);
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
     return this.http.post(this.urlPostStock , formData, {headers: tokenHeader});
+  }
+
+  public getVehiculesDispo(codeVersion: String, codeCouleur: String, options: Array<String>): Observable<Vehicule[]>
+  {
+    const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
+    return this.http.post(this.url + '/vehicules/stock/disponible',
+      {codeVersion: codeVersion , codeCouleur: codeCouleur, Options: options}, {headers: tokenHeader}) as Observable<Vehicule[]>;
   }
 }

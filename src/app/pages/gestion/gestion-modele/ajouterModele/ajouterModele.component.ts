@@ -204,6 +204,8 @@ export class AjouterModeleComponent implements OnInit {
         this.optionsChecked.splice(this.optionsChecked.indexOf(opt), 1);
       }
   }
+
+
   /**
    * L'ajout du modele, ajoute le modele, puis les options et les couleurs puis les associations entre eux
    */

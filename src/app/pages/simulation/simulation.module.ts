@@ -10,9 +10,10 @@ import {GestionModule} from '../gestion/gestion.module';
 import {MaterialModule} from '../../material.module';
 import {MatMenuModule} from '@angular/material';
 import {ColorPickerModule} from 'ngx-color-picker';
+import { InfosDispoComponent } from './infos-dispo/infos-dispo.component';
 
 @NgModule({
-  declarations: [SimulationComponent],
+  declarations: [SimulationComponent, InfosDispoComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -25,6 +26,7 @@ import {ColorPickerModule} from 'ngx-color-picker';
     MatMenuModule,
     ColorPickerModule,
     SimulationRoutingModule,
-  ]
+  ],
+  entryComponents: [InfosDispoComponent]
 })
 export class SimulationModule { }

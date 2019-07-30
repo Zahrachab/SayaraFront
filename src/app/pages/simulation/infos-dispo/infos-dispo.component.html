@@ -1,0 +1,24 @@
+<mat-dialog-content>
+  <div  fxLayout="row" fxLayoutAlign="space-between start" >
+    <div fxLayout="column">
+      <h1 mat-dialog-title style="margin: 0">Disponibilité</h1>
+      <div id="trait"></div>
+      <div *ngIf=" vehicules != null && vehicules.length == 0">
+        <p>Aucun véhicule disponible dans le stock qui correspond aux critères entrées</p>
+      </div>
+      <div *ngIf="vehicules != null && vehicules.length!= 0" fxLayout="column">
+        <p>Il ya {{vehicules.length}} véhicules dans le stock correspondant aux critères entrées avec les numéros de chassis suivants: </p>
+        <ul>
+          <li *ngFor="let vehicule of vehicules">
+            {{vehicule.NumChassis}}
+          </li>
+        </ul>
+      </div>
+    </div>
+    <button mat-icon-button type="submit" (click)="fermer()" mat-dialog-close >
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+
+</mat-dialog-content>

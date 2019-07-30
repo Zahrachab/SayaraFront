@@ -7,7 +7,10 @@ import {Couleur} from '../../../services/entites/couleur.model';
 import {CouleurService} from '../../../services/couleur.service';
 import {OptionDetail} from '../../../services/entites/optionDetail.model';
 import {OptionService} from '../../../services/option.service';
-import {forEach} from '@angular/router/src/utils/collection';
+import {StockService} from '../../../services/stock.service';
+import {MatDialog, MatDialogRef} from '@angular/material';
+import {Vehicule} from '../../../services/entites/Vehicule.model';
+import {InfosDispoComponent} from '../infos-dispo/infos-dispo.component';
 
 
 @Component({
@@ -16,25 +19,34 @@ import {forEach} from '@angular/router/src/utils/collection';
   styleUrls: ['./simulation.component.scss']
 })
 export class SimulationComponent implements OnInit {
+  //tableau des options de la version choisie
   private optionsVersion: Array<OptionDetail> = [];
+  //tableau des modèles de la marque
   private listModeles : Array<ModeleDetail> = [];
+  //tableau des versions du modèle choisi
   private listVersions: Array<VersionDetail> =[];
+  //tableau des couleurs de la version choisie
   private listCouleurs: Array<Couleur> = [];
+  //image du modèle choisi
   private imageModele: string = null;
+  //image dela version choisie
   private imageVersion:string = null;
+  //etape de choix
   private etape= 1;
   private photosModeles: Array<string> ;
   private photosVersions: Array<string> ;
-  // en attendant les photos par couleur
   private modeleChoisi: ModeleDetail = null;
   private versionChoisie: VersionDetail = null;
   private couleurChoisie: Couleur= null;
+  private optionsChoisies: Array<String>= Array<String> ();
   private prixTotal : number  = 0;
   private prixOptions: number =0;
 
   constructor(public modeleService: ModeleService,
               public versionService: VersionService,
               public couleurService: CouleurService,
+              public stockService: StockService,
+              public matDialog: MatDialog,
               public optionService: OptionService) {
   }
 
@@ -108,9 +120,11 @@ export class SimulationComponent implements OnInit {
   choisirOptions($event, option) {
     option.Checked = !option.Checked;
     if(option.Checked) {
+      this.optionsChoisies.push(option.CodeOption);
       this.prixTotal += option.lignetarif.Prix;
       this.prixOptions += option.lignetarif.Prix;
     } else {
+      this.optionsChoisies.splice(0,option.CodeOption);
       this.prixTotal -= option.lignetarif.Prix;
       this.prixOptions -= option.lignetarif.Prix;
     }
@@ -200,6 +214,33 @@ export class SimulationComponent implements OnInit {
     this.photosVersions = null;
     this.imageVersion = null;
     this.versionChoisie = null;
+  }
+
+
+  /**
+   * Vérifier la diponibilité en stock véhicules avec les options et la
+   couleur configurés
+   */
+  verifierDispo() {
+    //le tableau à envoyer dans le post
+    var options: Array<String> = new Array<String>(this.optionsChoisies.length);
+    this.optionsChoisies.forEach(element => {
+      if (element!= null)  {
+        //ajuster selon le format de la requête
+        options.push('{\'CodeOption\': '+ element + '}');
+      }
+    });
+    // tableau des véhicules à récupérer
+    var arrayDispo: Array<Vehicule> = [];
+    this.stockService.getVehiculesDispo(this.versionChoisie.CodeVersion, this.couleurChoisie.CodeCouleur, options).subscribe( res => {
+      arrayDispo = res as Vehicule[];
+      //Ouvrir un Mat Dialog pour afficher la disponibilité
+      const dialogRef: MatDialogRef<InfosDispoComponent> = this.matDialog.open(InfosDispoComponent, {width: '800px', height: '300px'});
+      dialogRef.componentInstance.vehicules = arrayDispo;
+      dialogRef.afterClosed().subscribe(() => {
+      });
+    });
+
   }
 
 

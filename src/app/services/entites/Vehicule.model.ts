@@ -1,8 +1,9 @@
 export interface Vehicule {
   NumChassis: string;
-  Couleur: string;
-  PrixMin: string;
+  Montant : string;
   Options: {
+    CodeOption: string;
     NomOption: string;
+    rel_vehic_opt	: {}
   } [];
 }
