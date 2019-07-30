@@ -18,16 +18,24 @@ export class StockService {
   constructor(private http: HttpClient, private injector: Injector) {
   }
 
-  /*Récupérer tous les véhicules dans le stock pour un modèle donné*/
+  /**
+   * Récupérer tous les véhicules dans le stock pour un modèle donné
+   **/
   getStock(): Observable<Stock[]> {
     return this.http.get<Stock[]>(this.urlStockVehicules);
   }
 
-  /*Récupérer le nombre de véhicules en stock pour un fabriquant ainsi que la dernière mise à jour du stock  */
+  /**
+   * Récupérer le nombre de véhicules en stock pour un fabriquant ainsi que la dernière mise à jour du stock
+   **/
   getInfoStock(): Observable<any> {
     return this.http.get<any>(this.urlStockInfos);
   }
 
+
+  /**uploader le fichier csv du stock
+   *
+   */
   public uploadCsv(csv: File) {
     const formData = new FormData();
 
@@ -36,6 +44,12 @@ export class StockService {
     return this.http.post(this.urlPostStock , formData, {headers: tokenHeader});
   }
 
+  /**
+   * récupérer la liste des véhicules avec les options et la,couleur configurés existants dans le stock.
+   * @param codeVersion
+   * @param codeCouleur
+   * @param options
+   */
   public getVehiculesDispo(codeVersion: String, codeCouleur: String, options: Array<String>): Observable<Vehicule[]>
   {
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
