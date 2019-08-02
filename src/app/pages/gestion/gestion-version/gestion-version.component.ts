@@ -10,6 +10,7 @@ import {InfosDialogComponent} from './infos-dialog/infos-dialog.component';
 import {ActivatedRoute} from '@angular/router';
 import {FicheVersionComponent} from './fiche-version/fiche-version.component';
 import {ConfirmationDialogComponent} from '../../shared/confirmation-dialog/confirmation-dialog.component';
+import {PusherService} from '../../../services/pusher.service';
 
 
 
@@ -50,13 +51,16 @@ export class GestionVersionComponent implements OnInit, AfterViewInit {
    * Il va permettre d'avoir les modeles a afficher
    * @param versionService
    * il va permettre d'avoir les versions a afficher
+   * @param activatedroute
    * @param matDialog
    * Un service qui va permettre d'ouvrir les boites de dialogues pour ajouter, supprimer et modifier
+   * @param pushService
    */
   constructor(private versionService: VersionService,
               private modeleService: ModeleService,
               private activatedroute: ActivatedRoute,
-              private matDialog: MatDialog) {
+              private matDialog: MatDialog,
+              private pushService: PusherService) {
     this.versionDataSource.filterPredicate = (order: any, filter: string) => {
       const transformedFilter = filter.trim().toLowerCase();
       const listAsFlatString = (obj): string => {
@@ -91,6 +95,7 @@ export class GestionVersionComponent implements OnInit, AfterViewInit {
 
   refreshData() {
     if ((this.codeModele !== '') && (this.codeModele != null )) {
+      this.updatePusher();
       this.versionService.getVersions(this.codeModele).subscribe(resultat => {
         this.versionDataSource.data = resultat as VersionDetail[];
       });
@@ -104,9 +109,7 @@ export class GestionVersionComponent implements OnInit, AfterViewInit {
    */
   changerVersions($event) {
     this.codeModele = $event.value;
-    this.versionService.getVersions($event.value).subscribe(res => {
-      this.versionDataSource.data = res as VersionDetail[];
-    });
+    this.refreshData();
   }
 
   /**
@@ -119,7 +122,7 @@ export class GestionVersionComponent implements OnInit, AfterViewInit {
       });
       dialogRef.componentInstance.codeModele = this.codeModele;
       dialogRef.afterClosed().subscribe(() => {
-        this.refreshData();
+       // this.refreshData();
       });
     } else {
       alert('Veuillez choisir un modèle');
@@ -173,6 +176,12 @@ export class GestionVersionComponent implements OnInit, AfterViewInit {
     this.versionDataSource.paginator = this.paginator;
   }
 
+
+  afficherFiche(version: VersionDetail) {
+    const dialogRef: MatDialogRef<FicheVersionComponent> = this.matDialog.open(FicheVersionComponent, {width: '800px', height: '80%'});
+    dialogRef.componentInstance.version = version;
+  }
+
   /**
    * Application du filtre entré dans la recherche
    * @param value
@@ -182,8 +191,17 @@ export class GestionVersionComponent implements OnInit, AfterViewInit {
     this.versionDataSource.filter = value.trim().toLocaleLowerCase();
   }
 
-  afficherFiche(version: VersionDetail) {
-    const dialogRef: MatDialogRef<FicheVersionComponent> = this.matDialog.open(FicheVersionComponent, {width: '800px', height: '80%'});
-    dialogRef.componentInstance.version = version;
+  updatePusher() {
+    this.pushService.updateVersionChannel(this.codeModele);
+    this.pushService.versionChannel.bind('newVersion', data => {
+      setTimeout(() => {
+        this.versionService.getVersion(data.CodeVersion).subscribe(res => {
+          const tmpData = this.versionDataSource.data;
+          tmpData.push(res as VersionDetail);
+          this.versionDataSource.data = tmpData;
+        });
+      }, 1000);
+    });
+
   }
 }

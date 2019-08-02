@@ -98,7 +98,7 @@ export class AjouterVersionComponent implements OnInit {
     // récuoérer la liste des options
     this.optionservice.getOptions(this.codeModele).subscribe(opts => this.options = opts as Option[]);
 
-    //récupérer la liste des couleurs
+    // récupérer la liste des couleurs
     this.couleurService.getCouleurs(this.codeModele).subscribe(clrs => {
       this.selectedFile = new Array<ImageSnippet>(clrs.length);
       this.couleurs = clrs as Couleur[] });
@@ -134,7 +134,6 @@ export class AjouterVersionComponent implements OnInit {
 
   // Ajout d'une version
   onSubmit() {
-
     const dialogRef: MatDialogRef<ConfirmationDialogComponent> = this.dialogValidation.open(ConfirmationDialogComponent, {
       width: '350px',
       data: 'Voulez vous vraiment ajouter cette version?'
