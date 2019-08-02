@@ -23,6 +23,10 @@ export class VersionService {
     return this.http.get<VersionDetail[]>(this.urlVersionDetails + codeModele + '/versions');
   }
 
+  getVersion(codeVersion): Observable<VersionDetail> {
+    return this.http.get<VersionDetail>(this.urlVersionDetails + 'versions/' + codeVersion);
+  }
+
   supprimerVersion(codeVersion) {
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
     return this.http.delete(this.urlVersionDetails + 'versions/' + codeVersion, {headers: tokenHeader}).pipe(

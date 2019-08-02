@@ -6,8 +6,8 @@ import {MatDialog, MatDialogRef, MatPaginator, MatSort, MatTableDataSource} from
 import {SupprimerModeleComponent} from './supprimer-modele/supprimer-modele.component';
 import {ModeleDetail} from '../../../services/entites/modeleDetail.model';
 import {ModifierModeleComponent} from './modifier-modele/modifier-modele.component';
-import {ModifierVerionComponent} from '../gestion-version/modifier-verion/modifier-verion.component';
 import {FicheModeleComponent} from './fiche-modele/fiche-modele.component';
+import {PusherService} from '../../../services/pusher.service';
 
 @Component({
   selector: 'app-gestion-modele',
@@ -40,9 +40,11 @@ export class GestionModeleComponent implements OnInit, AfterViewInit {
    * Il va permettre d'avoir les modeles a afficher
    * @param matDialog
    * Un service qui va permettre d'ouvrir les boites de dialogues pour ajouter, supprimer et modifier
+   * @param pushService
+   * Un service qui permet de faire la synchronisation en temps réel
    */
   constructor(private modeleService: ModeleService,
-              private matDialog: MatDialog) {
+              private matDialog: MatDialog, private pushService: PusherService) {
     // Redéfinition du filtre pour prendre en compte les sous objets
     this.dataSource.filterPredicate = (order: any, filter: string) => {
       const transformedFilter = filter.trim().toLowerCase();
@@ -59,6 +61,16 @@ export class GestionModeleComponent implements OnInit, AfterViewInit {
       };
       return listAsFlatString(order).includes(transformedFilter);
     };
+
+    this.pushService.modeleChannel.bind('newModele', data => {
+      setTimeout(() => {
+        this.modeleService.getModele(data.CodeModele).subscribe(res => {
+          const tmpData = this.dataSource.data;
+          tmpData.push(res as ModeleDetail);
+          this.dataSource.data = tmpData;
+        });
+      }, 1000);
+    });
   }
 
   /**
@@ -91,10 +103,6 @@ export class GestionModeleComponent implements OnInit, AfterViewInit {
     const dialogRef: MatDialogRef<AjouterModeleComponent> = this.matDialog.open(AjouterModeleComponent, {
       width: '850px',
       height: 'auto'
-    });
-    // Rafraichissement de la page apres fermeture de la boite de dialogue
-    dialogRef.afterClosed().subscribe(() => {
-      this.refreshData();
     });
   }
 
