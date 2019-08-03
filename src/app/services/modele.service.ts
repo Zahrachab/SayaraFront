@@ -14,29 +14,51 @@ export class ModeleService {
   constructor(private http: HttpClient, private injector: Injector) {
   }
 
-  /*Récupérer tous les modèles d'une marque */
+
+  /**
+   * Récupérer tous les modèles d'une marque
+   */
   getModeles(): Observable<ModeleDetail[]> {
     return this.http.get<ModeleDetail[]>(this.serviceUrlModeles);
   }
 
+
+  /**
+   *Récupérer un modèle avec son code
+   * @param codeModele
+   */
   getModele(codeModele): Observable<ModeleDetail> {
     return this.http.get<ModeleDetail>(this.serviceUrlModele + codeModele);
   }
 
+
+  /**
+   * Ajouter un modèle à une marque
+   * @param code
+   * @param designation
+   */
   ajouter(code: string, designation: string) {
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
-
-
     return this.http.post(this.url + '/Marques/' + JSON.parse(localStorage.getItem('utilisateur')).utilfab.Fabricant + '/Modeles',
       {CodeModele: code, NomModele: designation}, {headers: tokenHeader}).pipe();
   }
 
+  /**
+   * Supprimer un modèle d'une marque
+   * @param codeModele
+   */
   supprimerModele(codeModele) {
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
     return this.http.delete(this.serviceUrlModele + codeModele, {headers: tokenHeader}).pipe(
     );
   }
 
+
+  /**
+   * Modifier le nom d'un modèle
+   * @param code
+   * @param nom
+   */
   modifier(code: string, nom: string) {
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
     return this.http.put(this.url + '/Marques/Modeles/' + code,
