@@ -4,8 +4,8 @@ export interface StockVehicule {
   }[];
   CodeHexa: string;
   Montant: string;
-  Quantite: number;
-  Options: {
+  quantite: number;
+  options: {
     NomOption: string;
   } [];
 }

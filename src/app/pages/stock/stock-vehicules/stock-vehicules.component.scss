@@ -103,6 +103,10 @@ div.stock {
 
   div.recherche {
     margin-left: 40px;
+
+    #selector {
+      margin-top: 20px;
+    }
     .example-form {
       width: 84%;
       height: 30px;
@@ -184,7 +188,6 @@ div.stock {
         border-bottom: 3px solid #ecf0f1;
 
         mat-cell {
-
           .detailVehicule {
             width: 100%;
             height: auto;
@@ -215,6 +218,7 @@ div.stock {
               li {
                 color: #ffffff;
                 margin-bottom: 5px;
+                margin-left: 20px;
               }
             }
 
