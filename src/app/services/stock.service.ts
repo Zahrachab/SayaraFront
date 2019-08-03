@@ -1,8 +1,9 @@
 import {Injectable, Injector} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Stock} from './entites/stock.modele';
+import {StockVersion} from './entites/stock.modele';
 import {Vehicule} from './entites/Vehicule.model';
+import {StockVehicule} from './entites/stockVehicule.model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import {Vehicule} from './entites/Vehicule.model';
 export class StockService {
 
   private url = this.injector.get('url');
-  private urlStockVehicules = this.url + '/stock/modele/';
+  private urlStockVehicules = this.url + '/vehicules/stock/';
   private urlStockInfos = this.url + '/stock/infos';
   private urlPostStock = this.url + '/vehicules/stock/stock' ;
 
@@ -21,8 +22,8 @@ export class StockService {
   /**
    * Récupérer tous les véhicules dans le stock pour un modèle donné
    **/
-  getStock(): Observable<Stock[]> {
-    return this.http.get<Stock[]>(this.urlStockVehicules);
+  getStockVersion(codeVersion: string): Observable<StockVehicule[]> {
+    return this.http.get<StockVehicule[]>(this.urlStockVehicules+ codeVersion);
   }
 
   /**

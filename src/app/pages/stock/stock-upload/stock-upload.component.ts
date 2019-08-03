@@ -45,4 +45,6 @@ export class StockUploadComponent implements OnInit {
     }
   }
 
+
+
 }

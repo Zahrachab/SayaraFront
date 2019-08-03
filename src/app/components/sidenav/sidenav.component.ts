@@ -30,25 +30,6 @@ export class SidenavComponent implements OnInit {
             lien: '/gestion/couleurs'
           }
         ];
-    } else if (this.router.url.split('/')[1] === 'stock') {
-      this.sousMenus = [
-        {
-          nom: 'Versions',
-          lien: '/tarifs/versions'
-        },
-        {
-          nom: 'Options',
-          lien: '/tarifs/options'
-        },
-        {
-          nom: 'Couleurs',
-          lien: '/tarifs/couleurs'
-        },
-        {
-          nom: 'Upload Fichier',
-          lien: '/tarifs/upload'
-        }
-      ];
     } else if (this.router.url.split('/')[1] === 'commandes') {
       this.sousMenus = [
         {
@@ -69,6 +50,19 @@ export class SidenavComponent implements OnInit {
         }
       ];
     }
+    else if (this.router.url.split('/')[1] === 'stock') {
+      this.sousMenus = [
+        {
+          nom: 'vehicules',
+          lien: '/stock/vehicules'
+        },
+        {
+          nom: 'Importer',
+          lien: '/stock/importer'
+        }
+        ];
+    }
+
     this.user = JSON.parse(localStorage.getItem('utilisateur'));
   }
 

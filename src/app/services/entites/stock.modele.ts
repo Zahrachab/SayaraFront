@@ -1,14 +1,10 @@
-export interface Stock {
+import {StockVehicule} from './stockVehicule.model';
+
+export interface StockVersion {
   Nombre: number;
-  Version: string;
+  CodeVersion: string;
+  NomVersion: string
   Update: string;
-  Vehicules: {
-    NumChassis: string;
-    Couleur: string;
-    PrixMin: string;
-    Options: {
-      NomOption: string;
-    } [];
-  } [];
+  Stock: StockVehicule [];
 }
 
