@@ -42,12 +42,21 @@ export class CommandeService {
   getCommandesNouvelles(): Observable<Commande[]> {
     return this.http.get<Commande[]>(this.urlNouvellesCommandes);
   }
+
+  /**
+   * Valider une commmande
+   * @param commande
+   */
   validerCommande(commande: Commande) {
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
     return this.http.put(this.url + '/' + commande.idCommande + '/valider',
        {headers: tokenHeader});
   }
 
+  /**
+   * Rejeter une commande
+   * @param commande
+   */
   rejeterCommande(commande: Commande) {
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
     return this.http.put(this.url + '/' + commande.idCommande + '/rejeter',
