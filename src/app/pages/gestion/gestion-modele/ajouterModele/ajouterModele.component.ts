@@ -233,6 +233,8 @@ export class AjouterModeleComponent implements OnInit {
         this.couleurService.ajouterCouleurModele(couleur.codeCouleur, couleur.nomCouleur, couleur.codeHexa,
           this.formulaire.value.code).subscribe();
       }
+    }, error1 => {
+      
     });
     this.dialogRef.close();
   }

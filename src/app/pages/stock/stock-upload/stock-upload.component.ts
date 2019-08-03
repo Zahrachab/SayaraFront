@@ -38,10 +38,15 @@ export class StockUploadComponent implements OnInit {
   uploadCsv() {
     if(this.fichier!= null) {
     this.el.setAttribute('mode', 'indeterminate');
-    this.stockService.uploadCsv(this.fichier).subscribe( () => {
+    this.stockService.uploadCsv(this.fichier).subscribe( (res) => {
+      if (res) {
         this.toastr.successToastr('Importation du fichier ' + this.file + ' réussite', 'Succès!!');
         this.el.setAttribute('mode', 'buffer');
-      });
+      }
+      }, error => {
+      this.toastr.errorToastr('Importation du fichier ' + this.file + ' échouée ', 'Echec!!');
+      this.el.setAttribute('mode', 'buffer');
+    });
     }
   }
 
