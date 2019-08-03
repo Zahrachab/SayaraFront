@@ -101,7 +101,7 @@ export class AjouterVersionComponent implements OnInit {
     // récupérer la liste des couleurs
     this.couleurService.getCouleurs(this.codeModele).subscribe(clrs => {
       this.selectedFile = new Array<ImageSnippet>(clrs.length);
-      this.couleurs = clrs as Couleur[] });
+      this.couleurs = clrs as Couleur[]; });
 
     // Construction du formulaire
     this.formulaire = this.constructeurFormulaire.group({
@@ -143,7 +143,7 @@ export class AjouterVersionComponent implements OnInit {
         let i = 0;
 
         for (let j = 0; j < this.selectedFile.length; j++) {
-          if(this.selectedFile[j] != null) {
+          if (this.selectedFile[j] != null) {
             this.selectedFile[j].pending = true;
           }
         }
@@ -157,14 +157,16 @@ export class AjouterVersionComponent implements OnInit {
             for (let i = 0 ; i < this.clrsChoisies.length; i++) {
               this.couleurService.ajouterCouleurVersion(String(this.clrsChoisies[i].CodeCouleur),
                 codeVersion).subscribe((res) => {
-              } , (error) => {});
+              } , error => {
+                  // Erreur Insertion de la relation entre couleur et version
+                  alert(error);
+              });
             }
 
 
             /*ajouter des photos associées à des couleur à la version */
             for (let j = 0; j < this.selectedFile.length; j++) {
-              if(this.selectedFile[j] != null)
-              {
+              if (this.selectedFile[j] != null) {
                 this.imageService.uploadImage(this.images[j], codeVersion, this.couleurs[j].CodeCouleur).subscribe(res => {
                   this.selectedFile[j].pending = false;
                 });
@@ -172,16 +174,20 @@ export class AjouterVersionComponent implements OnInit {
             }
 
 
-            //ajout des options
+            // ajout des options
             for (i = 0; i < this.optionsChoisies.length; i++) {
               this.optionservice.ajouter(String(this.optionsChoisies[i].CodeOption), String(this.optionsChoisies[i].NomOption), codeVersion
-              ).subscribe();
+              ).subscribe((res) => {
+              } , error => {
+                // Erreur Insertion de la relation entre option et version
+                alert(error);
+              });
             }
 
             this.dialogRef.close();
-          },
-          (err) => {
-            this.dialogRef.close();
+          }, error =>   {
+            // Erreur dans l'insertion de la version
+            alert(error);
           });
       }
     });
@@ -190,7 +196,7 @@ export class AjouterVersionComponent implements OnInit {
   // Supprimer des images
   supprimerImage(selected: ImageSnippet) {
     this.selectedFile.splice(this.selectedFile.indexOf(selected), 1);
-    this.images.splice(this.selectedFile.indexOf(selected),1);
+    this.images.splice(this.selectedFile.indexOf(selected), 1);
   }
 }
 

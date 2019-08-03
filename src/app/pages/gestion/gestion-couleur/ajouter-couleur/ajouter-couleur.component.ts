@@ -42,7 +42,9 @@ export class AjouterCouleurComponent implements OnInit {
         this.couleurService.ajouterCouleurModele(this.formulaire.value.code, this.formulaire.value.nom,
           this.clr, this.codeModele).subscribe(() => {
           this.dialogRef.close();
-          });
+          }, error => {
+          alert(error);
+        });
       }
     });
 
