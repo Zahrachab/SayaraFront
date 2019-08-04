@@ -2,6 +2,8 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {OptionService} from '../../../../services/option.service';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
+import {ToastrManager} from 'ng6-toastr-notifications';
+import {toast} from 'angular2-materialize';
 
 @Component({
   selector: 'app-ajouter-option',
@@ -30,7 +32,9 @@ export class AjouterOptionComponent implements OnInit {
    * @param data
    * Les données recues du composant gestion-option
    */
-  constructor(private constructeurFormulaire: FormBuilder, private optionservice: OptionService,
+  constructor(private constructeurFormulaire: FormBuilder,
+              private optionservice: OptionService,
+              private toastr: ToastrManager,
               private dialogReference: MatDialogRef<AjouterOptionComponent>) { }
 
 
@@ -58,8 +62,9 @@ export class AjouterOptionComponent implements OnInit {
     this.optionservice.ajouterOptionModele(this.formulaire.value.code, this.formulaire.value.nom,
       this.modele).subscribe(async data => {
       this.fermer();
+      this.toastr.successToastr("Ajout avec succès");
     }, error => {
-      alert(error);
+      this.toastr.errorToastr(error);
     });
   }
 
