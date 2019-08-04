@@ -215,26 +215,39 @@ export class AjouterModeleComponent implements OnInit {
       // Ajout des nouvelles options
       for (const option of this.formulaire.value.options) {
         this.optionService.ajouterOptionModele(option.codeOption, option.nomOption,
-          this.formulaire.value.code).subscribe();
+          this.formulaire.value.code).subscribe( () => {}, error => {
+          // Erreur insertion de l'option
+            alert(error);
+        });
       }
 
       // Ajout des options
       for (const opt of this.optionsChecked) {
         this.optionService.ajouterOptionModele(String(opt.CodeOption), String(opt.NomOption),
-          this.formulaire.value.code).subscribe();
+          this.formulaire.value.code).subscribe(() => {}, error => {
+            // Erreur de l'insertion entre l'option et de la relation
+            alert(error);
+        });
       }
       // Ajout des couleurs
       for (const couleur of this.couleursChecked) {
         this.couleurService.ajouterCouleurModele(String(couleur.CodeCouleur), String(couleur.NomCouleur), String(couleur.CodeHexa),
-          this.formulaire.value.code).subscribe();
+          this.formulaire.value.code).subscribe( () => {}, error => {
+            // Erreur Insertion de la relation entre couleur et modele
+            alert(error);
+        });
       }
       // ajout des nouvelles couleurs
       for (const couleur of this.formulaire.value.couleurs) {
         this.couleurService.ajouterCouleurModele(couleur.codeCouleur, couleur.nomCouleur, couleur.codeHexa,
-          this.formulaire.value.code).subscribe();
+          this.formulaire.value.code).subscribe( () => {}, error => {
+            // Erreur Insertion d'une nouvelle couelur
+            alert(error);
+        });
       }
-    }, error1 => {
-      
+    }, error => {
+      // Erreur Insertion Modele
+      alert(error);
     });
     this.dialogRef.close();
   }

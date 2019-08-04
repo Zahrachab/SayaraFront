@@ -4,6 +4,7 @@ import {Couleur} from '../../../../services/entites/couleur.model';
 import {CouleurService} from '../../../../services/couleur.service';
 import {MatDialog, MatDialogRef} from '@angular/material';
 import {ConfirmationDialogComponent} from '../../../shared/confirmation-dialog/confirmation-dialog.component';
+import {ToastrManager} from 'ng6-toastr-notifications';
 
 @Component({
   selector: 'app-ajouter-couleur',
@@ -19,7 +20,8 @@ export class AjouterCouleurComponent implements OnInit {
   constructor(private constructeurFormulaire: FormBuilder,
               private couleurService: CouleurService,
               private dialogRef: MatDialogRef<AjouterCouleurComponent>,
-              private dialogValidation: MatDialog
+              private dialogValidation: MatDialog,
+              public toastr: ToastrManager
   ) {}
 
   ngOnInit() {
@@ -42,7 +44,10 @@ export class AjouterCouleurComponent implements OnInit {
         this.couleurService.ajouterCouleurModele(this.formulaire.value.code, this.formulaire.value.nom,
           this.clr, this.codeModele).subscribe(() => {
           this.dialogRef.close();
-          });
+          this.toastr.successToastr("Ajout avec succès");
+          }, error => {
+          this.toastr.errorToastr(error);
+        });
       }
     });
 

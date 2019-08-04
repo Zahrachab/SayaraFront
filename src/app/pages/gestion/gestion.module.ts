@@ -32,6 +32,7 @@ import {MatBadgeModule, MatMenuModule} from '@angular/material';
 import { FicheModeleComponent } from './gestion-modele/fiche-modele/fiche-modele.component';
 import { FicheVersionComponent } from './gestion-version/fiche-version/fiche-version.component';
 import {DateAgoPipe} from '../../components/pipes/date-ago.pipe';
+import {ToastrModule} from 'ng6-toastr-notifications';
 
 
 @NgModule({
@@ -64,6 +65,7 @@ import {DateAgoPipe} from '../../components/pipes/date-ago.pipe';
     MatSelectModule,
     MatMenuModule,
     ColorPickerModule,
+    ToastrModule.forRoot(),
     MDBBootstrapModule.forRoot(),
     MatBadgeModule
   ],
