@@ -10,6 +10,7 @@ import {FileUploader} from 'ng2-file-upload';
 import {ConfirmationDialogComponent} from '../../../shared/confirmation-dialog/confirmation-dialog.component';
 import {Couleur} from '../../../../services/entites/couleur.model';
 import {CouleurService} from '../../../../services/couleur.service';
+import {ToastrManager} from 'ng6-toastr-notifications';
 
 
 @Component({
@@ -72,7 +73,8 @@ export class AjouterVersionComponent implements OnInit {
               private dialogRef: MatDialogRef<AjouterVersionComponent>,
               private imageService: ImageService,
               private couleurService: CouleurService,
-              private dialogValidation: MatDialog
+              private dialogValidation: MatDialog,
+              private toastr: ToastrManager
   ) {
   }
 
@@ -159,7 +161,7 @@ export class AjouterVersionComponent implements OnInit {
                 codeVersion).subscribe((res) => {
               } , error => {
                   // Erreur Insertion de la relation entre couleur et version
-                  alert(error);
+                  this.toastr.errorToastr(error);
               });
             }
 
@@ -180,14 +182,15 @@ export class AjouterVersionComponent implements OnInit {
               ).subscribe((res) => {
               } , error => {
                 // Erreur Insertion de la relation entre option et version
-                alert(error);
+                this.toastr.errorToastr(error);
               });
             }
 
             this.dialogRef.close();
+            this.toastr.successToastr("Ajout d'une version avec succès");
           }, error =>   {
             // Erreur dans l'insertion de la version
-            alert(error);
+            this.toastr.errorToastr(error);
           });
       }
     });

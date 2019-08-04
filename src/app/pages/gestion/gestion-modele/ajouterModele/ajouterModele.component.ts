@@ -7,6 +7,7 @@ import {Couleur} from '../../../../services/entites/couleur.model';
 import {ModeleDetail} from '../../../../services/entites/modeleDetail.model';
 import {MatDialogRef} from '@angular/material';
 import {Option} from '../../../../services/entites/option.model';
+import {ToastrManager} from 'ng6-toastr-notifications';
 
 @Component({
   selector: 'app-modal',
@@ -47,6 +48,7 @@ export class AjouterModeleComponent implements OnInit {
               private modeleService: ModeleService,
               private optionService: OptionService,
               private couleurService: CouleurService,
+              private toastr: ToastrManager,
               public dialogRef: MatDialogRef<AjouterModeleComponent>
   ) {
   }
@@ -217,7 +219,7 @@ export class AjouterModeleComponent implements OnInit {
         this.optionService.ajouterOptionModele(option.codeOption, option.nomOption,
           this.formulaire.value.code).subscribe( () => {}, error => {
           // Erreur insertion de l'option
-            alert(error);
+          this.toastr.errorToastr(error);
         });
       }
 
@@ -226,7 +228,7 @@ export class AjouterModeleComponent implements OnInit {
         this.optionService.ajouterOptionModele(String(opt.CodeOption), String(opt.NomOption),
           this.formulaire.value.code).subscribe(() => {}, error => {
             // Erreur de l'insertion entre l'option et de la relation
-            alert(error);
+          this.toastr.errorToastr(error);
         });
       }
       // Ajout des couleurs
@@ -234,7 +236,7 @@ export class AjouterModeleComponent implements OnInit {
         this.couleurService.ajouterCouleurModele(String(couleur.CodeCouleur), String(couleur.NomCouleur), String(couleur.CodeHexa),
           this.formulaire.value.code).subscribe( () => {}, error => {
             // Erreur Insertion de la relation entre couleur et modele
-            alert(error);
+          this.toastr.errorToastr(error);
         });
       }
       // ajout des nouvelles couleurs
@@ -242,12 +244,14 @@ export class AjouterModeleComponent implements OnInit {
         this.couleurService.ajouterCouleurModele(couleur.codeCouleur, couleur.nomCouleur, couleur.codeHexa,
           this.formulaire.value.code).subscribe( () => {}, error => {
             // Erreur Insertion d'une nouvelle couelur
-            alert(error);
+          this.toastr.errorToastr(error);
         });
       }
+      this.toastr.successToastr("Ajout d'un modèle avec succès");
+
     }, error => {
       // Erreur Insertion Modele
-      alert(error);
+      this.toastr.errorToastr(error);
     });
     this.dialogRef.close();
   }
