@@ -98,12 +98,19 @@ export class AjouterVersionComponent implements OnInit {
    */
   ngOnInit() {
     // récuoérer la liste des options
-    this.optionservice.getOptions(this.codeModele).subscribe(opts => this.options = opts as Option[]);
+    this.optionservice.getOptions(this.codeModele).subscribe(opts => {
+      this.options = opts as Option[];
+    }, error => {
+      alert(error);
+    });
 
     // récupérer la liste des couleurs
     this.couleurService.getCouleurs(this.codeModele).subscribe(clrs => {
       this.selectedFile = new Array<ImageSnippet>(clrs.length);
-      this.couleurs = clrs as Couleur[]; });
+      this.couleurs = clrs as Couleur[];
+    }, error => {
+      alert(error);
+    });
 
     // Construction du formulaire
     this.formulaire = this.constructeurFormulaire.group({

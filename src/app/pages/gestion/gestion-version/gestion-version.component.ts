@@ -27,6 +27,10 @@ import {PusherService} from '../../../services/pusher.service';
  *
  */
 export class GestionVersionComponent implements OnInit, AfterViewInit {
+
+  // En attente des données
+  loading = true;
+
   // Code du modele pour lequel on veut gerer les versions
   private codeModele: string;
 
@@ -61,6 +65,8 @@ export class GestionVersionComponent implements OnInit, AfterViewInit {
               private activatedroute: ActivatedRoute,
               private matDialog: MatDialog,
               private pushService: PusherService) {
+
+
     this.versionDataSource.filterPredicate = (order: any, filter: string) => {
       const transformedFilter = filter.trim().toLowerCase();
       const listAsFlatString = (obj): string => {
@@ -90,6 +96,9 @@ export class GestionVersionComponent implements OnInit, AfterViewInit {
 
     this.modeleService.getModeles().subscribe(modeles => {
       this.modeles = modeles as ModeleDetail[];
+    }, error => {
+      // Probleme de connexion pour avoir les modeles
+      alert(error);
     });
   }
 
@@ -98,6 +107,9 @@ export class GestionVersionComponent implements OnInit, AfterViewInit {
       this.updatePusher();
       this.versionService.getVersions(this.codeModele).subscribe(resultat => {
         this.versionDataSource.data = resultat as VersionDetail[];
+      }, error => {
+        // Modele non existants ou erreurs de connexion
+        alert(error);
       });
     }
   }

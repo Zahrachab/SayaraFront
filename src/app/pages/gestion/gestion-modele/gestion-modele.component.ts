@@ -34,6 +34,9 @@ export class GestionModeleComponent implements OnInit, AfterViewInit {
   // Réference vers le mat-paginator
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
+  // En attente des données
+  loading = true;
+
   /**
    * Constructeur de la classe, il redefinit le filtre de recherche pour inclure les sous-objets (options et versions)
    * @param modeleService
@@ -91,7 +94,11 @@ export class GestionModeleComponent implements OnInit, AfterViewInit {
    */
   refreshData() {
     this.modeleService.getModeles().subscribe(res => {
+      this.loading = false;
       this.dataSource.data = res as ModeleDetail[];
+    }, error => {
+      // Je pense que le seul cas est le probleme de connexion
+      alert(error);
     });
   }
 

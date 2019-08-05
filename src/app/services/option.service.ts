@@ -92,6 +92,11 @@ export class OptionService {
     let options;
     this.http.get<ModeleDetail>(`https://sayaradz.herokuapp.com/marques/modeles/${codeModele}`).subscribe(modele => {
       options = (modele as ModeleDetail).options as Option[];
+    }, error => {
+        // la puisque c'est un service je c pas si c'est correct de faire un throw, j'ai mis le alert juste pour attirer ton attention
+        // Faut l'enlever
+        alert(error);
+        throwError(error);
     });
     return new Observable(observer => {
       setTimeout(() => {
@@ -102,11 +107,15 @@ export class OptionService {
   }
 
   getOptionsWithLigneTarifs(codeModele): Observable<OptionDetail[]> {
-    return this.http.get<OptionDetail[]>(this.serviceUrlOptions + codeModele + '/options');
+    return this.http.get<OptionDetail[]>(this.serviceUrlOptions + codeModele + '/options').pipe(
+      catchError(OptionService.handleError)
+    );
   }
 
   getOptionsVersion(codeVersion): Observable<OptionDetail[]> {
-    return this.http.get<OptionDetail[]>(this.serviceUrlOptions + 'versions/' + codeVersion + '/options');
+    return this.http.get<OptionDetail[]>(this.serviceUrlOptions + 'versions/' + codeVersion + '/options').pipe(
+      catchError(OptionService.handleErrorForVersionInsertion)
+    );
 
   }
 

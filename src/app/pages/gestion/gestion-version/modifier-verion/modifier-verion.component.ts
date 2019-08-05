@@ -129,6 +129,8 @@ export class ModifierVerionComponent implements OnInit {
           }
         });
       });
+    }, error => {
+      alert(error);
     });
   }
 
@@ -154,6 +156,8 @@ export class ModifierVerionComponent implements OnInit {
           }
         });
       });
+    }, error => {
+      alert(error);
     });
   }
 

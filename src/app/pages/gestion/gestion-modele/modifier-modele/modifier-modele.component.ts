@@ -110,6 +110,8 @@ export class ModifierModeleComponent implements OnInit {
           }
         });
       });
+    }, error => {
+      alert(error);
     });
   }
 
@@ -139,6 +141,8 @@ export class ModifierModeleComponent implements OnInit {
           }
         });
       });
+    }, error => {
+      alert(error);
     });
   }
 

@@ -46,11 +46,15 @@ export class VersionService {
   }
 
   getVersions(codeModele): Observable<VersionDetail[]> {
-    return this.http.get<VersionDetail[]>(this.urlVersionDetails + codeModele + '/versions');
+    return this.http.get<VersionDetail[]>(this.urlVersionDetails + codeModele + '/versions').pipe(
+      catchError(VersionService.handleError)
+    );
   }
 
   getVersion(codeVersion): Observable<VersionDetail> {
-    return this.http.get<VersionDetail>(this.urlVersionDetails + 'versions/' + codeVersion);
+    return this.http.get<VersionDetail>(this.urlVersionDetails + 'versions/' + codeVersion).pipe(
+      catchError(VersionService.handleError)
+    );
   }
 
   supprimerVersion(codeVersion) {

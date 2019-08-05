@@ -21,6 +21,11 @@ import {ConfirmationDialogComponent} from '../../shared/confirmation-dialog/conf
  *
  */
 export class GestionOptionsComponent implements OnInit, AfterViewInit {
+
+
+  // En attente des données
+  loading = true;
+
   // Le data source qui contient les informations a afficher dans le mat-table
   private dataSource = new MatTableDataSource<Option>();
 
@@ -74,6 +79,9 @@ export class GestionOptionsComponent implements OnInit, AfterViewInit {
     // Récupération des modeles pour le mat-select
     this.modeleService.getModeles().subscribe(modeles => {
       this.modeles = modeles as ModeleDetail[];
+    }, error => {
+      // Probleme de connexion
+      alert(error);
     });
     this.refreshData();
   }
@@ -85,6 +93,9 @@ export class GestionOptionsComponent implements OnInit, AfterViewInit {
     if ((this.codeModele !== '') && (this.codeModele != null)) {
       this.optionService.getOptions(this.codeModele).subscribe(res => {
         this.dataSource.data = res as Option[];
+      }, error => {
+        // Soit le modele n'existe pas, soit probleme de cnnexion
+        alert(error);
       });
     }
   }
@@ -96,11 +107,7 @@ export class GestionOptionsComponent implements OnInit, AfterViewInit {
    */
   changerOptions($event) {
     this.codeModele = $event.value;
-    if ((this.codeModele !== '')  && (this.codeModele != null)) {
-      this.optionService.getOptions($event.value).subscribe(res => {
-        this.dataSource.data = res as Option[];
-      });
-    }
+    this.refreshData();
   }
   /**
    * Supprimer une option, invoque le composant SupprimerOption

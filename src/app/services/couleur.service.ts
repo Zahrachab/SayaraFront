@@ -94,13 +94,17 @@ export class CouleurService {
 
   /* récupérer les couleurs associées à un modèle */
   getCouleurs(codeModele): Observable<Couleur[]> {
-    return this.http.get<Couleur[]>(this.serviceUrl + codeModele + '/couleurs');
+    return this.http.get<Couleur[]>(this.serviceUrl + codeModele + '/couleurs').pipe(
+      catchError(CouleurService.handleError)
+    );
   }
 
 
   /* récupérer les couleurs associées à un modèle */
   getCouleursVersion(codeVersion): Observable<Couleur[]> {
-    return this.http.get<Couleur[]>(this.serviceUrl + 'versions/' + codeVersion + '/couleurs');
+    return this.http.get<Couleur[]>(this.serviceUrl + 'versions/' + codeVersion + '/couleurs').pipe(
+      catchError(CouleurService.handleErrorForVersionInsertion)
+    );
 
   }
 
@@ -125,6 +129,11 @@ export class CouleurService {
       }
       console.log(couleursMap);
       return couleursMap;
+    }, error => {
+      // Comme c un service je c pas si c correct de mettre le throw, j'ai mis le alert juste pour attirer ton attention
+      // Faut l'enlever
+      alert(error);
+      throwError(error);
     });
   }
 

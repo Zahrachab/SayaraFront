@@ -43,16 +43,21 @@ export class ModeleService {
    * Récupérer tous les modèles d'une marque
    */
   getModeles(): Observable<ModeleDetail[]> {
-    return this.http.get<ModeleDetail[]>(this.serviceUrlModeles);
+    return this.http.get<ModeleDetail[]>(this.serviceUrlModeles).pipe(
+      catchError(ModeleService.handleError)
+    );
   }
 
 
   /**
-   *Récupérer un modèle avec son code
+   * Récupérer un modèle avec son code
    * @param codeModele
+   * Le code du modele
    */
   getModele(codeModele): Observable<ModeleDetail> {
-    return this.http.get<ModeleDetail>(this.serviceUrlModele + codeModele);
+    return this.http.get<ModeleDetail>(this.serviceUrlModele + codeModele).pipe(
+        catchError(ModeleService.handleError)
+    );
   }
 
 

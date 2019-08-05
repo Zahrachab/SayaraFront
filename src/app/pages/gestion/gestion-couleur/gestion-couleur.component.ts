@@ -18,6 +18,9 @@ import {Couleur} from '../../../services/entites/couleur.model';
 })
 export class GestionCouleurComponent implements OnInit {
 
+  // En attente des données
+  loading = true;
+
   private dataSource = new MatTableDataSource<Couleur>();
   private codeModele: any;
   private modeles: ModeleDetail[];
@@ -40,6 +43,9 @@ export class GestionCouleurComponent implements OnInit {
     }
     this.modeleService.getModeles().subscribe(modeles => {
       this.modeles = modeles as ModeleDetail[];
+    }, error => {
+      // Modeles Not Find, forcément probleme de connexion
+      alert(error);
     });
 
   }
@@ -47,17 +53,19 @@ export class GestionCouleurComponent implements OnInit {
   refreshData() {
     if ((this.codeModele !== '') && (this.codeModele != null )) {
       this.couleurService.getCouleurs(this.codeModele).subscribe(res => {
+        this.loading = false;
         this.dataSource.data = res as Couleur[];
+      }, error => {
+        // Je pense que le seul cas est le probleme de connexion
+        alert(error);
       });
     }
   }
 
   /*Fonction à exécuter lors de la séléction d'un modèle pour rafraichir la liste des couleurs associées */
   changerCouleurs($event) {
-    this.couleurService.getCouleurs($event.value).subscribe(res => {
-      this.dataSource.data = res as Couleur[];
-    });
     this.codeModele = $event.value;
+    this.refreshData();
   }
 
   /* Ouvrir un mat dialog pour l'ajout d'une couleur au modèle courant */
