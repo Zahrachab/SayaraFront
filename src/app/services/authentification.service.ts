@@ -1,7 +1,7 @@
 import {Injectable, Injector} from '@angular/core';
-import { HttpClient} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {map} from 'rxjs/operators';
-import {BehaviorSubject, Observable} from 'rxjs';
+import {BehaviorSubject, Observable, throwError} from 'rxjs';
 import {User} from './entites/user.model';
 
 
@@ -11,6 +11,7 @@ import {User} from './entites/user.model';
 })
 
 export class AuthentificationService {
+
 
   constructor(private http: HttpClient, private injector: Injector) {
     AuthentificationService.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));

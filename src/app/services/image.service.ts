@@ -1,5 +1,7 @@
 import {Injectable, Injector} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
+import {throwError} from 'rxjs';
+import {catchError} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +11,29 @@ export class ImageService {
   private imagesVersionUrl = this.url + '/images/versions/';
   constructor(private http: HttpClient, private injector: Injector) {}
 
+
+  private static handleError(error: HttpErrorResponse) {
+    let e: string;
+    if (error.error instanceof ErrorEvent) {
+      // A client-side or network error occurred. Handle it accordingly.
+      e = 'Une erreur s\'est produite, réessayer ulterieurement';
+      console.error('An error occurred:', error.error.message);
+    } else {
+      // The backend returned an unsuccessful response code.
+      // The response body may contain clues as to what went wrong,
+      console.error(`Backend returned code ${error.status}`);
+      if (error.status === 401) {
+        e = 'Vous n\'ètes pas autorisé a effectué cette action';
+      } else if (error.status === 409) {
+        e = 'Impossible d\'inserer cette image';
+      } else if (error.status === 404) {
+        e = 'Cette version n\'existe pas';
+      } else {
+        e = 'Une erreur s\'est produite, réessayer ulterieurement';
+      }
+    }
+    return throwError(e);
+  }
 
   /**
    * Ajouter une photo à une couleur d'une version
@@ -21,7 +46,9 @@ export class ImageService {
     formData.append('imageVersion', image);
     formData.append('CodeCouleur', codeCouleur);
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
-    return this.http.post(this.imagesVersionUrl + codeVersion, formData, {headers: tokenHeader});
+    return this.http.post(this.imagesVersionUrl + codeVersion, formData, {headers: tokenHeader}).pipe(
+      catchError(ImageService.handleError)
+    );
   }
 
 
