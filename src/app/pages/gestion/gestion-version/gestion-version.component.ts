@@ -30,7 +30,7 @@ import {ToastrManager} from 'ng6-toastr-notifications';
 export class GestionVersionComponent implements OnInit, AfterViewInit {
 
   // En attente des données
-  loading = true;
+  loading = false;
 
   // Code du modele pour lequel on veut gerer les versions
   private codeModele: string;
@@ -107,11 +107,14 @@ export class GestionVersionComponent implements OnInit, AfterViewInit {
   refreshData() {
     if ((this.codeModele !== '') && (this.codeModele != null )) {
       this.updatePusher();
+      this.loading = true;
       this.versionService.getVersions(this.codeModele).subscribe(resultat => {
         this.versionDataSource.data = resultat as VersionDetail[];
+        this.loading = false;
       }, error => {
         // Modele non existants ou erreurs de connexion
         this.toastr.errorToastr(error);
+        this.loading = false;
       });
     }
   }

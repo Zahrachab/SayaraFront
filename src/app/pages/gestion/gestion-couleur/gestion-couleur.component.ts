@@ -18,7 +18,7 @@ import {ToastrManager} from 'ng6-toastr-notifications';
 export class GestionCouleurComponent implements OnInit {
 
   // En attente des données
-  loading = true;
+  private loading = false;
 
   private dataSource = new MatTableDataSource<Couleur>();
   private codeModele: any;
@@ -55,12 +55,14 @@ export class GestionCouleurComponent implements OnInit {
    */
   refreshData() {
     if ((this.codeModele !== '') && (this.codeModele != null )) {
+      this.loading = true;
       this.couleurService.getCouleurs(this.codeModele).subscribe(res => {
         this.loading = false;
         this.dataSource.data = res as Couleur[];
       }, error => {
         //probleme de connexion
         this.toastr.errorToastr(error);
+        this.loading = true;
       });
     }
   }

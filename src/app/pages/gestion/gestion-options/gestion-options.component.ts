@@ -25,7 +25,7 @@ export class GestionOptionsComponent implements OnInit, AfterViewInit {
 
 
   // En attente des données
-  loading = true;
+  loading = false;
 
   // Le data source qui contient les informations a afficher dans le mat-table
   private dataSource = new MatTableDataSource<Option>();
@@ -93,11 +93,14 @@ export class GestionOptionsComponent implements OnInit, AfterViewInit {
    */
   refreshData() {
     if ((this.codeModele !== '') && (this.codeModele != null)) {
+      this.loading = true;
       this.optionService.getOptions(this.codeModele).subscribe(res => {
         this.dataSource.data = res as Option[];
+        this.loading = true;
       }, error => {
         // Soit le modele n'existe pas, soit probleme de cnnexion
         this.toastr.errorToastr(error);
+        this.loading = true;
       });
     }
   }
