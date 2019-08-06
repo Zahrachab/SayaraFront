@@ -8,6 +8,7 @@ import {AjouterOptionComponent} from './ajouter-option/ajouter-option.component'
 import {ModifierOptionComponent} from './modifier-option/modifier-option.component';
 import {Option} from '../../../services/entites/option.model';
 import {ConfirmationDialogComponent} from '../../shared/confirmation-dialog/confirmation-dialog.component';
+import {ToastrManager} from 'ng6-toastr-notifications';
 
 @Component({
   selector: 'app-gestion-options',
@@ -61,6 +62,7 @@ export class GestionOptionsComponent implements OnInit, AfterViewInit {
   constructor(private optionService: OptionService, private modalService: MatDialog,
               private activatedroute: ActivatedRoute,
               private modeleService: ModeleService,
+              private toastr: ToastrManager,
               private dialogValidation: MatDialog) {
   }
 
@@ -81,7 +83,7 @@ export class GestionOptionsComponent implements OnInit, AfterViewInit {
       this.modeles = modeles as ModeleDetail[];
     }, error => {
       // Probleme de connexion
-      alert(error);
+      this.toastr.errorToastr(error);
     });
     this.refreshData();
   }
@@ -95,7 +97,7 @@ export class GestionOptionsComponent implements OnInit, AfterViewInit {
         this.dataSource.data = res as Option[];
       }, error => {
         // Soit le modele n'existe pas, soit probleme de cnnexion
-        alert(error);
+        this.toastr.errorToastr(error);
       });
     }
   }
@@ -144,7 +146,7 @@ export class GestionOptionsComponent implements OnInit, AfterViewInit {
         this.refreshData();
       });
     } else {
-      alert('veuillez choisir un modèle');
+      this.toastr.infoToastr('veuillez choisir un modèle');
     }
 
   }
