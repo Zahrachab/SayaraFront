@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog, MatDialogRef, MatTableDataSource} from '@angular/material';
 import {ActivatedRoute} from '@angular/router';
-import {CouleurDataSource} from '../../../dataSources/CouleurDataSource';
 import {ModeleDetail} from '../../../services/entites/modeleDetail.model';
 import {ModeleService} from '../../../services/modele.service';
 import {CouleurService} from '../../../services/couleur.service';
 import {ModifierCouleurComponent} from './modifier-couleur/modifier-couleur.component';
 import {AjouterCouleurComponent} from './ajouter-couleur/ajouter-couleur.component';
 import {ConfirmationDialogComponent} from '../../shared/confirmation-dialog/confirmation-dialog.component';
-import {Option} from '../../../services/entites/option.model';
 import {Couleur} from '../../../services/entites/couleur.model';
+import {ToastrManager} from 'ng6-toastr-notifications';
 
 @Component({
   selector: 'app-gestion-couleur',
@@ -19,7 +18,7 @@ import {Couleur} from '../../../services/entites/couleur.model';
 export class GestionCouleurComponent implements OnInit {
 
   // En attente des données
-  loading = true;
+  private loading = false;
 
   private dataSource = new MatTableDataSource<Couleur>();
   private codeModele: any;
@@ -32,6 +31,7 @@ export class GestionCouleurComponent implements OnInit {
               private activatedroute: ActivatedRoute,
               private modeleService: ModeleService,
               private matDialog: MatDialog,
+              private toastr: ToastrManager,
               private dialogValidation: MatDialog) {}
   ngOnInit() {
     try {
@@ -44,31 +44,40 @@ export class GestionCouleurComponent implements OnInit {
     this.modeleService.getModeles().subscribe(modeles => {
       this.modeles = modeles as ModeleDetail[];
     }, error => {
-      // Modeles Not Find, forcément probleme de connexion
-      alert(error);
+      // Modeles non trouvées ,  forcément probleme de connexion
+      this.toastr.errorToastr(error);
     });
 
   }
 
+  /**
+   * Raffraichir la liste des couleurs
+   */
   refreshData() {
     if ((this.codeModele !== '') && (this.codeModele != null )) {
+      this.loading = true;
       this.couleurService.getCouleurs(this.codeModele).subscribe(res => {
         this.loading = false;
         this.dataSource.data = res as Couleur[];
       }, error => {
-        // Je pense que le seul cas est le probleme de connexion
-        alert(error);
+        //probleme de connexion
+        this.toastr.errorToastr(error);
+        this.loading = true;
       });
     }
   }
 
-  /*Fonction à exécuter lors de la séléction d'un modèle pour rafraichir la liste des couleurs associées */
+  /**
+   * Méthode à exécuter lors de la séléction d'un modèle pour rafraichir la liste des couleurs associées
+   **/
   changerCouleurs($event) {
     this.codeModele = $event.value;
     this.refreshData();
   }
 
-  /* Ouvrir un mat dialog pour l'ajout d'une couleur au modèle courant */
+  /**
+   * Ouvrir un mat dialog pour l'ajout d'une couleur au modèle courant
+   **/
   ajouterCouleur() {
     if ((this.codeModele !== '') && (this.codeModele != null )){
       const dialogRef: MatDialogRef<AjouterCouleurComponent> = this.matDialog.open(AjouterCouleurComponent, {
@@ -79,11 +88,13 @@ export class GestionCouleurComponent implements OnInit {
         this.refreshData();
       });
     } else {
-      alert('Veuillez choisir un modèle d\'abord');
+      this.toastr.infoToastr('Veuillez choisir un modèle d\'abord');
     }
   }
 
-  /* Ouvrir un mat dialog pour la modification des informations d'une couleur */
+  /**
+   * Ouvrir un mat dialog pour la modification des informations d'une couleur
+   **/
   modifierCouleur(couleur) {
     const dialogRef: MatDialogRef<ModifierCouleurComponent> = this.matDialog.open(ModifierCouleurComponent,
       {width: '800px', height: '350px'});
@@ -93,6 +104,10 @@ export class GestionCouleurComponent implements OnInit {
     });
   }
 
+  /**
+   * Supprimer une couleur
+   * @param couleur
+   */
   supprimerCouleur(couleur) {
 
     const dialogRef: MatDialogRef<ConfirmationDialogComponent> = this.dialogValidation.open(ConfirmationDialogComponent, {
@@ -112,9 +127,6 @@ export class GestionCouleurComponent implements OnInit {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
 
-  getModele = () => {
-    return this.codeModele;
-  }
 }
 
 

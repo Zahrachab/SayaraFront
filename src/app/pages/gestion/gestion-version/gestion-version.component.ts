@@ -11,6 +11,7 @@ import {ActivatedRoute} from '@angular/router';
 import {FicheVersionComponent} from './fiche-version/fiche-version.component';
 import {ConfirmationDialogComponent} from '../../shared/confirmation-dialog/confirmation-dialog.component';
 import {PusherService} from '../../../services/pusher.service';
+import {ToastrManager} from 'ng6-toastr-notifications';
 
 
 
@@ -29,7 +30,7 @@ import {PusherService} from '../../../services/pusher.service';
 export class GestionVersionComponent implements OnInit, AfterViewInit {
 
   // En attente des données
-  loading = true;
+  loading = false;
 
   // Code du modele pour lequel on veut gerer les versions
   private codeModele: string;
@@ -64,6 +65,7 @@ export class GestionVersionComponent implements OnInit, AfterViewInit {
               private modeleService: ModeleService,
               private activatedroute: ActivatedRoute,
               private matDialog: MatDialog,
+              private toastr: ToastrManager,
               private pushService: PusherService) {
 
 
@@ -98,18 +100,21 @@ export class GestionVersionComponent implements OnInit, AfterViewInit {
       this.modeles = modeles as ModeleDetail[];
     }, error => {
       // Probleme de connexion pour avoir les modeles
-      alert(error);
+      this.toastr.errorToastr(error);
     });
   }
 
   refreshData() {
     if ((this.codeModele !== '') && (this.codeModele != null )) {
       this.updatePusher();
+      this.loading = true;
       this.versionService.getVersions(this.codeModele).subscribe(resultat => {
         this.versionDataSource.data = resultat as VersionDetail[];
+        this.loading = false;
       }, error => {
         // Modele non existants ou erreurs de connexion
-        alert(error);
+        this.toastr.errorToastr(error);
+        this.loading = false;
       });
     }
   }
@@ -137,7 +142,7 @@ export class GestionVersionComponent implements OnInit, AfterViewInit {
        // this.refreshData();
       });
     } else {
-      alert('Veuillez choisir un modèle');
+      this.toastr.infoToastr('Veuillez choisir un modèle');
     }
   }
 

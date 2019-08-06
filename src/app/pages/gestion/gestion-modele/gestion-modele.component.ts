@@ -8,6 +8,7 @@ import {ModeleDetail} from '../../../services/entites/modeleDetail.model';
 import {ModifierModeleComponent} from './modifier-modele/modifier-modele.component';
 import {FicheModeleComponent} from './fiche-modele/fiche-modele.component';
 import {PusherService} from '../../../services/pusher.service';
+import {ToastrManager} from 'ng6-toastr-notifications';
 
 @Component({
   selector: 'app-gestion-modele',
@@ -47,7 +48,9 @@ export class GestionModeleComponent implements OnInit, AfterViewInit {
    * Un service qui permet de faire la synchronisation en temps réel
    */
   constructor(private modeleService: ModeleService,
-              private matDialog: MatDialog, private pushService: PusherService) {
+              private matDialog: MatDialog,
+              private toastr: ToastrManager,
+              private pushService: PusherService) {
     // Redéfinition du filtre pour prendre en compte les sous objets
     this.dataSource.filterPredicate = (order: any, filter: string) => {
       const transformedFilter = filter.trim().toLowerCase();
@@ -82,11 +85,6 @@ export class GestionModeleComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     /*récupérer les données à partir du service */
     this.refreshData();
-    /*rafraichir les données chaque 5 secondes*/
-    /* this.interval = setInterval(() => {
-       this.refreshData();
-     }, 5000);
- */
   }
 
   /**
@@ -97,8 +95,8 @@ export class GestionModeleComponent implements OnInit, AfterViewInit {
       this.loading = false;
       this.dataSource.data = res as ModeleDetail[];
     }, error => {
-      // Je pense que le seul cas est le probleme de connexion
-      alert(error);
+      // le probleme de connexion
+      this.toastr.errorToastr(error);
     });
   }
 
