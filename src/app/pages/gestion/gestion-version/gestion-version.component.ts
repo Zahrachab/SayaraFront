@@ -11,6 +11,7 @@ import {ActivatedRoute} from '@angular/router';
 import {FicheVersionComponent} from './fiche-version/fiche-version.component';
 import {ConfirmationDialogComponent} from '../../shared/confirmation-dialog/confirmation-dialog.component';
 import {PusherService} from '../../../services/pusher.service';
+import {ToastrManager} from 'ng6-toastr-notifications';
 
 
 
@@ -64,6 +65,7 @@ export class GestionVersionComponent implements OnInit, AfterViewInit {
               private modeleService: ModeleService,
               private activatedroute: ActivatedRoute,
               private matDialog: MatDialog,
+              private toastr: ToastrManager,
               private pushService: PusherService) {
 
 
@@ -98,7 +100,7 @@ export class GestionVersionComponent implements OnInit, AfterViewInit {
       this.modeles = modeles as ModeleDetail[];
     }, error => {
       // Probleme de connexion pour avoir les modeles
-      alert(error);
+      this.toastr.errorToastr(error);
     });
   }
 
@@ -109,7 +111,7 @@ export class GestionVersionComponent implements OnInit, AfterViewInit {
         this.versionDataSource.data = resultat as VersionDetail[];
       }, error => {
         // Modele non existants ou erreurs de connexion
-        alert(error);
+        this.toastr.errorToastr(error);
       });
     }
   }
@@ -137,7 +139,7 @@ export class GestionVersionComponent implements OnInit, AfterViewInit {
        // this.refreshData();
       });
     } else {
-      alert('Veuillez choisir un modèle');
+      this.toastr.infoToastr('Veuillez choisir un modèle');
     }
   }
 
