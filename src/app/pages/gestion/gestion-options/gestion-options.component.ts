@@ -96,11 +96,11 @@ export class GestionOptionsComponent implements OnInit, AfterViewInit {
       this.loading = true;
       this.optionService.getOptions(this.codeModele).subscribe(res => {
         this.dataSource.data = res as Option[];
-        this.loading = true;
+        this.loading = false;
       }, error => {
         // Soit le modele n'existe pas, soit probleme de cnnexion
         this.toastr.errorToastr(error);
-        this.loading = true;
+        this.loading = false;
       });
     }
   }
