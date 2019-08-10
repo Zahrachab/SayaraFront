@@ -60,12 +60,15 @@ export class VersionService {
   supprimerVersion(codeVersion) {
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
     return this.http.delete(this.urlVersionDetails + 'versions/' + codeVersion, {headers: tokenHeader}).pipe(
+        catchError(VersionService.handleError)
     );
   }
 
   modifierVersion(code: string, designation: string, codeVersion: string) {
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
     return this.http.put(this.url + '/Marques/Modeles/Versions/' + codeVersion ,
-      {CodeVersion: code, NomVersion: designation}, {headers: tokenHeader});
+      {CodeVersion: code, NomVersion: designation}, {headers: tokenHeader}).pipe(
+        catchError(VersionService.handleError)
+    );
   }
 }

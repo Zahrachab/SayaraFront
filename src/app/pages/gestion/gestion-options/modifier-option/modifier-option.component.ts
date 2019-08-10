@@ -64,6 +64,9 @@ export class ModifierOptionComponent implements OnInit {
   modifierOption() {
     this.optionService.modifier(this.option.CodeOption, this.formulaire.value.nom).subscribe((res) => {
           this.fermer();
+      }, error => {
+        // Erreur modification
+        alert(error);
       }
     );
   }

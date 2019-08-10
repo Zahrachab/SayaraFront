@@ -15,6 +15,9 @@ import {Couleur} from '../../../services/entites/couleur.model';
 })
 export class AllCommandesComponent implements OnInit, AfterViewInit {
 
+  // En attente des données
+  loading = true;
+
   // Le data source qui contient les informations a afficher dans le mat-table
   public dataSource = new MatTableDataSource<Commande>();
   // les colonnes à afficher
@@ -45,20 +48,32 @@ export class AllCommandesComponent implements OnInit, AfterViewInit {
 
     if (this.router.url.split('/')[2] === 'prepayees') {
       this.commandeService.getCommandesPrepayes().subscribe(res => {
+        this.loading = false;
         this.dataSource.data = res as Commande[];
+      }, error => {
+        alert(error);
       });
     } else if (this.router.url.split('/')[2] === 'annulees') {
       this.commandeService.getCommandesAnnulles().subscribe(res => {
         this.dataSource.data = res as Commande[];
+      }, error => {
+        this.loading = false;
+        alert(error);
       });
     } else if (this.router.url.split('/')[2] === 'nouvelles') {
       this.commandeService.getCommandesNouvelles().subscribe(res => {
         this.dataSource.data = res as Commande[];
+      }, error => {
+        this.loading = false;
+        alert(error);
       });
     }
      else {
           this.commandeService.getAllCommandes().subscribe(res => {
             this.dataSource.data = res as Commande[];
+          }, error => {
+            this.loading = false;
+            alert(error);
           });
      }
   }
@@ -115,6 +130,8 @@ export class AllCommandesComponent implements OnInit, AfterViewInit {
       if (result) {
         this.commandeService.validerCommande(commande).subscribe(() => {
           this.refreshData();
+        }, error => {
+          alert(error);
         });
       }
     });
@@ -133,6 +150,8 @@ export class AllCommandesComponent implements OnInit, AfterViewInit {
       if (result) {
         this.commandeService.rejeterCommande(commande).subscribe(() => {
           this.refreshData();
+        }, error => {
+          alert(error);
         });
       }
     });

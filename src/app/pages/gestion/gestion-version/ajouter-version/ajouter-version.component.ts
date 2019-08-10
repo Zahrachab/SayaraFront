@@ -101,6 +101,7 @@ export class AjouterVersionComponent implements OnInit {
     this.optionservice.getOptions(this.codeModele).subscribe(opts => {
       this.options = opts as Option[];
     }, error => {
+      // Erreur dans l'obtention des options
       alert(error);
     });
 
@@ -109,6 +110,7 @@ export class AjouterVersionComponent implements OnInit {
       this.selectedFile = new Array<ImageSnippet>(clrs.length);
       this.couleurs = clrs as Couleur[];
     }, error => {
+      // Erreur dans l'obtention des couleurs
       alert(error);
     });
 
@@ -160,8 +162,6 @@ export class AjouterVersionComponent implements OnInit {
         this.versionservice.ajouter(codeVersion,
           this.formulaire.value.nom, this.codeModele).subscribe(
           () => {
-
-
             /* ajouter des couleurs */
             for (let i = 0 ; i < this.clrsChoisies.length; i++) {
               this.couleurService.ajouterCouleurVersion(String(this.clrsChoisies[i].CodeCouleur),

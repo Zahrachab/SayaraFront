@@ -47,8 +47,11 @@ export class StockVehiculesComponent implements  OnInit{
     this.redefinirFiltre();
   }
   ngOnInit(): void {
-    this.modeleService.getModeles().subscribe(res=> {
+    this.modeleService.getModeles().subscribe(res => {
       this.modeles = res as ModeleDetail[];
+    }, error => {
+      //Erreur dans l'obtention des modeles
+      alert(error);
     });
   }
   choisirModele($event) {
@@ -77,6 +80,9 @@ export class StockVehiculesComponent implements  OnInit{
             });
             rows.push(stockVersion);
             this.stockDataSource.data = rows;
+          }, error => {
+            // Erreur dans l'obtention du stock du modele
+            alert(error);
           });
         });
       }

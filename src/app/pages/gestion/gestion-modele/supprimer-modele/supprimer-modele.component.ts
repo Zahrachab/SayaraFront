@@ -38,6 +38,9 @@ export class SupprimerModeleComponent implements OnInit {
   supprimerModele() {
       this.modeleService.supprimerModele(this.data.modele.CodeModele).subscribe(() => {
           this.fermer();
+      }, error => {
+        // Erreur lors de la suppression du modele
+        alert(error);
       });
   }
 

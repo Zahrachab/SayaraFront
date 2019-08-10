@@ -13,7 +13,7 @@ export class UploadFichierTarifComponent implements OnInit {
     isHTML5: true
   });
 
-  private el: HTMLElement
+  private el: HTMLElement;
   private file: string;
   private files: Array<File> = [];
 

@@ -76,7 +76,9 @@ export class OptionService {
   supprimer(code: string, codeVersion: string) {
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
     return this.http.delete(this.url + '/Marques/Modeles/Versions/' + codeVersion + '/Options/' + code,
-     {headers: tokenHeader}).pipe();
+     {headers: tokenHeader}).pipe(
+       catchError(OptionService.handleErrorForVersionInsertion)
+    );
 
   }
 
@@ -122,12 +124,16 @@ export class OptionService {
   supprimerDuModele(code: string, codeModele: string) {
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
     return this.http.delete(this.url + '/Marques/Modeles/' + codeModele + '/Options/' + code,
-      {headers: tokenHeader}).pipe();
+      {headers: tokenHeader}).pipe(
+        catchError(OptionService.handleError)
+    );
   }
 
   modifier(code: string, nom: string) {
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
     return this.http.put(this.url + '/Marques/Modeles/Versions/Options/' + code,
-      {CodeOption: code, NomOption: nom}, {headers: tokenHeader});
+      {CodeOption: code, NomOption: nom}, {headers: tokenHeader}).pipe(
+        catchError(OptionService.handleError)
+    );
   }
 }

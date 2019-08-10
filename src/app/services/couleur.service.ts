@@ -69,7 +69,9 @@ export class CouleurService {
   supprimerCouleurModele(code: string, codeModele: string) {
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
     return this.http.delete(this.url + '/Marques/Modeles/' + codeModele + '/Couleurs/' + code,
-     {headers: tokenHeader}).pipe();
+     {headers: tokenHeader}).pipe(
+       catchError(CouleurService.handleError)
+    );
 
   }
 
@@ -112,7 +114,9 @@ export class CouleurService {
   modifierCouleur(code: string, nom: string, codeHexa: string) {
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
     return this.http.put(this.url + '/Marques/Modeles/Versions/Couleurs/' + code,
-      {CodeCouleur: code, NomCouleur: nom, CodeHexa: codeHexa}, {headers: tokenHeader}).pipe();
+      {CodeCouleur: code, NomCouleur: nom, CodeHexa: codeHexa}, {headers: tokenHeader}).pipe(
+        catchError(CouleurService.handleError)
+    );
   }
 
   /* récupérer la liste des couleurs associés à tous les modèles d'une marque */
@@ -141,7 +145,9 @@ export class CouleurService {
   supprimerVersion(code: string, codeVersion: string) {
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
     return this.http.delete(this.url + '/Marques/Modeles/Versions/' + codeVersion + '/Couleurs/' + code,
-      {headers: tokenHeader}).pipe();
+      {headers: tokenHeader}).pipe(
+        catchError(CouleurService.handleErrorForVersionInsertion)
+    );
 
   }
 }

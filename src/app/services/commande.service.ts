@@ -82,7 +82,9 @@ export class CommandeService {
   validerCommande(commande: Commande) {
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
     return this.http.put(this.url + '/' + commande.idCommande + '/valider',
-       {headers: tokenHeader});
+       {headers: tokenHeader}).pipe(
+         catchError(CommandeService.handleError)
+    );
   }
 
   /**
@@ -92,7 +94,9 @@ export class CommandeService {
   rejeterCommande(commande: Commande) {
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
     return this.http.put(this.url + '/' + commande.idCommande + '/rejeter',
-      {headers: tokenHeader});
+      {headers: tokenHeader}).pipe(
+        catchError(CommandeService.handleError)
+    );
   }
 
 

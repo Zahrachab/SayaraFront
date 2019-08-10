@@ -43,6 +43,9 @@ export class ModifierCouleurComponent implements OnInit {
         this.couleurService.modifierCouleur(this.formulaire.value.code, this.formulaire.value.nom,
           this.color).subscribe(() => {
           this.dialogRef.close();
+        }, error => {
+            // Erreur de modification d'une couleur
+            alert(error);
         });
       }
     });

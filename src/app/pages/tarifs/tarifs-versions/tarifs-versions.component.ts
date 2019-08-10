@@ -46,8 +46,14 @@ export class TarifsVersionsComponent implements OnInit, AfterViewInit {
             versions.push(version);
           }
           this.versionDataSource.data = versions;
+        }, error => {
+          // Erreur dans l'obtentention du tarif d'une version
+          alert(error);
         });
       }
+    }, error => {
+      // Erreur dans l'obtention des modeles
+      alert(error);
     });
   }
 

@@ -111,6 +111,7 @@ export class ModifierModeleComponent implements OnInit {
         });
       });
     }, error => {
+      // Erreur lors de l'obtention des modeles
       alert(error);
     });
   }
@@ -142,6 +143,7 @@ export class ModifierModeleComponent implements OnInit {
         });
       });
     }, error => {
+      // Erreurs lors de l'obtention du modele
       alert(error);
     });
   }
@@ -241,7 +243,7 @@ export class ModifierModeleComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        let trouv = false;
+        const trouv = false;
         // Modifier un modele
         this.modeleService.modifier(this.data.modele.CodeModele, this.formulaire.value.nom).subscribe((res) => {
           /* ajouter des options */
@@ -258,7 +260,13 @@ export class ModifierModeleComponent implements OnInit {
           /* ajouter les options ajoutés à partir du formulaire */
           for (const option of this.formulaire.value.options) {
             this.optionservice.ajouterOptionModele(option.codeOption, option.NomOption,
-              this.formulaire.value.code).subscribe();
+              this.formulaire.value.code).subscribe(() => {
+
+              }, error => {
+                // Erreur lors de l'ajout de l'option
+                  alert(error);
+              }
+            );
           }
 
 
@@ -274,14 +282,22 @@ export class ModifierModeleComponent implements OnInit {
           }
 
             /* ajouter les couleurs ajoutés à partir du formulaire */
-            for (const couleur of this.formulaire.value.couleurs) {
+          for (const couleur of this.formulaire.value.couleurs) {
               this.couleurService.ajouterCouleurModele(couleur.codeCouleur, couleur.nomCouleur, couleur.codeHexa,
-                this.formulaire.value.code).subscribe();
+                this.formulaire.value.code).subscribe(() => {
+
+              }, error => {
+                  // Erreur lors de l'ajout de la couleur
+                  alert(error);
+              });
             }
-            this.dialogReference.close();
+          this.dialogReference.close();
 
           });
       }
+    }, error => {
+      // Erreurs lors de la modification du modele
+      alert(error);
     });
   }
 }

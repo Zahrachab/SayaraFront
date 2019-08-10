@@ -242,8 +242,6 @@ export class AjouterModeleComponent implements OnInit {
       for (const couleur of this.couleursChecked) {
         this.couleurService.ajouterCouleurModele(String(couleur.CodeCouleur), String(couleur.NomCouleur), String(couleur.CodeHexa),
           this.formulaire.value.code).subscribe( () => {}, error => {
-            // Erreur Insertion de la relation entre couleur et modele
-          this.toastr.errorToastr(error);
         });
       }
       // ajout des nouvelles couleurs

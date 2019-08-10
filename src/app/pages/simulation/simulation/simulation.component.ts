@@ -55,6 +55,9 @@ export class SimulationComponent implements OnInit {
       this.listModeles = res as  ModeleDetail[];
       this.modeleChoisi = this.listModeles[0];
       this.getPhotosModeles();
+    }, error => {
+      // Erreur dans l'obtention des modeles
+      alert(error);
     });
 
   }
@@ -85,6 +88,9 @@ export class SimulationComponent implements OnInit {
           this.photosModeles[this.listModeles.indexOf(modele)] = './assets/images/Pics/aucune.jpg';
         }
       });
+    }, error => {
+      // Erreur dans l'obtention des versions
+      alert(error);
     });
   }
 
@@ -155,6 +161,9 @@ export class SimulationComponent implements OnInit {
           });
           this.imageVersion = this.photosVersions[0];
         }
+      }, error => {
+        // Erreur dans l'obtention des versions
+        alert(error);
       });
 
     } else {
@@ -175,6 +184,9 @@ export class SimulationComponent implements OnInit {
           this.couleurChoisie = this.listCouleurs[0];
           this.prixTotal += this.couleurChoisie.lignetarif.Prix;
         }
+      }, error => {
+        // Erreur dans l'obtention des erreurs
+        alert(error);
       });
     } else {
       alert("Aucune version choisie");
@@ -189,6 +201,9 @@ export class SimulationComponent implements OnInit {
     this.etape = 4;
     this.optionService.getOptionsVersion(this.versionChoisie.CodeVersion).subscribe( (res) => {
       this.optionsVersion = res as OptionDetail[];
+    }, error => {
+      // Erreur dans l'obtention des options
+      alert(error);
     });
   }
 
@@ -239,6 +254,9 @@ export class SimulationComponent implements OnInit {
       dialogRef.componentInstance.vehicules = arrayDispo;
       dialogRef.afterClosed().subscribe(() => {
       });
+    }, error => {
+      // Erreur dans l'obtention des vehicules disponibles
+      alert(error);
     });
 
   }

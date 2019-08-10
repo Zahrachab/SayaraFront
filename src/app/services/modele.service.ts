@@ -3,6 +3,7 @@ import { ModeleDetail } from './entites/modeleDetail.model';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
+import {Modele} from './entites/modele.model';
 
 
 @Injectable()
@@ -81,6 +82,7 @@ export class ModeleService {
   supprimerModele(codeModele) {
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
     return this.http.delete(this.serviceUrlModele + codeModele, {headers: tokenHeader}).pipe(
+      catchError(ModeleService.handleError)
     );
   }
 
@@ -93,6 +95,8 @@ export class ModeleService {
   modifier(code: string, nom: string) {
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
     return this.http.put(this.url + '/Marques/Modeles/' + code,
-      {CodeModele: code, NomModele: nom}, {headers: tokenHeader});
+      {CodeModele: code, NomModele: nom}, {headers: tokenHeader}).pipe(
+        catchError(ModeleService.handleError)
+    );
   }
 }
