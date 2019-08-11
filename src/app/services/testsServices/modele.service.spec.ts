@@ -2,10 +2,11 @@ import {getTestBed, inject, TestBed} from '@angular/core/testing';
 import { ModeleService } from '../modele.service';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 import {ModeleServiceMock} from '../../mocks/Modele.Service.mock';
-import {APP_BASE_HREF} from '@angular/common';
+import {ModeleDetail} from '../entites/modeleDetail.model';
 
 
-describe('ModeleService', () => {
+
+fdescribe('ModeleService', () => {
   let injector: TestBed;
   let service: ModeleService;
   let httpMock: HttpTestingController;
@@ -27,17 +28,13 @@ describe('ModeleService', () => {
 
   it('should return an Observable<ModeleDetail[]>', () => {
 
-      service.getModeles().subscribe((modeles) => {
-        expect(modeles.length).toBe(3);
-      });
-
+    const mock = new ModeleServiceMock();
       // We set the expectations for the HttpClient mock
-      const req = httpMock.expectOne('https://sayaradz.herokuapp.com/marques/1/modeles');
-      expect(req.request.method).toEqual('GET');
+    const req = httpMock.expectOne('https://sayaradz.herokuapp.com/marques/1/modeles').flush({data: mock.getModeles()});
 
-      const mock = new ModeleServiceMock();
-      // Then we set the fake data to be returned by the mock
-      req.flush({data: mock.getModeles()});
+    service.getModeles().subscribe((modeles) => {
+      expect(modeles.length).toBe(3);
+    });
 
     });
 

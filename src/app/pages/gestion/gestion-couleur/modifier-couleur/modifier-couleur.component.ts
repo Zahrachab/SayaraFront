@@ -4,6 +4,7 @@ import {MatDialog, MatDialogRef} from '@angular/material';
 import {Couleur} from '../../../../services/entites/couleur.model';
 import {ConfirmationDialogComponent} from '../../../shared/confirmation-dialog/confirmation-dialog.component';
 import {CouleurService} from '../../../../services/couleur.service';
+import {ToastrManager} from 'ng6-toastr-notifications';
 
 @Component({
   selector: 'app-modifier-couleur',
@@ -18,7 +19,8 @@ export class ModifierCouleurComponent implements OnInit {
   constructor(private constructeurFormulaire: FormBuilder,
               private couleurService: CouleurService,
               private dialogRef: MatDialogRef<ModifierCouleurComponent>,
-              private dialogValidation: MatDialog
+              private dialogValidation: MatDialog,
+              private toastr: ToastrManager,
   ) {}
 
   ngOnInit() {
@@ -43,9 +45,10 @@ export class ModifierCouleurComponent implements OnInit {
         this.couleurService.modifierCouleur(this.formulaire.value.code, this.formulaire.value.nom,
           this.color).subscribe(() => {
           this.dialogRef.close();
+          this.toastr.successToastr("Modification avec succès");
         }, error => {
             // Erreur de modification d'une couleur
-            alert(error);
+          this.toastr.errorToastr(error);
         });
       }
     });

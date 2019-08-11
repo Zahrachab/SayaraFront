@@ -8,6 +8,7 @@ import {Couleur} from '../../../../services/entites/couleur.model';
 import {CouleurService} from '../../../../services/couleur.service';
 import {ConfirmationDialogComponent} from '../../../shared/confirmation-dialog/confirmation-dialog.component';
 import {Option} from '../../../../services/entites/option.model';
+import {ToastrManager} from 'ng6-toastr-notifications';
 
 @Component({
   selector: 'app-modifier-modele',
@@ -48,6 +49,7 @@ export class ModifierModeleComponent implements OnInit {
               @Inject(MAT_DIALOG_DATA) private data: any,
               private constructeurFormulaire: FormBuilder,
               private dialogValidation: MatDialog,
+              private toastr: ToastrManager,
               private couleurService: CouleurService) {
   }
 
@@ -112,7 +114,7 @@ export class ModifierModeleComponent implements OnInit {
       });
     }, error => {
       // Erreur lors de l'obtention des modeles
-      alert(error);
+      this.toastr.errorToastr(error);
     });
   }
 
@@ -144,7 +146,7 @@ export class ModifierModeleComponent implements OnInit {
       });
     }, error => {
       // Erreurs lors de l'obtention du modele
-      alert(error);
+      this.toastr.errorToastr(error);
     });
   }
 
@@ -264,7 +266,7 @@ export class ModifierModeleComponent implements OnInit {
 
               }, error => {
                 // Erreur lors de l'ajout de l'option
-                  alert(error);
+              this.toastr.errorToastr(error);
               }
             );
           }
@@ -288,7 +290,7 @@ export class ModifierModeleComponent implements OnInit {
 
               }, error => {
                   // Erreur lors de l'ajout de la couleur
-                  alert(error);
+                this.toastr.errorToastr(error);
               });
             }
           this.dialogReference.close();
@@ -297,7 +299,7 @@ export class ModifierModeleComponent implements OnInit {
       }
     }, error => {
       // Erreurs lors de la modification du modele
-      alert(error);
+      this.toastr.errorToastr(error);
     });
   }
 }

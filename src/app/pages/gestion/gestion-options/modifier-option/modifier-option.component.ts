@@ -3,6 +3,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {OptionService} from '../../../../services/option.service';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Option} from '../../../../services/entites/option.model';
+import {ToastrManager} from 'ng6-toastr-notifications';
 
 @Component({
   selector: 'app-modifier-option',
@@ -34,6 +35,7 @@ export class ModifierOptionComponent implements OnInit {
    */
   constructor(private constructeurFormulaire: FormBuilder,
               private dialogReference: MatDialogRef<ModifierOptionComponent>,
+              private toastr: ToastrManager,
               private optionService: OptionService) { }
 
   /**
@@ -64,9 +66,10 @@ export class ModifierOptionComponent implements OnInit {
   modifierOption() {
     this.optionService.modifier(this.option.CodeOption, this.formulaire.value.nom).subscribe((res) => {
           this.fermer();
+      this.toastr.successToastr("Modification avec succès");
       }, error => {
         // Erreur modification
-        alert(error);
+      this.toastr.errorToastr(error);
       }
     );
   }

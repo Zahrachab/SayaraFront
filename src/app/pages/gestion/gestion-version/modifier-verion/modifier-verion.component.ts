@@ -11,6 +11,7 @@ import {FileUploader} from 'ng2-file-upload';
 import {ConfirmationDialogComponent} from '../../../shared/confirmation-dialog/confirmation-dialog.component';
 import {Couleur} from '../../../../services/entites/couleur.model';
 import {CouleurService} from '../../../../services/couleur.service';
+import {ToastrManager} from 'ng6-toastr-notifications';
 
 
 @Component({
@@ -88,6 +89,7 @@ export class ModifierVerionComponent implements OnInit {
               private versionService: VersionService,
               private dialogRef: MatDialogRef<ModifierVerionComponent>,
               private imageService: ImageService,
+              private toastr: ToastrManager,
               private dialogValidation: MatDialog
   ) {
 
@@ -130,7 +132,7 @@ export class ModifierVerionComponent implements OnInit {
         });
       });
     }, error => {
-      alert(error);
+      this.toastr.errorToastr(error);
     });
   }
 
@@ -157,7 +159,7 @@ export class ModifierVerionComponent implements OnInit {
         });
       });
     }, error => {
-      alert(error);
+      this.toastr.errorToastr(error);
     });
   }
 
@@ -235,14 +237,16 @@ export class ModifierVerionComponent implements OnInit {
           this.formulaire.value.nom, this.formulaire.value.code).subscribe((res) => {
           }, error => {
             // Erreur Modification Version
-            alert(error);
+          this.toastr.errorToastr(error);
           }
         );
         /* ajouter des options */
         for (let i = 0 ; i < this.optionsAjoutes.length; i++) {
           this.optionService.ajouter(String(this.optionsAjoutes[i].CodeOption), String(this.optionsAjoutes[i].NomOption),
             this.formulaire.value.code).subscribe((res) => {
-          } , (error) => {});
+          } , (error) => {
+            this.toastr.errorToastr(error);
+          });
         }
         /* supprimer des options */
         for (let i = 0 ; i < this.optionsSupp.length; i++) {
@@ -255,7 +259,9 @@ export class ModifierVerionComponent implements OnInit {
         for (let i = 0 ; i < this.clrsAjoutes.length; i++) {
           this.couleurService.ajouterCouleurVersion(String(this.clrsAjoutes[i].CodeCouleur),
             this.formulaire.value.code).subscribe((res) => {
-          } , (error) => {});
+          } , (error) => {
+            this.toastr.errorToastr(error);
+          });
         }
 
         /* supprimer des couleurs */
