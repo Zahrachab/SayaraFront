@@ -3,8 +3,7 @@ import {HttpClientTestingModule, HttpTestingController} from '@angular/common/ht
 import {VersionServiceMock} from '../../mocks/Version.Service.mock';
 import {HttpHeaders} from '@angular/common/http';
 import {VersionService} from '../version.service';
-import {ModeleServiceMock} from '../../mocks/Modele.Service.mock';
-import {VersionDetail} from '../entites/versionDetail.model';
+
 
 
 fdescribe('VersionService', () => {
