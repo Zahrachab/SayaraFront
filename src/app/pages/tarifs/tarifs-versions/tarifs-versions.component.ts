@@ -4,6 +4,7 @@ import {VersionDetail} from '../../../services/entites/versionDetail.model';
 import {ModeleDetail} from '../../../services/entites/modeleDetail.model';
 import {VersionService} from '../../../services/version.service';
 import {ModeleService} from '../../../services/modele.service';
+import {ToastrManager} from 'ng6-toastr-notifications';
 
 @Component({
   selector: 'app-tarifs-versions',
@@ -30,7 +31,8 @@ export class TarifsVersionsComponent implements OnInit, AfterViewInit {
    * @param versionService
    * Un service qui va permettre d'ouvrir les boites de dialogues pour ajouter, supprimer et modifier
    */
-  constructor(private modeleService: ModeleService, private versionService: VersionService) {
+  constructor(private modeleService: ModeleService, private versionService: VersionService, private toastr: ToastrManager,
+  ) {
   }
 
   /**

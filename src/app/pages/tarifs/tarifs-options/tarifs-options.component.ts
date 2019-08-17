@@ -4,6 +4,7 @@ import {ModeleDetail} from '../../../services/entites/modeleDetail.model';
 import {ModeleService} from '../../../services/modele.service';
 import {OptionService} from '../../../services/option.service';
   import {OptionDetail} from '../../../services/entites/optionDetail.model';
+import {ToastrManager} from 'ng6-toastr-notifications';
 
 @Component({
   selector: 'app-tarifs-options',
@@ -29,7 +30,8 @@ export class TarifsOptionsComponent implements OnInit, AfterViewInit {
    * @param optionService
    * Un service qui va permettre d'ouvrir les boites de dialogues pour ajouter, supprimer et modifier
    */
-  constructor(private modeleService: ModeleService, private optionService: OptionService) {
+  constructor(private modeleService: ModeleService, private optionService: OptionService, private toastr: ToastrManager,
+  ) {
   }
 
   /**
