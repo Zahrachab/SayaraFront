@@ -1,7 +1,6 @@
 import {getTestBed, TestBed} from '@angular/core/testing';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 import {OptionService} from '../option.service';
-import {VersionServiceMock} from '../../mocks/Version.Service.mock';
 import {OptionServiceMock} from '../../mocks/Option.Service.mock';
 import {HttpHeaders} from '@angular/common/http';
 

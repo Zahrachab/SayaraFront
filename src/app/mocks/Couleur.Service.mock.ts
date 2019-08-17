@@ -19,23 +19,78 @@ export class CouleurServiceMock {
 
   /* récupérer les couleurs associées à un modèle */
   getCouleurs(codeModele): Observable<Couleur[]> {
-     return Observable.of (null);
-    /*   [{
-         CodeCouleur: '13466',
-         NomCouleur: 'Gris',
-         CodeHexa: '#5e5e5e',
-         Checked: true,
-         CheminImage: '',
-         Checked: true,
-       },
-    {
-      CodeCouleur: '165788',
+    return Observable.of ([
+      {
+        CodeCouleur: '123',
         NomCouleur: 'Noir',
-      CodeHexa: '#000000',
-      Checked: true,
-      CheminImage: '',
-    }
-    ]);*/
+        CodeHexa: 'ffffff',
+        Checked: false,
+        CheminImage: '',
+        lignetarif: {
+          idLigneTarif: 23,
+          Type: 2,
+          Code: '',
+          DateDebut: '',
+          DateFin: '',
+          Prix: 12000
+        }
+      },
+      {
+        CodeCouleur: '12',
+        NomCouleur: 'Gris',
+        CodeHexa: 'ff9900',
+        Checked: false,
+        CheminImage: '',
+        lignetarif: {
+          idLigneTarif: 23,
+          Type: 2,
+          Code: '',
+          DateDebut: '',
+          DateFin: '',
+          Prix: 12000
+        }
+      }
+
+    ]);
+
+  }
+
+
+  /* récupérer les couleurs associées à un modèle */
+  getCouleursVersion(codeModele): Observable<Couleur[]> {
+    return Observable.of ([
+      {
+        CodeCouleur: '123',
+        NomCouleur: 'Noir',
+        CodeHexa: 'ffffff',
+        Checked: false,
+        CheminImage: '',
+        lignetarif: {
+          idLigneTarif: 23,
+          Type: 2,
+          Code: '',
+          DateDebut: '',
+          DateFin: '',
+          Prix: 12000
+        }
+      },
+      {
+        CodeCouleur: '12',
+        NomCouleur: 'Gris',
+        CodeHexa: 'ff9900',
+        Checked: false,
+        CheminImage: '',
+        lignetarif: {
+          idLigneTarif: 23,
+          Type: 2,
+          Code: '',
+          DateDebut: '',
+          DateFin: '',
+          Prix: 12000
+        }
+      }
+
+      ]);
 
   }
   /* Modifier un couleur */
