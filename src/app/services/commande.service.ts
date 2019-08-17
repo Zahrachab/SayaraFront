@@ -5,6 +5,9 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable()
 export class CommandeService {
+  get url(): string {
+    return this._url;
+  }
   get urlCommandes(): string {
     return this._urlCommandes;
   }
@@ -21,12 +24,12 @@ export class CommandeService {
     return this._urlCommandesValides;
   }
 
-  private url = this.injector.get('url') + '/vehicules/commandes';
+  private _url = 'https://sayaradz.herokuapp.com/vehicules/commandes';
   private  fabriquant = JSON.parse(localStorage.getItem('utilisateur')).utilfab.Fabricant ;
-  private _urlCommandes =  this.url + '?fabricant='+ this.fabriquant;
-  private _urlNouvellesCommandes =  this.url + '/nonvalidees?fabricant='+ this.fabriquant;
-  private _urlCommandesAnnulles =  this.url + '/annulees?fabricant='+ this.fabriquant;
-  private _urlCommandesValides =  this.url + '/validees?fabricant='+ this.fabriquant;
+  private _urlCommandes =  this._url + '?fabricant='+ this.fabriquant;
+  private _urlNouvellesCommandes =  this._url + '/nonvalidees?fabricant='+ this.fabriquant;
+  private _urlCommandesAnnulles =  this._url + '/annulees?fabricant='+ this.fabriquant;
+  private _urlCommandesValides =  this._url + '/validees?fabricant='+ this.fabriquant;
   constructor(private http: HttpClient, private injector: Injector) { }
 
   /**
@@ -39,9 +42,9 @@ export class CommandeService {
   /**
    * Récupérer toutes les commandes prépayées de la marque ordonnées par date
    */
-  getCommandesPrepayes(): Observable<Commande[]> {
+  getCommandesValides(): Observable<Commande[]> {
     // a corriger
-    return this.http.get<Commande[]>(this._urlCommandes);
+    return this.http.get<Commande[]>(this._urlCommandesValides);
   }
 
   /**
@@ -62,9 +65,9 @@ export class CommandeService {
    * Valider une commmande
    * @param commande
    */
-  validerCommande(commande: Commande) {
+  validerCommande(idCommande : string) {
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
-    return this.http.put(this.url + '/' + commande.idCommande + '/valider',
+    return this.http.put(this._url + '/' + idCommande + '/valider',
        {headers: tokenHeader});
   }
 
@@ -72,9 +75,9 @@ export class CommandeService {
    * Rejeter une commande
    * @param commande
    */
-  rejeterCommande(commande: Commande) {
+  rejeterCommande(idCommande: string) {
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
-    return this.http.put(this.url + '/' + commande.idCommande + '/rejeter',
+    return this.http.put(this._url + '/' + idCommande + '/rejeter',
       {headers: tokenHeader});
   }
 

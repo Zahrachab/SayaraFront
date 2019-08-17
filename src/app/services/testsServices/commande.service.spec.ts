@@ -3,6 +3,7 @@ import {getTestBed, TestBed} from '@angular/core/testing';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 import {CommandeService} from '../commande.service';
 import {CommandeServiceMock} from '../../mocks/commande.Service.mock';
+import {HttpHeaders} from '@angular/common/http';
 
 
 fdescribe('CommandeService', () => {
@@ -48,6 +49,105 @@ fdescribe('CommandeService', () => {
     const req = httpMock.expectOne(service.urlCommandes);
     expect(req.request.method).toEqual('GET');
     req.flush(commandes);
+  });
+
+
+  it('tester le get des nouvelles commandes ', () => {
+
+    const mock = new CommandeServiceMock();
+
+    var commandes;
+    mock.getCommandesNouvelles().subscribe((res) => {
+      commandes = res;
+    });
+
+    service.getCommandesNouvelles().subscribe((res) => {
+      expect(res).toEqual(commandes);
+      expect(res.length).toEqual(commandes.length);
+    });
+
+
+    // We set the expectations for the HttpClient mock
+    const req = httpMock.expectOne(service.urlNouvellesCommandes);
+    expect(req.request.method).toEqual('GET');
+    req.flush(commandes);
+  });
+
+
+  it('tester le get des commandes annullées ', () => {
+
+    const mock = new CommandeServiceMock();
+
+    var commandes;
+    mock.getCommandesAnnulles().subscribe((res) => {
+      commandes = res;
+    });
+
+    service.getCommandesAnnulles().subscribe((res) => {
+      expect(res).toEqual(commandes);
+      expect(res.length).toEqual(commandes.length);
+    });
+
+
+    // We set the expectations for the HttpClient mock
+    const req = httpMock.expectOne(service.urlCommandesAnnulles);
+    expect(req.request.method).toEqual('GET');
+    req.flush(commandes);
+  });
+
+
+  it('tester le get des commandes validées ', () => {
+
+    const mock = new CommandeServiceMock();
+
+    var commandes;
+    mock.getCommandesValides().subscribe((res) => {
+      commandes = res;
+    });
+
+    service.getCommandesValides().subscribe((res) => {
+      expect(res).toEqual(commandes);
+      expect(res.length).toEqual(commandes.length);
+    });
+
+
+    // We set the expectations for the HttpClient mock
+    const req = httpMock.expectOne(service.urlCommandesValides);
+    expect(req.request.method).toEqual('GET');
+    req.flush(commandes);
+  });
+
+
+  it('tester la validation d\'une commande', () => {
+
+    const idCommande = "2";
+
+    service.validerCommande(idCommande).subscribe((res) => {
+      expect(res).toEqual("");
+    });
+    // We set the expectations for the HttpClient mock
+    const req = httpMock.expectOne(service.url + '/' + idCommande + '/valider');
+    req.flush("");
+    expect(req.request.method).toEqual('PUT');
+    expect(req.request.body).toEqual({headers: new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token)});
+
+  });
+
+
+  it('tester le rejet d\'une commande', () => {
+
+    const idCommande = "2";
+
+    service.rejeterCommande(idCommande).subscribe((res) => {
+      expect(res).toEqual("");
+    });
+    // We set the expectations for the HttpClient mock
+    const req = httpMock.expectOne(service.url + '/' + idCommande + '/rejeter');
+    req.flush("");
+    expect(req.request.method).toEqual('PUT');
+    expect(req.request.body).toEqual({headers: new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token)});
+
+
   });
 
 });

@@ -284,7 +284,7 @@ export class CommandeServiceMock {
   /**
    * Récupérer toutes les commandes prépayées de la marque ordonnées par date
    */
-  getCommandesPrepayes(): Observable<Commande[]> {
+  getCommandesValides(): Observable<Commande[]> {
     return Observable.of(data2);
   }
 

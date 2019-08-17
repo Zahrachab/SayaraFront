@@ -43,8 +43,8 @@ export class AllCommandesComponent implements OnInit, AfterViewInit {
    */
   refreshData() {
 
-    if (this.router.url.split('/')[2] === 'prepayees') {
-      this.commandeService.getCommandesPrepayes().subscribe(res => {
+    if (this.router.url.split('/')[2] === 'valides') {
+      this.commandeService.getCommandesValides().subscribe(res => {
         this.dataSource.data = res as Commande[];
       });
     } else if (this.router.url.split('/')[2] === 'annulees') {
@@ -113,7 +113,7 @@ export class AllCommandesComponent implements OnInit, AfterViewInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.commandeService.validerCommande(commande).subscribe(() => {
+        this.commandeService.validerCommande(commande.idCommande).subscribe(() => {
           this.refreshData();
         });
       }
@@ -131,7 +131,7 @@ export class AllCommandesComponent implements OnInit, AfterViewInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.commandeService.rejeterCommande(commande).subscribe(() => {
+        this.commandeService.rejeterCommande(commande.idCommande).subscribe(() => {
           this.refreshData();
         });
       }
