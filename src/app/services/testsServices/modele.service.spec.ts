@@ -4,7 +4,6 @@ import {HttpClientTestingModule, HttpTestingController} from '@angular/common/ht
 import {ModeleServiceMock} from '../../mocks/Modele.Service.mock';
 import {HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 
-
 fdescribe('ModeleService', () => {
   let injector: TestBed;
   let service: ModeleService;
@@ -132,28 +131,6 @@ fdescribe('ModeleService', () => {
 
 
   });
-
-
-
-  it('tester la suppression d\'un modèle', () => {
-
-    const codeModele = "1";
-    const designation = "Golf";
-
-    service.supprimerModele(codeModele).subscribe((res) => {
-      expect (res).toEqual("");
-    });
-    // We set the expectations for the HttpClient mock
-    const req = httpMock.expectOne(service.serviceUrlModele+codeModele.toString());
-    req.flush("");
-    expect(req.request.method).toEqual('DELETE');
-    expect(req.request.body).toBe(null);
-    expect(req.request.headers).toEqual(new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token));
-
-  });
-
-
-
 
 
 });

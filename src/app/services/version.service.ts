@@ -9,8 +9,8 @@ import {catchError} from 'rxjs/operators';
 })
 export class VersionService {
 
-  private url = this.injector.get('url');
-  private urlVersionDetails = this.url + '/marques/modeles/';
+  private url = "https://sayaradz.herokuapp.com";
+  public  urlVersionDetails = this.url + '/marques/modeles/';
 
   constructor(private http: HttpClient, private injector: Injector) { }
 
@@ -39,7 +39,7 @@ export class VersionService {
 
   ajouter(code: string, designation: string, model: string) {
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
-    return this.http.post(this.url + '/Marques/Modeles/' + model + '/Versions',
+    return this.http.post(this.urlVersionDetails + model + '/versions',
       {CodeVersion: code, NomVersion: designation}, {headers: tokenHeader}).pipe(
           catchError(VersionService.handleError)
     );
@@ -64,9 +64,9 @@ export class VersionService {
     );
   }
 
-  modifierVersion(code: string, designation: string, codeVersion: string) {
+  modifierVersion(code: string, designation: string) {
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
-    return this.http.put(this.url + '/Marques/Modeles/Versions/' + codeVersion ,
+    return this.http.put(this.urlVersionDetails+ 'versions/' + code ,
       {CodeVersion: code, NomVersion: designation}, {headers: tokenHeader}).pipe(
         catchError(VersionService.handleError)
     );

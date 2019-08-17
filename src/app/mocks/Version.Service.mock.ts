@@ -14,118 +14,111 @@ export class VersionServiceMock {
   }
 
   getVersions(codeModele): Observable<VersionDetail[]> {
-     return Observable.of (null);/*[
+     return Observable.of ([
        {
-     return Observable.of (null);
-       /* {
-         CodeVersion: '100015',
-         CodeModele: '1',
-         NomVersion: 'GT Line',
-         options: [
-           {
-             CodeOption: '11',
-             NomOption: 'Toit en verre',
-             rel_ver_opt: {
-               idRelVerOpt: '',
-               CodeVersion: '',
-               CodeOption: '',
-             },
-             Checked: true
-           },
-           {
-             CodeOption: '10',
-             NomOption: 'radar avant',
-             rel_ver_opt: {
-               idRelVerOpt: '',
-               CodeVersion: '',
-               CodeOption: '',
-             },
-             Checked: true
-           },
-           {
-             CodeOption: '11111',
-             NomOption: 'Projecteurs Full LED ',
-             rel_ver_opt: {
-               idRelVerOpt: '',
-               CodeVersion: '',
-               CodeOption: '',
-             },
-             Checked: true
-           }
-         ],
-         couleurs: [{
-           CodeCouleur: '1000',
-           NomCouleur: 'Gris',
-           CodeHexa: '#3456ff',
-           Checked: false,
-           rel_ver_coul: {
-             idRelVerCoul: 'string',
-             CodeVersion: 'string',
-             CodeCouleur: 'string'
-           },
-         }],
-         images: [{
-           idImage: '',
-           CodeImage: '',
-           Type: '',
-           CheminImage: ''
-         }]
-       },
-       {
-         CodeVersion: '89451',
-         CodeModele: '87651',
-         NomVersion: 'RS',
-         options: [
-           {
-             CodeOption: '11',
-             NomOption: 'Toit en verre',
-             rel_ver_opt: {
-               idRelVerOpt: '',
-               CodeVersion: '',
-               CodeOption: '',
-             },
-             Checked: true
-           },
-           {
-             CodeOption: '10',
-             NomOption: 'radar avant',
-             rel_ver_opt: {
-               idRelVerOpt: '',
-               CodeVersion: '',
-               CodeOption: '',
-             },
-             Checked: true
-           },
-           {
-             CodeOption: '11111',
-             NomOption: 'Projecteurs Full LED ',
-             rel_ver_opt: {
-               idRelVerOpt: '',
-               CodeVersion: '',
-               CodeOption: '',
-             },
-             Checked: true
-           }
-         ],
-         couleurs: [{
-           CodeCouleur: '1000',
-           NomCouleur: 'Gris',
-           CodeHexa: '#3456ff',
-           Checked: false,
-           rel_ver_coul: {
-             idRelVerCoul: 'string',
-             CodeVersion: 'string',
-             CodeCouleur: 'string'
-           },
-         }],
-         images: [{
-           idImage: '',
-           CodeImage: '',
-           Type: '',
-           CheminImage: ''gi
-         }],
+          CodeVersion: '123',
+          CodeModele: '1',
+          NomVersion: 'Golf série 6',
+          options:  [{
+            CodeOption: '12',
+            NomOption: 'AirBag',
+            Checked: false,
+            rel_ver_opt: {
+              idRelVerOpt: '',
+              CodeVersion: '',
+              CodeOption: '',
+            }
+          }],
+          couleurs: [{
+            CodeCouleur: '89',
+            NomCouleur: 'Noir',
+            CodeHexa: 'ffffff',
+            Checked: false,
+            CheminImage: '',
+            lignetarif: {
+              idLigneTarif: 12,
+                Type: 2,
+                Code: '23',
+                DateDebut: '',
+                DateFin: '',
+                Prix: 12300
+            },
+            rel_ver_coul: {
+              idRelVerCoul: '',
+              CodeVersion: '',
+              CodeCouleur: '',
+            }
+          }],
+          images :[{
+            idImage: '1',
+            CodeImage: '12',
+            Type: '',
+            CheminImage: '',
+          }],
+          lignetarif: {
+            idLigneTarif: 2,
+              Type: 2,
+              Code: '1',
+              DateDebut: '',
+              DateFin: '',
+              Prix: 65500
+          }
        }
-       ]);*/
+       ]);
+  }
+
+  getVersion(codeVersion) : Observable<VersionDetail> {
+    return Observable.of (
+      {
+        CodeVersion: '123',
+        CodeModele: '1',
+        NomVersion: 'Golf série 6',
+        options:  [{
+          CodeOption: '12',
+          NomOption: 'AirBag',
+          Checked: false,
+          rel_ver_opt: {
+            idRelVerOpt: '',
+            CodeVersion: '',
+            CodeOption: '',
+          }
+        }],
+        couleurs: [{
+          CodeCouleur: '89',
+          NomCouleur: 'Noir',
+          CodeHexa: 'ffffff',
+          Checked: false,
+          CheminImage: '',
+          lignetarif: {
+            idLigneTarif: 12,
+            Type: 2,
+            Code: '23',
+            DateDebut: '',
+            DateFin: '',
+            Prix: 12300
+          },
+          rel_ver_coul: {
+            idRelVerCoul: '',
+            CodeVersion: '',
+            CodeCouleur: '',
+          }
+        }],
+        images :[{
+          idImage: '1',
+          CodeImage: '12',
+          Type: '',
+          CheminImage: '',
+        }],
+        lignetarif: {
+          idLigneTarif: 2,
+          Type: 2,
+          Code: '1',
+          DateDebut: '',
+          DateFin: '',
+          Prix: 65500
+        }
+      }
+    );
   }
 
   supprimerVersion(codeVersion) {
@@ -135,6 +128,7 @@ export class VersionServiceMock {
   modifierVersion(code: string, designation: string, codeVersion: string) {
     return true;
   }
+
 
 
 }

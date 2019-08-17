@@ -7,8 +7,15 @@ import {catchError} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ImageService {
-  private url = this.injector.get('url');
-  private imagesVersionUrl = this.url + '/images/versions/';
+  get url(): string {
+    return this._url;
+  }
+
+  get imagesVersionUrl(): string {
+    return this._imagesVersionUrl;
+  }
+  private _url  = "https://sayaradz.herokuapp.com";
+  private _imagesVersionUrl = this._url + '/images/versions/';
   constructor(private http: HttpClient, private injector: Injector) {}
 
 
@@ -46,7 +53,7 @@ export class ImageService {
     formData.append('imageVersion', image);
     formData.append('CodeCouleur', codeCouleur);
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
-    return this.http.post(this.imagesVersionUrl + codeVersion, formData, {headers: tokenHeader}).pipe(
+    return this.http.post(this._imagesVersionUrl + codeVersion, formData, {headers: tokenHeader}).pipe(
       catchError(ImageService.handleError)
     );
   }
@@ -57,9 +64,9 @@ export class ImageService {
    * @param id
    * @param codeVersion
    */
-  public supprimerImage(id: string, codeVersion: string) {
+  public supprimerImage(id: string, codeVersion: string, codeCouleur: string) {
       const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
-      return this.http.delete(this.url + '/images/' + id,
+      return this.http.delete(this._url + '/images/' + id,
         {headers: tokenHeader}).pipe(
           catchError(ImageService.handleError)
       );

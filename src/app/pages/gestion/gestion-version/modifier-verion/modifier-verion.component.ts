@@ -234,7 +234,7 @@ export class ModifierVerionComponent implements OnInit {
 
         /* modifier le nom de la version */
         this.versionService.modifierVersion(this.formulaire.value.code,
-          this.formulaire.value.nom, this.formulaire.value.code).subscribe((res) => {
+          this.formulaire.value.nom).subscribe((res) => {
           }, error => {
             // Erreur Modification Version
           this.toastr.errorToastr(error);
@@ -286,7 +286,7 @@ export class ModifierVerionComponent implements OnInit {
 
         /* supprimer des photos  d'une version */
         for (let j = 0; j < this.imagesSupp.length; j++) {
-          this.imageService.supprimerImage(this.imagesSupp[j], String(this.version.CodeVersion)).subscribe( res => {});
+          //this.imageService.supprimerImage(this.imagesSupp[j], String(this.version.CodeVersion)).subscribe( res => {});
           this.selectedFile[j].pending = false;
         }
 

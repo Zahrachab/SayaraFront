@@ -1,11 +1,9 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {Commande} from '../../../services/entites/commande.model';
 import {MatDialog, MatDialogRef, MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
-import {CommandeServiceMock} from '../../../mocks/commande.Service.mock';
 import {Router} from '@angular/router';
 import {CommandeService} from '../../../services/commande.service';
 import {ConfirmationDialogComponent} from '../../shared/confirmation-dialog/confirmation-dialog.component';
-import {Couleur} from '../../../services/entites/couleur.model';
 import {ToastrManager} from 'ng6-toastr-notifications';
 
 
@@ -48,9 +46,9 @@ export class AllCommandesComponent implements OnInit, AfterViewInit {
    */
   refreshData() {
 
-    if (this.router.url.split('/')[2] === 'prepayees') {
-      this.commandeService.getCommandesPrepayes().subscribe(res => {
-        this.loading = false;
+
+    if (this.router.url.split('/')[2] === 'valides') {
+      this.commandeService.getCommandesValides().subscribe(res => {
         this.dataSource.data = res as Commande[];
       }, error => {
         this.toastr.errorToastr(error);
@@ -130,7 +128,7 @@ export class AllCommandesComponent implements OnInit, AfterViewInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.commandeService.validerCommande(commande).subscribe(() => {
+        this.commandeService.validerCommande(commande.idCommande).subscribe(() => {
           this.refreshData();
         }, error => {
           this.toastr.errorToastr(error);
@@ -150,7 +148,7 @@ export class AllCommandesComponent implements OnInit, AfterViewInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.commandeService.rejeterCommande(commande).subscribe(() => {
+        this.commandeService.rejeterCommande(commande.idCommande).subscribe(() => {
           this.refreshData();
         }, error => {
           this.toastr.errorToastr(error);

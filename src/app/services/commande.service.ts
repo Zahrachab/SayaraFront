@@ -6,13 +6,31 @@ import {catchError} from 'rxjs/operators';
 
 @Injectable()
 export class CommandeService {
+  get url(): string {
+    return this._url;
+  }
+  get urlCommandes(): string {
+    return this._urlCommandes;
+  }
 
-  private url = this.injector.get('url') + '/vehicules/commandes';
+  get urlNouvellesCommandes(): string {
+    return this._urlNouvellesCommandes;
+  }
+
+  get urlCommandesAnnulles(): string {
+    return this._urlCommandesAnnulles;
+  }
+
+  get urlCommandesValides(): string {
+    return this._urlCommandesValides;
+  }
+
+  private _url = 'https://sayaradz.herokuapp.com/vehicules/commandes';
   private  fabriquant = JSON.parse(localStorage.getItem('utilisateur')).utilfab.Fabricant ;
-  private urlCommandes =  this.url + '?fabricant='+ this.fabriquant;
-  private urlNouvellesCommandes =  this.url + '/nonvalidees?fabricant='+ this.fabriquant;
-  private  urlCommandesAnnulles =  this.url + '/annulees?fabricant='+ this.fabriquant;
-  private  urlCommandesValides =  this.url + '/validees?fabricant='+ this.fabriquant;
+  private _urlCommandes =  this._url + '?fabricant='+ this.fabriquant;
+  private _urlNouvellesCommandes =  this._url + '/nonvalidees?fabricant='+ this.fabriquant;
+  private _urlCommandesAnnulles =  this._url + '/annulees?fabricant='+ this.fabriquant;
+  private _urlCommandesValides =  this._url + '/validees?fabricant='+ this.fabriquant;
   constructor(private http: HttpClient, private injector: Injector) { }
 
   private static handleError(error: HttpErrorResponse) {
@@ -42,7 +60,7 @@ export class CommandeService {
    * Récupérer toutes les commandes de la marque ordonnées par date
    */
   getAllCommandes(): Observable<Commande[]> {
-   return this.http.get<Commande[]>(this.urlCommandes).pipe(
+   return this.http.get<Commande[]>(this._urlCommandes).pipe(
      catchError(CommandeService.handleError)
    );
   }
@@ -50,9 +68,9 @@ export class CommandeService {
   /**
    * Récupérer toutes les commandes prépayées de la marque ordonnées par date
    */
-  getCommandesPrepayes(): Observable<Commande[]> {
+  getCommandesValides(): Observable<Commande[]> {
     // a corriger
-    return this.http.get<Commande[]>(this.urlCommandes).pipe(
+    return this.http.get<Commande[]>(this._urlCommandes).pipe(
       catchError(CommandeService.handleError)
     );
   }
@@ -61,7 +79,7 @@ export class CommandeService {
    * Récupérer toutes les commandes annullées de la marque ordonnées par date
    */
   getCommandesAnnulles(): Observable<Commande[]> {
-    return this.http.get<Commande[]>(this.urlCommandesAnnulles).pipe(
+    return this.http.get<Commande[]>(this._urlCommandesAnnulles).pipe(
       catchError(CommandeService.handleError)
     );
   }
@@ -70,7 +88,7 @@ export class CommandeService {
    * Récupérer toutes les nouvelles commandes non traitées de la marque ordonnées par date
    */
   getCommandesNouvelles(): Observable<Commande[]> {
-    return this.http.get<Commande[]>(this.urlNouvellesCommandes).pipe(
+    return this.http.get<Commande[]>(this._urlNouvellesCommandes).pipe(
       catchError(CommandeService.handleError)
     );
   }
@@ -79,9 +97,9 @@ export class CommandeService {
    * Valider une commmande
    * @param commande
    */
-  validerCommande(commande: Commande) {
+  validerCommande(idCommande : string) {
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
-    return this.http.put(this.url + '/' + commande.idCommande + '/valider',
+    return this.http.put(this._url + '/' + idCommande + '/valider',
        {headers: tokenHeader}).pipe(
          catchError(CommandeService.handleError)
     );
@@ -91,9 +109,9 @@ export class CommandeService {
    * Rejeter une commande
    * @param commande
    */
-  rejeterCommande(commande: Commande) {
+  rejeterCommande(idCommande: string) {
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
-    return this.http.put(this.url + '/' + commande.idCommande + '/rejeter',
+    return this.http.put(this._url + '/' + idCommande + '/rejeter',
       {headers: tokenHeader}).pipe(
         catchError(CommandeService.handleError)
     );

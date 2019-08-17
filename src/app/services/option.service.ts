@@ -15,7 +15,7 @@ export class OptionService {
   }
 
   public url = 'https://sayaradz.herokuapp.com';
-  private serviceUrlOptions = this.url + '/marques/modeles/';
+  public serviceUrlOptions = this.url + '/marques/modeles/';
 
     private static handleError(error: HttpErrorResponse) {
       let e: string;
@@ -66,7 +66,7 @@ export class OptionService {
 
   ajouter(code: string, designation: string, codeVersion: string) {
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
-    return this.http.post(this.url + '/Marques/Modeles/Versions/' + codeVersion + '/Options',
+    return this.http.post(this.serviceUrlOptions + 'versions/' + codeVersion + '/options',
       {CodeOption: code, NomOption: designation}, {headers: tokenHeader}).pipe(
         catchError(OptionService.handleErrorForVersionInsertion)
     );
@@ -75,7 +75,7 @@ export class OptionService {
   // supprimer option d'une version
   supprimer(code: string, codeVersion: string) {
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
-    return this.http.delete(this.url + '/Marques/Modeles/Versions/' + codeVersion + '/Options/' + code,
+    return this.http.delete(this.serviceUrlOptions + 'versions/' + codeVersion + '/options/' + code,
      {headers: tokenHeader}).pipe(
        catchError(OptionService.handleErrorForVersionInsertion)
     );
@@ -84,25 +84,16 @@ export class OptionService {
 
   ajouterOptionModele(code: string, designation: string, codeModele: string) {
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
-    return this.http.post(this.url + '/Marques/Modeles/' + codeModele + '/Options',
+    return this.http.post(this.serviceUrlOptions + codeModele + '/options',
       {CodeOption: code, NomOption: designation}, {headers: tokenHeader}).pipe(
         catchError(OptionService.handleError)
     );
   }
 
   getOptions(codeModele): Observable<Option[]> {
-    let options;
-    this.http.get<ModeleDetail>(`https://sayaradz.herokuapp.com/marques/modeles/${codeModele}`).subscribe(modele => {
-      options = (modele as ModeleDetail).options as Option[];
-    }, error => {
-        throwError(error);
-    });
-    return new Observable(observer => {
-      setTimeout(() => {
-        observer.next(options);
-        observer.complete();
-      }, 2000);
-    });
+    return  this.http.get<Option[]>(this.serviceUrlOptions + codeModele + '/options').pipe(
+      catchError(OptionService.handleError)
+    );
   }
 
   getOptionsWithLigneTarifs(codeModele): Observable<OptionDetail[]> {
@@ -120,7 +111,7 @@ export class OptionService {
 
   supprimerDuModele(code: string, codeModele: string) {
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
-    return this.http.delete(this.url + '/Marques/Modeles/' + codeModele + '/Options/' + code,
+    return this.http.delete(this.serviceUrlOptions + codeModele + '/options/' + code,
       {headers: tokenHeader}).pipe(
         catchError(OptionService.handleError)
     );
@@ -128,7 +119,7 @@ export class OptionService {
 
   modifier(code: string, nom: string) {
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
-    return this.http.put(this.url + '/Marques/Modeles/Versions/Options/' + code,
+    return this.http.put(this.serviceUrlOptions + 'versions/options/' + code,
       {CodeOption: code, NomOption: nom}, {headers: tokenHeader}).pipe(
         catchError(OptionService.handleError)
     );

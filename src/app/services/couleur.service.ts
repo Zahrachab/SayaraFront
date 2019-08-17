@@ -1,9 +1,7 @@
 import {Injectable, Injector} from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import {ModeleDetail} from './entites/modeleDetail.model';
 import {Couleur} from './entites/couleur.model';
-import {ModeleService} from './modele.service';
 import {catchError} from 'rxjs/operators';
 import {throwError} from 'rxjs';
 
@@ -13,10 +11,10 @@ import {throwError} from 'rxjs';
 })
 export class CouleurService {
 
-  private url = this.injector.get('url');
-  private serviceUrl = this.url + '/marques/modeles/';
+  private url = "https://sayaradz.herokuapp.com";
+  public serviceUrl = this.url + '/marques/modeles/';
 
-  constructor(private http: HttpClient, private injector: Injector, private modeleService: ModeleService) {
+  constructor(private http: HttpClient, private injector: Injector) {
   }
 
   private static handleError(error: HttpErrorResponse) {
@@ -68,7 +66,7 @@ export class CouleurService {
   /* supprimer une couleur d'un modèle */
   supprimerCouleurModele(code: string, codeModele: string) {
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
-    return this.http.delete(this.url + '/Marques/Modeles/' + codeModele + '/Couleurs/' + code,
+    return this.http.delete(this.serviceUrl + codeModele + '/couleurs/' + code,
      {headers: tokenHeader}).pipe(
        catchError(CouleurService.handleError)
     );
@@ -78,7 +76,7 @@ export class CouleurService {
   /* ajouter une couleur et l'associer à un modèle donnée */
   ajouterCouleurModele(code: string, designation: string, hexa: string, codeModele: string) {
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
-    return this.http.post(this.url + '/Marques/Modeles/' + codeModele + '/Couleurs',
+    return this.http.post(this.serviceUrl + codeModele + '/couleurs',
       {CodeCouleur: code, NomCouleur: designation, CodeHexa: hexa}, {headers: tokenHeader}).pipe(
         catchError(CouleurService.handleError)
     );
@@ -88,7 +86,7 @@ export class CouleurService {
   /* ajouter une couleur et l'associer à un modèle donnée */
   ajouterCouleurVersion(code: string, codeVersion: string) {
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
-    return this.http.post(this.url + '/Marques/Modeles/Versions/' + codeVersion + '/Couleurs',
+    return this.http.post(this.serviceUrl + 'versions/' + codeVersion + '/couleurs',
       {CodeCouleur: code}, {headers: tokenHeader}).pipe(
         catchError(CouleurService.handleErrorForVersionInsertion)
     );
@@ -113,7 +111,7 @@ export class CouleurService {
   /* Modifier un couleur */
   modifierCouleur(code: string, nom: string, codeHexa: string) {
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
-    return this.http.put(this.url + '/Marques/Modeles/Versions/Couleurs/' + code,
+    return this.http.put(this.serviceUrl + 'versions/couleurs/' + code,
       {CodeCouleur: code, NomCouleur: nom, CodeHexa: codeHexa}, {headers: tokenHeader}).pipe(
         catchError(CouleurService.handleError)
     );
@@ -124,7 +122,7 @@ export class CouleurService {
   // supprimer couleur d'une version
   supprimerVersion(code: string, codeVersion: string) {
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
-    return this.http.delete(this.url + '/Marques/Modeles/Versions/' + codeVersion + '/Couleurs/' + code,
+    return this.http.delete(this.serviceUrl + 'versions/' + codeVersion + '/couleurs/' + code,
       {headers: tokenHeader}).pipe(
         catchError(CouleurService.handleErrorForVersionInsertion)
     );
