@@ -35,7 +35,7 @@ export class ModeleService {
     return throwError(e);
   }
 
-  constructor(private http: HttpClient, private injector: Injector) {
+  constructor(private http: HttpClient, public injector: Injector) {
   }
 
 
@@ -68,7 +68,7 @@ export class ModeleService {
    */
   ajouter(code: string, designation: string) {
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
-    return this.http.post(this.url + '/Marques/' + JSON.parse(localStorage.getItem('utilisateur')).utilfab.Fabricant + '/Modeles',
+    return this.http.post(this.serviceUrlModeles,
       {CodeModele: code, NomModele: designation}, {headers: tokenHeader}).pipe(
         catchError(ModeleService.handleError)
     );
@@ -92,7 +92,7 @@ export class ModeleService {
    */
   modifier(code: string, nom: string) {
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
-    return this.http.put(this.url + '/Marques/Modeles/' + code,
+    return this.http.put(this.serviceUrlModele + code,
       {CodeModele: code, NomModele: nom}, {headers: tokenHeader});
   }
 }
