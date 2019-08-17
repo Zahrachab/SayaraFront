@@ -42,4 +42,27 @@ fdescribe('AuthentificationService', () => {
     const service: AuthentificationService = TestBed.get(AuthentificationService);
     expect(service).toBeTruthy();
   });
+
+  it('tester le login', () => {
+
+    const userName = "zahra";
+    const password = "password";
+
+    service.login(userName, password ).subscribe((res) => {
+      expect (res).toEqual("");
+    });
+    // We set the expectations for the HttpClient mock
+    const req = httpMock.expectOne(service.urlLogin);
+
+    expect(req.request.method).toEqual('POST');
+    expect(req.request.body).toEqual({ Mail: userName, Mdp : password });
+
+    req.flush("");
+
+  });
+
+  it('tester le logout', () => {
+    service.logout();
+     expect(localStorage.removeItem).toHaveBeenCalled();
+  });
 });

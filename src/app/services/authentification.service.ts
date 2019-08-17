@@ -11,6 +11,9 @@ import {User} from './entites/user.model';
 })
 
 export class AuthentificationService {
+  get urlLogin(): string {
+    return this._urlLogin;
+  }
 
   constructor(private http: HttpClient, private injector: Injector) {
     AuthentificationService.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
@@ -23,11 +26,14 @@ export class AuthentificationService {
   public static currentUser: Observable<User>;
   private static currentUserSubject: BehaviorSubject<User>;
   private url =  "https://sayaradz.herokuapp.com";
+  private _urlLogin = this.url + '/auth/utilfab';
 
   login(username: string, password: string) {
 
-    return this.http.post<any>(this.url + '/auth/utilfab', { Mail: username, Mdp : password }).pipe(
+    return this.http.post<any>(this._urlLogin, { Mail: username, Mdp : password }).pipe(
       map(user => {
+
+        console.log("user " + user.toString() );
         //   login successful if there's a jwt token in the response
         if (user && user.token) {
           // store user details and jwt token in local storage to keep user logged in between page refreshes

@@ -1,15 +1,28 @@
-import { TestBed } from '@angular/core/testing';
+import {getTestBed, TestBed} from '@angular/core/testing';
+import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
+import {AlertService} from '../alert.service';
+import {RouterModule} from '@angular/router';
+import {APP_BASE_HREF} from '@angular/common';
 
-import { AlertService } from '../alert.service';
-import {HttpClientModule} from '@angular/common/http';
 
-describe('AlertService', () => {
-  beforeEach(() => TestBed.configureTestingModule({
-    imports: [HttpClientModule],
-  }));
+fdescribe('AlertService', () => {
+  let injector: TestBed;
+  let service: AlertService;
+  let httpMock: HttpTestingController;
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule, RouterModule.forRoot([])],
+      providers: [AlertService, {provide: APP_BASE_HREF, useValue : '/'}]
+    });
+    injector = getTestBed();
+    service = injector.get(AlertService);
+    httpMock = injector.get(HttpTestingController);
+
+
+  });
 
   it('should be created', () => {
-    const service: AlertService = TestBed.get(AlertService);
     expect(service).toBeTruthy();
   });
+
 });
