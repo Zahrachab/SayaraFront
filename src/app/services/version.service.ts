@@ -9,8 +9,8 @@ import {catchError} from 'rxjs/operators';
 })
 export class VersionService {
 
-  private url = this.injector.get('url');
-  private urlVersionDetails = this.url + '/marques/modeles/';
+  private url = "https://sayaradz.herokuapp.com";
+  public  urlVersionDetails = this.url + '/marques/modeles/';
 
   constructor(private http: HttpClient, private injector: Injector) { }
 

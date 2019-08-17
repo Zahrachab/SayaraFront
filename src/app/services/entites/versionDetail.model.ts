@@ -1,5 +1,5 @@
 export interface VersionDetail {
-  CodeVersion: string;
+  CodeVersion: string ;
   CodeModele: string;
   NomVersion: string;
   options: {
@@ -44,6 +44,6 @@ export interface VersionDetail {
     Code: string,
     DateDebut: string,
     DateFin: string,
-    Prix: 6550000
+    Prix: number
   };
 }
