@@ -122,7 +122,7 @@ export class VersionServiceMock {
            idImage: '',
            CodeImage: '',
            Type: '',
-           CheminImage: ''
+           CheminImage: ''gi
          }],
        }
        ]);*/

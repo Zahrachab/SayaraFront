@@ -23,7 +23,7 @@ import {GestionCouleurComponent} from './gestion-couleur.component';
 import {RouterModule} from '@angular/router';
 import {Couleur} from '../../../services/entites/couleur.model';
 
-describe('GestionCouleursComponent', () => {
+fdescribe('GestionCouleursComponent', () => {
   let component: GestionCouleurComponent;
   let fixture: ComponentFixture<GestionCouleurComponent>;
   let spySupprimer: jasmine.Spy;
