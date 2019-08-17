@@ -5,20 +5,35 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable()
 export class CommandeService {
+  get urlCommandes(): string {
+    return this._urlCommandes;
+  }
+
+  get urlNouvellesCommandes(): string {
+    return this._urlNouvellesCommandes;
+  }
+
+  get urlCommandesAnnulles(): string {
+    return this._urlCommandesAnnulles;
+  }
+
+  get urlCommandesValides(): string {
+    return this._urlCommandesValides;
+  }
 
   private url = this.injector.get('url') + '/vehicules/commandes';
   private  fabriquant = JSON.parse(localStorage.getItem('utilisateur')).utilfab.Fabricant ;
-  private urlCommandes =  this.url + '?fabricant='+ this.fabriquant;
-  private urlNouvellesCommandes =  this.url + '/nonvalidees?fabricant='+ this.fabriquant;
-  private  urlCommandesAnnulles =  this.url + '/annulees?fabricant='+ this.fabriquant;
-  private  urlCommandesValides =  this.url + '/validees?fabricant='+ this.fabriquant;
+  private _urlCommandes =  this.url + '?fabricant='+ this.fabriquant;
+  private _urlNouvellesCommandes =  this.url + '/nonvalidees?fabricant='+ this.fabriquant;
+  private _urlCommandesAnnulles =  this.url + '/annulees?fabricant='+ this.fabriquant;
+  private _urlCommandesValides =  this.url + '/validees?fabricant='+ this.fabriquant;
   constructor(private http: HttpClient, private injector: Injector) { }
 
   /**
    * Récupérer toutes les commandes de la marque ordonnées par date
    */
   getAllCommandes(): Observable<Commande[]> {
-   return this.http.get<Commande[]>(this.urlCommandes);
+   return this.http.get<Commande[]>(this._urlCommandes);
   }
 
   /**
@@ -26,21 +41,21 @@ export class CommandeService {
    */
   getCommandesPrepayes(): Observable<Commande[]> {
     // a corriger
-    return this.http.get<Commande[]>(this.urlCommandes);
+    return this.http.get<Commande[]>(this._urlCommandes);
   }
 
   /**
    * Récupérer toutes les commandes annullées de la marque ordonnées par date
    */
   getCommandesAnnulles(): Observable<Commande[]> {
-    return this.http.get<Commande[]>(this.urlCommandesAnnulles);
+    return this.http.get<Commande[]>(this._urlCommandesAnnulles);
   }
 
   /**
    * Récupérer toutes les nouvelles commandes non traitées de la marque ordonnées par date
    */
   getCommandesNouvelles(): Observable<Commande[]> {
-    return this.http.get<Commande[]>(this.urlNouvellesCommandes);
+    return this.http.get<Commande[]>(this._urlNouvellesCommandes);
   }
 
   /**

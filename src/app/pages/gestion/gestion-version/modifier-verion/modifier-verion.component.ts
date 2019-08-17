@@ -277,7 +277,7 @@ export class ModifierVerionComponent implements OnInit {
 
         /* supprimer des photos  d'une version */
         for (let j = 0; j < this.imagesSupp.length; j++) {
-          this.imageService.supprimerImage(this.imagesSupp[j], String(this.version.CodeVersion)).subscribe( res => {});
+          //this.imageService.supprimerImage(this.imagesSupp[j], String(this.version.CodeVersion)).subscribe( res => {});
           this.selectedFile[j].pending = false;
         }
 
