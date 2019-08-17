@@ -5,7 +5,7 @@ import {HttpHeaders} from '@angular/common/http';
 
 
 
-fdescribe('ImagerService', () => {
+fdescribe('ImageService', () => {
   let injector: TestBed;
   let service: ImageService;
   let httpMock: HttpTestingController;
