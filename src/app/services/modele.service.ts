@@ -8,7 +8,7 @@ import {catchError} from 'rxjs/operators';
 @Injectable()
 export class ModeleService {
 
-  private url = this.injector.get('url');
+  private url = "https://sayaradz.herokuapp.com";
   public serviceUrlModeles = this.url + '/marques/' + JSON.parse(localStorage.getItem('utilisateur')).utilfab.Fabricant + '/modeles';
   public serviceUrlModele =  this.url + '/marques/modeles/';
 
@@ -43,6 +43,7 @@ export class ModeleService {
    * Récupérer tous les modèles d'une marque
    */
   getModeles(): Observable<ModeleDetail[]> {
+    console.log(this.injector);
     return this.http.get<ModeleDetail[]>(this.serviceUrlModeles).pipe(
       catchError(ModeleService.handleError)
     );

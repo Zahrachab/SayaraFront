@@ -17,9 +17,11 @@ fdescribe('ModeleService', () => {
     injector = getTestBed();
     service = injector.get(ModeleService);
     httpMock = injector.get(HttpTestingController);
-    //mock du localStorage.getItem
-    spyOnProperty(injector, "get").and.returnValue("https://sayaradz.herokuapp.com");
 
+
+  });
+
+  beforeAll(() =>{
     //mock du localStorage.getItem
     spyOn(localStorage, 'getItem').and.callFake((key: string): String => {
       return "{\"msg\":\"Authentification résussite !\",\"token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6NywiTWFpbCI6ImlzbGFtMUBlc2kuZHoiLCJGYWJyaWNhbnQiOjEsIlZhbGlkZSI6MSwiQmxvcXVlIjowLCJpYXQiOjE1NjU5NzU1MzksImV4cCI6MTU2NjA2MTkzOX0.6ZNCXRos6Uf1UBjUh7jtyWGD79t5WCl3sGsfDPzlVEY\",\"utilfab\":{\"IdUserF\":7,\"Mail\":\"islam1@esi.dz\",\"Nom\":\"BOUAYACHE\",\"Prenom\":\"Mohamed Islam\",\"Mdp\":\"$2a$10$vkxiJmerHv3QlRQeGRwoTesUVKuC7iD9YlYFZZ3ve8XayEqRxFaO.\",\"NumTel\":699415163,\"Fabricant\":1,\"Valide\":1,\"Bloque\":0,\"marque\":{\"NomMarque\":\"Volkswagen\"},\"images\":[{\"CheminImage\":\"http://res.cloudinary.com/hftzhatr4/image/upload/v1561070978/Utilisateurs_Fabricants/2019-06-20T22-49-34.672Z_Capture%20d%E2%80%99%C3%A9cran_2019-06-20_23-46-14.png.png\"}]}}";
@@ -84,6 +86,10 @@ fdescribe('ModeleService', () => {
     const req = httpMock.expectOne(service.serviceUrlModeles);
 
     expect(req.request.method).toEqual('POST');
+    expect(req.request.body).toEqual({CodeModele: codeModele, NomModele: designation});
+    expect(req.request.headers).toEqual(new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token));
+
+
     req.flush("");
 
   });
