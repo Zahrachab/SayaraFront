@@ -67,6 +67,60 @@ export class VersionServiceMock {
        ]);
   }
 
+  getVersion(codeVersion) : Observable<VersionDetail> {
+    return Observable.of (
+      {
+        CodeVersion: '123',
+        CodeModele: '1',
+        NomVersion: 'Golf série 6',
+        options:  [{
+          CodeOption: '12',
+          NomOption: 'AirBag',
+          Checked: false,
+          rel_ver_opt: {
+            idRelVerOpt: '',
+            CodeVersion: '',
+            CodeOption: '',
+          }
+        }],
+        couleurs: [{
+          CodeCouleur: '89',
+          NomCouleur: 'Noir',
+          CodeHexa: 'ffffff',
+          Checked: false,
+          CheminImage: '',
+          lignetarif: {
+            idLigneTarif: 12,
+            Type: 2,
+            Code: '23',
+            DateDebut: '',
+            DateFin: '',
+            Prix: 12300
+          },
+          rel_ver_coul: {
+            idRelVerCoul: '',
+            CodeVersion: '',
+            CodeCouleur: '',
+          }
+        }],
+        images :[{
+          idImage: '1',
+          CodeImage: '12',
+          Type: '',
+          CheminImage: '',
+        }],
+        lignetarif: {
+          idLigneTarif: 2,
+          Type: 2,
+          Code: '1',
+          DateDebut: '',
+          DateFin: '',
+          Prix: 65500
+        }
+      }
+    );
+  }
+
   supprimerVersion(codeVersion) {
    return true;
   }
@@ -74,6 +128,7 @@ export class VersionServiceMock {
   modifierVersion(code: string, designation: string, codeVersion: string) {
     return true;
   }
+
 
 
 }

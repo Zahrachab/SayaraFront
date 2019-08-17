@@ -232,7 +232,7 @@ export class ModifierVerionComponent implements OnInit {
 
         /* modifier le nom de la version */
         this.versionService.modifierVersion(this.formulaire.value.code,
-          this.formulaire.value.nom, this.formulaire.value.code).subscribe((res) => {
+          this.formulaire.value.nom).subscribe((res) => {
           }
         );
         /* ajouter des options */

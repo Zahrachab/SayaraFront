@@ -3,6 +3,8 @@ import {HttpClientTestingModule, HttpTestingController} from '@angular/common/ht
 import {VersionServiceMock} from '../../mocks/Version.Service.mock';
 import {HttpHeaders} from '@angular/common/http';
 import {VersionService} from '../version.service';
+import {ModeleServiceMock} from '../../mocks/Modele.Service.mock';
+import {VersionDetail} from '../entites/versionDetail.model';
 
 
 fdescribe('VersionService', () => {
@@ -48,6 +50,7 @@ fdescribe('VersionService', () => {
 
     service.getVersions(codeModele).subscribe((res)=> {
       expect (res).toEqual(versions);
+      expect(res.length).toEqual(versions.length);
     });
 
 
@@ -57,6 +60,92 @@ fdescribe('VersionService', () => {
     req.flush(versions);
   });
 
+
+
+  it('tester le get d\'une version avec le codeVersion', () => {
+
+    const mock = new VersionServiceMock();
+    var version;
+    const codeVersion= 1;
+    mock.getVersion(codeVersion).subscribe((res) =>{
+      version = res;
+    });
+
+    service.getVersion(codeVersion).subscribe((res)=> {
+      expect (res).toEqual(version);
+      // tester quelques champs du résultat avec version
+      expect(res.CodeVersion).toEqual(version.CodeVersion);
+      expect(res.NomVersion).toEqual(version.NomVersion);
+    });
+    // We set the expectations for the HttpClient mock
+
+    const req = httpMock.expectOne(service.urlVersionDetails + "versions/"+ codeVersion);
+
+    expect(req.request.method).toEqual('GET');
+
+    req.flush(version);
+  });
+
+
+
+  it('tester l\'ajout d\'une novelle version à un modèle avec POST', () => {
+
+    const codeModele = "1";
+    const codeVersion = "23";
+    const designation = "Golf série 6";
+
+    service.ajouter(codeVersion, designation, codeModele).subscribe((res) => {
+      expect (res).toEqual("");
+    });
+    // We set the expectations for the HttpClient mock
+    const req = httpMock.expectOne(service.urlVersionDetails+ codeModele + '/versions');
+
+    expect(req.request.method).toEqual('POST');
+    expect(req.request.body).toEqual({CodeVersion: codeVersion, NomVersion: designation});
+    expect(req.request.headers).toEqual(new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token));
+
+
+    req.flush("");
+
+  });
+
+
+
+  it('tester la modification d\'une version', () => {
+
+    const codeVersion = "1";
+    const designation = "Golf série 6";
+
+    service.modifierVersion(codeVersion, designation).subscribe((res) => {
+      expect (res).toEqual("");
+    });
+    // We set the expectations for the HttpClient mock
+    const req = httpMock.expectOne(service.urlVersionDetails + 'versions/' + codeVersion);
+    req.flush("");
+    expect(req.request.method).toEqual('PUT');
+    expect(req.request.body).toEqual({CodeVersion: codeVersion, NomVersion: designation});
+    expect(req.request.headers).toEqual(new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token));
+
+  });
+
+
+  it('tester la suppression d\'une version', () => {
+
+    const codeVersion = "1";
+
+
+    service.supprimerVersion(codeVersion).subscribe((res) => {
+      expect (res).toEqual("");
+    });
+    // We set the expectations for the HttpClient mock
+    const req = httpMock.expectOne(service.urlVersionDetails + 'versions/' + codeVersion);
+    req.flush("");
+    expect(req.request.method).toEqual('DELETE');
+    expect(req.request.body).toBe(null);
+    expect(req.request.headers).toEqual(new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token));
+
+
+  });
 
 
 });
