@@ -11,6 +11,7 @@ import {StockService} from '../../../services/stock.service';
 import {MatDialog, MatDialogRef} from '@angular/material';
 import {Vehicule} from '../../../services/entites/Vehicule.model';
 import {InfosDispoComponent} from '../infos-dispo/infos-dispo.component';
+import {ToastrManager} from 'ng6-toastr-notifications';
 
 
 @Component({
@@ -47,6 +48,7 @@ export class SimulationComponent implements OnInit {
               public couleurService: CouleurService,
               public stockService: StockService,
               public matDialog: MatDialog,
+              private toastr: ToastrManager,
               public optionService: OptionService) {
   }
 
@@ -57,7 +59,7 @@ export class SimulationComponent implements OnInit {
       this.getPhotosModeles();
     }, error => {
       // Erreur dans l'obtention des modeles
-      alert(error);
+      this.toastr.errorToastr(error);
     });
 
   }
@@ -90,7 +92,7 @@ export class SimulationComponent implements OnInit {
       });
     }, error => {
       // Erreur dans l'obtention des versions
-      alert(error);
+      this.toastr.errorToastr(error);
     });
   }
 
@@ -163,11 +165,11 @@ export class SimulationComponent implements OnInit {
         }
       }, error => {
         // Erreur dans l'obtention des versions
-        alert(error);
+        this.toastr.errorToastr(error);
       });
 
     } else {
-      alert("Aucun modèle choisi");
+      this.toastr.errorToastr("Aucun modèle choisi");
     }
   }
 
@@ -185,8 +187,8 @@ export class SimulationComponent implements OnInit {
           this.prixTotal += this.couleurChoisie.lignetarif.Prix;
         }
       }, error => {
-        // Erreur dans l'obtention des erreurs
-        alert(error);
+        // Erreur dans l'obtention des couleurs d'une version
+        this.toastr.errorToastr(error);
       });
     } else {
       alert("Aucune version choisie");
@@ -203,7 +205,7 @@ export class SimulationComponent implements OnInit {
       this.optionsVersion = res as OptionDetail[];
     }, error => {
       // Erreur dans l'obtention des options
-      alert(error);
+      this.toastr.errorToastr(error);
     });
   }
 
@@ -256,7 +258,7 @@ export class SimulationComponent implements OnInit {
       });
     }, error => {
       // Erreur dans l'obtention des vehicules disponibles
-      alert(error);
+      this.toastr.errorToastr(error);
     });
 
   }

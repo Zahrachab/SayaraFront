@@ -95,9 +95,6 @@ export class OptionService {
     this.http.get<ModeleDetail>(`https://sayaradz.herokuapp.com/marques/modeles/${codeModele}`).subscribe(modele => {
       options = (modele as ModeleDetail).options as Option[];
     }, error => {
-        // la puisque c'est un service je c pas si c'est correct de faire un throw, j'ai mis le alert juste pour attirer ton attention
-        // Faut l'enlever
-        alert(error);
         throwError(error);
     });
     return new Observable(observer => {

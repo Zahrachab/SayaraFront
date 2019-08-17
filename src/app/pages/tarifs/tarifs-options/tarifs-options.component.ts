@@ -48,12 +48,12 @@ export class TarifsOptionsComponent implements OnInit, AfterViewInit {
           this.optionDataSource.data = options;
         }, error => {
           // Erreur dans l'obtention d'un tarif pour une option donné
-          alert(error);
+          this.toastr.errorToastr(error);
         });
       }
     }, error => {
       // Erreur dans l'obtention des modeles
-      alert(error);
+      this.toastr.errorToastr(error);
     });
   }
 

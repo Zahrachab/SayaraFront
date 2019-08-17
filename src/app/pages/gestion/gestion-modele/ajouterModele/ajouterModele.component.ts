@@ -99,7 +99,7 @@ export class AjouterModeleComponent implements OnInit {
       }
     }, error => {
       // Probleme de connexion pour avoir les modeles
-      alert(error);
+      this.toastr.errorToastr(error);
     });
   }
 
@@ -140,7 +140,7 @@ export class AjouterModeleComponent implements OnInit {
         }
       }
     }, error => {
-      alert(error);
+      this.toastr.errorToastr(error);
     });
   }
 
@@ -161,7 +161,7 @@ export class AjouterModeleComponent implements OnInit {
         }
       }
     }, error => {
-      alert(error);
+      this.toastr.errorToastr(error);
     });
   }
 

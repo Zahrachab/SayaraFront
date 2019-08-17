@@ -6,6 +6,7 @@ import {Router} from '@angular/router';
 import {CommandeService} from '../../../services/commande.service';
 import {ConfirmationDialogComponent} from '../../shared/confirmation-dialog/confirmation-dialog.component';
 import {Couleur} from '../../../services/entites/couleur.model';
+import {ToastrManager} from 'ng6-toastr-notifications';
 
 
 @Component({
@@ -33,6 +34,7 @@ export class AllCommandesComponent implements OnInit, AfterViewInit {
   constructor(private matDialog: MatDialog,
               private commandeService: CommandeService,
               private dialogValidation: MatDialog,
+              private toastr: ToastrManager,
               private router: Router) {
     this.redefineFilter();
   }
@@ -51,21 +53,21 @@ export class AllCommandesComponent implements OnInit, AfterViewInit {
         this.loading = false;
         this.dataSource.data = res as Commande[];
       }, error => {
-        alert(error);
+        this.toastr.errorToastr(error);
       });
     } else if (this.router.url.split('/')[2] === 'annulees') {
       this.commandeService.getCommandesAnnulles().subscribe(res => {
         this.dataSource.data = res as Commande[];
       }, error => {
         this.loading = false;
-        alert(error);
+        this.toastr.errorToastr(error);
       });
     } else if (this.router.url.split('/')[2] === 'nouvelles') {
       this.commandeService.getCommandesNouvelles().subscribe(res => {
         this.dataSource.data = res as Commande[];
       }, error => {
         this.loading = false;
-        alert(error);
+        this.toastr.errorToastr(error);
       });
     }
      else {
@@ -73,7 +75,7 @@ export class AllCommandesComponent implements OnInit, AfterViewInit {
             this.dataSource.data = res as Commande[];
           }, error => {
             this.loading = false;
-            alert(error);
+            this.toastr.errorToastr(error);
           });
      }
   }
@@ -131,7 +133,7 @@ export class AllCommandesComponent implements OnInit, AfterViewInit {
         this.commandeService.validerCommande(commande).subscribe(() => {
           this.refreshData();
         }, error => {
-          alert(error);
+          this.toastr.errorToastr(error);
         });
       }
     });
@@ -151,7 +153,7 @@ export class AllCommandesComponent implements OnInit, AfterViewInit {
         this.commandeService.rejeterCommande(commande).subscribe(() => {
           this.refreshData();
         }, error => {
-          alert(error);
+          this.toastr.errorToastr(error);
         });
       }
     });

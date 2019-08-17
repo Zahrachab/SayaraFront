@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
-import {Observable, of} from 'rxjs';
-import { DataSource } from '@angular/cdk/collections';
 import {StockVersion} from '../../../services/entites/stock.modele';
 import {ModeleDetail} from '../../../services/entites/modeleDetail.model';
 import {VersionService} from '../../../services/version.service';
@@ -9,6 +7,7 @@ import {ModeleService} from '../../../services/modele.service';
 import {StockService} from '../../../services/stock.service';
 import {StockVehicule} from '../../../services/entites/stockVehicule.model';
 import {MatTableDataSource} from '@angular/material';
+import {ToastrManager} from 'ng6-toastr-notifications';
 
 
 @Component({
@@ -43,22 +42,30 @@ export class StockVehiculesComponent implements  OnInit{
   isExpansionDetailRow = (i: number, row: object) => (1 === 1) ;
   constructor(private versionService: VersionService,
               private modeleService: ModeleService,
+              private toastr: ToastrManager,
               private stockService: StockService) {
     this.redefinirFiltre();
   }
+
   ngOnInit(): void {
     this.modeleService.getModeles().subscribe(res => {
       this.modeles = res as ModeleDetail[];
     }, error => {
       //Erreur dans l'obtention des modeles
-      alert(error);
+      this.toastr.errorToastr(error);
     });
   }
+
+
   choisirModele($event) {
     console.log($event.value);
     this.modeleChoisi = this.modeles.find(m => m.CodeModele == $event.value);
     this.getStock();
   }
+
+  /**
+   * récupérer le stock d'un modèle
+   */
 
   getStock() {
     if(this.modeleChoisi != null) {
@@ -82,7 +89,7 @@ export class StockVehiculesComponent implements  OnInit{
             this.stockDataSource.data = rows;
           }, error => {
             // Erreur dans l'obtention du stock du modele
-            alert(error);
+            this.toastr.errorToastr(error);
           });
         });
       }

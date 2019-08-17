@@ -119,27 +119,7 @@ export class CouleurService {
     );
   }
 
-  /* récupérer la liste des couleurs associés à tous les modèles d'une marque */
-  getCouleursMarque(): any {
-    const couleursMap = new Map();
-    let modeles;
-    this.modeleService.getModeles().subscribe( res => {
-      modeles = res as ModeleDetail[];
-      for (let i = 0; i < modeles.length; i++) {
-        const couleurs = modeles[i].couleurs as Couleur[];
-        for (let j = 0; j < couleurs.length ; j++) {
-          couleursMap.set(couleurs[j].CodeCouleur , couleurs[j]);
-        }
-      }
-      console.log(couleursMap);
-      return couleursMap;
-    }, error => {
-      // Comme c un service je c pas si c correct de mettre le throw, j'ai mis le alert juste pour attirer ton attention
-      // Faut l'enlever
-      alert(error);
-      throwError(error);
-    });
-  }
+
 
   // supprimer couleur d'une version
   supprimerVersion(code: string, codeVersion: string) {

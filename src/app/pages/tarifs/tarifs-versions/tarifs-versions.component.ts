@@ -48,12 +48,12 @@ export class TarifsVersionsComponent implements OnInit, AfterViewInit {
           this.versionDataSource.data = versions;
         }, error => {
           // Erreur dans l'obtentention du tarif d'une version
-          alert(error);
+          this.toastr.errorToastr(error);
         });
       }
     }, error => {
       // Erreur dans l'obtention des modeles
-      alert(error);
+      this.toastr.errorToastr(error);
     });
   }
 

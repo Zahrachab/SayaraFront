@@ -1,6 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {ModeleService} from '../../../../services/modele.service';
+import {ToastrManager} from 'ng6-toastr-notifications';
 
 @Component({
   selector: 'app-supprimer-modele',
@@ -24,6 +25,7 @@ export class SupprimerModeleComponent implements OnInit {
    * Les données récues du composant gestion-modele : le modele a supprimer
    */
   constructor(private dialogReference: MatDialogRef<SupprimerModeleComponent>,
+              private toastr: ToastrManager,
               @Inject(MAT_DIALOG_DATA) private data: any, private modeleService: ModeleService) { }
 
   /**
@@ -40,7 +42,7 @@ export class SupprimerModeleComponent implements OnInit {
           this.fermer();
       }, error => {
         // Erreur lors de la suppression du modele
-        alert(error);
+        this.toastr.errorToastr(error);
       });
   }
 

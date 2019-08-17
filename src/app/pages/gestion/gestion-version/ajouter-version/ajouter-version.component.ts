@@ -102,7 +102,7 @@ export class AjouterVersionComponent implements OnInit {
       this.options = opts as Option[];
     }, error => {
       // Erreur dans l'obtention des options
-      alert(error);
+      this.toastr.errorToastr(error);
     });
 
     // récupérer la liste des couleurs
@@ -111,7 +111,7 @@ export class AjouterVersionComponent implements OnInit {
       this.couleurs = clrs as Couleur[];
     }, error => {
       // Erreur dans l'obtention des couleurs
-      alert(error);
+      this.toastr.errorToastr(error);
     });
 
     // Construction du formulaire
