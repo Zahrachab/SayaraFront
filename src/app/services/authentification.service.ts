@@ -22,7 +22,7 @@ export class AuthentificationService {
   }
   public static currentUser: Observable<User>;
   private static currentUserSubject: BehaviorSubject<User>;
-  private url = this.injector.get('url');
+  private url =  "https://sayaradz.herokuapp.com";
 
   login(username: string, password: string) {
 
