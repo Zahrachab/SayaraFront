@@ -83,6 +83,12 @@ export class SidenavComponent implements OnInit {
       ];
     }
 
+    else if (this.router.url.split('/')[1] === 'simulation') {
+      this.sousMenus = [
+      ];
+    }
+
+
     this.user = JSON.parse(localStorage.getItem('utilisateur'));
   }
 
