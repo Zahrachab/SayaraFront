@@ -268,6 +268,8 @@ export class ModifierVerionComponent implements OnInit {
         for (let i = 0 ; i < this.clrsSupp.length; i++) {
           this.couleurService.supprimerVersion(String(this.clrsSupp[i].CodeCouleur),
             this.formulaire.value.code).subscribe(() => {
+          }, (error) => {
+            this.toastr.errorToastr(error);
           });
         }
 

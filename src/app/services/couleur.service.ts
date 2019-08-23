@@ -122,7 +122,7 @@ export class CouleurService {
   // supprimer couleur d'une version
   supprimerVersion(code: string, codeVersion: string) {
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
-    return this.http.delete(this.serviceUrl + 'versions/' + codeVersion + '/couleurs/' + code,
+    return this.http.delete(this.serviceUrl + 'versions/' + codeVersion + '/couleur/' + code,
       {headers: tokenHeader}).pipe(
         catchError(CouleurService.handleErrorForVersionInsertion)
     );
