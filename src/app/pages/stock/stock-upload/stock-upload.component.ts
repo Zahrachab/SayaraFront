@@ -44,9 +44,11 @@ export class StockUploadComponent implements OnInit {
         this.el.setAttribute('mode', 'buffer');
       }
       }, error => {
-      this.toastr.errorToastr('Importation du fichier ' + this.file + ' échouée ', 'Echec!!');
+      this.toastr.errorToastr(error, 'Echec!!');
       this.el.setAttribute('mode', 'buffer');
     });
+    } else {
+      this.toastr.errorToastr("Aucun fichier n'est séléctionné", 'Attention');
     }
   }
 

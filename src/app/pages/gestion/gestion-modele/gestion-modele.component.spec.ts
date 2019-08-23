@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import {MatTableModule, MatDialog} from '@angular/material';
-import {NO_ERRORS_SCHEMA} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA} from '@angular/core';
 import {GestionModeleComponent} from './gestion-modele.component';
 import {HttpClientModule} from '@angular/common/http';
 import {ModeleService} from '../../../services/modele.service';
@@ -16,11 +16,14 @@ import {MatPaginatorModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatMenuModule} from '@angular/material';
 import {ModeleDetail} from '../../../services/entites/modeleDetail.model';
+import {ToastrManager} from 'ng6-toastr-notifications';
+import {PusherService} from '../../../services/pusher.service';
+import {PusherServiceMock} from '../../../mocks/Pusher.Service.mock';
 
 
 
 
-describe('GestionModeleComponent', () => {
+fdescribe('GestionModeleComponent', () => {
   let component: GestionModeleComponent;
   let fixture: ComponentFixture<GestionModeleComponent>;
   beforeEach(async(() => {
@@ -32,10 +35,12 @@ describe('GestionModeleComponent', () => {
         {provide : ModeleService , useClass : ModeleServiceMock},
         {provide : OptionService , useClass : OptionServiceMock},
         {provide : CouleurService , useClass : CouleurServiceMock},
+        {provide : PusherService , useClass : PusherServiceMock},
         {provide : VersionService , useClass : VersionServiceMock},
-        {provide: MatDialog, useValue: {} }
+        {provide: MatDialog, useValue: {} },
+        {provide: ToastrManager, useValue: {}}
       ],
-      schemas: [NO_ERRORS_SCHEMA]
+      schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents().then(() => {
 

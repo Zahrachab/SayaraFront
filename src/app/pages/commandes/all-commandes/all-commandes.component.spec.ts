@@ -12,6 +12,8 @@ import {CommandeService} from '../../../services/commande.service';
 import {Commande} from '../../../services/entites/commande.model';
 import {RouterTestingModule} from '@angular/router/testing';
 import {ConfirmationDialogComponent} from '../../shared/confirmation-dialog/confirmation-dialog.component';
+import {ToastrManager, ToastrModule} from 'ng6-toastr-notifications';
+import {ToastrOptions} from 'ng6-toastr-notifications/lib/toastr.options';
 
 
 
@@ -28,10 +30,13 @@ fdescribe('AllCommandesComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
 
-      imports: [HttpClientModule, MatTableModule, MatPaginatorModule, BrowserAnimationsModule, MatMenuModule, RouterTestingModule, MatDialogModule],
+      imports: [HttpClientModule, MatTableModule,
+        MatPaginatorModule, BrowserAnimationsModule,
+        MatMenuModule, RouterTestingModule, MatDialogModule],
       declarations: [ AllCommandesComponent ],
       providers: [
-        {provide : CommandeService , useClass : CommandeServiceMock}
+        {provide : CommandeService , useClass : CommandeServiceMock},
+        {provide: ToastrManager, useValue: {}}
       ],
       schemas: [NO_ERRORS_SCHEMA]
     })
@@ -47,6 +52,7 @@ fdescribe('AllCommandesComponent', () => {
     dialog = TestBed.get(MatDialog);
     spyOpen = spyOn(dialog, 'open');
   });
+
 
   it('should create', () => {
     expect(component).toBeTruthy();

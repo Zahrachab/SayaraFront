@@ -22,6 +22,7 @@ import {By} from '@angular/platform-browser';
 import {GestionOptionsComponent} from './gestion-options.component';
 import {RouterModule} from '@angular/router';
 import {Option} from '../../../services/entites/option.model';
+import {ToastrManager} from 'ng6-toastr-notifications';
 
 describe('GestionOptionsComponent', () => {
   let component: GestionOptionsComponent;
@@ -48,7 +49,8 @@ describe('GestionOptionsComponent', () => {
         {provide: VersionService, useClass: VersionServiceMock},
         {provide: CouleurService, useClass: CouleurServiceMock},
         {provide: MatDialog, useValue: {}},
-        {provide: APP_BASE_HREF, useValue: '/'}
+        {provide: APP_BASE_HREF, useValue: '/'},
+        {provide: ToastrManager, useValue: {}}
       ],
       schemas: [NO_ERRORS_SCHEMA]
     })

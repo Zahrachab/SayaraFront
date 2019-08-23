@@ -24,7 +24,9 @@ export class StockService {
   private url = 'https://sayaradz.herokuapp.com';
   private _urlStockVehicules = this.url + '/vehicules/stock/';
   private _urlStockInfos = this.url + '/stock/infos';
-  private _urlPostStock = this.url + '/vehicules/stock/stock' ;
+  private fabriquant = JSON.parse(localStorage.getItem('utilisateur')).utilfab.Fabricant;
+  private _urlPostStock = this.url + '/vehicules/stock?fabricant='+this.fabriquant;
+
 
 
   constructor(private http: HttpClient, private injector: Injector) {

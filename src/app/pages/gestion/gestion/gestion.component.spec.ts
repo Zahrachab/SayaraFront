@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GestionComponent } from './gestion.component';
+import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 
 fdescribe('GestionComponent', () => {
   let component: GestionComponent;
@@ -8,7 +9,8 @@ fdescribe('GestionComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GestionComponent ]
+      declarations: [ GestionComponent ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
   }));
