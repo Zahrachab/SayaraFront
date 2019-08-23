@@ -62,6 +62,26 @@ export class SidenavComponent implements OnInit {
         }
         ];
     }
+    else if (this.router.url.split('/')[1] === 'tarifs') {
+      this.sousMenus = [
+        {
+          nom: 'Versions',
+          lien: '/tarifs/versions'
+        },
+        {
+          nom: 'Options',
+          lien: '/tarifs/options'
+        },
+        {
+          nom: 'Couleurs',
+          lien: '/tarifs/couleurs'
+        },
+        {
+          nom: 'Importer fichier',
+          lien: '/tarifs/upload'
+        }
+      ];
+    }
 
     this.user = JSON.parse(localStorage.getItem('utilisateur'));
   }

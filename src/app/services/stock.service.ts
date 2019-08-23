@@ -119,7 +119,7 @@ export class StockService {
   public uploadTarifCsv(csv: File) {
     const formData = new FormData();
 
-    formData.append('stockFile', csv);
+    formData.append('ligneTarifFile', csv);
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
     return this.http.post(this._urlPostTarif , formData, {headers: tokenHeader}).pipe(
       catchError(StockService.handleError)
