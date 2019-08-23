@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FileUploader} from 'ng2-file-upload';
+import {StockService} from '../../../services/stock.service';
+import {ToastrManager} from 'ng6-toastr-notifications';
 
 @Component({
   selector: 'app-upload-fichier-tarif',
@@ -8,32 +10,48 @@ import {FileUploader} from 'ng2-file-upload';
 })
 
 export class UploadFichierTarifComponent implements OnInit {
+//fichier csv
+  private fichier: File;
   // File uploader
-  public uploader: FileUploader = new FileUploader({
+  private uploader: FileUploader = new FileUploader({
     isHTML5: true
   });
 
   private el: HTMLElement;
   private file: string;
-  private files: Array<File> = [];
-
-  constructor() { }
+  constructor( public stockService: StockService, public toastr: ToastrManager) {
+  }
 
   ngOnInit() {
   }
 
-  // Uploader des images depuis l'ordinateur
+  // Uploader le csv
   processFile(csvInput: any) {
     this.el = document.getElementById('progress-bar');
-    for (let j = 0; j < this.uploader.queue.length; j++) {
-      const reader = new FileReader();
-      const fileItem = this.uploader.queue[j]._file;
-      reader.readAsDataURL(fileItem);
-      this.files.push(this.uploader.queue[j]._file);
-    }
+    const reader = new FileReader();
+    this.fichier = this.uploader.queue[0]._file;
+    reader.readAsDataURL(this.fichier);
+    this.file = this.uploader.queue[0]._file.name;
     this.uploader.clearQueue();
-    this.el.setAttribute('mode', 'indeterminate');
-
   }
+
+  uploadCsv() {
+    if(this.fichier!= null) {
+      this.el.setAttribute('mode', 'indeterminate');
+      this.stockService.uploadTarifCsv(this.fichier).subscribe( (res) => {
+        if (res) {
+          this.toastr.successToastr('Importation du fichier ' + this.file + ' réussite', 'Succès!!');
+          this.el.setAttribute('mode', 'buffer');
+        }
+      }, error => {
+        this.toastr.errorToastr(error, 'Echec!!');
+        this.el.setAttribute('mode', 'buffer');
+      });
+    } else {
+      this.toastr.errorToastr("Aucun fichier n'est séléctionné", 'Attention');
+    }
+  }
+
+
 
 }

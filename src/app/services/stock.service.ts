@@ -26,6 +26,7 @@ export class StockService {
   private _urlStockInfos = this.url + '/stock/infos';
   private fabriquant = JSON.parse(localStorage.getItem('utilisateur')).utilfab.Fabricant;
   private _urlPostStock = this.url + '/vehicules/stock?fabricant='+this.fabriquant;
+  private _urlPostTarif = this.url + '/vehicules/stock/lignetarif?fabricant='+this.fabriquant;
 
 
 
@@ -48,6 +49,30 @@ export class StockService {
         e = 'Existe déja';
       } else if (error.status === 404) {
         e = 'Version Inéxistante';
+      } else {
+        e = 'Une erreur s\'est produite, réessayer ulterieurement';
+      }
+    }
+    return throwError(e);
+  }
+
+
+  private static handleErrorUploadStock(error: HttpErrorResponse) {
+    let e: string;
+    if (error.error instanceof ErrorEvent) {
+      // A client-side or network error occurred. Handle it accordingly.
+      e = 'Une erreur s\'est produite, réessayer ulterieurement';
+      console.error('An error occurred:', error.error.message);
+    } else {
+      // The backend returned an unsuccessful response code.
+      // The response body may contain clues as to what went wrong,
+      console.error(`Backend returned code ${error.status}`);
+      if (error.status === 401) {
+        e = 'Vous n\'ètes pas autorisé a effectué cette action';
+      } else if (error.status === 500) {
+        e = 'Vérifiez que les codes options, couleur, version existent bien dans le système';
+      } else if (error.status === 409) {
+        e = 'il ya un ou plusieurs véhicules déjà existants dans le système';
       } else {
         e = 'Une erreur s\'est produite, réessayer ulterieurement';
       }
@@ -83,6 +108,20 @@ export class StockService {
     formData.append('stockFile', csv);
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
     return this.http.post(this._urlPostStock , formData, {headers: tokenHeader}).pipe(
+      catchError(StockService.handleErrorUploadStock)
+    );
+  }
+
+
+  /**uploader le fichier csv Tarif
+   *
+   */
+  public uploadTarifCsv(csv: File) {
+    const formData = new FormData();
+
+    formData.append('stockFile', csv);
+    const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
+    return this.http.post(this._urlPostTarif , formData, {headers: tokenHeader}).pipe(
       catchError(StockService.handleError)
     );
   }
