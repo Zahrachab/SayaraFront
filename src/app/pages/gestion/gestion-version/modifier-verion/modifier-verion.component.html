@@ -69,7 +69,7 @@
                   <div class="img-spinning-circle"></div>
                 </div>
               </div>
-              <button *ngIf="selectedFile[index]!= null" mat-icon-button type="button" (click)="supprimerImage(selectedFile[index], clr.CodeCouleur)">
+              <button *ngIf="selectedFile[index]!= null" mat-icon-button type="button" (click)="supprimerImage(index, clr.CodeCouleur)">
                 <mat-icon class="rouge" >delete</mat-icon>
               </button>
 
