@@ -15,7 +15,7 @@
            fxFlex.sm="50"
            fxFlex.xs="100" fxLayout="column">
         <span class="label">Code</span>
-        <input matNativeControl matInput required formControlName="code" class="input">
+        <input matNativeControl matInput required formControlName="code" disabled="true" class="input">
       </div>
       <div fxFlex="70"
            fxFlex.md="67"
@@ -52,7 +52,7 @@
           <div fxLayout="row" fxLayoutAlign="space-around center">
             <mat-checkbox color="primary" [value]="clr.CodeCouleur"   [checked]="clr.Checked" (change)="gererCouleurs($event, clr)">{{clr.NomCouleur}}</mat-checkbox>
 
-            <div fxLayout="row" fxLayoutAlign="start start">
+            <div fxLayout="row" fxLayoutAlign="center center">
               <label  class="image-upload-container btn btn-bwm">
                 <span class="ajouter">+</span>
                 <input  ng2FileSelect accept=".png" [uploader]="uploader" #imageInput id="imageVersion"
@@ -68,10 +68,10 @@
                 <div *ngIf="selectedFile[index].pending" class="img-loading-overlay">
                   <div class="img-spinning-circle"></div>
                 </div>
-                <button mat-icon-button type="button" (click)="supprimerImage(selectedFile[index], clr.CodeCouleur)">
-                  <mat-icon class="rouge" >delete</mat-icon>
-                </button>
               </div>
+              <button *ngIf="selectedFile[index]!= null" mat-icon-button type="button" (click)="supprimerImage(selectedFile[index], clr.CodeCouleur)">
+                <mat-icon class="rouge" >delete</mat-icon>
+              </button>
 
             </div>
           </div>
