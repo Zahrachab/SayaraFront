@@ -17,10 +17,12 @@ import {ModeleService} from '../../../../services/modele.service';
 import {ModeleServiceMock} from '../../../../mocks/Modele.Service.mock';
 import {CouleurServiceMock} from '../../../../mocks/Couleur.Service.mock';
 import {CouleurService} from '../../../../services/couleur.service';
+import {ToastrManager} from 'ng6-toastr-notifications';
+import {ToastManagerMock} from '../../../../mocks/ToastManagerMock';
 
 
 
-describe('AjouterModeleComponent', () => {
+fdescribe('AjouterModeleComponent', () => {
   let component: AjouterModeleComponent;
 
   let dialog: MatDialog;
@@ -43,7 +45,8 @@ describe('AjouterModeleComponent', () => {
         },
         {provide: ModeleService, useClass: ModeleServiceMock},
         {provide: CouleurService, useClass: CouleurServiceMock},
-        {provide: OptionService, useClass: OptionServiceMock}
+        {provide: OptionService, useClass: OptionServiceMock},
+        {provide: ToastrManager, useClass: ToastManagerMock}
       ],
       schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
     });

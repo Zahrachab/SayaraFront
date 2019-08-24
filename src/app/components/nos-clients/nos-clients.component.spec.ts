@@ -3,7 +3,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {NosClientsComponent} from './nos-clients.component';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
 
-describe('NosClientsComponent', () => {
+fdescribe('NosClientsComponent', () => {
   let component: NosClientsComponent;
   let fixture: ComponentFixture<NosClientsComponent>;
 

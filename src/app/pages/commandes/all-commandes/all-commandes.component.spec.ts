@@ -12,6 +12,8 @@ import {CommandeService} from '../../../services/commande.service';
 import {Commande} from '../../../services/entites/commande.model';
 import {RouterTestingModule} from '@angular/router/testing';
 import {ConfirmationDialogComponent} from '../../shared/confirmation-dialog/confirmation-dialog.component';
+import {ToastrManager} from 'ng6-toastr-notifications';
+import {ToastManagerMock} from '../../../mocks/ToastManagerMock';
 
 
 
@@ -31,7 +33,8 @@ fdescribe('AllCommandesComponent', () => {
       imports: [HttpClientModule, MatTableModule, MatPaginatorModule, BrowserAnimationsModule, MatMenuModule, RouterTestingModule, MatDialogModule],
       declarations: [ AllCommandesComponent ],
       providers: [
-        {provide : CommandeService , useClass : CommandeServiceMock}
+        {provide : CommandeService , useClass : CommandeServiceMock},
+        {provide : ToastrManager , useClass : ToastManagerMock}
       ],
       schemas: [NO_ERRORS_SCHEMA]
     })

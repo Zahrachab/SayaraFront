@@ -70,7 +70,7 @@ export class CommandeService {
    */
   getCommandesValides(): Observable<Commande[]> {
     // a corriger
-    return this.http.get<Commande[]>(this._urlCommandes).pipe(
+    return this.http.get<Commande[]>(this._urlCommandesValides).pipe(
       catchError(CommandeService.handleError)
     );
   }
