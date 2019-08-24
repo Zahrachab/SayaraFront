@@ -4,6 +4,7 @@ import {Observable, throwError} from 'rxjs';
 import {Vehicule} from './entites/Vehicule.model';
 import {StockVehicule} from './entites/stockVehicule.model';
 import {catchError} from 'rxjs/operators';
+import {InfosMarque} from './entites/InfosMarque.model';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,7 @@ export class StockService {
   private fabriquant = JSON.parse(localStorage.getItem('utilisateur')).utilfab.Fabricant;
   private _urlPostStock = this.url + '/vehicules/stock?fabricant='+this.fabriquant;
   private _urlPostTarif = this.url + '/vehicules/stock/lignetarif?fabricant='+this.fabriquant;
+  private _urlInfoMarque = this.url + '/infos/' + this.fabriquant;
 
 
 
@@ -139,5 +141,15 @@ export class StockService {
       {codeVersion: codeVersion , codeCouleur: codeCouleur, Options: options}, {headers: tokenHeader}).pipe(
         catchError(StockService.handleError)
     ) as Observable<Vehicule[]>;
+  }
+
+
+
+  public getInfosMarque() : Observable<InfosMarque>{
+    const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
+    return this.http.get<InfosMarque> (this._urlInfoMarque
+      ,{headers: tokenHeader}).pipe(
+      catchError(StockService.handleError)
+    );
   }
 }

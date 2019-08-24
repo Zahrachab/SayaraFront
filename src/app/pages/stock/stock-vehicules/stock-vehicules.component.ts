@@ -8,6 +8,7 @@ import {StockService} from '../../../services/stock.service';
 import {StockVehicule} from '../../../services/entites/stockVehicule.model';
 import {MatTableDataSource} from '@angular/material';
 import {ToastrManager} from 'ng6-toastr-notifications';
+import {InfosMarque} from '../../../services/entites/InfosMarque.model';
 
 
 @Component({
@@ -34,11 +35,14 @@ export class StockVehiculesComponent implements  OnInit{
   //modele choisi
   private modeleChoisi : ModeleDetail = null;
   //stock d'un modèle
-  columnsToDisplay = ['CodeVersion', 'NomVersion', 'Nombre', 'Modification'];
+  columnsToDisplay = ['CodeVersion', 'NomVersion', 'Nombre', 'TarifDeBase'];
+  columnsToDisplay1 = ['CodeVersion', 'NomVersion', 'Nombre', 'Tarif De Base'];
   displayedColumnsVehicules = ['NumChassis', 'Couleur', 'Montant' , 'détail'];
   stockDataSource: MatTableDataSource<StockVersion> = new MatTableDataSource(null);
   expandedElement1: any | null;
   expandedElement2: any | null;
+
+  private infos: InfosMarque;
   isExpansionDetailRow = (i: number, row: object) => (1 === 1) ;
   constructor(private versionService: VersionService,
               private modeleService: ModeleService,
@@ -48,6 +52,9 @@ export class StockVehiculesComponent implements  OnInit{
   }
 
   ngOnInit(): void {
+    this.stockService.getInfosMarque().subscribe( res => {
+      this.infos = res as InfosMarque;
+    });
     this.modeleService.getModeles().subscribe(res => {
       this.modeles = res as ModeleDetail[];
     }, error => {
@@ -71,12 +78,13 @@ export class StockVehiculesComponent implements  OnInit{
     if(this.modeleChoisi != null) {
         const rows = [];
         this.modeleChoisi.versions.forEach(version => {
-          var stockVersion: StockVersion = {Nombre: 0, NomVersion: null, CodeVersion: null, Update: "", Stock: []};
+          var stockVersion: StockVersion = {Nombre: 0, NomVersion: null, CodeVersion: null, Update: "", Stock: [], TarifDeBase: null};
           this.stockService.getStockVersion(version.CodeVersion).subscribe(res => {
             stockVersion.Stock = res as StockVehicule[];
             stockVersion.Nombre = 0;
             stockVersion.NomVersion = version.NomVersion;
             stockVersion.CodeVersion = version.CodeVersion;
+            stockVersion.TarifDeBase = stockVersion.Stock[0].tarifBase.Prix.toString() + " DzA" ;
             stockVersion.Stock.forEach(element => {
               stockVersion.Nombre += element.quantite;
               for (var i = 1; i < element.vehicules.length; i++) {

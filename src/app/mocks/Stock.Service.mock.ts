@@ -19,6 +19,11 @@ export class StockServiceMock {
         CodeHexa: '6578990',
         Montant: '12300000',
         quantite: 34,
+        tarifBase: {
+          DateDebut: "",
+          DateFin: "",
+          Prix: 12000
+        },
         options: [
           {
             NomOption: 'Air bag'
@@ -34,6 +39,11 @@ export class StockServiceMock {
         CodeHexa: '6578990',
         Montant: '12300000',
         quantite: 34,
+        tarifBase: {
+          DateDebut: "",
+          DateFin: "",
+          Prix: 12000
+        },
         options: [
           {
             NomOption: 'option1'

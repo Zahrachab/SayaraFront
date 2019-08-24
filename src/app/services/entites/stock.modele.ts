@@ -5,6 +5,7 @@ export interface StockVersion {
   CodeVersion: string;
   NomVersion: string
   Update: string;
+  TarifDeBase: string;
   Stock: StockVehicule [];
 }
 

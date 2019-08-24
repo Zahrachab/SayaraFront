@@ -8,4 +8,9 @@ export interface StockVehicule {
   options: {
     NomOption: string;
   } [];
+  tarifBase: {
+    DateDebut: string;
+    DateFin: string;
+    Prix: number;
+  }
 }
