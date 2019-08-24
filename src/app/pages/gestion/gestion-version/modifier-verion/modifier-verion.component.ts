@@ -320,7 +320,6 @@ export class ModifierVerionComponent implements OnInit {
 
   // Supprimer des images
   supprimerImage(selected: ImageSnippet, clr) {
-    console.log("lo");
     // si l'image appartient déjà à la version (elle est sur le cloud)
     if (! selected.new ) {
         this.imagesSupp.push(new ImageSupp(selected.id, clr)); // pour envoyer un delete lors de la validation
