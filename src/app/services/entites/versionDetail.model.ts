@@ -32,12 +32,6 @@ export interface VersionDetail {
       CodeCouleur: string;
     };
   }[];
-  images: {
-    idImage: string;
-    CodeImage: string;
-    Type: string;
-    CheminImage: string;
-  }[];
   lignetarif: {
     idLigneTarif: number,
     Type: number,

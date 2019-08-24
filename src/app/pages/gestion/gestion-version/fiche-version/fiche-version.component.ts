@@ -23,10 +23,9 @@ export class FicheVersionComponent implements OnInit {
 
   // Récuperation des images de la version sélectionnée
   loadFile() {
-    for (let j = 0; j < this.version.images.length; j++) {
+    for (let j = 0; j < this.version.couleurs.length; j++) {
       this.selectedFile[j] = new ImageSnippet(null , null);
-      this.selectedFile[j].src = String(this.version.images[j].CheminImage);
-      this.selectedFile[j].id = String(this.version.images[j].idImage);
+      this.selectedFile[j].src = String(this.version.couleurs[j].CheminImage);
     }
   }
 

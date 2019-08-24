@@ -53,7 +53,7 @@
             <mat-checkbox color="primary" [value]="clr.CodeCouleur"   [checked]="clr.Checked" (change)="gererCouleurs($event, clr)">{{clr.NomCouleur}}</mat-checkbox>
 
             <div fxLayout="row" fxLayoutAlign="center center">
-              <label  class="image-upload-container btn btn-bwm">
+              <label  class="image-upload-container btn btn-bwm" *ngIf="couleurs[index].Checked">
                 <span class="ajouter">+</span>
                 <input  ng2FileSelect accept=".png" [uploader]="uploader" #imageInput id="imageVersion"
                         type="file"
