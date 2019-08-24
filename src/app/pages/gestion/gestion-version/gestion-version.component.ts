@@ -139,7 +139,7 @@ export class GestionVersionComponent implements OnInit, AfterViewInit {
       });
       dialogRef.componentInstance.codeModele = this.codeModele;
       dialogRef.afterClosed().subscribe(() => {
-       // this.refreshData();
+       this.refreshData();
       });
     } else {
       this.toastr.infoToastr('Veuillez choisir un modèle');

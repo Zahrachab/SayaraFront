@@ -58,7 +58,7 @@ export class ModifierVerionComponent implements OnInit {
 
   // Les images sélectionnées
   selectedFile: Array<ImageSnippet> ;
-  imagesSupp: Array<any> = [];
+  imagesSupp: Array<ImageSupp> = [];
 
   // File uploader
   public uploader: FileUploader = new FileUploader({
@@ -171,6 +171,7 @@ export class ModifierVerionComponent implements OnInit {
     const img = this.uploader.queue[0]._file;
     reader.addEventListener('load', (event: any) => {
       this.selectedFile[index] = new ImageSnippet(event.target.result, img);
+      this.selectedFile[index].new= true;
     });
 
     reader.readAsDataURL(img);
@@ -288,7 +289,7 @@ export class ModifierVerionComponent implements OnInit {
 
         /* supprimer des photos  d'une version */
         for (let j = 0; j < this.imagesSupp.length; j++) {
-          //this.imageService.supprimerImage(this.imagesSupp[j], String(this.version.CodeVersion)).subscribe( res => {});
+         this.imageService.supprimerImage(this.imagesSupp[j].id, String(this.version.CodeVersion),this.imagesSupp[j].codeCouleur ).subscribe( res => {});
           this.selectedFile[j].pending = false;
         }
 
@@ -300,21 +301,28 @@ export class ModifierVerionComponent implements OnInit {
 
 
   // Supprimer des images
-  supprimerImage(selected: ImageSnippet) {
+  supprimerImage(selected: ImageSnippet, clr) {
+    console.log("lo");
     // si l'image appartient déjà à la version (elle est sur le cloud)
-    if (selected.new === false) {
-        this.imagesSupp.push(selected.id); // pour envoyer un delete lors de la validation
+    if (! selected.new ) {
+        this.imagesSupp.push(new ImageSupp(selected.id, clr)); // pour envoyer un delete lors de la validation
     }
     this.selectedFile.splice(this.selectedFile.indexOf(selected), 1);
   }
 }
 
 
+class ImageSupp {
+
+  constructor(public id: string, public codeCouleur: string) {
+  }
+}
+
 // Zahra please
 class ImageSnippet {
   pending = false;
   status = 'init';
-  new = true;
+  new = false;
   id;
   constructor(public src: string, public file: File) {
   }

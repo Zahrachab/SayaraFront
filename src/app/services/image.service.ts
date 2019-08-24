@@ -66,7 +66,7 @@ export class ImageService {
    */
   public supprimerImage(id: string, codeVersion: string, codeCouleur: string) {
       const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
-      return this.http.delete(this._url + '/images/' + id,
+      return this.http.delete(this._url + '/images/versions/'+ codeVersion + '?couleur='+ codeCouleur,
         {headers: tokenHeader}).pipe(
           catchError(ImageService.handleError)
       );

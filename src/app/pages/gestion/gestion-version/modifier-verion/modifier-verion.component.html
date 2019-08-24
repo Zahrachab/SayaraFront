@@ -68,7 +68,7 @@
                 <div *ngIf="selectedFile[index].pending" class="img-loading-overlay">
                   <div class="img-spinning-circle"></div>
                 </div>
-                <button mat-icon-button  (click)="supprimerImage(selectedFile[index])">
+                <button mat-icon-button  (click)="supprimerImage(selectedFile[index], clr.CodeCouleur)">
                   <mat-icon class="rouge" >delete</mat-icon>
                 </button>
               </div>
