@@ -134,6 +134,7 @@ export class AllCommandesComponent implements OnInit, AfterViewInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.commandeService.validerCommande(commande.idCommande).subscribe(() => {
+          this.loading = true;
           this.refreshData();
         }, error => {
           this.toastr.errorToastr(error);
@@ -154,6 +155,7 @@ export class AllCommandesComponent implements OnInit, AfterViewInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.commandeService.rejeterCommande(commande.idCommande).subscribe(() => {
+          this.loading = true;
           this.refreshData();
         }, error => {
           this.toastr.errorToastr(error);

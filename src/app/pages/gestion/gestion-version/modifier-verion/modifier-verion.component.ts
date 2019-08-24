@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {VersionDetail} from '../../../../services/entites/versionDetail.model';
 import {MatDialog, MatDialogRef} from '@angular/material';
 import {Option} from '../../../../services/entites/option.model';
@@ -117,7 +117,10 @@ export class ModifierVerionComponent implements OnInit {
    this.getCouleurs();
   }
 
-  // Obtention des options
+  /**
+   * Récupérer la liste des options compatibles avec la version  +
+   * les autres options associées au modèle de la version et non compatible avec cette dernière
+   */
   getOptions() {
     /*subscribe pour régler le problème de synchronisation*/
     this.optionService.getOptions(this.version.CodeModele).subscribe(opts => {
@@ -136,7 +139,10 @@ export class ModifierVerionComponent implements OnInit {
     });
   }
 
-  // Obtention des couleurs
+  /**
+   * Récupérer la liste des couleurs compatibles avec la version avec leurs photos si elles exitent +
+   * les autres couleurs associées au modèle de la version et non compatible avec cette dernière
+   */
   getCouleurs() {
     /*subscribe pour régler le problème de synchronisation*/
     this.couleurService.getCouleurs(this.version.CodeModele).subscribe(clrs => {
@@ -165,7 +171,9 @@ export class ModifierVerionComponent implements OnInit {
 
 
 
-  // Uploader des images depuis l'ordinateur
+  /**
+   * Uploader photo
+   */
   processFile(imageInput: any, index: number) {
     const reader = new FileReader();
     const img = this.uploader.queue[0]._file;
@@ -179,7 +187,9 @@ export class ModifierVerionComponent implements OnInit {
 
   }
 
-  // Gestion des options de versions
+  /**
+   * Gestion des options d'une version (séléctionner ou déelctionner une couleur)
+   */
   gererOptions(event, option) {
     option.Checked = !option.Checked;
     if (option.Checked === true) {
@@ -199,7 +209,9 @@ export class ModifierVerionComponent implements OnInit {
   }
 
 
-  // Gestion des couleurs d'une version
+  /**
+   * Gestion des couleurs d'une version (séléctionner ou déelctionner une couleur)
+   */
   gererCouleurs(event, clr) {
     clr.Checked = !clr.Checked;
     if (clr.Checked === true) {
@@ -218,7 +230,9 @@ export class ModifierVerionComponent implements OnInit {
 
   }
 
-  // Modification de la version
+  /**
+   * Modification de la version (liste des options compatibles, liste des couleurs ainsi que les photos associées
+   */
   onSubmit() {
     const dialogRef: MatDialogRef<ConfirmationDialogComponent> = this.dialogValidation.open(ConfirmationDialogComponent, {
         width: '350px',
@@ -282,6 +296,8 @@ export class ModifierVerionComponent implements OnInit {
             console.log(j);
             this.imageService.uploadImage(this.selectedFile[j].file, String(this.version.CodeVersion), this.couleurs[j].CodeCouleur).subscribe(res => {
               this.selectedFile[j].pending = false;
+            },(error) => {
+              this.toastr.errorToastr(error);
             });
           }
         }
@@ -289,8 +305,10 @@ export class ModifierVerionComponent implements OnInit {
 
         /* supprimer des photos  d'une version */
         for (let j = 0; j < this.imagesSupp.length; j++) {
-         this.imageService.supprimerImage(this.imagesSupp[j].id, String(this.version.CodeVersion),this.imagesSupp[j].codeCouleur ).subscribe( res => {});
-          this.selectedFile[j].pending = false;
+         this.imageService.supprimerImage(this.imagesSupp[j].id, String(this.version.CodeVersion),this.imagesSupp[j].codeCouleur ).subscribe( res => {
+           },(error) => {
+           this.toastr.errorToastr(error);
+         });
         }
 
         this.dialogRef.close();
@@ -311,14 +329,14 @@ export class ModifierVerionComponent implements OnInit {
   }
 }
 
-
+//Class image Supp
 class ImageSupp {
 
   constructor(public id: string, public codeCouleur: string) {
   }
 }
 
-// Zahra please
+// Classe Image
 class ImageSnippet {
   pending = false;
   status = 'init';

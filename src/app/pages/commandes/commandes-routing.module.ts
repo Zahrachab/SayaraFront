@@ -13,7 +13,7 @@ const routes: Routes = [
         component: AllCommandesComponent,
       },
       {
-        path: 'prepayees',
+        path: 'valides',
         component: AllCommandesComponent,
       },
       {

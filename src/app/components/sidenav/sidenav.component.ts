@@ -37,7 +37,7 @@ export class SidenavComponent implements OnInit {
           lien: '/commandes/tous'
         },
         {
-          nom: 'Acceptées',
+          nom: 'validées',
           lien: '/commandes/valides'
         },
         {

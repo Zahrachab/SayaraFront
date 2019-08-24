@@ -217,7 +217,7 @@ export class GestionVersionComponent implements OnInit, AfterViewInit {
           tmpData.push(res as VersionDetail);
           this.versionDataSource.data = tmpData;
         });
-      }, 1000);
+      }, 3000);
     });
 
   }

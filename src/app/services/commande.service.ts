@@ -66,7 +66,7 @@ export class CommandeService {
   }
 
   /**
-   * Récupérer toutes les commandes prépayées de la marque ordonnées par date
+   * Récupérer toutes les commandes validées de la marque ordonnées par date
    */
   getCommandesValides(): Observable<Commande[]> {
     // a corriger
