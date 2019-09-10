@@ -22,6 +22,8 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {VersionService} from '../../../services/version.service';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
 import {By} from '@angular/platform-browser';
+import {ToastrManager} from 'ng6-toastr-notifications';
+import {ToastManagerMock} from '../../../mocks/ToastManagerMock';
 
 describe('GestionVersionComponent', () => {
   let component: GestionVersionComponent;
@@ -36,6 +38,7 @@ describe('GestionVersionComponent', () => {
         {provide : OptionService , useClass : OptionServiceMock},
         {provide : CouleurService , useClass : CouleurServiceMock},
         {provide : VersionService , useClass : VersionServiceMock},
+        {provide: ToastrManager, useClass: ToastManagerMock},
         {provide: MatDialog, useValue: {} }
       ],
       schemas: [NO_ERRORS_SCHEMA]

@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ModifierVerionComponent } from './modifier-verion.component';
 
-describe('ModifierVerionComponent', () => {
+fdescribe('ModifierVerionComponent', () => {
   let component: ModifierVerionComponent;
   let fixture: ComponentFixture<ModifierVerionComponent>;
 

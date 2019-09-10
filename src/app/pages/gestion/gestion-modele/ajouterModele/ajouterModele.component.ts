@@ -82,7 +82,7 @@ export class AjouterModeleComponent implements OnInit {
     this.chargerCouleurs();
     this.chargerOptions();
     // Liaison avec l'Html
-    this.formulaire.valueChanges.subscribe();
+    this.formulaire.valueChanges.subscribe( res => { });
     // récupérer les couleurs des autres modèles déjà existants dans la marque
     const couleursMap = new Map();
     let modeles;
@@ -125,7 +125,7 @@ export class AjouterModeleComponent implements OnInit {
 
   chargerCouleurs() {
     const couleursMap: Map<string, object> = new Map();
-    this.formulaire.valueChanges.subscribe();
+    this.formulaire.valueChanges.subscribe( res => { });
     /* récupérer les couleurs des autres modèles déjà existants dans la marque */
     let modeles;
     this.modeleService.getModeles().subscribe(res => {
@@ -146,7 +146,7 @@ export class AjouterModeleComponent implements OnInit {
 
   chargerOptions() {
     const optionsMap: Map<string, object> = new Map();
-    this.formulaire.valueChanges.subscribe();
+    this.formulaire.valueChanges.subscribe( res => { });
     /* récupérer les options des autres modèles déjà existants dans la marque */
     let modeles;
     this.modeleService.getModeles().subscribe(res => {

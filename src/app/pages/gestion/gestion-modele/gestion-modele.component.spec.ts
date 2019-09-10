@@ -16,11 +16,15 @@ import {MatPaginatorModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatMenuModule} from '@angular/material';
 import {ModeleDetail} from '../../../services/entites/modeleDetail.model';
+import {ToastrManager} from 'ng6-toastr-notifications';
+import {ToastManagerMock} from '../../../mocks/ToastManagerMock';
+import {PusherService} from '../../../services/pusher.service';
+import {PusherServiceMock} from '../../../mocks/Pusher.Service.mock';
 
 
 
 
-describe('GestionModeleComponent', () => {
+fdescribe('GestionModeleComponent', () => {
   let component: GestionModeleComponent;
   let fixture: ComponentFixture<GestionModeleComponent>;
   beforeEach(async(() => {
@@ -33,6 +37,8 @@ describe('GestionModeleComponent', () => {
         {provide : OptionService , useClass : OptionServiceMock},
         {provide : CouleurService , useClass : CouleurServiceMock},
         {provide : VersionService , useClass : VersionServiceMock},
+        {provide: PusherService, useClass: PusherServiceMock},
+        {provide: ToastrManager, useClass: ToastManagerMock},
         {provide: MatDialog, useValue: {} }
       ],
       schemas: [NO_ERRORS_SCHEMA]
@@ -47,6 +53,8 @@ describe('GestionModeleComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
+
+
 
   it('should create', () => {
     expect(component).toBeTruthy();
