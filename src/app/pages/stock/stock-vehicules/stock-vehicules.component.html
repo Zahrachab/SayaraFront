@@ -1,25 +1,25 @@
 <div class="stock">
-  <h2>Consultation du stock</h2>
+  <h2>Informations sur le stock</h2>
   <div class="trait vert"></div>
-  <div fxLayout="row" fxLayoutGap="30px" class="container" fxLayoutAlign="center center">
+  <div fxLayout="row" fxLayoutGap="30px" class="container" fxLayoutAlign="center center" *ngIf="infos != null">
     <mat-card class="example-card vert" >
       <mat-card-header >
         <mat-card-title class="vert">STOCK</mat-card-title>
-        <mat-card-subtitle>{{infos.NbVehiculesDisponibles}} véhicules en stock</mat-card-subtitle>
+        <mat-card-subtitle *ngIf="infos != null">{{infos.NbVehiculesDisponibles}} véhicules en stock</mat-card-subtitle>
       </mat-card-header>
     </mat-card>
 
     <mat-card class="example-card bleu">
       <mat-card-header>
-        <mat-card-title class="bleu">Historique du stock</mat-card-title>
-        <mat-card-subtitle>Dernière update a été effectuée le : {{infos.DateUploadStock.toString().substring(0,10)}}</mat-card-subtitle>
+        <mat-card-title class="bleu">HISTORIQUE DU STOCK</mat-card-title>
+        <mat-card-subtitle *ngIf="infos!= null">Dernière mise a jour été effectuée le : {{infos.DateUploadStock.toString().substring(0,10)}}</mat-card-subtitle>
       </mat-card-header>
     </mat-card>
 
     <mat-card class="example-card violet" >
       <mat-card-header >
-        <mat-card-title class="violet">Historique des tarifs</mat-card-title>
-        <mat-card-subtitle>Dernière update a été effectuée le : {{infos.DateUploadTarif.toString().substring(0,10)}}</mat-card-subtitle>
+        <mat-card-title class="violet">HISTORIQUE DES TARIFS</mat-card-title>
+        <mat-card-subtitle *ngIf="infos != null">Dernière update a été effectuée le : {{infos.DateUploadTarif.toString().substring(0,10)}}</mat-card-subtitle>
       </mat-card-header>
     </mat-card>
 
@@ -28,7 +28,7 @@
 
   <div fxLayout="row">
     <div fxFlex="70">
-      <h2>Stock de véhicules </h2>
+      <h2>Stock des véhicules </h2>
       <div class="trait bleu"></div>
     </div>
   </div>

@@ -48,7 +48,7 @@ div.stock {
       background-color: transparent;
       width: 85%;
       border-radius: initial;
-      padding: 15px 5px;
+      padding: 25px 5px;
       height: 60px;
       margin-top: 20px;
       font-size: 13px;
@@ -64,6 +64,14 @@ div.stock {
           font-weight: bold;
           font-size: 15px;
           margin-left: 10px;
+          margin-bottom: 20px;
+        }
+
+        mat-card-subtitle{
+          font-family: 'Roboto-Bold', 'Sherif';
+          font-size: 12px;
+          margin-left: 10px;
+          line-height: 20px;
           margin-bottom: 20px;
         }
 
@@ -170,8 +178,9 @@ div.stock {
       }
 
       .example-element-row td{
-        padding: 25px 0px 25px 40px;
         border-bottom-width: 0;
+        padding-top: 20px;
+        padding-bottom: 20px;
       }
 
       .example-element-detail {
@@ -278,7 +287,6 @@ div.stock {
 
       mat-header-row {
         background-color: #f5f8f9;
-        justify-content: center;
 
         mat-header-cell {
           color: #1abc9c;
