@@ -71,7 +71,7 @@ fdescribe('ImageService', () => {
       expect (res).toEqual("");
     });
     // We set the expectations for the HttpClient mock
-    const req = httpMock.expectOne(service.url + '/images/' + idImage);
+    const req = httpMock.expectOne(service.url + '/images/versions/'+ codeVersion + '?couleur='+ codeCouleur);
     req.flush("");
     expect(req.request.method).toEqual('DELETE');
     expect(req.request.body).toBe(null);

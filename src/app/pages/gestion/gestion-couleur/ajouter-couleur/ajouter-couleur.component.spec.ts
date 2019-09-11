@@ -18,7 +18,7 @@ import {ToastrManager} from 'ng6-toastr-notifications';
 
 
 
-fdescribe('AjouterCouleurComponent', () => {
+describe('AjouterCouleurComponent', () => {
   let component: AjouterCouleurComponent;
 
   let dialog: MatDialog;

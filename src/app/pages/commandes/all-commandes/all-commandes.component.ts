@@ -5,6 +5,8 @@ import {Router} from '@angular/router';
 import {CommandeService} from '../../../services/commande.service';
 import {ConfirmationDialogComponent} from '../../shared/confirmation-dialog/confirmation-dialog.component';
 import {ToastrManager} from 'ng6-toastr-notifications';
+import {PusherService} from '../../../services/pusher.service';
+import {ModeleDetail} from '../../../services/entites/modeleDetail.model';
 
 
 @Component({
@@ -33,8 +35,14 @@ export class AllCommandesComponent implements OnInit, AfterViewInit {
               private commandeService: CommandeService,
               private dialogValidation: MatDialog,
               private toastr: ToastrManager,
+              private pushService: PusherService,
               private router: Router) {
     this.redefineFilter();
+    this.pushService.commandeChannel.bind('newCommand', data => {
+      setTimeout(() => {
+       this.refreshData();
+      }, 2000);
+    });
   }
 
   ngOnInit() {
