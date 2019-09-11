@@ -117,8 +117,12 @@ nav.image {
   direction: ltr;
   line-height: 1.34;
   margin: 0 0 0 5%;
+
 }
 
+a.mat-menu-item {
+  height: 30px;
+}
 ::ng-deep a.mat-menu-item {
   -webkit-user-select: none;
   -moz-user-select: none;

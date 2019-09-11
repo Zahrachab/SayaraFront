@@ -1,0 +1,112 @@
+#globalWrapper  {
+  font-family: Roboto, serif;
+  font-weight: 500;
+  line-height: 32px;
+  color: #34495e;
+  background-color: #f8f8f8;
+}
+
+.informations {
+  padding-left: 6%;
+  padding-top: 2%;
+  background-color: white;
+  margin-top: 5%;
+  margin-bottom: 10%;
+  height: 80%;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.16);
+  border-radius: 18px;
+  border: 1px solid #ecf0f1;
+}
+
+#personalInformation {
+    margin-left: 5.5%;
+  margin-right: 3%;
+}
+
+
+textarea {
+  width: 80% ;
+  background-color: #ecf0f1;
+}
+
+input {
+  width: 80% ;
+  background-color: #ecf0f1;
+  border: 1px solid #bdc3c7;
+  border-radius: 10px;
+  height: 37px;
+}
+
+#companyInformation {
+  margin-right: 5.5%;
+  margin-left: 3%;
+}
+
+.text {
+  color: #34495e;
+  font-family: Lato, serif;
+  font-weight: 200;
+  line-height: 30px;
+}
+
+.header {
+  padding: 60px;
+  text-align: left;
+  background-color: #34495e;
+  height: 100px;
+
+}
+
+img {
+  border-radius: 50%;
+  width: 15%;
+}
+
+.titre {
+  font-weight: 400;
+  letter-spacing: 1.03px;
+  line-height: 70px;
+  font-size: 25px;
+  color: #000000;
+}
+
+.trait {
+  width: 25%;
+  border-top: 3px solid #3498d8;
+  margin-bottom: 25px;
+  margin-left: 2px
+}
+
+.point {
+  color: #34495e;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 52px;
+}
+
+
+.btn-ajout {
+  margin-top: 30px;
+  width: 80%;
+  height: 44px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  border-radius: 18px;
+  background-image: linear-gradient(101deg, #34749f 0%, #22c6a6 100%);
+  color: #ffffff;
+  position: center;
+  margin-bottom: 5px;
+}
+
+
+.editPassword {
+  margin-top: 20px;
+}
+
+
+p{
+  color: #ffffff;
+  font-family: Roboto;
+  font-size: 30px;
+  font-weight: 500;
+}

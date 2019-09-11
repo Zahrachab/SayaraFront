@@ -1,0 +1,67 @@
+<app-navbar></app-navbar>
+<div class="header">
+  <p>
+  <img src=" assets/images/Pics/user.png" alt="Avatar" align="left">
+    <br/>
+  Bouayache Mohamed Islem
+  </p>
+</div>
+<div id="globalWrapper">
+  <div fxLayout="row" style="width: 100%">
+  <div fxFlex="41.5" id="personalInformation" >
+    <div class="titre">
+      Informations Personnelles
+    </div>
+    <div class="trait"></div>
+    <div class="informations">
+      <span class="point">Existe depuis le   </span>
+      <span class="text">20/12/2019</span>  <br/>
+      <span class="point">Adresse : </span><br/>
+    <textarea rows = "5" name = "description"> cité test, ville test, wilaya test.
+    </textarea>
+    <br/>
+    Email : <br/>
+    <input type="text" value="ft_test@esi.dz"/> <br/>
+    Télephone : <br/>
+    <input type="text" value="056478651"/> <br/>
+    Modifier Mot de passe : <br/>
+    <input type="password" placeholder="Ancien Mot de passe"/> <br/>
+
+    <input class="editPassword" type="text" placeholder="Nouveau Mot de passe"/> <br/>
+
+    <input class="editPassword" type="text" placeholder="Confirmer mot de passe"/> <br/>
+
+    <button type="submit" class="btn-ajout">Modifier</button>
+
+    </div>
+  </div>
+
+
+  <div fxFlex="41.5" id="companyInformation">
+    <div class="titre">
+      Informations Dacia
+    </div>
+    <div class="trait"></div>
+    <div class="informations">
+      <span class="point">Existe depuis </span>
+      <span class="text">12/23/4323</span>  <br/>
+      <span class="point">Description : </span> <br/>
+      <textarea rows = "5" name = "description"> Déscription de la marque
+      </textarea>
+      <br/>
+      Email : <br/>
+      <input type="text" value="marque@marque.com"/> <br/>
+      Télephone : <br/>
+      <input type="text" value="0647895216"/> <br/>
+
+      <button type="submit" class="btn-ajout">Modifier</button>
+
+    </div>
+
+  </div>
+</div>
+  <div>
+    <app-footer></app-footer>
+  </div>
+
+</div>
