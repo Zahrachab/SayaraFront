@@ -49,6 +49,7 @@ export class AllCommandesComponent implements OnInit, AfterViewInit {
 
     if (this.router.url.split('/')[2] === 'valides') {
       this.commandeService.getCommandesValides().subscribe(res => {
+        this.loading = false;
         this.dataSource.data = res as Commande[];
         this.loading = false;
       }, error => {
@@ -57,6 +58,7 @@ export class AllCommandesComponent implements OnInit, AfterViewInit {
       });
     } else if (this.router.url.split('/')[2] === 'annulees') {
       this.commandeService.getCommandesAnnulles().subscribe(res => {
+        this.loading = false;
         this.dataSource.data = res as Commande[];
         this.loading = false;
       }, error => {
@@ -65,6 +67,7 @@ export class AllCommandesComponent implements OnInit, AfterViewInit {
       });
     } else if (this.router.url.split('/')[2] === 'nouvelles') {
       this.commandeService.getCommandesNouvelles().subscribe(res => {
+        this.loading = false;
         this.dataSource.data = res as Commande[];
         this.loading = false;
       }, error => {
@@ -74,6 +77,7 @@ export class AllCommandesComponent implements OnInit, AfterViewInit {
     }
      else {
           this.commandeService.getAllCommandes().subscribe(res => {
+            this.loading = false;
             this.dataSource.data = res as Commande[];
             this.loading = false;
           }, error => {

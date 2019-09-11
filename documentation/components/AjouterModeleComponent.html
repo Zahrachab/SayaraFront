@@ -1,0 +1,1953 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>prj-sayara documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">prj-sayara documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>AjouterModeleComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/pages/gestion/gestion-modele/ajouterModele/ajouterModele.component.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-modal</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>ajouterModele.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./ajouterModele.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#couleursArray">couleursArray</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#couleursChecked">couleursChecked</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#couleursSupp">couleursSupp</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#dialogRef">dialogRef</a>
+                            </li>
+                            <li>
+                                <a href="#formulaire">formulaire</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#optionsArray">optionsArray</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#optionsChecked">optionsChecked</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#optionsSupp">optionsSupp</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#ajouterCouleur">ajouterCouleur</a>
+                            </li>
+                            <li>
+                                <a href="#ajouterModele">ajouterModele</a>
+                            </li>
+                            <li>
+                                <a href="#ajouterOption">ajouterOption</a>
+                            </li>
+                            <li>
+                                <a href="#changerCouleur">changerCouleur</a>
+                            </li>
+                            <li>
+                                <a href="#chargerCouleurs">chargerCouleurs</a>
+                            </li>
+                            <li>
+                                <a href="#chargerOptions">chargerOptions</a>
+                            </li>
+                            <li>
+                                <a href="#gererCouleurs">gererCouleurs</a>
+                            </li>
+                            <li>
+                                <a href="#gererOptions">gererOptions</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#supprimerCouleur">supprimerCouleur</a>
+                            </li>
+                            <li>
+                                <a href="#supprimerOption">supprimerOption</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#optionsFormulaire">optionsFormulaire</a>
+                                </li>
+                                <li>
+                                    <a href="#couleursFormulaire">couleursFormulaire</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(constructeurFormulaire: <a href="https://angular.io/api/forms/FormBuilder" target="_blank">FormBuilder</a>, modeleService: <a href="../injectables/ModeleService.html">ModeleService</a>, optionService: <a href="../injectables/OptionService.html">OptionService</a>, couleurService: <a href="../injectables/CouleurService.html">CouleurService</a>, toastr: ToastrManager, dialogRef: <a href="../interfaces/Modele.html">MatDialogRef<AjouterModeleComponent></a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/pages/gestion/gestion-modele/ajouterModele/ajouterModele.component.ts:31</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Constructeur de la classe, déclare seulement les attributs privés de la classe</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>constructeurFormulaire</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/forms/FormBuilder" target="_blank" >FormBuilder</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>De type FormBuilder, Permet de construire des formulaire et de faire le binding avec html</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>modeleService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ModeleService.html" target="_self" >ModeleService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>Pour envoyer la requete d&#39;insertion du modele</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>optionService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/OptionService.html" target="_self" >OptionService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>Pour envoyer la requete d&#39;insertion des options compatibles avec le modele</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>couleurService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/CouleurService.html" target="_self" >CouleurService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>Pour avoir et inserer les couleurs compatibles avec le modele</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>toastr</td>
+                                                  
+                                                        <td>
+                                                                    <code>ToastrManager</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>dialogRef</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../interfaces/Modele.html" target="_self" >MatDialogRef&lt;AjouterModeleComponent&gt;</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>Réference sur la boite de dialogue</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ajouterCouleur"></a>
+                    <span class="name">
+                        <b>
+                            ajouterCouleur
+                        </b>
+                        <a href="#ajouterCouleur"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ajouterCouleur()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="171"
+                            class="link-to-prism">src/app/pages/gestion/gestion-modele/ajouterModele/ajouterModele.component.ts:171</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Ajouter une couleur pour le modele</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ajouterModele"></a>
+                    <span class="name">
+                        <b>
+                            ajouterModele
+                        </b>
+                        <a href="#ajouterModele"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ajouterModele()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="221"
+                            class="link-to-prism">src/app/pages/gestion/gestion-modele/ajouterModele/ajouterModele.component.ts:221</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>L&#39;ajout du modele, ajoute le modele, puis les options et les couleurs puis les associations entre eux</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ajouterOption"></a>
+                    <span class="name">
+                        <b>
+                            ajouterOption
+                        </b>
+                        <a href="#ajouterOption"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ajouterOption()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="109"
+                            class="link-to-prism">src/app/pages/gestion/gestion-modele/ajouterModele/ajouterModele.component.ts:109</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Ajouter une option compatible avec le modele</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="changerCouleur"></a>
+                    <span class="name">
+                        <b>
+                            changerCouleur
+                        </b>
+                        <a href="#changerCouleur"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>changerCouleur(i, color)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="181"
+                            class="link-to-prism">src/app/pages/gestion/gestion-modele/ajouterModele/ajouterModele.component.ts:181</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>i</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>color</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chargerCouleurs"></a>
+                    <span class="name">
+                        <b>
+                            chargerCouleurs
+                        </b>
+                        <a href="#chargerCouleurs"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>chargerCouleurs()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="126"
+                            class="link-to-prism">src/app/pages/gestion/gestion-modele/ajouterModele/ajouterModele.component.ts:126</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chargerOptions"></a>
+                    <span class="name">
+                        <b>
+                            chargerOptions
+                        </b>
+                        <a href="#chargerOptions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>chargerOptions()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="147"
+                            class="link-to-prism">src/app/pages/gestion/gestion-modele/ajouterModele/ajouterModele.component.ts:147</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="gererCouleurs"></a>
+                    <span class="name">
+                        <b>
+                            gererCouleurs
+                        </b>
+                        <a href="#gererCouleurs"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>gererCouleurs(event, couleur)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="199"
+                            class="link-to-prism">src/app/pages/gestion/gestion-modele/ajouterModele/ajouterModele.component.ts:199</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>event</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>couleur</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>, couleur sélectionnée ou déselectionnée</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="gererOptions"></a>
+                    <span class="name">
+                        <b>
+                            gererOptions
+                        </b>
+                        <a href="#gererOptions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>gererOptions(event, opt)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="208"
+                            class="link-to-prism">src/app/pages/gestion/gestion-modele/ajouterModele/ajouterModele.component.ts:208</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>event</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>opt</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="73"
+                            class="link-to-prism">src/app/pages/gestion/gestion-modele/ajouterModele/ajouterModele.component.ts:73</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Executé a l&#39;initialisation du composant, Construit le formulaire et fait la lsiasion avec le html</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="supprimerCouleur"></a>
+                    <span class="name">
+                        <b>
+                            supprimerCouleur
+                        </b>
+                        <a href="#supprimerCouleur"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>supprimerCouleur(i)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="190"
+                            class="link-to-prism">src/app/pages/gestion/gestion-modele/ajouterModele/ajouterModele.component.ts:190</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Supprimer une couleur du formulaire</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>i</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>L&#39;indice de la couleur a supprimer</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="supprimerOption"></a>
+                    <span class="name">
+                        <b>
+                            supprimerOption
+                        </b>
+                        <a href="#supprimerOption"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>supprimerOption(i)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="122"
+                            class="link-to-prism">src/app/pages/gestion/gestion-modele/ajouterModele/ajouterModele.component.ts:122</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Supprimer une option du formulaire</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>i</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>L&#39;indice de l&#39;iption a supprimer</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="couleursArray"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            couleursArray</b>
+                            <a href="#couleursArray"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../interfaces/Couleur.html" target="_self" >Array&lt;Couleur&gt;</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/pages/gestion/gestion-modele/ajouterModele/ajouterModele.component.ts:26</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="couleursChecked"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            couleursChecked</b>
+                            <a href="#couleursChecked"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../interfaces/Couleur.html" target="_self" >Array&lt;Couleur&gt;</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/pages/gestion/gestion-modele/ajouterModele/ajouterModele.component.ts:27</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="couleursSupp"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            couleursSupp</b>
+                            <a href="#couleursSupp"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../interfaces/Couleur.html" target="_self" >Array&lt;Couleur&gt;</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/pages/gestion/gestion-modele/ajouterModele/ajouterModele.component.ts:28</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="dialogRef"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            dialogRef</b>
+                            <a href="#dialogRef"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../interfaces/Modele.html" target="_self" >MatDialogRef&lt;AjouterModeleComponent&gt;</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/app/pages/gestion/gestion-modele/ajouterModele/ajouterModele.component.ts:52</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description">Réference sur la boite de dialogue</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="formulaire"></a>
+                        <span class="name">
+                            <b>
+                            formulaire</b>
+                            <a href="#formulaire"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://angular.io/api/forms/FormGroup" target="_blank" >FormGroup</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/pages/gestion/gestion-modele/ajouterModele/ajouterModele.component.ts:25</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="optionsArray"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            optionsArray</b>
+                            <a href="#optionsArray"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../interfaces/Option.html" target="_self" >Array&lt;Option&gt;</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/pages/gestion/gestion-modele/ajouterModele/ajouterModele.component.ts:29</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="optionsChecked"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            optionsChecked</b>
+                            <a href="#optionsChecked"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../interfaces/Option.html" target="_self" >Array&lt;Option&gt;</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/pages/gestion/gestion-modele/ajouterModele/ajouterModele.component.ts:30</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="optionsSupp"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            optionsSupp</b>
+                            <a href="#optionsSupp"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../interfaces/Option.html" target="_self" >Array&lt;Option&gt;</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/pages/gestion/gestion-modele/ajouterModele/ajouterModele.component.ts:31</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="optionsFormulaire"></a>
+                        <span class="name"><b>optionsFormulaire</b><a href="#optionsFormulaire"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>optionsFormulaire()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/app/pages/gestion/gestion-modele/ajouterModele/ajouterModele.component.ts:59</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Les options ajoutées dans le formulaire html</p>
+</div>
+
+                        </td>
+                    </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="couleursFormulaire"></a>
+                        <span class="name"><b>couleursFormulaire</b><a href="#couleursFormulaire"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>couleursFormulaire()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/app/pages/gestion/gestion-modele/ajouterModele/ajouterModele.component.ts:66</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Les couleurs ajoutées dans le formulaire html</p>
+</div>
+
+                        </td>
+                    </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {Component, Inject, OnInit} from &#x27;@angular/core&#x27;;
+import {FormBuilder, FormGroup, FormArray, Validators} from &#x27;@angular/forms&#x27;;
+import {ModeleService} from &#x27;../../../../services/modele.service&#x27;;
+import {OptionService} from &#x27;../../../../services/option.service&#x27;;
+import {CouleurService} from &#x27;../../../../services/couleur.service&#x27;;
+import {Couleur} from &#x27;../../../../services/entites/couleur.model&#x27;;
+import {ModeleDetail} from &#x27;../../../../services/entites/modeleDetail.model&#x27;;
+import {MatDialogRef} from &#x27;@angular/material&#x27;;
+import {Option} from &#x27;../../../../services/entites/option.model&#x27;;
+import {ToastrManager} from &#x27;ng6-toastr-notifications&#x27;;
+
+@Component({
+  selector: &#x27;app-modal&#x27;,
+  templateUrl: &#x27;./ajouterModele.component.html&#x27;,
+  styleUrls: [&#x27;ajouterModele.component.scss&#x27;]
+})
+/**
+ *  Classe d&#x27;ajout &#x27;des modeles de véhicules
+ *  Implemente OnInit pour l&#x27;initialisation du composant
+ *  @author CHABANE CHAOUCH Zahra, CHOUAKI Salim
+ *
+ */
+export class AjouterModeleComponent implements OnInit {
+  // Réference vers le formulaire html
+  formulaire: FormGroup;
+  private couleursArray: Array&lt;Couleur&gt; &#x3D; [];
+  private couleursChecked: Array&lt;Couleur&gt; &#x3D; [];
+  private couleursSupp: Array&lt;Couleur&gt; &#x3D; [];
+  private optionsArray: Array&lt;Option&gt; &#x3D; [];
+  private optionsChecked: Array&lt;Option&gt; &#x3D; [];
+  private optionsSupp: Array&lt;Option&gt; &#x3D; [];
+
+
+  /**
+   * Constructeur de la classe, déclare seulement les attributs privés de la classe
+   * @param constructeurFormulaire
+   * De type FormBuilder, Permet de construire des formulaire et de faire le binding avec html
+   * @param modeleService
+   * Pour envoyer la requete d&#x27;insertion du modele
+   * @param optionService
+   * Pour envoyer la requete d&#x27;insertion des options compatibles avec le modele
+   * @param couleurService
+   * Pour avoir et inserer les couleurs compatibles avec le modele
+   * @param dialogRef
+   * Réference sur la boite de dialogue
+   */
+  constructor(private constructeurFormulaire: FormBuilder,
+              private modeleService: ModeleService,
+              private optionService: OptionService,
+              private couleurService: CouleurService,
+              private toastr: ToastrManager,
+              public dialogRef: MatDialogRef&lt;AjouterModeleComponent&gt;
+  ) {
+  }
+
+  /**
+   * Les options ajoutées dans le formulaire html
+   */
+  get optionsFormulaire() {
+    return this.formulaire.get(&#x27;options&#x27;) as FormArray;
+  }
+
+  /**
+   * Les couleurs ajoutées dans le formulaire html
+   */
+  get couleursFormulaire() {
+    return this.formulaire.get(&#x27;couleurs&#x27;) as FormArray;
+  }
+
+  /**
+   *  Executé a l&#x27;initialisation du composant, Construit le formulaire et fait la lsiasion avec le html
+   */
+  ngOnInit() {
+    // Construction du formulaire
+    this.formulaire &#x3D; this.constructeurFormulaire.group({
+      code: [&#x27;&#x27;, Validators.required],
+      nom: [&#x27;&#x27;, Validators.required],
+      options: this.constructeurFormulaire.array([]),
+      couleurs: this.constructeurFormulaire.array([]),
+    });
+
+    this.chargerCouleurs();
+    this.chargerOptions();
+    // Liaison avec l&#x27;Html
+    this.formulaire.valueChanges.subscribe();
+    // récupérer les couleurs des autres modèles déjà existants dans la marque
+    const couleursMap &#x3D; new Map();
+    let modeles;
+    this.modeleService.getModeles().subscribe(res &#x3D;&gt; {
+      modeles &#x3D; res as ModeleDetail[];
+      for (const modele of modeles) {
+        const couleurs &#x3D; modele.couleurs as Couleur[];
+        for (const couleur of couleurs) {
+          if (!(couleursMap.has(couleur.CodeCouleur))) {
+            couleursMap.set(couleur.CodeCouleur, couleur);
+            this.couleursArray.push(couleur);
+          }
+        }
+      }
+    }, error &#x3D;&gt; {
+      // Probleme de connexion pour avoir les modeles
+      this.toastr.errorToastr(error);
+    });
+  }
+
+  /**
+   * Ajouter une option compatible avec le modele
+   */
+  ajouterOption() {
+    const option &#x3D; this.constructeurFormulaire.group({
+      codeOption: [&#x27;&#x27;, Validators.required ],
+      nomOption: [&#x27;&#x27;, Validators.required]
+    });
+    this.optionsFormulaire.push(option);
+  }
+
+  /**
+   * Supprimer une option du formulaire
+   * @param i
+   * L&#x27;indice de l&#x27;iption a supprimer
+   */
+  supprimerOption(i) {
+    this.optionsFormulaire.removeAt(i);
+  }
+
+  chargerCouleurs() {
+    const couleursMap: Map&lt;string, object&gt; &#x3D; new Map();
+    this.formulaire.valueChanges.subscribe();
+    /* récupérer les couleurs des autres modèles déjà existants dans la marque */
+    let modeles;
+    this.modeleService.getModeles().subscribe(res &#x3D;&gt; {
+      modeles &#x3D; res as ModeleDetail[];
+      for (let i &#x3D; 0; i &lt; modeles.length; i++) {
+        const couleurs &#x3D; modeles[i].couleurs as Couleur[];
+        for (let j &#x3D; 0; j &lt; couleurs.length; j++) {
+          if (!(couleursMap.has(String(couleurs[j].CodeCouleur)))) {
+            couleursMap.set(String(couleurs[j].CodeCouleur), couleurs[j]);
+            this.couleursArray.push(couleurs[j]);
+          }
+        }
+      }
+    }, error &#x3D;&gt; {
+      this.toastr.errorToastr(error);
+    });
+  }
+
+  chargerOptions() {
+    const optionsMap: Map&lt;string, object&gt; &#x3D; new Map();
+    this.formulaire.valueChanges.subscribe();
+    /* récupérer les options des autres modèles déjà existants dans la marque */
+    let modeles;
+    this.modeleService.getModeles().subscribe(res &#x3D;&gt; {
+      modeles &#x3D; res as ModeleDetail[];
+      for (let i &#x3D; 0; i &lt; modeles.length; i++) {
+        const options &#x3D; modeles[i].options as Option[];
+        for (let j &#x3D; 0; j &lt; options.length; j++) {
+          if (!(optionsMap.has(String(options[j].CodeOption)))) {
+            optionsMap.set(String(options[j].CodeOption), options[j]);
+            this.optionsArray.push(options[j]);
+          }
+        }
+      }
+    }, error &#x3D;&gt; {
+      this.toastr.errorToastr(error);
+    });
+  }
+
+  /**
+   *  Ajouter une couleur pour le modele
+   */
+  ajouterCouleur() {
+    const couleur &#x3D; this.constructeurFormulaire.group({
+       codeCouleur: [&#x27;&#x27;, Validators.required ],
+       nomCouleur: [&#x27;&#x27;, Validators.required ],
+       codeHexa: [&#x27;&#x27;, Validators.required]
+    });
+    this.couleursFormulaire.push(couleur);
+  }
+
+  // Zahra please
+  changerCouleur(i, color) {
+    this.formulaire.value.couleurs[i].codeHexa &#x3D; color;
+  }
+
+  /**
+   * Supprimer une couleur du formulaire
+   * @param i
+   * L&#x27;indice de la couleur a supprimer
+   */
+  supprimerCouleur(i) {
+    this.couleursFormulaire.removeAt(i);
+  }
+
+
+  /**
+   * @param event
+   * @param couleur , couleur sélectionnée ou déselectionnée
+   */
+  gererCouleurs(event, couleur) {
+    couleur.Checked &#x3D; !couleur.Checked;
+    if (couleur.Checked) {
+        this.couleursChecked.push(couleur);
+    } else {
+        this.couleursChecked.splice(this.couleursChecked.indexOf(couleur), 1);
+      }
+  }
+
+  gererOptions(event, opt) {
+    opt.Checked &#x3D; !opt.Checked;
+    if (opt.Checked) {
+      this.optionsChecked.push(opt);
+    } else {
+        this.optionsChecked.splice(this.optionsChecked.indexOf(opt), 1);
+      }
+  }
+
+
+  /**
+   * L&#x27;ajout du modele, ajoute le modele, puis les options et les couleurs puis les associations entre eux
+   */
+  ajouterModele() {
+    // L&#x27;ajout du modele
+    this.modeleService.ajouter(this.formulaire.value.code, this.formulaire.value.nom).subscribe(() &#x3D;&gt; {
+      // Ajout des nouvelles options
+      for (const option of this.formulaire.value.options) {
+        this.optionService.ajouterOptionModele(option.codeOption, option.nomOption,
+          this.formulaire.value.code).subscribe( () &#x3D;&gt; {}, error &#x3D;&gt; {
+          // Erreur insertion de l&#x27;option
+          this.toastr.errorToastr(error);
+        });
+      }
+
+      // Ajout des options
+      for (const opt of this.optionsChecked) {
+        this.optionService.ajouterOptionModele(String(opt.CodeOption), String(opt.NomOption),
+          this.formulaire.value.code).subscribe(() &#x3D;&gt; {}, error &#x3D;&gt; {
+            // Erreur de l&#x27;insertion entre l&#x27;option et de la relation
+          this.toastr.errorToastr(error);
+        });
+      }
+      // Ajout des couleurs
+      for (const couleur of this.couleursChecked) {
+        this.couleurService.ajouterCouleurModele(String(couleur.CodeCouleur), String(couleur.NomCouleur), String(couleur.CodeHexa),
+          this.formulaire.value.code).subscribe( () &#x3D;&gt; {}, error &#x3D;&gt; {
+        });
+      }
+      // ajout des nouvelles couleurs
+      for (const couleur of this.formulaire.value.couleurs) {
+        this.couleurService.ajouterCouleurModele(couleur.codeCouleur, couleur.nomCouleur, couleur.codeHexa,
+          this.formulaire.value.code).subscribe( () &#x3D;&gt; {}, error &#x3D;&gt; {
+            // Erreur Insertion d&#x27;une nouvelle couelur
+          this.toastr.errorToastr(error);
+        });
+      }
+      this.toastr.successToastr(&quot;Ajout d&#x27;un modèle avec succès&quot;);
+
+    }, error &#x3D;&gt; {
+      // Erreur Insertion Modele
+      this.toastr.errorToastr(error);
+    });
+    this.dialogRef.close();
+  }
+}
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;mat-dialog-content&gt;
+  &lt;div  fxLayout&#x3D;&quot;row&quot; fxLayoutAlign&#x3D;&quot;space-between start&quot; &gt;
+    &lt;div fxLayout&#x3D;&quot;column&quot;&gt;
+      &lt;h1 mat-dialog-title style&#x3D;&quot;margin: 0&quot;&gt;Ajouter un modele&lt;/h1&gt;
+      &lt;div id&#x3D;&quot;trait&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;button mat-icon-button type&#x3D;&quot;submit&quot; mat-dialog-close&gt;
+      &lt;mat-icon&gt;close&lt;/mat-icon&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;form [formGroup]&#x3D;&quot;formulaire&quot; (ngSubmit)&#x3D;&quot;ajouterModele()&quot; novalidate id&#x3D;&quot;formulaireHtml&quot;&gt;
+  &lt;div fxLayout&#x3D;&quot;row wrap&quot;&gt;
+    &lt;div fxFlex&#x3D;&quot;25&quot;
+         fxFlex.md&#x3D;&quot;33&quot;
+         fxFlex.sm&#x3D;&quot;50&quot;
+         fxFlex.xs&#x3D;&quot;100&quot; fxLayout&#x3D;&quot;column&quot;&gt;
+      &lt;label&gt;
+        &lt;span class&#x3D;&quot;label&quot;&gt;Code&lt;/span&gt;
+        &lt;input matNativeControl matInput required formControlName&#x3D;&quot;code&quot; class&#x3D;&quot;input&quot;&gt;
+      &lt;/label&gt;
+    &lt;/div&gt;
+    &lt;div fxFlex&#x3D;&quot;70&quot;
+         fxFlex.md&#x3D;&quot;67&quot;
+         fxFlex.sm&#x3D;&quot;50&quot;
+         fxFlex.xs&#x3D;&quot;100&quot; fxLayout&#x3D;&quot;column&quot;&gt;
+      &lt;label&gt;
+        &lt;span class&#x3D;&quot;label&quot;&gt;Designation&lt;/span&gt;
+        &lt;input matInput required formControlName&#x3D;&quot;nom&quot; class&#x3D;&quot;input&quot;&gt;
+      &lt;/label&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class&#x3D;&quot;row optionDiv&quot;&gt;
+    &lt;div class&#x3D;&quot;col-11&quot;&gt;
+      &lt;i class&#x3D;&quot;material-icons&quot;&gt;
+        bookmarks
+      &lt;/i&gt;
+      &lt;span class&#x3D;&quot;label&quot;&gt;Options&lt;/span&gt;
+      &lt;br/&gt;
+      &lt;span&gt;choisir parmis les options existantes&lt;/span&gt;
+      &lt;br/&gt;
+      &lt;div fxLayout&#x3D;&quot;column&quot; fxLayoutAlign&#x3D;&quot;center start&quot; id&#x3D;&quot;options&quot; *ngIf&#x3D;&quot;optionsArray&quot;&gt;
+        &lt;mat-checkbox color&#x3D;&quot;primary&quot; *ngFor&#x3D;&quot;let opt of optionsArray&quot; [value]&#x3D;&quot;opt.CodeOption&quot; [checked]&#x3D;&quot;opt.Checked&quot; (change)&#x3D;&quot;gererOptions($event, opt)&quot;&gt;{{opt.CodeOption}}  {{opt.NomOption}}&lt;/mat-checkbox&gt;
+      &lt;/div&gt;
+      &lt;i class&#x3D;&quot;material-icons iajouter&quot; (click)&#x3D;&quot;ajouterOption()&quot;&gt;
+        add
+      &lt;/i&gt;
+      &lt;span (click)&#x3D;&quot;ajouterOption()&quot; class&#x3D;&quot;ajouter&quot;&gt;Ajouter une option&lt;/span&gt;
+      &lt;div formArrayName&#x3D;&quot;options&quot;&gt;
+        &lt;div *ngFor&#x3D;&quot;let opt of optionsFormulaire.controls; let i&#x3D;index&quot; [formGroupName]&#x3D;&quot;i&quot; class&#x3D;&quot;row&quot; style&#x3D;&quot;margin: 0&quot;&gt;
+          &lt;div class&#x3D;&quot;col-4&quot;&gt;
+            &lt;label&gt;
+              &lt;input class&#x3D;&quot;inputOption&quot; matInput formControlName&#x3D;&quot;codeOption&quot; placeholder&#x3D;&quot;Code de l&#x27;option&quot;&gt;
+            &lt;/label&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;col-4&quot;&gt;
+            &lt;label&gt;
+              &lt;input class&#x3D;&quot;inputOption&quot; matInput formControlName&#x3D;&quot;nomOption&quot; placeholder&#x3D;&quot;Nom de l&#x27;option&quot;&gt;
+            &lt;/label&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;col-3&quot;&gt;
+            &lt;button mat-raised-button color&#x3D;&quot;warn&quot; (click)&#x3D;&quot;supprimerOption(i)&quot;&gt;Supprimer&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class&#x3D;&quot;row optionDiv&quot;&gt;
+    &lt;div class&#x3D;&quot;col-11&quot;&gt;
+      &lt;i class&#x3D;&quot;material-icons&quot;&gt;
+        party_mode
+      &lt;/i&gt;
+      &lt;span class&#x3D;&quot;label&quot;&gt;Couleurs&lt;/span&gt;
+      &lt;br/&gt;
+      &lt;span&gt;choisir parmis les couleurs existantes&lt;/span&gt;
+      &lt;br/&gt;
+      &lt;div fxLayout&#x3D;&quot;column&quot; fxLayoutAlign&#x3D;&quot;center start&quot; id&#x3D;&quot;couleurs&quot; *ngIf&#x3D;&quot;couleursArray&quot;&gt;
+        &lt;mat-checkbox color&#x3D;&quot;primary&quot; *ngFor&#x3D;&quot;let clr of couleursArray&quot; [value]&#x3D;&quot;clr.CodeCouleur&quot; [checked]&#x3D;&quot;clr.Checked&quot; (change)&#x3D;&quot;gererCouleurs($event, clr)&quot;&gt;{{clr.CodeCouleur}}  {{clr.NomCouleur}}&lt;/mat-checkbox&gt;
+      &lt;/div&gt;
+      &lt;i class&#x3D;&quot;material-icons iajouter&quot; (click)&#x3D;&quot;ajouterCouleur()&quot;&gt;
+        add
+      &lt;/i&gt;
+      &lt;span (click)&#x3D;&quot;ajouterCouleur()&quot; class&#x3D;&quot;ajouter&quot;&gt;Ajouter une couleur&lt;/span&gt;
+      &lt;div formArrayName&#x3D;&quot;couleurs&quot;&gt;
+        &lt;div fxLayout&#x3D;&quot;row wrap&quot; *ngFor&#x3D;&quot;let couleur of couleursFormulaire.controls; let i&#x3D;index&quot; [formGroupName]&#x3D;&quot;i&quot; class&#x3D;&quot;row&quot; &gt;
+          &lt;div fxFlex&#x3D;&quot;25&quot;
+               fxFlex.md&#x3D;&quot;33&quot;
+               fxFlex.sm&#x3D;&quot;50&quot;
+               fxFlex.xs&#x3D;&quot;100&quot; fxLayout&#x3D;&quot;column&quot; class&#x3D;&quot;divInput&quot;&gt;
+            &lt;input class&#x3D;&quot;inputOption&quot; matInput formControlName&#x3D;&quot;codeCouleur&quot; placeholder&#x3D;&quot;Code&quot; class&#x3D;&quot;input&quot;&gt;
+          &lt;/div&gt;
+          &lt;div fxFlex&#x3D;&quot;25&quot;
+               fxFlex.md&#x3D;&quot;33&quot;
+               fxFlex.sm&#x3D;&quot;50&quot;
+               fxFlex.xs&#x3D;&quot;100&quot; fxLayout&#x3D;&quot;column&quot; class&#x3D;&quot;divInput&quot;&gt;
+            &lt;input class&#x3D;&quot;inputOption&quot; matInput formControlName&#x3D;&quot;nomCouleur&quot; placeholder&#x3D;&quot;Nom&quot; class&#x3D;&quot;input&quot;&gt;
+          &lt;/div&gt;
+          &lt;div fxFlex&#x3D;&quot;20&quot;
+               fxFlex.md&#x3D;&quot;12&quot;
+               fxFlex.sm&#x3D;&quot;50&quot;
+               fxFlex.xs&#x3D;&quot;100&quot;&gt;
+            &lt;div fxLayout&#x3D;&quot;column&quot; class&#x3D;&quot;circle-color&quot; formControlName&#x3D;&quot;codeHexa&quot;
+                 [(colorPicker)]&#x3D;&quot;color&quot; [style.background]&#x3D;&quot;color&quot; (colorPickerChange)&#x3D;&quot;changerCouleur(i, color)&quot;&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div  class&#x3D;&quot;divInput&quot;&gt;
+            &lt;button mat-icon-button  (click)&#x3D;&quot;supprimerCouleur(i)&quot;&gt;
+              &lt;mat-icon class&#x3D;&quot;rouge&quot; &gt;delete&lt;/mat-icon&gt;
+            &lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div mat-dialog-actions fxLayout&#x3D;&quot;row&quot; fxLayoutAlign&#x3D;&quot;end end&quot;&gt;
+    &lt;button type&#x3D;&quot;submit&quot; class&#x3D;&quot;btn-ajout&quot; (click)&#x3D;&quot;ajouterModele()&quot;&gt;Valider &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/form&gt;
+
+&lt;/mat-dialog-content&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>ajouterModele.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">mat-dialog-content{
+  height: auto;
+  width: 100%;
+  border-radius: 20px;
+  overflow: inherit;
+
+}
+
+#formulaireHtml {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+}
+
+
+
+#codeInput {
+  width: 25%;
+}
+
+#designationInput {
+  width: 50%;
+}
+
+.circle-color{
+    border-radius: 50%;
+    border: 2px solid #979797;
+    width: 30px;
+    height: 30px;
+    background: #424242;
+}
+
+
+div#trait {
+  width: 60px;
+  border-top: 3px solid #1abc9c;
+  margin-bottom: 25px;
+  margin-left: 2px
+}
+mat-icon{
+  color: #ea1c0d;
+}
+
+div.divInput{
+  padding: 0px;
+}
+.input {
+  width: 80%;
+  height: 30px;
+  border-radius: 10px;
+  border: 1px solid #707070;
+  background-color: #fbfbfb;
+  padding-left: 20px;
+  font-family: &#x27;Roboto-Bold&#x27;,&#x27;Sherif&#x27;;
+  margin: 10px;
+  margin-top: 0;
+  margin-bottom:10px;
+}
+
+.label {
+  color: #34495e;
+  line-height: 30px;
+  margin-left: 15px;
+  font-weight: bold;
+  font-family: &#x27;Roboto-Bold&#x27;, &#x27;Sherif&#x27;;
+}
+
+#descriptionText {
+  height: 150px;
+}
+
+i
+{
+  vertical-align: middle !important;
+}
+
+.options {
+  color: #000000;
+  font-family: Lato;
+}
+
+
+.optionDiv{
+  div{
+    padding: 3px 15px;
+  }
+}
+.ajouter {
+  color: #22c6a6;
+  font-family: Roboto;
+  cursor: pointer;
+}
+
+.iajouter {
+  color: #22c6a6;
+  cursor: pointer;
+
+
+}
+
+.inputOption {
+  height: 30px;
+  border-radius: 10px;
+  border: 1px solid #707070;
+  background-color: #fbfbfb;
+}
+
+.btn-ajout {
+  width: 100px;
+  height: 44px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  border-radius: 18px;
+  background-image: linear-gradient(101deg, #34749f 0%, #22c6a6 100%);
+  color: #ffffff;
+}
+
+mat-dialog-actions{
+  position: fixed;
+  bottom: 0;
+}
+
+
+
+
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><mat-dialog-content>  <div  fxLayout="row" fxLayoutAlign="space-between start" >    <div fxLayout="column">      <h1 mat-dialog-title style="margin: 0">Ajouter un modele</h1>      <div id="trait"></div>    </div>    <button mat-icon-button type="submit" mat-dialog-close>      <mat-icon>close</mat-icon>    </button>  </div><form [formGroup]="formulaire" (ngSubmit)="ajouterModele()" novalidate id="formulaireHtml">  <div fxLayout="row wrap">    <div fxFlex="25"         fxFlex.md="33"         fxFlex.sm="50"         fxFlex.xs="100" fxLayout="column">      <label>        <span class="label">Code</span>        <input matNativeControl matInput required formControlName="code" class="input">      </label>    </div>    <div fxFlex="70"         fxFlex.md="67"         fxFlex.sm="50"         fxFlex.xs="100" fxLayout="column">      <label>        <span class="label">Designation</span>        <input matInput required formControlName="nom" class="input">      </label>    </div>  </div>  <div class="row optionDiv">    <div class="col-11">      <i class="material-icons">        bookmarks      </i>      <span class="label">Options</span>      <br/>      <span>choisir parmis les options existantes</span>      <br/>      <div fxLayout="column" fxLayoutAlign="center start" id="options" *ngIf="optionsArray">        <mat-checkbox color="primary" *ngFor="let opt of optionsArray" [value]="opt.CodeOption" [checked]="opt.Checked" (change)="gererOptions($event, opt)">{{opt.CodeOption}}  {{opt.NomOption}}</mat-checkbox>      </div>      <i class="material-icons iajouter" (click)="ajouterOption()">        add      </i>      <span (click)="ajouterOption()" class="ajouter">Ajouter une option</span>      <div formArrayName="options">        <div *ngFor="let opt of optionsFormulaire.controls; let i=index" [formGroupName]="i" class="row" style="margin: 0">          <div class="col-4">            <label>              <input class="inputOption" matInput formControlName="codeOption" placeholder="Code de l\'option">            </label>          </div>          <div class="col-4">            <label>              <input class="inputOption" matInput formControlName="nomOption" placeholder="Nom de l\'option">            </label>          </div>          <div class="col-3">            <button mat-raised-button color="warn" (click)="supprimerOption(i)">Supprimer</button>          </div>        </div>      </div>    </div>  </div>  <div class="row optionDiv">    <div class="col-11">      <i class="material-icons">        party_mode      </i>      <span class="label">Couleurs</span>      <br/>      <span>choisir parmis les couleurs existantes</span>      <br/>      <div fxLayout="column" fxLayoutAlign="center start" id="couleurs" *ngIf="couleursArray">        <mat-checkbox color="primary" *ngFor="let clr of couleursArray" [value]="clr.CodeCouleur" [checked]="clr.Checked" (change)="gererCouleurs($event, clr)">{{clr.CodeCouleur}}  {{clr.NomCouleur}}</mat-checkbox>      </div>      <i class="material-icons iajouter" (click)="ajouterCouleur()">        add      </i>      <span (click)="ajouterCouleur()" class="ajouter">Ajouter une couleur</span>      <div formArrayName="couleurs">        <div fxLayout="row wrap" *ngFor="let couleur of couleursFormulaire.controls; let i=index" [formGroupName]="i" class="row" >          <div fxFlex="25"               fxFlex.md="33"               fxFlex.sm="50"               fxFlex.xs="100" fxLayout="column" class="divInput">            <input class="inputOption" matInput formControlName="codeCouleur" placeholder="Code" class="input">          </div>          <div fxFlex="25"               fxFlex.md="33"               fxFlex.sm="50"               fxFlex.xs="100" fxLayout="column" class="divInput">            <input class="inputOption" matInput formControlName="nomCouleur" placeholder="Nom" class="input">          </div>          <div fxFlex="20"               fxFlex.md="12"               fxFlex.sm="50"               fxFlex.xs="100">            <div fxLayout="column" class="circle-color" formControlName="codeHexa"                 [(colorPicker)]="color" [style.background]="color" (colorPickerChange)="changerCouleur(i, color)">            </div>          </div>          <div  class="divInput">            <button mat-icon-button  (click)="supprimerCouleur(i)">              <mat-icon class="rouge" >delete</mat-icon>            </button>          </div>        </div>      </div>    </div>  </div>  <div mat-dialog-actions fxLayout="row" fxLayoutAlign="end end">    <button type="submit" class="btn-ajout" (click)="ajouterModele()">Valider </button>  </div></form></mat-dialog-content></div>'
+    var COMPONENTS = [{'name': 'AjouterCouleurComponent', 'selector': 'app-ajouter-couleur'},{'name': 'AjouterModeleComponent', 'selector': 'app-modal'},{'name': 'AjouterOptionComponent', 'selector': 'app-ajouter-option'},{'name': 'AjouterVersionComponent', 'selector': 'app-ajouter-version'},{'name': 'AlertComponent', 'selector': 'app-alert'},{'name': 'AllCommandesComponent', 'selector': 'app-all-commandes'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CommandesComponent', 'selector': 'app-commandes'},{'name': 'ConfirmationDialogComponent', 'selector': 'app-confirmation-dialog'},{'name': 'ContactUsComponent', 'selector': 'app-contact-us'},{'name': 'FicheModeleComponent', 'selector': 'app-fiche-modele'},{'name': 'FicheVersionComponent', 'selector': 'app-fiche-version'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'GestionComponent', 'selector': 'app-gestion'},{'name': 'GestionCouleurComponent', 'selector': 'app-gestion-couleur'},{'name': 'GestionModeleComponent', 'selector': 'app-gestion-modele'},{'name': 'GestionOptionsComponent', 'selector': 'app-gestion-options'},{'name': 'GestionVersionComponent', 'selector': 'app-gestion-version'},{'name': 'InfosDialogComponent', 'selector': 'app-infos-dialog'},{'name': 'InfosDispoComponent', 'selector': 'app-infos-dispo'},{'name': 'LoginComponent', 'selector': 'app-root'},{'name': 'ModifierCouleurComponent', 'selector': 'app-modifier-couleur'},{'name': 'ModifierModeleComponent', 'selector': 'app-modifier-modele'},{'name': 'ModifierOptionComponent', 'selector': 'app-modifier-option'},{'name': 'ModifierVerionComponent', 'selector': 'app-modifier-verion'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NavigationComponent', 'selector': 'app-navigation'},{'name': 'NosClientsComponent', 'selector': 'app-nos-clients'},{'name': 'NoservicesComponent', 'selector': 'app-noservices'},{'name': 'OfferComponent', 'selector': 'app-offer'},{'name': 'PremierePageComponent', 'selector': 'app-premiere-page'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'SidenavComponent', 'selector': 'app-sidenav'},{'name': 'SimulationComponent', 'selector': 'app-simulation'},{'name': 'StockComponent', 'selector': 'app-stock'},{'name': 'StockUploadComponent', 'selector': 'app-stock'},{'name': 'StockVehiculesComponent', 'selector': 'app-stock-vehicules'},{'name': 'SupprimerModeleComponent', 'selector': 'app-supprimer-modele'},{'name': 'TarifsComponent', 'selector': 'app-tarifs'},{'name': 'TarifsOptionsComponent', 'selector': 'app-tarifs-options'},{'name': 'TarifsVersionsComponent', 'selector': 'app-tarifs-versions'},{'name': 'UploadFichierTarifComponent', 'selector': 'app-upload-fichier-tarif'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'AjouterModeleComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'AjouterModeleComponent.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
