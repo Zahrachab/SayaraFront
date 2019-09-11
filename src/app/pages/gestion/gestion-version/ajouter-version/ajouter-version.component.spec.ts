@@ -23,7 +23,7 @@ import {FileUploader} from 'ng2-file-upload';
 
 
 
-fdescribe('AjouterVersionComponent', () => {
+describe('AjouterVersionComponent', () => {
   let component: AjouterVersionComponent;
 
   let dialog: MatDialog;
