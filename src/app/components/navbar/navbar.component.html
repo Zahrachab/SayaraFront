@@ -69,7 +69,7 @@
               <button mat-icon-button [matMenuTriggerFor]="menu">
                 <mat-icon *ngIf="number > 0" matBadge="{{number}}" matBadgePosition="above after">notifications</mat-icon>
               </button>
-              <mat-menu #menu="matMenu" yPosition="above">
+              <mat-menu #menu="matMenu" yPosition="above" class="menuNotifs">
                 <span class="menu-item">Commandes</span>
                 <hr>
                 <a mat-menu-item *ngFor="let notif of notifications; last as isLast;" href="/commandes/nouvelles">
@@ -84,13 +84,21 @@
               </mat-menu>
           </li>
           <li>
-            <button mat-icon-button   >
+
+            <button mat-icon-button [matMenuTriggerFor]="menu1">
               <mat-icon>account_circle</mat-icon>
             </button>
+            <mat-menu #menu1="matMenu" class="menuProfil">
+              <button mat-menu-item>
+                <span>Profil</span>
+              </button>
+              <button mat-menu-item (click)="logout()">
+                <span>Déconnexion</span>
+              </button>
+            </mat-menu>
+
           </li>
         </ul>
-
-        <a mat-stroked-button routerLink="." class="loginBtn" (click)="logout()">Se déconnecter</a>
 
       </div>
     </mat-toolbar>

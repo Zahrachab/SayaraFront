@@ -10,8 +10,10 @@ import {OptionServiceMock} from '../../../../mocks/Option.Service.mock';
 import {OverlayContainer} from '@angular/cdk/overlay';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {CommonModule} from '@angular/common';
+import {ToastrManager} from 'ng6-toastr-notifications';
+import {ToastManagerMock} from '../../../../mocks/ToastManagerMock';
 
-describe('AjouterOptionComponent', () => {
+fdescribe('AjouterOptionComponent', () => {
   let dialog: MatDialog;
   let dialogRef: MatDialogRef<AjouterOptionComponent>;
   let overlayContainerElement: HTMLElement;
@@ -31,7 +33,8 @@ describe('AjouterOptionComponent', () => {
             overlayContainerElement = document.createElement('div');
             return { getContainerElement: () => overlayContainerElement };
           }},
-        {provide: OptionService, useClass: OptionServiceMock}
+        {provide: OptionService, useClass: OptionServiceMock},
+        {provide: ToastrManager, useClass: ToastManagerMock}
       ],
       schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
     });

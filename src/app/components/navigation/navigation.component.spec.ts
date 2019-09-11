@@ -3,7 +3,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {NavigationComponent} from './navigation.component';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
 
-describe('NavigationComponent', () => {
+fdescribe('NavigationComponent', () => {
   let component: NavigationComponent;
   let fixture: ComponentFixture<NavigationComponent>;
 

@@ -1,14 +1,16 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {ContactUsComponent} from './contact-us.component';
+import {NO_ERRORS_SCHEMA} from '@angular/core';
 
-describe('ContactUsComponent', () => {
+fdescribe('ContactUsComponent', () => {
   let component: ContactUsComponent;
   let fixture: ComponentFixture<ContactUsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ContactUsComponent]
+      declarations: [ContactUsComponent],
+      schemas: [NO_ERRORS_SCHEMA]
     })
       .compileComponents().then(() => {
 

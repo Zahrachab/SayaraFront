@@ -1,7 +1,10 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {NavbarComponent} from './navbar.component';
-import {NO_ERRORS_SCHEMA} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA} from '@angular/core';
+import {MatMenuModule} from '@angular/material';
+import {AuthentificationService} from '../../services/authentification.service';
+import {AuthentificationServiceMock} from '../../mocks/Authentification.Service.mock';
 
 describe('NavbarComponent', () => {
   let component: NavbarComponent;
@@ -10,7 +13,9 @@ describe('NavbarComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [NavbarComponent],
-      schemas: [NO_ERRORS_SCHEMA]
+      imports: [MatMenuModule],
+      schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA],
+      providers: [{provide: AuthentificationService, useClass: AuthentificationServiceMock}]
     })
       .compileComponents().then(() => {
 

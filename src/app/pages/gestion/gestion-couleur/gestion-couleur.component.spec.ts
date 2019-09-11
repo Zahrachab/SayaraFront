@@ -23,6 +23,7 @@ import {GestionCouleurComponent} from './gestion-couleur.component';
 import {RouterModule} from '@angular/router';
 import {Couleur} from '../../../services/entites/couleur.model';
 import {ToastrManager} from 'ng6-toastr-notifications';
+import {ToastManagerMock} from '../../../mocks/ToastManagerMock';
 
 fdescribe('GestionCouleursComponent', () => {
   let component: GestionCouleurComponent;
@@ -45,9 +46,9 @@ fdescribe('GestionCouleursComponent', () => {
         {provide : OptionService , useClass : OptionServiceMock},
         {provide : VersionService , useClass : VersionServiceMock},
         {provide : CouleurService , useClass : CouleurServiceMock},
+        {provide : ToastrManager, useClass : ToastManagerMock},
         {provide: MatDialog, useValue: {} },
-        {provide: APP_BASE_HREF, useValue : '/' },
-        {provide: ToastrManager, useValue: {}}
+        {provide: APP_BASE_HREF, useValue : '/' }
       ],
       schemas: [NO_ERRORS_SCHEMA]
     })
@@ -103,8 +104,7 @@ fdescribe('GestionCouleursComponent', () => {
           expect(row1.childNodes[1].innerHTML).toContain(row.CodeCouleur);
           expect(row1.childNodes[2].innerHTML).toContain(row.NomCouleur);
           // tester le code rgb de la couleur à l'intérieur du cercle
-          console.log(row1.childNodes[3].innerHTML);
-          /*expect(row1.childNodes[3].innerHTML).toContain(hexToRgb(row.CodeHexa).r +
+        /* expect(row1.childNodes[3].innerHTML).toContain(hexToRgb(row.CodeHexa).r +
             ', ' + hexToRgb(row.CodeHexa).g + ', ' + hexToRgb(row.CodeHexa).b);*/
 
         }

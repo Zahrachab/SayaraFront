@@ -1,26 +1,28 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { FicheModeleComponent } from './fiche-modele.component';
+import {
+  FormBuilder, FormsModule, ReactiveFormsModule
+} from '@angular/forms';
 import {Component, CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
-import {ModifierModeleComponent} from '../modifier-modele/modifier-modele.component';
-import {MatDialog, MatDialogModule, MatDialogRef, MatIconModule, MatInputModule} from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
-import {MaterialModule} from '../../../../material.module';
-import {ColorPickerModule} from 'ngx-color-picker';
-import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {OverlayContainer} from '@angular/cdk/overlay';
-import {ModeleService} from '../../../../services/modele.service';
-import {ModeleServiceMock} from '../../../../mocks/Modele.Service.mock';
-import {CouleurService} from '../../../../services/couleur.service';
-import {CouleurServiceMock} from '../../../../mocks/Couleur.Service.mock';
 import {OptionService} from '../../../../services/option.service';
 import {OptionServiceMock} from '../../../../mocks/Option.Service.mock';
-import {ToastrManager} from 'ng6-toastr-notifications';
+import {MatCheckboxModule, MatDialog, MatDialogModule, MatDialogRef, MatIconModule, MatInputModule} from '@angular/material';
+import {OverlayContainer} from '@angular/cdk/overlay';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {CommonModule} from '@angular/common';
+import {MaterialModule} from '../../../../material.module';
+import {ColorPickerModule} from 'ngx-color-picker';
+import {ModeleService} from '../../../../services/modele.service';
+import {ModeleServiceMock} from '../../../../mocks/Modele.Service.mock';
+import {CouleurServiceMock} from '../../../../mocks/Couleur.Service.mock';
+import {CouleurService} from '../../../../services/couleur.service';
+import {ToastrManager} from 'ng6-toastr-notifications';
+import {ToastManagerMock} from '../../../../mocks/ToastManagerMock';
+import {FicheModeleComponent} from './fiche-modele.component';
 
-fdescribe('FicheModeleComponent', () => {
 
+
+fdescribe('AjouterModeleComponent', () => {
   let component: FicheModeleComponent;
 
   let dialog: MatDialog;
@@ -44,7 +46,7 @@ fdescribe('FicheModeleComponent', () => {
         {provide: ModeleService, useClass: ModeleServiceMock},
         {provide: CouleurService, useClass: CouleurServiceMock},
         {provide: OptionService, useClass: OptionServiceMock},
-        {provide: ToastrManager, useValue: {}}
+        {provide: ToastrManager, useClass: ToastManagerMock}
       ],
       schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
     });
@@ -61,10 +63,11 @@ fdescribe('FicheModeleComponent', () => {
 
 
 
-
   it('should create', () => {
     expect(dialogRef.componentInstance).toBeTruthy();
   });
+
+
 
 });
 // Noop component is only a workaround to trigger change detection

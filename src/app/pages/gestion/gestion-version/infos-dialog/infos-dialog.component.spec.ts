@@ -1,14 +1,16 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { InfosDialogComponent } from './infos-dialog.component';
+import {NO_ERRORS_SCHEMA} from '@angular/core';
 
-describe('InfosDialogComponent', () => {
+fdescribe('InfosDialogComponent', () => {
   let component: InfosDialogComponent;
   let fixture: ComponentFixture<InfosDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ InfosDialogComponent ]
+      declarations: [ InfosDialogComponent ],
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
   }));

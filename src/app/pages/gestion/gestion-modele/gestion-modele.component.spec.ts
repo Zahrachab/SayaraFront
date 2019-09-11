@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import {MatTableModule, MatDialog} from '@angular/material';
-import {CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA} from '@angular/core';
+import {NO_ERRORS_SCHEMA} from '@angular/core';
 import {GestionModeleComponent} from './gestion-modele.component';
 import {HttpClientModule} from '@angular/common/http';
 import {ModeleService} from '../../../services/modele.service';
@@ -17,6 +17,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatMenuModule} from '@angular/material';
 import {ModeleDetail} from '../../../services/entites/modeleDetail.model';
 import {ToastrManager} from 'ng6-toastr-notifications';
+import {ToastManagerMock} from '../../../mocks/ToastManagerMock';
 import {PusherService} from '../../../services/pusher.service';
 import {PusherServiceMock} from '../../../mocks/Pusher.Service.mock';
 
@@ -35,12 +36,12 @@ fdescribe('GestionModeleComponent', () => {
         {provide : ModeleService , useClass : ModeleServiceMock},
         {provide : OptionService , useClass : OptionServiceMock},
         {provide : CouleurService , useClass : CouleurServiceMock},
-        {provide : PusherService , useClass : PusherServiceMock},
         {provide : VersionService , useClass : VersionServiceMock},
-        {provide: MatDialog, useValue: {} },
-        {provide: ToastrManager, useValue: {}}
+        {provide: PusherService, useClass: PusherServiceMock},
+        {provide: ToastrManager, useClass: ToastManagerMock},
+        {provide: MatDialog, useValue: {} }
       ],
-      schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents().then(() => {
 
@@ -52,6 +53,8 @@ fdescribe('GestionModeleComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
+
+
 
   it('should create', () => {
     expect(component).toBeTruthy();

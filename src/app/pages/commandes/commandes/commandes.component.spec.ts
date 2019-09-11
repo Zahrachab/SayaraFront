@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CommandesComponent } from './commandes.component';
-import {CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA} from '@angular/core';
+import {NO_ERRORS_SCHEMA} from '@angular/core';
 
 fdescribe('CommandesComponent', () => {
   let component: CommandesComponent;
@@ -10,7 +10,7 @@ fdescribe('CommandesComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ CommandesComponent ],
-      schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
   }));

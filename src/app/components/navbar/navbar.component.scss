@@ -143,10 +143,22 @@ nav.image {
   position: relative;
 }
 
-::ng-deep div.mat-menu-panel {
+::ng-deep div.mat-menu-panel.menuNotifs {
   min-width: 500px;
   /** set width to 500px */
   max-width: 500px;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  max-height: calc(100vh - 48px);
+  border-radius: 4px;
+  outline: 0;
+}
+
+
+::ng-deep div.mat-menu-panel.menuProfil {
+  min-width: 180px;
+  /** set width to 500px */
+  max-width: 180px;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   max-height: calc(100vh - 48px);
@@ -178,3 +190,4 @@ nav.image {
   font-size: 12px;
   line-height: 1.34;
 }
+

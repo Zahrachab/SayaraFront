@@ -18,6 +18,7 @@ import {ModeleServiceMock} from '../../../../mocks/Modele.Service.mock';
 import {CouleurServiceMock} from '../../../../mocks/Couleur.Service.mock';
 import {CouleurService} from '../../../../services/couleur.service';
 import {ToastrManager} from 'ng6-toastr-notifications';
+import {ToastManagerMock} from '../../../../mocks/ToastManagerMock';
 
 
 
@@ -45,7 +46,7 @@ fdescribe('AjouterModeleComponent', () => {
         {provide: ModeleService, useClass: ModeleServiceMock},
         {provide: CouleurService, useClass: CouleurServiceMock},
         {provide: OptionService, useClass: OptionServiceMock},
-        {provide: ToastrManager, useValue: {}}
+        {provide: ToastrManager, useClass: ToastManagerMock}
       ],
       schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
     });
@@ -88,7 +89,7 @@ fdescribe('AjouterModeleComponent', () => {
     });
   });
 
-  it('Le formulaire doit être valide si les champs code et nom ne sont pas vides', () => {
+  it('Le formulaire doit être valide si les champs code eet nom ne sont pas vides', () => {
     remplirForm('09876', 'renault');
     noop.detectChanges();
     noop.whenStable().then(() => {

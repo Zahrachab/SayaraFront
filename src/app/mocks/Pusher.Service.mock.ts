@@ -13,13 +13,10 @@ export class PusherServiceMock {
       cluster: 'eu',
       forceTLS: true
     });
-    this.commandeChannel = "";
-    this.modeleChannel = "";
-    this.versionChannel = "";
+    this.commandeChannel = this.pusher.subscribe('commande-channel-' + "3");
+    this.modeleChannel = this.pusher.subscribe('modele-channel-' + "3");
   }
-
-
-
   updateVersionChannel(codeModele) {
+    this.versionChannel = this.pusher.subscribe('version-channel' + codeModele);
   }
 }

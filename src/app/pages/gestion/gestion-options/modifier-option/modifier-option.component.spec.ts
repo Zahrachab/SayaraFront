@@ -12,8 +12,10 @@ import {CommonModule} from '@angular/common';
 import {ModifierOptionComponent} from './modifier-option.component';
 import {Observable} from 'rxjs';
 import {Option} from '../../../../services/entites/option.model';
+import {ToastrManager} from 'ng6-toastr-notifications';
+import {ToastManagerMock} from '../../../../mocks/ToastManagerMock';
 
-describe('ModifierOptionComponent', () => {
+fdescribe('ModifierOptionComponent', () => {
   let dialog: MatDialog;
   let dialogRef: MatDialogRef<ModifierOptionComponent>;
   let overlayContainerElement: HTMLElement;
@@ -47,7 +49,8 @@ describe('ModifierOptionComponent', () => {
             overlayContainerElement = document.createElement('div');
             return { getContainerElement: () => overlayContainerElement };
           }},
-        {provide: OptionService, useClass: OptionServiceMock}
+        {provide: OptionService, useClass: OptionServiceMock},
+        {provide: ToastrManager, useClass: ToastManagerMock}
       ],
       schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
     });
