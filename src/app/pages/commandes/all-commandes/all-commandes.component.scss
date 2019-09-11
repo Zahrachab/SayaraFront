@@ -1,6 +1,6 @@
 div.gestion {
   margin: 5%;
-  width: 1000px;
+  width: 95%;
   padding-bottom: 300px;
 
   .gras {
@@ -72,7 +72,6 @@ div.gestion {
       box-shadow: 1.5px 1.5px #95a5a6;
 
       mat-row {
-        padding: 1% 0;
         border-bottom: 3px solid #ecf0f1;
 
         img {
@@ -90,21 +89,15 @@ div.gestion {
         }
 
         mat-cell {
-          button {
-            padding-left: 5px;
-            padding-right: 5px;
-          }
-
           button.accepter{
             background: #1ABC9C;
             color: #ffffff;
-            font-size: 11px;
-            margin-bottom: 3px;
+            font-size: 12px;
           }
           button.refuser{
             background: #A40A0A;
             color: #ffffff;
-            font-size: 11px;
+            font-size: 12px;
           }
           button.refuse {
             background: #ECF0F1;
@@ -125,10 +118,11 @@ div.gestion {
             border-radius: 15px;
             border-width: 0px;
           }
-          padding: 0 2%;
           button{
+            margin-top: 5px;
+            margin-bottom: 3px;
+            width: 90px;
             mat-icon {
-              margin-right: 3%
             }
 
             mat-icon.vert {
@@ -185,12 +179,12 @@ div.gestion {
         justify-content: center;
 
         mat-header-cell {
+          width: auto;
           color: #2c3e50;
           font-size: 80%;
           font-family: 'Roboto-Bold', serif;
 
           mat-icon {
-            margin-right: 5px;
           }
         }
 

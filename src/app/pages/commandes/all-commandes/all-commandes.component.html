@@ -77,24 +77,18 @@
           <div fxFlex='90' *ngIf="(commande.Etat) == 1" >
             <button mat-button  mat-stroked-button class="annule" disabled>Annulée</button>
           </div>
-          <div *ngIf="(commande.Etat) == 0" fxFlex='90' fxLayout="column" fxLayoutAlign="space-around center" >
+          <div *ngIf="(commande.Etat) == 0" fxFlex="90" fxLayout="column" fxLayoutAlign="space-around center" >
               <button mat-button  mat-stroked-button class="accepter" (click)="validerCommande(commande)">Accepter</button>
               <button mat-button  mat-stroked-button class="refuser" (click)="rejeterCommande(commande)">Refuser</button>
           </div>
-          <div fxFlex='90' *ngIf="(commande.Etat) == 2" >
+          <div fxFlex="90" *ngIf="(commande.Etat) == 2" fxLayout="column" fxLayoutAlign="space-around center" >
               <button mat-button  mat-stroked-button class="refuse" disabled>Refusée</button>
           </div>
-          <div fxFlex='90' *ngIf="(commande.Etat) == 3" >
+          <div fxFlex="90" *ngIf="(commande.Etat) == 3" fxLayout="column" fxLayoutAlign="space-around center" >
               <button mat-button  mat-stroked-button class="accepte" disabled>Acceptée</button>
           </div>
 
 
-
-          <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-            <mat-icon>more_vert</mat-icon>
-          </button>
-          <mat-menu #menu="matMenu">
-          </mat-menu>
         </mat-cell>
       </ng-container>
 

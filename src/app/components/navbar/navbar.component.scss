@@ -26,11 +26,6 @@ mat-sidenav-container {
 
 }
 
-mat-sidenav {
-  width: 250px;
-}
-
-
 #img-button {
   width: 200px;
   height: 50px;
@@ -57,7 +52,7 @@ a:hover {
   color: #2980b9;
 }
 
-a:active {
+.active {
   color: #2980b9;
 }
 
