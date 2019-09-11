@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {MaterialModule} from './material.module';
@@ -26,7 +26,7 @@ import {CommandesModule} from './pages/commandes/commandes.module';
 import {CommandeService} from './services/commande.service';
 import {PusherService} from './services/pusher.service';
 import {SimulationModule} from './pages/simulation/simulation.module';
-
+import {ProfileModule} from './pages/profile/profile.module';
 
 const urlGlobale = 'https://sayaradz.herokuapp.com';
 
@@ -57,6 +57,7 @@ const urlGlobale = 'https://sayaradz.herokuapp.com';
     SimulationModule,
     StockModule,
     CommandesModule,
+    ProfileModule,
     MDBBootstrapModule.forRoot()
   ],
   entryComponents: [ConfirmationDialogComponent],

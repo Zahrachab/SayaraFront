@@ -1,0 +1,2011 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>prj-sayara documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">prj-sayara documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>ModifierVerionComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/pages/gestion/gestion-version/modifier-verion/modifier-verion.component.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-modifier-verion</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>../ajouter-version/ajouter-version.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./modifier-verion.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#clrsAjoutes">clrsAjoutes</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#clrsSupp">clrsSupp</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#clrsVersion">clrsVersion</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#couleurs">couleurs</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#formulaire">formulaire</a>
+                            </li>
+                            <li>
+                                <a href="#imagesSupp">imagesSupp</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#options">options</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#optionsAjoutes">optionsAjoutes</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#optionsSupp">optionsSupp</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#optionsVersion">optionsVersion</a>
+                            </li>
+                            <li>
+                                <a href="#selectedFile">selectedFile</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#uploader">uploader</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#version">version</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#gererCouleurs">gererCouleurs</a>
+                            </li>
+                            <li>
+                                <a href="#gererOptions">gererOptions</a>
+                            </li>
+                            <li>
+                                <a href="#getCouleurs">getCouleurs</a>
+                            </li>
+                            <li>
+                                <a href="#getOptions">getOptions</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onSubmit">onSubmit</a>
+                            </li>
+                            <li>
+                                <a href="#processFile">processFile</a>
+                            </li>
+                            <li>
+                                <a href="#supprimerImage">supprimerImage</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(constructeurFormulaire: <a href="https://angular.io/api/forms/FormBuilder" target="_blank">FormBuilder</a>, modeleService: <a href="../injectables/ModeleService.html">ModeleService</a>, couleurService: <a href="../injectables/CouleurService.html">CouleurService</a>, optionService: <a href="../injectables/OptionService.html">OptionService</a>, versionService: <a href="../injectables/VersionService.html">VersionService</a>, dialogRef: <a href="../components/ModifierVerionComponent.html">MatDialogRef<ModifierVerionComponent></a>, imageService: <a href="../injectables/ImageService.html">ImageService</a>, toastr: ToastrManager, dialogValidation: MatDialog)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/app/pages/gestion/gestion-version/modifier-verion/modifier-verion.component.ts:66</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Constructeur de la classe, déclare les attributs de la classe</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>constructeurFormulaire</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/forms/FormBuilder" target="_blank" >FormBuilder</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>De type FormBuilder pour construire le formulaire</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>modeleService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ModeleService.html" target="_self" >ModeleService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>Service qui va permettre d&#39;envoyer la requete de modification de modele</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>couleurService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/CouleurService.html" target="_self" >CouleurService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>optionService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/OptionService.html" target="_self" >OptionService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>Service qui va permettre d&#39;envoyer les requetes d&#39;insertions et de suppressions des modeles</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>versionService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/VersionService.html" target="_self" >VersionService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>Pour la gestion des services</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>dialogRef</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../components/ModifierVerionComponent.html" target="_self" >MatDialogRef&lt;ModifierVerionComponent&gt;</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>Réference vers la boite de dialogue</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>imageService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ImageService.html" target="_self" >ImageService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>Pour la gestion des images</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>toastr</td>
+                                                  
+                                                        <td>
+                                                                    <code>ToastrManager</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>dialogValidation</td>
+                                                  
+                                                        <td>
+                                                                    <code>MatDialog</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>Validation du formulaire</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="gererCouleurs"></a>
+                    <span class="name">
+                        <b>
+                            gererCouleurs
+                        </b>
+                        <a href="#gererCouleurs"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>gererCouleurs(event, clr)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="202"
+                            class="link-to-prism">src/app/pages/gestion/gestion-version/modifier-verion/modifier-verion.component.ts:202</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>event</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>clr</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="gererOptions"></a>
+                    <span class="name">
+                        <b>
+                            gererOptions
+                        </b>
+                        <a href="#gererOptions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>gererOptions(event, option)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="182"
+                            class="link-to-prism">src/app/pages/gestion/gestion-version/modifier-verion/modifier-verion.component.ts:182</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>event</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>option</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getCouleurs"></a>
+                    <span class="name">
+                        <b>
+                            getCouleurs
+                        </b>
+                        <a href="#getCouleurs"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getCouleurs()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="140"
+                            class="link-to-prism">src/app/pages/gestion/gestion-version/modifier-verion/modifier-verion.component.ts:140</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getOptions"></a>
+                    <span class="name">
+                        <b>
+                            getOptions
+                        </b>
+                        <a href="#getOptions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getOptions()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="121"
+                            class="link-to-prism">src/app/pages/gestion/gestion-version/modifier-verion/modifier-verion.component.ts:121</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="101"
+                            class="link-to-prism">src/app/pages/gestion/gestion-version/modifier-verion/modifier-verion.component.ts:101</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Executé a l&#39;initialisation du composant, Construit le formulaire et fait la lsiasion avec le html</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onSubmit"></a>
+                    <span class="name">
+                        <b>
+                            onSubmit
+                        </b>
+                        <a href="#onSubmit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onSubmit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="221"
+                            class="link-to-prism">src/app/pages/gestion/gestion-version/modifier-verion/modifier-verion.component.ts:221</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="processFile"></a>
+                    <span class="name">
+                        <b>
+                            processFile
+                        </b>
+                        <a href="#processFile"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>processFile(imageInput: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, index: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="169"
+                            class="link-to-prism">src/app/pages/gestion/gestion-version/modifier-verion/modifier-verion.component.ts:169</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>imageInput</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>index</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="supprimerImage"></a>
+                    <span class="name">
+                        <b>
+                            supprimerImage
+                        </b>
+                        <a href="#supprimerImage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>supprimerImage(selected: <a href="../classes/ImageSnippet.html">ImageSnippet</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="301"
+                            class="link-to-prism">src/app/pages/gestion/gestion-version/modifier-verion/modifier-verion.component.ts:301</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>selected</td>
+                                    <td>
+                                                <code><a href="../classes/ImageSnippet.html" target="_self" >ImageSnippet</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="clrsAjoutes"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            clrsAjoutes</b>
+                            <a href="#clrsAjoutes"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../interfaces/Couleur.html" target="_self" >Array&lt;Couleur&gt;</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/pages/gestion/gestion-version/modifier-verion/modifier-verion.component.ts:39</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="clrsSupp"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            clrsSupp</b>
+                            <a href="#clrsSupp"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../interfaces/Couleur.html" target="_self" >Array&lt;Couleur&gt;</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/pages/gestion/gestion-version/modifier-verion/modifier-verion.component.ts:42</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="clrsVersion"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            clrsVersion</b>
+                            <a href="#clrsVersion"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../interfaces/Couleur.html" target="_self" >Couleur[]</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/pages/gestion/gestion-version/modifier-verion/modifier-verion.component.ts:36</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="couleurs"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            couleurs</b>
+                            <a href="#couleurs"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../interfaces/Couleur.html" target="_self" >Couleur[]</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/pages/gestion/gestion-version/modifier-verion/modifier-verion.component.ts:33</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="formulaire"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            formulaire</b>
+                            <a href="#formulaire"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://angular.io/api/forms/FormGroup" target="_blank" >FormGroup</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/pages/gestion/gestion-version/modifier-verion/modifier-verion.component.ts:45</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="imagesSupp"></a>
+                        <span class="name">
+                            <b>
+                            imagesSupp</b>
+                            <a href="#imagesSupp"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>Array&lt;any&gt;</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/app/pages/gestion/gestion-version/modifier-verion/modifier-verion.component.ts:61</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="options"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            options</b>
+                            <a href="#options"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../interfaces/Option.html" target="_self" >Option[]</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/pages/gestion/gestion-version/modifier-verion/modifier-verion.component.ts:30</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="optionsAjoutes"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            optionsAjoutes</b>
+                            <a href="#optionsAjoutes"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../interfaces/Option.html" target="_self" >Array&lt;Option&gt;</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/pages/gestion/gestion-version/modifier-verion/modifier-verion.component.ts:54</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="optionsSupp"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            optionsSupp</b>
+                            <a href="#optionsSupp"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../interfaces/Option.html" target="_self" >Array&lt;Option&gt;</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/app/pages/gestion/gestion-version/modifier-verion/modifier-verion.component.ts:57</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="optionsVersion"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            optionsVersion</b>
+                            <a href="#optionsVersion"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../interfaces/Option.html" target="_self" >Option[]</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/app/pages/gestion/gestion-version/modifier-verion/modifier-verion.component.ts:51</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="selectedFile"></a>
+                        <span class="name">
+                            <b>
+                            selectedFile</b>
+                            <a href="#selectedFile"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>Array&lt;ImageSnippet&gt;</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/app/pages/gestion/gestion-version/modifier-verion/modifier-verion.component.ts:60</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="uploader"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            uploader</b>
+                            <a href="#uploader"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>FileUploader</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new FileUploader({
+    isHTML5: true
+  })</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">src/app/pages/gestion/gestion-version/modifier-verion/modifier-verion.component.ts:64</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="version"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            version</b>
+                            <a href="#version"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../interfaces/VersionDetail.html" target="_self" >VersionDetail</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/pages/gestion/gestion-version/modifier-verion/modifier-verion.component.ts:48</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {ChangeDetectorRef, Component, OnInit} from &#x27;@angular/core&#x27;;
+import {VersionDetail} from &#x27;../../../../services/entites/versionDetail.model&#x27;;
+import {MatDialog, MatDialogRef} from &#x27;@angular/material&#x27;;
+import {Option} from &#x27;../../../../services/entites/option.model&#x27;;
+import {FormBuilder, FormGroup, Validators} from &#x27;@angular/forms&#x27;;
+import {ModeleService} from &#x27;../../../../services/modele.service&#x27;;
+import {OptionService} from &#x27;../../../../services/option.service&#x27;;
+import {VersionService} from &#x27;../../../../services/version.service&#x27;;
+import {ImageService} from &#x27;../../../../services/image.service&#x27;;
+import {FileUploader} from &#x27;ng2-file-upload&#x27;;
+import {ConfirmationDialogComponent} from &#x27;../../../shared/confirmation-dialog/confirmation-dialog.component&#x27;;
+import {Couleur} from &#x27;../../../../services/entites/couleur.model&#x27;;
+import {CouleurService} from &#x27;../../../../services/couleur.service&#x27;;
+import {ToastrManager} from &#x27;ng6-toastr-notifications&#x27;;
+
+
+@Component({
+  selector: &#x27;app-modifier-verion&#x27;,
+  templateUrl: &#x27;./modifier-verion.component.html&#x27;,
+  styleUrls: [&#x27;../ajouter-version/ajouter-version.component.scss&#x27;]
+})
+/**
+ *  Classe de modification des versions
+ *  Implemente OnInit pour l&#x27;initialisation du composant
+ *  @author CHABANE CHAOUCH Zahra, CHOUAKI Salim
+ *
+ */
+export class ModifierVerionComponent implements OnInit {
+  // Les options associées au modèle auquel appartient la version
+  private options: Option[];
+
+  // Les couleurs associées au modèle auquel appartient la version
+  private couleurs: Couleur[];
+
+  // Les couleur de la version
+  private clrsVersion: Couleur[];
+
+  // Les couleurs ajoutées
+  private clrsAjoutes: Array&lt;Couleur&gt; &#x3D; [];
+
+  // Les couleurs supprimées
+  private clrsSupp: Array&lt;Couleur&gt; &#x3D; [];
+
+  // Réference vers le formulaire html
+  private formulaire: FormGroup;
+
+  // La version a modifier
+  public version: VersionDetail;
+
+  // Les options de la version
+  private optionsVersion: Option[];
+
+  // Les options ajoutées
+  private optionsAjoutes: Array&lt;Option&gt; &#x3D; [];
+
+  // Les options supprimées
+  private optionsSupp: Array&lt;Option&gt; &#x3D; [];
+
+  // Les images sélectionnées
+  selectedFile: Array&lt;ImageSnippet&gt; ;
+  imagesSupp: Array&lt;any&gt; &#x3D; [];
+
+  // File uploader
+  public uploader: FileUploader &#x3D; new FileUploader({
+    isHTML5: true
+  });
+
+  /**
+   * Constructeur de la classe, déclare les attributs de la classe
+   * @param dialogRef
+   * Réference vers la boite de dialogue
+   * @param modeleService
+   * Service qui va permettre d&#x27;envoyer la requete de modification de modele
+   * @param optionService
+   * Service qui va permettre d&#x27;envoyer les requetes d&#x27;insertions et de suppressions des modeles
+   * @param constructeurFormulaire
+   * De type FormBuilder pour construire le formulaire
+   * @param dialogValidation
+   * Validation du formulaire
+   * @param imageService
+   * Pour la gestion des images
+   * @param versionService
+   * Pour la gestion des services
+   */
+  constructor(private constructeurFormulaire: FormBuilder,
+              private modeleService: ModeleService,
+              private couleurService: CouleurService,
+              private optionService: OptionService,
+              private versionService: VersionService,
+              private dialogRef: MatDialogRef&lt;ModifierVerionComponent&gt;,
+              private imageService: ImageService,
+              private toastr: ToastrManager,
+              private dialogValidation: MatDialog
+  ) {
+
+  }
+
+  /**
+   *  Executé a l&#x27;initialisation du composant, Construit le formulaire et fait la lsiasion avec le html
+   */
+  ngOnInit() {
+    // Construction du formuaire
+    this.formulaire &#x3D; this.constructeurFormulaire.group({
+      code: this.version.CodeVersion,
+      nom: this.version.NomVersion,
+      type:  [null, Validators.compose([Validators.required])],
+      couleurs: this.constructeurFormulaire.array([]),
+      options: this.constructeurFormulaire.array([]),
+    });
+
+    /*Liaison avec l&#x27;html*/
+    this.formulaire.valueChanges.subscribe();
+    /* Charger les options */
+    this.getOptions();
+
+    /*charger les couleurs*/
+   this.getCouleurs();
+  }
+
+  // Obtention des options
+  getOptions() {
+    /*subscribe pour régler le problème de synchronisation*/
+    this.optionService.getOptions(this.version.CodeModele).subscribe(opts &#x3D;&gt; {
+      this.options &#x3D; opts as Option[];
+      this.optionsVersion &#x3D; (this.version as VersionDetail).options as Option[];
+      this.optionsVersion.forEach((element) &#x3D;&gt; {
+        this.options.forEach((opt) &#x3D;&gt; {
+          if (String(element.CodeOption) &#x3D;&#x3D;&#x3D; String(opt.CodeOption)) {
+            /* séléctionner les options compatibles avec la version parmi ceux associées au modèle */
+            opt.Checked &#x3D; true;
+          }
+        });
+      });
+    }, error &#x3D;&gt; {
+      this.toastr.errorToastr(error);
+    });
+  }
+
+  // Obtention des couleurs
+  getCouleurs() {
+    /*subscribe pour régler le problème de synchronisation*/
+    this.couleurService.getCouleurs(this.version.CodeModele).subscribe(clrs &#x3D;&gt; {
+      this.selectedFile &#x3D; new Array&lt;ImageSnippet&gt;(clrs.length);
+      this.couleurs &#x3D; clrs as Couleur[];
+      this.clrsVersion &#x3D; (this.version as VersionDetail).couleurs as Couleur[];
+      this.clrsVersion.forEach((element) &#x3D;&gt; {
+        this.couleurs.forEach((clr) &#x3D;&gt; {
+          if (String(element.CodeCouleur) &#x3D;&#x3D;&#x3D; String(clr.CodeCouleur)) {
+            /* séléctionner les options compatibles avec la version parmi ceux associées au modèle */
+            clr.Checked &#x3D; true;
+            if(element.CheminImage!&#x3D; null) {
+              const j &#x3D; this.couleurs.indexOf(clr);
+              this.selectedFile[j] &#x3D; new ImageSnippet(null, null);
+              this.selectedFile[j].status &#x3D; &#x27;ok&#x27;;
+              this.selectedFile[j].new &#x3D; false;
+              this.selectedFile[j].src &#x3D; String(element.CheminImage);
+            }
+          }
+        });
+      });
+    }, error &#x3D;&gt; {
+      this.toastr.errorToastr(error);
+    });
+  }
+
+
+
+  // Uploader des images depuis l&#x27;ordinateur
+  processFile(imageInput: any, index: number) {
+    const reader &#x3D; new FileReader();
+    const img &#x3D; this.uploader.queue[0]._file;
+    reader.addEventListener(&#x27;load&#x27;, (event: any) &#x3D;&gt; {
+      this.selectedFile[index] &#x3D; new ImageSnippet(event.target.result, img);
+    });
+
+    reader.readAsDataURL(img);
+    this.uploader.clearQueue();
+
+  }
+
+  // Gestion des options de versions
+  gererOptions(event, option) {
+    option.Checked &#x3D; !option.Checked;
+    if (option.Checked &#x3D;&#x3D;&#x3D; true) {
+      if ( this.optionsSupp.indexOf(option) &#x3D;&#x3D;&#x3D; -1) {
+        this.optionsAjoutes.push(option);
+      } else {
+        this.optionsSupp.splice(this.optionsSupp.indexOf(option) , 1);
+      }
+    } else {
+      if ( this.optionsAjoutes.indexOf(option) &#x3D;&#x3D;&#x3D; -1) {
+        this.optionsSupp.push(option);
+      } else {
+        this.optionsAjoutes.splice(this.optionsAjoutes.indexOf(option) , 1);
+      }
+    }
+
+  }
+
+
+  // Gestion des couleurs d&#x27;une version
+  gererCouleurs(event, clr) {
+    clr.Checked &#x3D; !clr.Checked;
+    if (clr.Checked &#x3D;&#x3D;&#x3D; true) {
+      if ( this.clrsSupp.indexOf(clr) &#x3D;&#x3D;&#x3D; -1) {
+        this.clrsAjoutes.push(clr);
+      } else {
+        this.clrsSupp.splice(this.clrsSupp.indexOf(clr) , 1);
+      }
+    } else {
+      if ( this.clrsAjoutes.indexOf(clr) &#x3D;&#x3D;&#x3D; -1) {
+        this.clrsSupp.push(clr);
+      } else {
+        this.clrsAjoutes.splice(this.clrsAjoutes.indexOf(clr) , 1);
+      }
+    }
+
+  }
+
+  // Modification de la version
+  onSubmit() {
+    const dialogRef: MatDialogRef&lt;ConfirmationDialogComponent&gt; &#x3D; this.dialogValidation.open(ConfirmationDialogComponent, {
+        width: &#x27;350px&#x27;,
+        data: &#x27;Voulez vous confirmer les changements que vous allez effectuer sur le version?&#x27;
+      });
+    dialogRef.afterClosed().subscribe(result &#x3D;&gt; {
+      if (result) {
+
+        for (let j &#x3D; 0; j &lt; this.selectedFile.length; j++) {
+          if((this.selectedFile[j] !&#x3D; null) &amp;&amp; (this.selectedFile[j].new &#x3D;&#x3D; true)) {
+            this.selectedFile[j].pending &#x3D; true;
+          }
+        }
+
+        /* modifier le nom de la version */
+        this.versionService.modifierVersion(this.formulaire.value.code,
+          this.formulaire.value.nom).subscribe((res) &#x3D;&gt; {
+          }, error &#x3D;&gt; {
+            // Erreur Modification Version
+          this.toastr.errorToastr(error);
+          }
+        );
+        /* ajouter des options */
+        for (let i &#x3D; 0 ; i &lt; this.optionsAjoutes.length; i++) {
+          this.optionService.ajouter(String(this.optionsAjoutes[i].CodeOption), String(this.optionsAjoutes[i].NomOption),
+            this.formulaire.value.code).subscribe((res) &#x3D;&gt; {
+          } , (error) &#x3D;&gt; {
+            this.toastr.errorToastr(error);
+          });
+        }
+        /* supprimer des options */
+        for (let i &#x3D; 0 ; i &lt; this.optionsSupp.length; i++) {
+          this.optionService.supprimer(String(this.optionsSupp[i].CodeOption),
+            this.formulaire.value.code).subscribe(() &#x3D;&gt; {
+          });
+        }
+
+        /* ajouter des couleurs */
+        for (let i &#x3D; 0 ; i &lt; this.clrsAjoutes.length; i++) {
+          this.couleurService.ajouterCouleurVersion(String(this.clrsAjoutes[i].CodeCouleur),
+            this.formulaire.value.code).subscribe((res) &#x3D;&gt; {
+          } , (error) &#x3D;&gt; {
+            this.toastr.errorToastr(error);
+          });
+        }
+
+        /* supprimer des couleurs */
+        for (let i &#x3D; 0 ; i &lt; this.clrsSupp.length; i++) {
+          this.couleurService.supprimerVersion(String(this.clrsSupp[i].CodeCouleur),
+            this.formulaire.value.code).subscribe(() &#x3D;&gt; {
+          });
+        }
+
+
+        /*ajouter des photos associées à des couleur à la version */
+        for (let j &#x3D; 0; j &lt; this.selectedFile.length; j++) {
+          if((this.selectedFile[j]!&#x3D; null) &amp;&amp; (this.selectedFile[j].new &#x3D;&#x3D; true))
+          {
+            console.log(j);
+            this.imageService.uploadImage(this.selectedFile[j].file, String(this.version.CodeVersion), this.couleurs[j].CodeCouleur).subscribe(res &#x3D;&gt; {
+              this.selectedFile[j].pending &#x3D; false;
+            });
+          }
+        }
+
+
+        /* supprimer des photos  d&#x27;une version */
+        for (let j &#x3D; 0; j &lt; this.imagesSupp.length; j++) {
+          //this.imageService.supprimerImage(this.imagesSupp[j], String(this.version.CodeVersion)).subscribe( res &#x3D;&gt; {});
+          this.selectedFile[j].pending &#x3D; false;
+        }
+
+        this.dialogRef.close();
+      } else
+        this.dialogRef.close();
+    });
+    }
+
+
+  // Supprimer des images
+  supprimerImage(selected: ImageSnippet) {
+    // si l&#x27;image appartient déjà à la version (elle est sur le cloud)
+    if (selected.new &#x3D;&#x3D;&#x3D; false) {
+        this.imagesSupp.push(selected.id); // pour envoyer un delete lors de la validation
+    }
+    this.selectedFile.splice(this.selectedFile.indexOf(selected), 1);
+  }
+}
+
+
+// Zahra please
+class ImageSnippet {
+  pending &#x3D; false;
+  status &#x3D; &#x27;init&#x27;;
+  new &#x3D; true;
+  id;
+  constructor(public src: string, public file: File) {
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;mat-dialog-content&gt;
+  &lt;div  fxLayout&#x3D;&quot;row&quot; fxLayoutAlign&#x3D;&quot;space-between start&quot; &gt;
+    &lt;div fxLayout&#x3D;&quot;column&quot;&gt;
+      &lt;h1 mat-dialog-title style&#x3D;&quot;margin: 0&quot;&gt;Ajouter une version&lt;/h1&gt;
+      &lt;div id&#x3D;&quot;trait&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;button mat-icon-button type&#x3D;&quot;submit&quot;  mat-dialog-close [disabled]&#x3D;&quot;formisvalid&quot;&gt;
+      &lt;mat-icon&gt;close&lt;/mat-icon&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+  &lt;form [formGroup]&#x3D;&quot;formulaire&quot; (ngSubmit)&#x3D;&quot;onSubmit()&quot;#f&#x3D;&quot;ngForm&quot; novalidate id&#x3D;&quot;formulaireHtml&quot;&gt;
+    &lt;div fxLayout&#x3D;&quot;row wrap&quot;&gt;
+      &lt;div fxFlex&#x3D;&quot;25&quot;
+           fxFlex.md&#x3D;&quot;33&quot;
+           fxFlex.sm&#x3D;&quot;50&quot;
+           fxFlex.xs&#x3D;&quot;100&quot; fxLayout&#x3D;&quot;column&quot;&gt;
+        &lt;span class&#x3D;&quot;label&quot;&gt;Code&lt;/span&gt;
+        &lt;input matNativeControl matInput required formControlName&#x3D;&quot;code&quot; class&#x3D;&quot;input&quot;&gt;
+      &lt;/div&gt;
+      &lt;div fxFlex&#x3D;&quot;70&quot;
+           fxFlex.md&#x3D;&quot;67&quot;
+           fxFlex.sm&#x3D;&quot;50&quot;
+           fxFlex.xs&#x3D;&quot;100&quot; fxLayout&#x3D;&quot;column&quot;&gt;
+        &lt;span class&#x3D;&quot;label&quot;&gt;Designation&lt;/span&gt;
+        &lt;input matInput required formControlName&#x3D;&quot;nom&quot; class&#x3D;&quot;input&quot;&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class&#x3D;&quot;row&quot;&gt;
+      &lt;div class&#x3D;&quot;col-11&quot;&gt;
+        &lt;i class&#x3D;&quot;material-icons&quot;&gt;
+          bookmarks
+        &lt;/i&gt;
+        &lt;span class&#x3D;&quot;label&quot;&gt;Options&lt;/span&gt;
+        &lt;br/&gt;
+        &lt;div fxLayout&#x3D;&quot;column&quot; fxLayoutAlign&#x3D;&quot;center start&quot; id&#x3D;&quot;options&quot;  &gt;
+          &lt;mat-checkbox *ngFor&#x3D;&quot;let option of options&quot; color&#x3D;&quot;primary&quot; [value]&#x3D;&quot;option.CodeOption&quot;   [checked]&#x3D;&quot;option.Checked&quot; (change)&#x3D;&quot;gererOptions($event, option)&quot;&gt;{{option.NomOption}}&lt;/mat-checkbox&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+
+
+    &lt;div class&#x3D;&quot;row&quot;&gt;
+      &lt;div class&#x3D;&quot;col-11&quot;&gt;
+        &lt;i class&#x3D;&quot;material-icons&quot;&gt;
+          bookmarks
+        &lt;/i&gt;
+        &lt;span class&#x3D;&quot;label&quot;&gt;Couleurs&lt;/span&gt;
+        &lt;br/&gt;
+        &lt;div  *ngFor&#x3D;&quot;let clr of couleurs; let index&#x3D; index&quot;  fxLayout&#x3D;&quot;column&quot; fxLayoutAlign&#x3D;&quot;center start&quot;&gt;
+          &lt;div fxLayout&#x3D;&quot;row&quot; fxLayoutAlign&#x3D;&quot;space-around center&quot;&gt;
+            &lt;mat-checkbox color&#x3D;&quot;primary&quot; [value]&#x3D;&quot;clr.CodeCouleur&quot;   [checked]&#x3D;&quot;clr.Checked&quot; (change)&#x3D;&quot;gererCouleurs($event, clr)&quot;&gt;{{clr.NomCouleur}}&lt;/mat-checkbox&gt;
+
+            &lt;div fxLayout&#x3D;&quot;row&quot; fxLayoutAlign&#x3D;&quot;start start&quot;&gt;
+              &lt;label  class&#x3D;&quot;image-upload-container btn btn-bwm&quot;&gt;
+                &lt;span class&#x3D;&quot;ajouter&quot;&gt;+&lt;/span&gt;
+                &lt;input  ng2FileSelect accept&#x3D;&quot;.png&quot; [uploader]&#x3D;&quot;uploader&quot; #imageInput id&#x3D;&quot;imageVersion&quot;
+                        type&#x3D;&quot;file&quot;
+                        accept&#x3D;&quot;image/*&quot;
+                        (change)&#x3D;&quot;processFile(imageInput, index)&quot; /&gt;&lt;br/&gt;
+              &lt;/label&gt;
+              &lt;div *ngIf&#x3D;&quot;selectedFile[index]!&#x3D; null&quot; class&#x3D;&quot;img-preview-container&quot;  fxLayout&#x3D;&quot;row&quot; fxLayoutAlign&#x3D;&quot;space-between start&quot;&gt;
+                &lt;div class&#x3D;&quot;img-preview{{selectedFile[index].status &#x3D;&#x3D;&#x3D; &#x27;fail&#x27; ? &#x27;-error&#x27; : &#x27;&#x27;}}&quot;
+                     [ngStyle]&#x3D;&quot;{&#x27;background-image&#x27;: &#x27;url(&#x27;+ selectedFile[index].src + &#x27;)&#x27;}&quot;&gt;
+                &lt;/div&gt;
+
+                &lt;div *ngIf&#x3D;&quot;selectedFile[index].pending&quot; class&#x3D;&quot;img-loading-overlay&quot;&gt;
+                  &lt;div class&#x3D;&quot;img-spinning-circle&quot;&gt;&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;button mat-icon-button  (click)&#x3D;&quot;supprimerImage(selectedFile[index])&quot;&gt;
+                  &lt;mat-icon class&#x3D;&quot;rouge&quot; &gt;delete&lt;/mat-icon&gt;
+                &lt;/button&gt;
+              &lt;/div&gt;
+
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+  &lt;/form&gt;
+  &lt;div mat-dialog-actions fxLayout&#x3D;&quot;row&quot; fxLayoutAlign&#x3D;&quot;end end&quot;&gt;
+    &lt;button type&#x3D;&quot;submit&quot; class&#x3D;&quot;btn-ajout&quot; (click)&#x3D;&quot;onSubmit()&quot;&gt;Valider&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/mat-dialog-content&gt;
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>../ajouter-version/ajouter-version.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">mat-dialog-content{
+  height: 100%;
+  overflow: inherit;
+}
+
+mat-dialog-container{
+  padding: 10px 24px;
+}
+form{
+  width: 100%;
+}
+#formulaireHtml {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#formulaireHtml &gt; * {
+  width: 100%;
+}
+
+#codeInput {
+  width: 25%;
+}
+
+.circle-color{
+  border-radius: 50%;
+  border: 1px solid #000000;
+  width: 40px;
+  height: 40px;
+  background: #424242;
+}
+
+.color-div{
+  padding: 10px 20px;
+}
+
+div#trait {
+  width: 60px;
+  border-top: 3px solid #1abc9c;
+  margin-bottom: 25px;
+  margin-left: 2px
+}
+
+#designationInput {
+  width: 50%;
+}
+
+h1{
+  font-family: &#x27;Roboto-Thin&#x27; , &#x27;Sherif&#x27;;
+  font-size: 25px;
+}
+
+mat-icon{
+  color: #ea1c0d;
+}
+.input {
+  width: 80%;
+  height: 30px;
+  border-radius: 10px;
+  border: 1px solid #707070;
+  background-color: #fbfbfb;
+  padding-left: 20px;
+  font-family: &#x27;Roboto-Bold&#x27;,&#x27;Sherif&#x27;;
+  margin: 10px;
+  margin-top: 0;
+  margin-bottom:10px;
+}
+
+.label {
+  color: #34495e;
+  line-height: 30px;
+  margin-left: 15px;
+  font-weight: bold;
+  font-family: &#x27;Roboto-Bold&#x27;, &#x27;Sherif&#x27;;
+}
+
+#descriptionText {
+  height: 150px;
+}
+
+i
+{
+  vertical-align: middle !important;
+}
+
+#options {
+  color: #000000;
+  font-family: &#x27;Roboto-Bold, Sherif&#x27;;
+  padding: 10px 15px;
+
+  }
+
+
+.ajouter {
+  color: #22c6a6;
+  font-family: &#x27;Roboto-Thin&#x27;, &#x27;Sherif&#x27;;
+  cursor: pointer;
+
+}
+
+.iajouter {
+  color: #22c6a6;
+  cursor: pointer;
+
+
+}
+
+.inputOption {
+  height: 30px;
+  border-radius: 10px;
+  border: 1px solid #707070;
+  background-color: #fbfbfb;
+}
+
+.btn-ajout {
+  width: 15%;
+  height: 44px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  border-radius: 18px;
+  background-image: linear-gradient(101deg, #34749f 0%, #22c6a6 100%);
+  color: #ffffff;
+}
+
+
+
+.row{
+  margin: 10px 10px;
+}
+
+
+#imageVersion {
+  display: none;
+}
+
+.image-upload-container {
+  cursor: pointer;
+}
+
+.img-preview-container {
+  background-color: white;
+  position: relative;
+
+  .img-preview {
+    background: center center no-repeat;
+    background-size: contain;
+    height: 116px;
+    width: 116px;
+    margin: 4px 0px;
+
+    &amp;-error {
+      display: none;
+    }
+  }
+}
+
+.img-loading-overlay {
+  background-color: black;
+  bottom: 0;
+  left: 0;
+  opacity: .2;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.img-spinning-circle {
+  display: inline-block;
+  width: 64px;
+  height: 64px;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+.img-spinning-circle:after {
+  content: &quot; &quot;;
+  display: block;
+  width: 46px;
+  height: 46px;
+  margin: 1px;
+  border-radius: 50%;
+  border: 5px solid #fff;
+  border-color: #fff transparent #fff transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.btn-bwm {
+  color: white;
+  padding: 15px 30px;
+  font-size: 16px;
+
+  &amp;:hover, &amp;:focus, &amp;:active {
+
+  }
+}
+
+mat-dialog-actions{
+  position: fixed;
+  bottom: 0;
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><mat-dialog-content>  <div  fxLayout="row" fxLayoutAlign="space-between start" >    <div fxLayout="column">      <h1 mat-dialog-title style="margin: 0">Ajouter une version</h1>      <div id="trait"></div>    </div>    <button mat-icon-button type="submit"  mat-dialog-close [disabled]="formisvalid">      <mat-icon>close</mat-icon>    </button>  </div>  <form [formGroup]="formulaire" (ngSubmit)="onSubmit()"#f="ngForm" novalidate id="formulaireHtml">    <div fxLayout="row wrap">      <div fxFlex="25"           fxFlex.md="33"           fxFlex.sm="50"           fxFlex.xs="100" fxLayout="column">        <span class="label">Code</span>        <input matNativeControl matInput required formControlName="code" class="input">      </div>      <div fxFlex="70"           fxFlex.md="67"           fxFlex.sm="50"           fxFlex.xs="100" fxLayout="column">        <span class="label">Designation</span>        <input matInput required formControlName="nom" class="input">      </div>    </div>    <div class="row">      <div class="col-11">        <i class="material-icons">          bookmarks        </i>        <span class="label">Options</span>        <br/>        <div fxLayout="column" fxLayoutAlign="center start" id="options"  >          <mat-checkbox *ngFor="let option of options" color="primary" [value]="option.CodeOption"   [checked]="option.Checked" (change)="gererOptions($event, option)">{{option.NomOption}}</mat-checkbox>        </div>      </div>    </div>    <div class="row">      <div class="col-11">        <i class="material-icons">          bookmarks        </i>        <span class="label">Couleurs</span>        <br/>        <div  *ngFor="let clr of couleurs; let index= index"  fxLayout="column" fxLayoutAlign="center start">          <div fxLayout="row" fxLayoutAlign="space-around center">            <mat-checkbox color="primary" [value]="clr.CodeCouleur"   [checked]="clr.Checked" (change)="gererCouleurs($event, clr)">{{clr.NomCouleur}}</mat-checkbox>            <div fxLayout="row" fxLayoutAlign="start start">              <label  class="image-upload-container btn btn-bwm">                <span class="ajouter">+</span>                <input  ng2FileSelect accept=".png" [uploader]="uploader" #imageInput id="imageVersion"                        type="file"                        accept="image/*"                        (change)="processFile(imageInput, index)" /><br/>              </label>              <div *ngIf="selectedFile[index]!= null" class="img-preview-container"  fxLayout="row" fxLayoutAlign="space-between start">                <div class="img-preview{{selectedFile[index].status === \'fail\' ? \'-error\' : \'\'}}"                     [ngStyle]="{\'background-image\': \'url(\'+ selectedFile[index].src + \')\'}">                </div>                <div *ngIf="selectedFile[index].pending" class="img-loading-overlay">                  <div class="img-spinning-circle"></div>                </div>                <button mat-icon-button  (click)="supprimerImage(selectedFile[index])">                  <mat-icon class="rouge" >delete</mat-icon>                </button>              </div>            </div>          </div>        </div>      </div>    </div>  </form>  <div mat-dialog-actions fxLayout="row" fxLayoutAlign="end end">    <button type="submit" class="btn-ajout" (click)="onSubmit()">Valider</button>  </div></mat-dialog-content></div>'
+    var COMPONENTS = [{'name': 'AjouterCouleurComponent', 'selector': 'app-ajouter-couleur'},{'name': 'AjouterModeleComponent', 'selector': 'app-modal'},{'name': 'AjouterOptionComponent', 'selector': 'app-ajouter-option'},{'name': 'AjouterVersionComponent', 'selector': 'app-ajouter-version'},{'name': 'AlertComponent', 'selector': 'app-alert'},{'name': 'AllCommandesComponent', 'selector': 'app-all-commandes'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CommandesComponent', 'selector': 'app-commandes'},{'name': 'ConfirmationDialogComponent', 'selector': 'app-confirmation-dialog'},{'name': 'ContactUsComponent', 'selector': 'app-contact-us'},{'name': 'FicheModeleComponent', 'selector': 'app-fiche-modele'},{'name': 'FicheVersionComponent', 'selector': 'app-fiche-version'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'GestionComponent', 'selector': 'app-gestion'},{'name': 'GestionCouleurComponent', 'selector': 'app-gestion-couleur'},{'name': 'GestionModeleComponent', 'selector': 'app-gestion-modele'},{'name': 'GestionOptionsComponent', 'selector': 'app-gestion-options'},{'name': 'GestionVersionComponent', 'selector': 'app-gestion-version'},{'name': 'InfosDialogComponent', 'selector': 'app-infos-dialog'},{'name': 'InfosDispoComponent', 'selector': 'app-infos-dispo'},{'name': 'LoginComponent', 'selector': 'app-root'},{'name': 'ModifierCouleurComponent', 'selector': 'app-modifier-couleur'},{'name': 'ModifierModeleComponent', 'selector': 'app-modifier-modele'},{'name': 'ModifierOptionComponent', 'selector': 'app-modifier-option'},{'name': 'ModifierVerionComponent', 'selector': 'app-modifier-verion'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NavigationComponent', 'selector': 'app-navigation'},{'name': 'NosClientsComponent', 'selector': 'app-nos-clients'},{'name': 'NoservicesComponent', 'selector': 'app-noservices'},{'name': 'OfferComponent', 'selector': 'app-offer'},{'name': 'PremierePageComponent', 'selector': 'app-premiere-page'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'SidenavComponent', 'selector': 'app-sidenav'},{'name': 'SimulationComponent', 'selector': 'app-simulation'},{'name': 'StockComponent', 'selector': 'app-stock'},{'name': 'StockUploadComponent', 'selector': 'app-stock'},{'name': 'StockVehiculesComponent', 'selector': 'app-stock-vehicules'},{'name': 'SupprimerModeleComponent', 'selector': 'app-supprimer-modele'},{'name': 'TarifsComponent', 'selector': 'app-tarifs'},{'name': 'TarifsOptionsComponent', 'selector': 'app-tarifs-options'},{'name': 'TarifsVersionsComponent', 'selector': 'app-tarifs-versions'},{'name': 'UploadFichierTarifComponent', 'selector': 'app-upload-fichier-tarif'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'ModifierVerionComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'ModifierVerionComponent.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

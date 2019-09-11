@@ -1,0 +1,1509 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>prj-sayara documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">prj-sayara documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>GestionModeleComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/pages/gestion/gestion-modele/gestion-modele.component.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                    <code><a href="https://angular.io/api/core/AfterViewInit" target="_blank" >AfterViewInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-gestion-modele</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./gestion-modele.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./gestion-modele.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#appliquerFiltre">appliquerFiltre</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#dataSource">dataSource</a>
+                            </li>
+                            <li>
+                                <a href="#displayedColumns">displayedColumns</a>
+                            </li>
+                            <li>
+                                <a href="#interval">interval</a>
+                            </li>
+                            <li>
+                                <a href="#loading">loading</a>
+                            </li>
+                            <li>
+                                <a href="#paginator">paginator</a>
+                            </li>
+                            <li>
+                                <a href="#sort">sort</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#afficherFiche">afficherFiche</a>
+                            </li>
+                            <li>
+                                <a href="#ajouterModele">ajouterModele</a>
+                            </li>
+                            <li>
+                                <a href="#modifierModele">modifierModele</a>
+                            </li>
+                            <li>
+                                <a href="#ngAfterViewInit">ngAfterViewInit</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#refreshData">refreshData</a>
+                            </li>
+                            <li>
+                                <a href="#supprimerModele">supprimerModele</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(modeleService: <a href="../injectables/ModeleService.html">ModeleService</a>, matDialog: MatDialog, toastr: ToastrManager, pushService: <a href="../injectables/PusherService.html">PusherService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/pages/gestion/gestion-modele/gestion-modele.component.ts:39</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Constructeur de la classe, il redefinit le filtre de recherche pour inclure les sous-objets (options et versions)</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>modeleService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ModeleService.html" target="_self" >ModeleService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>Il va permettre d&#39;avoir les modeles a afficher</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>matDialog</td>
+                                                  
+                                                        <td>
+                                                                    <code>MatDialog</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>Un service qui va permettre d&#39;ouvrir les boites de dialogues pour ajouter, supprimer et modifier</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>toastr</td>
+                                                  
+                                                        <td>
+                                                                    <code>ToastrManager</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>pushService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/PusherService.html" target="_self" >PusherService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code><p>Un service qui permet de faire la synchronisation en temps réel</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="afficherFiche"></a>
+                    <span class="name">
+                        <b>
+                            afficherFiche
+                        </b>
+                        <a href="#afficherFiche"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>afficherFiche(modele: <a href="../interfaces/ModeleDetail.html">ModeleDetail</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="165"
+                            class="link-to-prism">src/app/pages/gestion/gestion-modele/gestion-modele.component.ts:165</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>modele</td>
+                                    <td>
+                                                <code><a href="../interfaces/ModeleDetail.html" target="_self" >ModeleDetail</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ajouterModele"></a>
+                    <span class="name">
+                        <b>
+                            ajouterModele
+                        </b>
+                        <a href="#ajouterModele"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ajouterModele()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="106"
+                            class="link-to-prism">src/app/pages/gestion/gestion-modele/gestion-modele.component.ts:106</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Ajouter un modele, invoque le composant ajouterModele</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="modifierModele"></a>
+                    <span class="name">
+                        <b>
+                            modifierModele
+                        </b>
+                        <a href="#modifierModele"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>modifierModele(modele: <a href="../interfaces/ModeleDetail.html">ModeleDetail</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="119"
+                            class="link-to-prism">src/app/pages/gestion/gestion-modele/gestion-modele.component.ts:119</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Modifier un modele, invoque le composant ModifierModele</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>modele</td>
+                                    <td>
+                                                <code><a href="../interfaces/ModeleDetail.html" target="_self" >ModeleDetail</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Le modele a modifier</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngAfterViewInit"></a>
+                    <span class="name">
+                        <b>
+                            ngAfterViewInit
+                        </b>
+                        <a href="#ngAfterViewInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngAfterViewInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="151"
+                            class="link-to-prism">src/app/pages/gestion/gestion-modele/gestion-modele.component.ts:151</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Association du sort et de la pagination au dataSource</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="85"
+                            class="link-to-prism">src/app/pages/gestion/gestion-modele/gestion-modele.component.ts:85</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Executé a l&#39;initialisation du composant, récupere les données</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="refreshData"></a>
+                    <span class="name">
+                        <b>
+                            refreshData
+                        </b>
+                        <a href="#refreshData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>refreshData()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="93"
+                            class="link-to-prism">src/app/pages/gestion/gestion-modele/gestion-modele.component.ts:93</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Récuperation des modéles</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="supprimerModele"></a>
+                    <span class="name">
+                        <b>
+                            supprimerModele
+                        </b>
+                        <a href="#supprimerModele"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>supprimerModele(modele)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="136"
+                            class="link-to-prism">src/app/pages/gestion/gestion-modele/gestion-modele.component.ts:136</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Supprimer un modele, invoque le composant SupprimerModele</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>modele</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Le modele a supprimer</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="appliquerFiltre"></a>
+                        <span class="name">
+                            <b>
+                            appliquerFiltre</b>
+                            <a href="#appliquerFiltre"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>() &#x3D;&gt; {...}</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="161" class="link-to-prism">src/app/pages/gestion/gestion-modele/gestion-modele.component.ts:161</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Application du filtre entré dans la recherche</p>
+</div>
+                    </td>
+                </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                          <div class="io-description">
+                                  <b>Parameters :</b>
+                                  <table class="params">
+                                      <thead>
+                                          <tr>
+                                                <td>Name</td>
+                                                    <td>Description</td>
+                                          </tr>
+                                      </thead>
+                                      <tbody>
+                                                <tr>
+                                                        <td>value</td>
+                                                        <td>
+                                                                <code><p>La valeur entrée dans la recherche</p>
+</code>
+                                                        </td>
+                                                </tr>
+                                      </tbody>
+                                  </table>
+                          </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="dataSource"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            dataSource</b>
+                            <a href="#dataSource"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new MatTableDataSource&lt;ModeleDetail&gt;()</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/pages/gestion/gestion-modele/gestion-modele.component.ts:26</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="displayedColumns"></a>
+                        <span class="name">
+                            <b>
+                            displayedColumns</b>
+                            <a href="#displayedColumns"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>[]</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[&#x27;CodeModele&#x27;, &#x27;NomModele&#x27;, &#x27;versions&#x27;, &#x27;options&#x27;, &#x27;couleurs&#x27;, &#x27;gestion&#x27;]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/pages/gestion/gestion-modele/gestion-modele.component.ts:29</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="interval"></a>
+                        <span class="name">
+                            <b>
+                            interval</b>
+                            <a href="#interval"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/pages/gestion/gestion-modele/gestion-modele.component.ts:30</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="loading"></a>
+                        <span class="name">
+                            <b>
+                            loading</b>
+                            <a href="#loading"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>true</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/pages/gestion/gestion-modele/gestion-modele.component.ts:39</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="paginator"></a>
+                        <span class="name">
+                            <b>
+                            paginator</b>
+                            <a href="#paginator"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>MatPaginator</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ViewChild(MatPaginator)<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/pages/gestion/gestion-modele/gestion-modele.component.ts:36</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="sort"></a>
+                        <span class="name">
+                            <b>
+                            sort</b>
+                            <a href="#sort"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>MatSort</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ViewChild(MatSort)<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/pages/gestion/gestion-modele/gestion-modele.component.ts:33</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {Component, OnInit, ViewChild, AfterViewInit} from &#x27;@angular/core&#x27;;
+import {ModeleService} from &#x27;../../../services/modele.service&#x27;;
+import &#x27;rxjs/add/observable/of&#x27;;
+import {AjouterModeleComponent} from &#x27;./ajouterModele/ajouterModele.component&#x27;;
+import {MatDialog, MatDialogRef, MatPaginator, MatSort, MatTableDataSource} from &#x27;@angular/material&#x27;;
+import {SupprimerModeleComponent} from &#x27;./supprimer-modele/supprimer-modele.component&#x27;;
+import {ModeleDetail} from &#x27;../../../services/entites/modeleDetail.model&#x27;;
+import {ModifierModeleComponent} from &#x27;./modifier-modele/modifier-modele.component&#x27;;
+import {FicheModeleComponent} from &#x27;./fiche-modele/fiche-modele.component&#x27;;
+import {PusherService} from &#x27;../../../services/pusher.service&#x27;;
+import {ToastrManager} from &#x27;ng6-toastr-notifications&#x27;;
+
+@Component({
+  selector: &#x27;app-gestion-modele&#x27;,
+  templateUrl: &#x27;./gestion-modele.component.html&#x27;,
+  styleUrls: [&#x27;./gestion-modele.component.scss&#x27;]
+})
+/**
+ *  Classe de gestion des modeles de véhicules
+ *  Implemente OnInit pour l&#x27;initialisation du composant, et AfterViewInit pour le filtre et le tri et la pagination
+ *  @author CHABANE CHAOUCH Zahra, CHOUAKI Salim
+ *
+ */
+export class GestionModeleComponent implements OnInit, AfterViewInit {
+  // Le data source qui contient les informations a afficher dans le mat-table
+  public dataSource &#x3D; new MatTableDataSource&lt;ModeleDetail&gt;();
+
+  // Les colonnes a afficher dans le mat-table
+  displayedColumns &#x3D; [&#x27;CodeModele&#x27;, &#x27;NomModele&#x27;, &#x27;versions&#x27;, &#x27;options&#x27;, &#x27;couleurs&#x27;, &#x27;gestion&#x27;];
+  interval: any;
+
+  // Réference vers le mat-sort
+  @ViewChild(MatSort) sort: MatSort;
+
+  // Réference vers le mat-paginator
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  // En attente des données
+  loading &#x3D; true;
+
+  /**
+   * Constructeur de la classe, il redefinit le filtre de recherche pour inclure les sous-objets (options et versions)
+   * @param modeleService
+   * Il va permettre d&#x27;avoir les modeles a afficher
+   * @param matDialog
+   * Un service qui va permettre d&#x27;ouvrir les boites de dialogues pour ajouter, supprimer et modifier
+   * @param pushService
+   * Un service qui permet de faire la synchronisation en temps réel
+   */
+  constructor(private modeleService: ModeleService,
+              private matDialog: MatDialog,
+              private toastr: ToastrManager,
+              private pushService: PusherService) {
+    // Redéfinition du filtre pour prendre en compte les sous objets
+    this.dataSource.filterPredicate &#x3D; (order: any, filter: string) &#x3D;&gt; {
+      const transformedFilter &#x3D; filter.trim().toLowerCase();
+      const listAsFlatString &#x3D; (obj): string &#x3D;&gt; {
+        let returnVal &#x3D; &#x27;&#x27;;
+        Object.values(obj).forEach((val) &#x3D;&gt; {
+          if (typeof val !&#x3D;&#x3D; &#x27;object&#x27;) { // Si ce n&#x27;est pas un objet
+            returnVal &#x3D; returnVal + &#x27; &#x27; + val;
+          } else if (val !&#x3D;&#x3D; null) { // Si c&#x27;est un objet non null
+            returnVal &#x3D; returnVal + &#x27; &#x27; + listAsFlatString(val);
+          }
+        });
+        return returnVal.trim().toLowerCase();
+      };
+      return listAsFlatString(order).includes(transformedFilter);
+    };
+
+    this.pushService.modeleChannel.bind(&#x27;newModele&#x27;, data &#x3D;&gt; {
+      setTimeout(() &#x3D;&gt; {
+        this.modeleService.getModele(data.CodeModele).subscribe(res &#x3D;&gt; {
+          const tmpData &#x3D; this.dataSource.data;
+          tmpData.push(res as ModeleDetail);
+          this.dataSource.data &#x3D; tmpData;
+        });
+      }, 1000);
+    });
+  }
+
+  /**
+   *  Executé a l&#x27;initialisation du composant, récupere les données
+   */
+  ngOnInit() {
+    /*récupérer les données à partir du service */
+    this.refreshData();
+  }
+
+  /**
+   * Récuperation des modéles
+   */
+  refreshData() {
+    this.modeleService.getModeles().subscribe(res &#x3D;&gt; {
+      this.loading &#x3D; false;
+      this.dataSource.data &#x3D; res as ModeleDetail[];
+    }, error &#x3D;&gt; {
+      // le probleme de connexion
+      this.toastr.errorToastr(error);
+    });
+  }
+
+  /**
+   * Ajouter un modele, invoque le composant ajouterModele
+   */
+  ajouterModele() {
+    // Ouverture de la boite de dialogue, composant AjouterModele
+    const dialogRef: MatDialogRef&lt;AjouterModeleComponent&gt; &#x3D; this.matDialog.open(AjouterModeleComponent, {
+      width: &#x27;850px&#x27;,
+      height: &#x27;auto&#x27;
+    });
+  }
+
+  /**
+   *  Modifier un modele, invoque le composant ModifierModele
+   * @param modele
+   * Le modele a modifier
+   */
+  modifierModele(modele: ModeleDetail) {
+    // Ouverture de la boite de dialogue, composant ModifierModele
+    const dialogRef: MatDialogRef&lt;ModifierModeleComponent&gt; &#x3D; this.matDialog.open(ModifierModeleComponent, {
+      width: &#x27;800px&#x27;,
+      data: {modele}
+    });
+    // Rafraichissement de la page apres fermeture de la boite de dialogue
+    dialogRef.afterClosed().subscribe(() &#x3D;&gt; {
+      this.refreshData();
+    });
+  }
+
+  /**
+   * Supprimer un modele, invoque le composant SupprimerModele
+   * @param modele
+   * Le modele a supprimer
+   */
+  supprimerModele(modele) {
+    // Ouverture de la boite de dialogue, composant SupprimerModele
+    const dialogRef: MatDialogRef&lt;SupprimerModeleComponent&gt; &#x3D; this.matDialog.open(SupprimerModeleComponent, {
+      width: &#x27;800px&#x27;,
+      data: {modele}
+    });
+    // Rafraichissement de la page apres fermeture de la boite de dialogue
+    dialogRef.afterClosed().subscribe(() &#x3D;&gt; {
+      this.refreshData();
+    });
+  }
+
+  /**
+   *  Association du sort et de la pagination au dataSource
+   */
+  ngAfterViewInit(): void {
+    this.dataSource.sort &#x3D; this.sort;
+    this.dataSource.paginator &#x3D; this.paginator;
+  }
+
+  /**
+   * Application du filtre entré dans la recherche
+   * @param value
+   * La valeur entrée dans la recherche
+   */
+  appliquerFiltre &#x3D; (value: string) &#x3D;&gt; {
+    this.dataSource.filter &#x3D; value.trim().toLocaleLowerCase();
+  }
+
+  afficherFiche(modele: ModeleDetail) {
+    const dialogRef: MatDialogRef&lt;FicheModeleComponent&gt; &#x3D; this.matDialog.open(FicheModeleComponent, {width: &#x27;800px&#x27;, height: &#x27;80%&#x27;});
+    dialogRef.componentInstance.modele &#x3D; modele;
+  }
+
+}
+
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;gestion&quot;&gt;
+  &lt;h2&gt;Gestion des modèles &lt;/h2&gt;
+  &lt;div id&#x3D;&quot;trait&quot;&gt;&lt;/div&gt;
+  &lt;div fxLayout&#x3D;&quot;row&quot;&gt;
+    &lt;div fxFlex&#x3D;&quot;70&quot;&gt;
+      &lt;form class&#x3D;&quot;example-form&quot;&gt;
+        &lt;mat-form-field class&#x3D;&quot;example-full-width&quot;&gt;
+          &lt;input matInput type&#x3D;&quot;text&quot; (keyup)&#x3D;&quot;appliquerFiltre($event.target.value)&quot; placeholder&#x3D;&quot;Rechercher un modèle&quot; value&#x3D;&quot;&quot;&gt;
+        &lt;/mat-form-field&gt;
+      &lt;/form&gt;
+    &lt;/div&gt;
+    &lt;button mat-button fxFlex&#x3D;&#x27;20&#x27; mat-stroked-button (click)&#x3D;&quot;ajouterModele()&quot; class&#x3D;&quot;ajouter&quot;&gt;Ajouter un modèle&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;example-container mat-elevation-z8&quot;&gt;
+    &lt;mat-table [dataSource]&#x3D;&quot;dataSource&quot; matSort&gt;
+      &lt;ng-container matColumnDef&#x3D;&#x27;CodeModele&#x27;&gt;
+        &lt;mat-header-cell *matHeaderCellDef mat-sort-header&gt;
+          &lt;mat-icon&gt;code&lt;/mat-icon&gt;
+          CODE
+        &lt;/mat-header-cell&gt;
+        &lt;mat-cell *matCellDef&#x3D;&quot;let modele&quot;&gt; {{modele.CodeModele}} &lt;/mat-cell&gt;
+      &lt;/ng-container&gt;
+
+      &lt;ng-container matColumnDef&#x3D;&#x27;NomModele&#x27;&gt;
+        &lt;mat-header-cell *matHeaderCellDef mat-sort-header&gt;
+          &lt;mat-icon&gt;directions_car&lt;/mat-icon&gt;
+          MODELE
+        &lt;/mat-header-cell&gt;
+        &lt;mat-cell class&#x3D;&quot;gras&quot; *matCellDef&#x3D;&quot;let modele&quot;&gt; {{modele.NomModele}} &lt;/mat-cell&gt;
+      &lt;/ng-container&gt;
+
+      &lt;ng-container matColumnDef&#x3D;&#x27;versions&#x27;&gt;
+        &lt;mat-header-cell *matHeaderCellDef&gt;
+          &lt;mat-icon&gt;bookmark&lt;/mat-icon&gt;
+          VERSIONS
+        &lt;/mat-header-cell&gt;
+        &lt;mat-cell *matCellDef&#x3D;&quot;let modele&quot;&gt;
+          &lt;ul&gt;
+            &lt;li *ngFor&#x3D;&quot;let version of modele.versions&quot;&gt;
+              {{version.NomVersion}}
+            &lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/mat-cell&gt;
+      &lt;/ng-container&gt;
+
+      &lt;ng-container matColumnDef&#x3D;&#x27;options&#x27;&gt;
+        &lt;mat-header-cell *matHeaderCellDef&gt;
+          &lt;mat-icon&gt;assignment_turned_in&lt;/mat-icon&gt;
+          OPTIONS
+        &lt;/mat-header-cell&gt;
+        &lt;mat-cell *matCellDef&#x3D;&quot;let modele&quot; fxLayout&#x3D;&quot;column&quot; fxLayoutAlign&#x3D;&quot;start start&quot;&gt;
+          &lt;ul&gt;
+            &lt;li *ngFor&#x3D;&quot;let option of modele.options  | slice:0:5&quot; &gt;
+              {{option.NomOption}}
+            &lt;/li&gt;
+          &lt;/ul&gt;
+          &lt;div *ngIf&#x3D;&quot;(modele.options.length &gt; 5)&quot;&gt;
+            &lt;a  [routerLink]&#x3D;&quot;[&#x27;/gestion/options&#x27;, modele.CodeModele]&quot; &gt;+ d&#x27;aptions &lt;/a&gt;
+          &lt;/div&gt;
+        &lt;/mat-cell&gt;
+      &lt;/ng-container&gt;
+
+      &lt;ng-container matColumnDef&#x3D;&#x27;couleurs&#x27;&gt;
+        &lt;mat-header-cell *matHeaderCellDef&gt;
+          &lt;mat-icon&gt;assignment_turned_in&lt;/mat-icon&gt;
+          COULEURS
+        &lt;/mat-header-cell&gt;
+        &lt;mat-cell *matCellDef&#x3D;&quot;let modele&quot; fxLayout&#x3D;&quot;column&quot; fxLayoutAlign&#x3D;&quot;start start&quot;&gt;
+          &lt;ul&gt;
+            &lt;li *ngFor&#x3D;&quot;let couleur of modele.couleurs  | slice:0:5&quot;&gt;
+              {{couleur.NomCouleur}}
+            &lt;/li&gt;
+          &lt;/ul&gt;
+          &lt;div *ngIf&#x3D;&quot;(modele.options.length &gt; 5)&quot;&gt;
+            &lt;a  [routerLink]&#x3D;&quot;[&#x27;/gestion/couleurs&#x27;, modele.CodeModele]&quot; &gt;+ de couleurs &lt;/a&gt;
+          &lt;/div&gt;
+        &lt;/mat-cell&gt;
+      &lt;/ng-container&gt;
+
+      &lt;ng-container matColumnDef&#x3D;&quot;gestion&quot;&gt;
+        &lt;mat-header-cell *matHeaderCellDef id&#x3D;&quot;gestion&quot;&gt;&lt;i class&#x3D;&quot;material-icons&quot;&gt;tune&lt;/i&gt; GESTION&lt;/mat-header-cell&gt;
+        &lt;mat-cell *matCellDef&#x3D;&quot;let modele&quot;&gt;
+          &lt;button mat-icon-button (click)&#x3D;&quot;modifierModele(modele)&quot;  &gt;
+            &lt;mat-icon class&#x3D;&quot;vert&quot;&gt;edit&lt;/mat-icon&gt;
+          &lt;/button&gt;
+          &lt;button mat-icon-button (click)&#x3D;&quot;supprimerModele(modele)&quot;&gt;
+            &lt;mat-icon class&#x3D;&quot;rouge&quot; &gt;delete&lt;/mat-icon&gt;
+          &lt;/button&gt;
+
+          &lt;button mat-icon-button [matMenuTriggerFor]&#x3D;&quot;menu&quot; aria-label&#x3D;&quot;Example icon-button with a menu&quot;&gt;
+            &lt;mat-icon class&#x3D;&quot;bleu&quot;&gt;more_vert&lt;/mat-icon&gt;
+          &lt;/button&gt;
+          &lt;mat-menu #menu&#x3D;&quot;matMenu&quot;&gt;
+            &lt;a mat-menu-item [routerLink]&#x3D;&quot;[&#x27;/gestion/versions&#x27;, modele.CodeModele]&quot;&gt;
+              &lt;span&gt;Gérer les versions&lt;/span&gt;
+            &lt;/a&gt;
+            &lt;button mat-menu-item (click)&#x3D;&quot;afficherFiche(modele)&quot;&gt;
+              &lt;span&gt;Fiche technique&lt;/span&gt;
+            &lt;/button&gt;
+          &lt;/mat-menu&gt;
+
+        &lt;/mat-cell&gt;
+      &lt;/ng-container&gt;
+
+      &lt;mat-header-row *matHeaderRowDef&#x3D;&quot;displayedColumns&quot;&gt;&lt;/mat-header-row&gt;
+      &lt;mat-row *matRowDef&#x3D;&quot;let row; columns: displayedColumns;&quot;&gt;&lt;/mat-row&gt;
+    &lt;/mat-table&gt;
+    &lt;img *ngIf&#x3D;&quot;loading&quot; class&#x3D;&quot;loadingImage pl-3&quot;
+         src&#x3D;&quot;data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA&#x3D;&#x3D;&quot;
+         alt&#x3D;&quot;Loading-Photo&quot;/&gt;
+    &lt;mat-paginator [pageSizeOptions]&#x3D;&quot;[5, 10, 20]&quot; showFirstLastButtons&gt;&lt;/mat-paginator&gt;
+  &lt;/div&gt;
+
+
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./gestion-modele.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">div.gestion {
+  margin: 5%;
+  width: 1000px;
+  padding-bottom: 300px;
+
+  .gras {
+    font-weight: bold;
+  }
+
+  h2 {
+    margin-bottom: 6px;
+    font-size: 30px;
+    font-family: &#x27;Roboto-Thin&#x27;, &#x27;Sherif&#x27;, serif;
+
+  }
+  div#selector {
+    margin-top: 30px;
+    width: 200px;
+  }
+
+  div#trait {
+    width: 60px;
+    border-top: 3px solid #3498d8;
+    margin-bottom: 25px;
+    margin-left: 2px
+  }
+
+  div {
+    width: 100%;
+
+    div {
+      .example-form {
+        width: 70%;
+        height: 44px;
+        padding: 0;
+
+        div {
+          background-color: transparent;
+        }
+
+        .example-full-width {
+          width: 100%;
+        }
+      }
+
+
+    }
+
+    button {
+      color: white;
+      line-height: 3;
+      font-weight: bold;
+      font-family: &#x27;Lato&#x27;, sans-serif;
+      border-radius: 10px;
+      font-size: 13px;
+    }
+
+    button.ajouter {
+      background-color: #2980b9;
+    }
+  }
+
+
+  .example-container {
+    width: 96%;
+    background-color: transparent;
+    margin-top: 5%;
+    overflow: auto;
+    padding: 0;
+
+
+    mat-table {
+      width: 100%;
+      margin: 0;
+      box-shadow: 1.5px 1.5px #95a5a6;
+
+      mat-row {
+        padding: 1% 0;
+        border-bottom: 3px solid #ecf0f1;
+
+        mat-cell {
+          padding: 0 2%;
+           button{;
+             mat-icon {
+               margin-right: 3%
+             }
+
+             mat-icon.vert {
+               color: #16a085;
+             }
+
+             mat-icon.rouge {
+               color: firebrick;
+             }
+
+             mat-icon.bleu {
+               color: #2ebcfc;
+             }
+           }
+
+        }
+
+        ul {
+          padding: 0;
+          margin-bottom: 0;
+          color: black;
+        }
+
+        a {
+          color: #3498d8;
+          border: 0;
+
+        }
+
+        button {
+          color: #3498d8;
+          border: 0;
+          padding: 0px;
+        }
+      }
+
+      .circle-color{
+        border-radius: 50%;
+        border: 1px solid #000000;
+        height: 40px;
+        width: 40px;
+        background: #424242;
+      }
+
+      ng-container {
+        mat-cell {
+          padding: 0 2%;
+        }
+      }
+
+
+      mat-header-row {
+        background-color: #ecf0f1;
+        justify-content: center;
+
+        mat-header-cell {
+          padding-left: 40px;
+          color: #2c3e50;
+          font-size: 80%;
+          font-family: &#x27;Roboto-Bold&#x27;, serif;
+
+          mat-icon {
+            margin-right: 5px;
+          }
+        }
+
+      }
+
+
+    }
+
+  }
+
+
+
+
+}
+
+.loadingImage {
+  margin-left: 50%;
+  margin-top: 20px;
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="gestion">  <h2>Gestion des modèles </h2>  <div id="trait"></div>  <div fxLayout="row">    <div fxFlex="70">      <form class="example-form">        <mat-form-field class="example-full-width">          <input matInput type="text" (keyup)="appliquerFiltre($event.target.value)" placeholder="Rechercher un modèle" value="">        </mat-form-field>      </form>    </div>    <button mat-button fxFlex=\'20\' mat-stroked-button (click)="ajouterModele()" class="ajouter">Ajouter un modèle</button>  </div>  <div class="example-container mat-elevation-z8">    <mat-table [dataSource]="dataSource" matSort>      <ng-container matColumnDef=\'CodeModele\'>        <mat-header-cell *matHeaderCellDef mat-sort-header>          <mat-icon>code</mat-icon>          CODE        </mat-header-cell>        <mat-cell *matCellDef="let modele"> {{modele.CodeModele}} </mat-cell>      </ng-container>      <ng-container matColumnDef=\'NomModele\'>        <mat-header-cell *matHeaderCellDef mat-sort-header>          <mat-icon>directions_car</mat-icon>          MODELE        </mat-header-cell>        <mat-cell class="gras" *matCellDef="let modele"> {{modele.NomModele}} </mat-cell>      </ng-container>      <ng-container matColumnDef=\'versions\'>        <mat-header-cell *matHeaderCellDef>          <mat-icon>bookmark</mat-icon>          VERSIONS        </mat-header-cell>        <mat-cell *matCellDef="let modele">          <ul>            <li *ngFor="let version of modele.versions">              {{version.NomVersion}}            </li>          </ul>        </mat-cell>      </ng-container>      <ng-container matColumnDef=\'options\'>        <mat-header-cell *matHeaderCellDef>          <mat-icon>assignment_turned_in</mat-icon>          OPTIONS        </mat-header-cell>        <mat-cell *matCellDef="let modele" fxLayout="column" fxLayoutAlign="start start">          <ul>            <li *ngFor="let option of modele.options  | slice:0:5" >              {{option.NomOption}}            </li>          </ul>          <div *ngIf="(modele.options.length > 5)">            <a  [routerLink]="[\'/gestion/options\', modele.CodeModele]" >+ d\'aptions </a>          </div>        </mat-cell>      </ng-container>      <ng-container matColumnDef=\'couleurs\'>        <mat-header-cell *matHeaderCellDef>          <mat-icon>assignment_turned_in</mat-icon>          COULEURS        </mat-header-cell>        <mat-cell *matCellDef="let modele" fxLayout="column" fxLayoutAlign="start start">          <ul>            <li *ngFor="let couleur of modele.couleurs  | slice:0:5">              {{couleur.NomCouleur}}            </li>          </ul>          <div *ngIf="(modele.options.length > 5)">            <a  [routerLink]="[\'/gestion/couleurs\', modele.CodeModele]" >+ de couleurs </a>          </div>        </mat-cell>      </ng-container>      <ng-container matColumnDef="gestion">        <mat-header-cell *matHeaderCellDef id="gestion"><i class="material-icons">tune</i> GESTION</mat-header-cell>        <mat-cell *matCellDef="let modele">          <button mat-icon-button (click)="modifierModele(modele)"  >            <mat-icon class="vert">edit</mat-icon>          </button>          <button mat-icon-button (click)="supprimerModele(modele)">            <mat-icon class="rouge" >delete</mat-icon>          </button>          <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">            <mat-icon class="bleu">more_vert</mat-icon>          </button>          <mat-menu #menu="matMenu">            <a mat-menu-item [routerLink]="[\'/gestion/versions\', modele.CodeModele]">              <span>Gérer les versions</span>            </a>            <button mat-menu-item (click)="afficherFiche(modele)">              <span>Fiche technique</span>            </button>          </mat-menu>        </mat-cell>      </ng-container>      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>    </mat-table>    <img *ngIf="loading" class="loadingImage pl-3"         src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="         alt="Loading-Photo"/>    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AjouterCouleurComponent', 'selector': 'app-ajouter-couleur'},{'name': 'AjouterModeleComponent', 'selector': 'app-modal'},{'name': 'AjouterOptionComponent', 'selector': 'app-ajouter-option'},{'name': 'AjouterVersionComponent', 'selector': 'app-ajouter-version'},{'name': 'AlertComponent', 'selector': 'app-alert'},{'name': 'AllCommandesComponent', 'selector': 'app-all-commandes'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CommandesComponent', 'selector': 'app-commandes'},{'name': 'ConfirmationDialogComponent', 'selector': 'app-confirmation-dialog'},{'name': 'ContactUsComponent', 'selector': 'app-contact-us'},{'name': 'FicheModeleComponent', 'selector': 'app-fiche-modele'},{'name': 'FicheVersionComponent', 'selector': 'app-fiche-version'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'GestionComponent', 'selector': 'app-gestion'},{'name': 'GestionCouleurComponent', 'selector': 'app-gestion-couleur'},{'name': 'GestionModeleComponent', 'selector': 'app-gestion-modele'},{'name': 'GestionOptionsComponent', 'selector': 'app-gestion-options'},{'name': 'GestionVersionComponent', 'selector': 'app-gestion-version'},{'name': 'InfosDialogComponent', 'selector': 'app-infos-dialog'},{'name': 'InfosDispoComponent', 'selector': 'app-infos-dispo'},{'name': 'LoginComponent', 'selector': 'app-root'},{'name': 'ModifierCouleurComponent', 'selector': 'app-modifier-couleur'},{'name': 'ModifierModeleComponent', 'selector': 'app-modifier-modele'},{'name': 'ModifierOptionComponent', 'selector': 'app-modifier-option'},{'name': 'ModifierVerionComponent', 'selector': 'app-modifier-verion'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NavigationComponent', 'selector': 'app-navigation'},{'name': 'NosClientsComponent', 'selector': 'app-nos-clients'},{'name': 'NoservicesComponent', 'selector': 'app-noservices'},{'name': 'OfferComponent', 'selector': 'app-offer'},{'name': 'PremierePageComponent', 'selector': 'app-premiere-page'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'SidenavComponent', 'selector': 'app-sidenav'},{'name': 'SimulationComponent', 'selector': 'app-simulation'},{'name': 'StockComponent', 'selector': 'app-stock'},{'name': 'StockUploadComponent', 'selector': 'app-stock'},{'name': 'StockVehiculesComponent', 'selector': 'app-stock-vehicules'},{'name': 'SupprimerModeleComponent', 'selector': 'app-supprimer-modele'},{'name': 'TarifsComponent', 'selector': 'app-tarifs'},{'name': 'TarifsOptionsComponent', 'selector': 'app-tarifs-options'},{'name': 'TarifsVersionsComponent', 'selector': 'app-tarifs-versions'},{'name': 'UploadFichierTarifComponent', 'selector': 'app-upload-fichier-tarif'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'GestionModeleComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'GestionModeleComponent.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
