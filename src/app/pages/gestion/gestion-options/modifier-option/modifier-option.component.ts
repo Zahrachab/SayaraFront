@@ -44,8 +44,8 @@ export class ModifierOptionComponent implements OnInit {
   ngOnInit() {
     // Construction du formulaire
     this.formulaire = this.constructeurFormulaire.group({
-      code: new FormControl({value: this.option.CodeOption, disabled: true}, Validators.required),
-      nom:  new FormControl({value: this.option.CodeOption}, Validators.required),
+      code: this.option.CodeOption ,
+      nom:  this.option.CodeOption
     });
     // Liaison avec le Html
     this.formulaire.valueChanges.subscribe(() => {

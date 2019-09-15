@@ -83,7 +83,7 @@ export class ModifierModeleComponent implements OnInit {
   }
 
   /**
-   * Ajouter une option compatible avec le modele
+   * Charger les couleurs compatibles et associées au modèle
    */
 
   chargerCouleurs() {
@@ -118,6 +118,9 @@ export class ModifierModeleComponent implements OnInit {
     });
   }
 
+  /**
+   * Charger les options compatibles et associées au modèle
+   */
   chargerOptions() {
     const optionsMap: Map<string, object> = new Map();
     this.formulaire.valueChanges.subscribe();
@@ -183,7 +186,7 @@ export class ModifierModeleComponent implements OnInit {
   }
 
   /**
-   * Modifie un modele, en modifiant le nom et les options et les couelurs
+   * Afficher un formulaire pour ajouter une nouvelle couleur
    */
   ajouterCouleur() {
     const couleur = this.constructeurFormulaire.group({
@@ -193,6 +196,9 @@ export class ModifierModeleComponent implements OnInit {
     this.couleursFormulaire.push(couleur);
   }
 
+  /**
+   * Gérer la sélection et la déselection des couleurs
+   */
 
   gererCouleurs(event, couleur) {
     couleur.Checked = !couleur.Checked;
@@ -211,6 +217,11 @@ export class ModifierModeleComponent implements OnInit {
     }
   }
 
+
+
+  /**
+   * Gérer la sélection et la déselection des options
+   */
   gererOptions(event, opt) {
     opt.Checked = !opt.Checked;
     if (opt.Checked) {
@@ -237,6 +248,10 @@ export class ModifierModeleComponent implements OnInit {
     this.couleursFormulaire.removeAt(i);
   }
 
+
+  /**
+   * Valider la modification du modèle
+   */
   modifierModele() {
 
     const dialogRef: MatDialogRef<ConfirmationDialogComponent> = this.dialogValidation.open(ConfirmationDialogComponent, {
@@ -296,6 +311,8 @@ export class ModifierModeleComponent implements OnInit {
           this.dialogReference.close();
 
           });
+      } else {
+        this.dialogReference.close();
       }
     }, error => {
       // Erreurs lors de la modification du modele

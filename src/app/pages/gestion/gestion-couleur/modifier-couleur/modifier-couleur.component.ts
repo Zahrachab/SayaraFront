@@ -25,6 +25,7 @@ export class ModifierCouleurComponent implements OnInit {
 
   ngOnInit() {
 
+    this.color = this.couleur.CodeHexa;
     this.formulaire = this.constructeurFormulaire.group({
       code: this.couleur.CodeCouleur,
       nom: this.couleur.NomCouleur,
