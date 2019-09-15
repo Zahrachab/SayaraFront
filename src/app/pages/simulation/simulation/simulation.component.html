@@ -6,8 +6,8 @@
   <div class="globalContainer">
     <h2>Simuler vos véhicules </h2>
     <div class="trait"></div>
-    <div fxLayout="row wrap" fxLayoutAlign="space-between start">
-        <mat-card *ngIf="etape==1" fxLayoutAlign="start start" class="simuler" fxLayout="row">
+    <div fxLayout="row wrap" fxLayoutAlign="start start">
+        <mat-card *ngIf="etape==1" fxLayoutAlign="start start" class="simuler" fxLayout="row" fxFlex="75">
           <div fxFlex="70" class="big-img" fxLayout="column" fxLayoutAlign="start center">
             <div fxLayout="row" fxLayoutAlign="start start">
               <h4> Choix d'un modèle </h4>
@@ -35,7 +35,7 @@
           </div>
         </mat-card>
 
-        <mat-card *ngIf="etape==2" fxLayoutAlign="start start" class="simuler" fxLayout="row">
+        <mat-card *ngIf="etape==2" fxLayoutAlign="start start" class="simuler" fxLayout="row" fxFlex="75">
           <div fxFlex="70" class="big-img" fxLayout="column" fxLayoutAlign="start center">
             <div fxLayout="row" fxLayoutAlign="start start">
               <button mat-icon-button (click)="revenirEtape1()" class="supp">
@@ -66,7 +66,7 @@
           </div>
         </mat-card>
 
-        <mat-card *ngIf="etape==3" fxLayoutAlign="start start" class="simuler" fxLayout="row">
+        <mat-card *ngIf="etape==3" fxLayoutAlign="start start" class="simuler" fxLayout="row" fxFlex="75">
           <div fxFlex="70" class="big-img" fxLayout="column" fxLayoutAlign="start center">
             <div fxLayout="row" fxLayoutAlign="start start">
               <button mat-icon-button (click)="revenirEtape2()" class="supp">
@@ -91,15 +91,15 @@
             </div>
             <div  *ngFor="let clr of listCouleurs" fxLayoutAlign="start center" fxLayout="column">
               <mat-card class="example-card" (click)="choisirCouleur(clr)">
-                <img *ngIf="clr.image[0] != null" mat-card-image src={{clr.image[0].CheminImage}} alt="">
-                <img *ngIf="clr.image[0] == null" mat-card-image src="./assets/images/Pics/aucune.jpg" alt="">
+                <img *ngIf="clr.image!= null" mat-card-image src={{clr.image[0].CheminImage}} alt="">
+                <img *ngIf="clr.image == null" mat-card-image src="./assets/images/Pics/aucune.jpg" alt="">
               </mat-card>
               <h5>{{clr.NomCouleur}}</h5>
             </div>
           </div>
         </mat-card>
 
-      <mat-card *ngIf="etape==4" fxLayoutAlign="start center" class="simuler" fxLayout="column">
+      <mat-card *ngIf="etape==4" fxLayoutAlign="start center" class="simuler" fxLayout="column" fxFlex="75">
         <div fxLayout="row" fxLayoutAlign="start start">
           <button mat-icon-button (click)="revenirEtape3()" class="supp">
             <mat-icon class="rouge">navigate_before</mat-icon>
@@ -112,7 +112,8 @@
         </div>
       </mat-card>
 
-        <form fxLayoutAlign="center center" fxLayout="column">
+      <div fxFlex="5"></div>
+        <form fxLayout="column" fxLayoutAlign="center center" >
             <div *ngIf="etape !=1 && versionChoisie!= null"  fxLayout="column" fxLayoutAlign="space-between center">
               <span class="label">Prix de la version</span>
               <input matNativeControl matInput disabled class="input" value="{{versionChoisie.lignetarif.Prix}}">

@@ -89,6 +89,9 @@ div.gestion {
         }
 
         mat-cell {
+          padding-top: 3px;
+          padding-bottom: 3px;
+          font-size: 14px;
           button.accepter{
             background: #1ABC9C;
             color: #ffffff;
