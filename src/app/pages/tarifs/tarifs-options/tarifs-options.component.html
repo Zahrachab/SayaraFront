@@ -14,43 +14,50 @@
     <mat-table [dataSource]="optionDataSource" matSort>
       <ng-container matColumnDef='CodeOption'>
         <mat-header-cell *matHeaderCellDef mat-sort-header>
+          <mat-icon>code</mat-icon>
           Code Option
         </mat-header-cell>
         <mat-cell *matCellDef="let option"> {{option.CodeOption}} </mat-cell>
       </ng-container>
       <ng-container matColumnDef='NomOption'>
         <mat-header-cell *matHeaderCellDef mat-sort-header>
+          <mat-icon>directions_car</mat-icon>
           Nom Option
         </mat-header-cell>
         <mat-cell class="gras" *matCellDef="let option"> {{option.NomOption}} </mat-cell>
       </ng-container>
       <ng-container matColumnDef='NomModele'>
         <mat-header-cell *matHeaderCellDef mat-sort-header>
+          <mat-icon>directions_car</mat-icon>
           Modele
         </mat-header-cell>
         <mat-cell class="gras" *matCellDef="let option"> {{option.NomModele}} </mat-cell>
       </ng-container>
       <ng-container matColumnDef='Apartir'>
         <mat-header-cell *matHeaderCellDef mat-sort-header>
+          <mat-icon>date_range</mat-icon>
           A partir du
         </mat-header-cell>
         <mat-cell class="gras" *matCellDef="let option"> <span *ngIf="option.lignetarif!==null">{{option.lignetarif.DateDebut}} </span> </mat-cell>
       </ng-container>
       <ng-container matColumnDef='Jusqua'>
         <mat-header-cell *matHeaderCellDef mat-sort-header>
+          <mat-icon>date_range</mat-icon>
           Jusqu'au
         </mat-header-cell>
         <mat-cell class="gras" *matCellDef="let option"> <span *ngIf="option.lignetarif!==null">{{option.lignetarif.DateFin}} </span> </mat-cell>
       </ng-container>
       <ng-container matColumnDef='Prix'>
         <mat-header-cell *matHeaderCellDef mat-sort-header>
+          <mat-icon>attach_money</mat-icon>
           Prix
         </mat-header-cell>
-        <mat-cell class="gras" *matCellDef="let option"> <span *ngIf="option.lignetarif!==null">{{option.lignetarif.Prix}} </span> </mat-cell>
+        <mat-cell class="gras" *matCellDef="let option"> <span *ngIf="option.lignetarif!==null">{{option.lignetarif.Prix}} DZA </span> </mat-cell>
       </ng-container>
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
   </div>
   <!-- <app-upload-fichier></app-upload-fichier>-->
 

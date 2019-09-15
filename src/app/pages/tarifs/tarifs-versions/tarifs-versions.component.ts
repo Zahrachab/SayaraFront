@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import {MatSort, MatTableDataSource} from '@angular/material';
+import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {VersionDetail} from '../../../services/entites/versionDetail.model';
 import {ModeleDetail} from '../../../services/entites/modeleDetail.model';
 import {VersionService} from '../../../services/version.service';
@@ -9,7 +9,7 @@ import {ToastrManager} from 'ng6-toastr-notifications';
 @Component({
   selector: 'app-tarifs-versions',
   templateUrl: './tarifs-versions.component.html',
-  styleUrls: ['./tarifs-versions.component.scss']
+  styleUrls: ['../tarifs-options/tarifs-options.component.scss']
 })
 export class TarifsVersionsComponent implements OnInit, AfterViewInit {
 // Le data source qui contient les informations a afficher dans le mat-table
@@ -21,6 +21,9 @@ export class TarifsVersionsComponent implements OnInit, AfterViewInit {
   displayedColumns = ['CodeVersion', 'NomVersion', 'NomModele', 'Apartir', 'Jusqua', 'Prix'];
   interval: any;
 
+
+  // Réference vers le mat-paginator
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   // Réference vers le mat-sort
   @ViewChild(MatSort) sort: MatSort;
 
@@ -34,6 +37,7 @@ export class TarifsVersionsComponent implements OnInit, AfterViewInit {
   constructor(private modeleService: ModeleService,
               private versionService: VersionService,
               private toastr: ToastrManager) {
+    this.filter();
   }
 
   /**
@@ -65,6 +69,7 @@ export class TarifsVersionsComponent implements OnInit, AfterViewInit {
    */
   ngAfterViewInit(): void {
     this.versionDataSource.sort = this.sort;
+    this.versionDataSource.paginator = this.paginator;
   }
 
   /**
@@ -74,5 +79,26 @@ export class TarifsVersionsComponent implements OnInit, AfterViewInit {
    */
   appliquerFiltre = (value: string) => {
     this.versionDataSource.filter = value.trim().toLocaleLowerCase();
+  }
+
+  /**
+   * redéfinir le filtre pour prendre en considération tous les sous objets d'une ligne
+   */
+  filter() {
+    this.versionDataSource.filterPredicate = (order: any, filter: string) => {
+      const transformedFilter = filter.trim().toLowerCase();
+      const listAsFlatString = (obj): string => {
+        let returnVal = '';
+        Object.values(obj).forEach((val) => {
+          if (typeof val !== 'object') { // Si ce n'est pas un objet
+            returnVal = returnVal + ' ' + val;
+          } else if (val !== null) { // Si c'est un objet non null
+            returnVal = returnVal + ' ' + listAsFlatString(val);
+          }
+        });
+        return returnVal.trim().toLowerCase();
+      };
+      return listAsFlatString(order).includes(transformedFilter);
+    };
   }
 }

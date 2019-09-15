@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import {MatSort, MatTableDataSource} from '@angular/material';
+import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {ModeleDetail} from '../../../services/entites/modeleDetail.model';
 import {ModeleService} from '../../../services/modele.service';
 import {OptionService} from '../../../services/option.service';
@@ -21,6 +21,8 @@ export class TarifsOptionsComponent implements OnInit, AfterViewInit {
   displayedColumns = ['CodeOption', 'NomOption', 'NomModele', 'Apartir', 'Jusqua', 'Prix'];
   interval: any;
 
+  // Réference vers le mat-paginator
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   // Réference vers le mat-sort
   @ViewChild(MatSort) sort: MatSort;
   /**
@@ -33,6 +35,7 @@ export class TarifsOptionsComponent implements OnInit, AfterViewInit {
   constructor(private modeleService: ModeleService,
               private optionService: OptionService,
               private toastr: ToastrManager) {
+    this.filter();
   }
 
   /**
@@ -65,6 +68,7 @@ export class TarifsOptionsComponent implements OnInit, AfterViewInit {
    */
   ngAfterViewInit(): void {
     this.optionDataSource.sort = this.sort;
+    this.optionDataSource.paginator = this.paginator;
   }
 
   /**
@@ -75,5 +79,29 @@ export class TarifsOptionsComponent implements OnInit, AfterViewInit {
   appliquerFiltre = (value: string) => {
     this.optionDataSource.filter = value.trim().toLocaleLowerCase();
   }
+
+
+  /**
+   * redéfinir le filtre pour prendre en considération tous les sous objets d'une ligne
+   */
+  filter() {
+    this.optionDataSource.filterPredicate = (order: any, filter: string) => {
+      const transformedFilter = filter.trim().toLowerCase();
+      const listAsFlatString = (obj): string => {
+        let returnVal = '';
+        Object.values(obj).forEach((val) => {
+          if (typeof val !== 'object') { // Si ce n'est pas un objet
+            returnVal = returnVal + ' ' + val;
+          } else if (val !== null) { // Si c'est un objet non null
+            returnVal = returnVal + ' ' + listAsFlatString(val);
+          }
+        });
+        return returnVal.trim().toLowerCase();
+      };
+      return listAsFlatString(order).includes(transformedFilter);
+    };
+  }
+
+
 
 }
