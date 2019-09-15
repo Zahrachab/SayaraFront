@@ -9,6 +9,11 @@ const routes: Routes = [
     component: CommandesComponent,
     children: [
       {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'tous'
+      },
+      {
         path: 'tous',
         component: AllCommandesComponent,
       },

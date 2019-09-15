@@ -12,6 +12,11 @@ const routes: Routes = [
   //  canActivate: [UtilisateurGuard],
     children: [
       {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'versions'
+      },
+      {
         path: 'versions',
         component: TarifsVersionsComponent
       },

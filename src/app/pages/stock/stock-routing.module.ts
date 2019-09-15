@@ -10,6 +10,11 @@ const routes: Routes = [
     component: StockComponent,
     children: [
       {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'vehicules'
+      },
+      {
         path: 'vehicules',
         component: StockVehiculesComponent,
       },

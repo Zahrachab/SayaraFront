@@ -16,18 +16,21 @@ const routes: Routes = [
     canActivate: [UtilisateurGuard],
     children: [
       {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'modeles'
+      },
+      {
         path: 'modeles',
         component: GestionModeleComponent
       },
       {
         path: 'options/:CodeModele',
         component: GestionOptionsComponent,
-        pathMatch: 'full'
       },
       {
         path: 'options',
         component: GestionOptionsComponent,
-        pathMatch: 'full'
       },
       {
         path: 'versions',
@@ -41,13 +44,11 @@ const routes: Routes = [
       {
         path: 'couleurs/:CodeModele',
         component: GestionCouleurComponent,
-        pathMatch: 'full'
       },
 
       {
         path: 'couleurs',
         component: GestionCouleurComponent,
-        pathMatch: 'full'
       }
 
     ]
