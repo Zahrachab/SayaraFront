@@ -13,10 +13,11 @@ import { TarifsVersionsComponent } from './tarifs-versions/tarifs-versions.compo
 import {GestionModule} from '../gestion/gestion.module';
 import { TarifsOptionsComponent } from './tarifs-options/tarifs-options.component';
 import { UploadFichierTarifComponent } from './upload-fichier-tarif/upload-fichier-tarif.component';
+import { TarifsCouleursComponent } from './tarifs-couleurs/tarifs-couleurs.component';
 
 
 @NgModule({
-  declarations: [TarifsVersionsComponent, TarifsComponent, TarifsOptionsComponent, UploadFichierTarifComponent, ],
+  declarations: [TarifsVersionsComponent, TarifsComponent, TarifsOptionsComponent, UploadFichierTarifComponent, TarifsCouleursComponent, ],
   imports: [
     GestionModule,
     CommonModule,

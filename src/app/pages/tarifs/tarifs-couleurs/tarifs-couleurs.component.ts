@@ -1,58 +1,59 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {ModeleDetail} from '../../../services/entites/modeleDetail.model';
+import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {ModeleService} from '../../../services/modele.service';
-import {OptionService} from '../../../services/option.service';
-import {OptionDetail} from '../../../services/entites/optionDetail.model';
 import {ToastrManager} from 'ng6-toastr-notifications';
+import {CouleurService} from '../../../services/couleur.service';
+import {CouleurDetail} from '../../../services/entites/couleurDetail.model';
 
 @Component({
-  selector: 'app-tarifs-options',
-  templateUrl: './tarifs-options.component.html',
-  styleUrls: ['./tarifs-options.component.scss']
+  selector: 'app-tarifs-couleurs',
+  templateUrl: './tarifs-couleurs.component.html',
+  styleUrls: ['./tarifs-couleurs.component.scss']
 })
-export class TarifsOptionsComponent implements OnInit, AfterViewInit {
-// Le data source qui contient les informations a afficher dans le mat-table
-  private optionDataSource = new MatTableDataSource<OptionDetail>();
+export class TarifsCouleursComponent implements OnInit, AfterViewInit {
+
+  // Le data source qui contient les informations a afficher dans le mat-table
+  private optionDataSource = new MatTableDataSource<CouleurDetail>();
   // Les modeles pour le mat-select
   private modeles: ModeleDetail[];
 
   // Les colonnes a afficher dans le mat-table
-  displayedColumns = ['CodeOption', 'NomOption', 'NomModele', 'Apartir', 'Jusqua', 'Prix'];
+  displayedColumns = ['CodeCouleur', 'NomCouleur', 'CodeHexa', 'NomModele', 'Apartir', 'Jusqua', 'Prix'];
   interval: any;
 
   // Réference vers le mat-paginator
   @ViewChild(MatPaginator) paginator: MatPaginator;
   // Réference vers le mat-sort
   @ViewChild(MatSort) sort: MatSort;
+
   /**
    * Constructeur de la classe, il redefinit le filtre de recherche pour inclure les sous-objets (options et versions)
    * @param modeleService
    * Il va permettre d'avoir les modeles a afficher
-   * @param optionService
+   * @param couleurService
    * Un service qui va permettre d'ouvrir les boites de dialogues pour ajouter, supprimer et modifier
+   * @param toastr
+   * toastr manager
    */
   constructor(private modeleService: ModeleService,
-              private optionService: OptionService,
+              private couleurService: CouleurService,
               private toastr: ToastrManager) {
     this.filter();
   }
 
-  /**
-   *  Executé a l'initialisation du composant, récupere les données
-   */
   ngOnInit() {
     this.modeleService.getModeles().subscribe(modeles => {
-      const options = new Array<OptionDetail>();
+      const options = new Array<CouleurDetail>();
       this.modeles = modeles as ModeleDetail[];
       for (const modele of this.modeles) {
-        this.optionService.getOptionsWithLigneTarifs(modele.CodeModele).subscribe(res => {
-          for (const option of res as OptionDetail[]) {
+        this.couleurService.getCouleursWithLigneTarifs(modele.CodeModele).subscribe(res => {
+          for (const option of res as CouleurDetail[]) {
             option.NomModele = modele.NomModele;
             options.push(option);
           }
           this.optionDataSource.data = options;
-        }, error => {
+          }, error => {
           // Erreur dans l'obtention d'un tarif pour une option donné
           this.toastr.errorToastr(error);
         });
@@ -80,7 +81,6 @@ export class TarifsOptionsComponent implements OnInit, AfterViewInit {
     this.optionDataSource.filter = value.trim().toLocaleLowerCase();
   }
 
-
   /**
    * redéfinir le filtre pour prendre en considération tous les sous objets d'une ligne
    */
@@ -101,7 +101,6 @@ export class TarifsOptionsComponent implements OnInit, AfterViewInit {
       return listAsFlatString(order).includes(transformedFilter);
     };
   }
-
 
 
 }

@@ -4,6 +4,7 @@ import {TarifsVersionsComponent} from './tarifs-versions/tarifs-versions.compone
 import {TarifsComponent} from './tarifs/tarifs.component';
 import {TarifsOptionsComponent} from './tarifs-options/tarifs-options.component';
 import {UploadFichierTarifComponent} from './upload-fichier-tarif/upload-fichier-tarif.component';
+import {TarifsCouleursComponent} from './tarifs-couleurs/tarifs-couleurs.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
       {
         path: 'upload',
         component: UploadFichierTarifComponent
+      },
+      {
+        path: 'couleurs',
+        component: TarifsCouleursComponent
       }
     ]
   }

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import {Couleur} from './entites/couleur.model';
 import {catchError} from 'rxjs/operators';
 import {throwError} from 'rxjs';
+import {CouleurDetail} from './entites/couleurDetail.model';
 
 
 @Injectable({
@@ -98,8 +99,6 @@ export class CouleurService {
       catchError(CouleurService.handleError)
     );
   }
-
-
   /* récupérer les couleurs associées à un modèle */
   getCouleursVersion(codeVersion): Observable<Couleur[]> {
     return this.http.get<Couleur[]>(this.serviceUrl + 'versions/' + codeVersion + '/couleurs').pipe(
@@ -117,8 +116,6 @@ export class CouleurService {
     );
   }
 
-
-
   // supprimer couleur d'une version
   supprimerVersion(code: string, codeVersion: string) {
     const tokenHeader = new HttpHeaders().set('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('utilisateur')).token);
@@ -126,6 +123,11 @@ export class CouleurService {
       {headers: tokenHeader}).pipe(
         catchError(CouleurService.handleErrorForVersionInsertion)
     );
+  }
 
+  getCouleursWithLigneTarifs(codeModele): Observable<CouleurDetail[]> {
+    return this.http.get<CouleurDetail[]>(this.serviceUrl + codeModele + '/couleurs').pipe(
+      catchError(CouleurService.handleError)
+    );
   }
 }

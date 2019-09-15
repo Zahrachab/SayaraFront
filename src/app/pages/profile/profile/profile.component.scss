@@ -21,6 +21,7 @@
 #personalInformation {
     margin-left: 5.5%;
   margin-right: 3%;
+  margin-bottom: 5%;
 }
 
 
@@ -86,6 +87,9 @@ img {
 }
 
 
+.btn-ajout:hover {
+  cursor: pointer;
+}
 .btn-ajout {
   margin-top: 30px;
   width: 80%;
