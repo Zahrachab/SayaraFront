@@ -1,7 +1,10 @@
 div.gestion {
-  margin: 5%;
-  width: 1000px;
+  padding-top: 50px;
+  padding-left: 30px;
+  padding-right: 30px;
   padding-bottom: 300px;
+  width: auto;
+  margin: 0px;
 
   .gras {
     font-weight: bold;
@@ -62,7 +65,7 @@ div.gestion {
 
 
   .example-container {
-    width: 96%;
+    width: 100%;
     background-color: transparent;
     margin-top: 5%;
     overflow: auto;
@@ -75,28 +78,28 @@ div.gestion {
       box-shadow: 1.5px 1.5px #95a5a6;
 
       mat-row {
-        padding: 1% 0;
         border-bottom: 3px solid #ecf0f1;
 
         mat-cell {
-          padding: 0 2%;
-           button{;
-             mat-icon {
-               margin-right: 3%
-             }
+          margin-top: 10px;
+          margin-bottom: 10px;
+          button{;
+            mat-icon {
+              margin-right: 5px;
+            }
 
-             mat-icon.vert {
-               color: #16a085;
-             }
+            mat-icon.vert {
+              color: #16a085;
+            }
 
-             mat-icon.rouge {
-               color: firebrick;
-             }
+            mat-icon.rouge {
+              color: firebrick;
+            }
 
-             mat-icon.bleu {
-               color: #2ebcfc;
-             }
-           }
+            mat-icon.bleu {
+              color: #2ebcfc;
+            }
+          }
 
         }
 
@@ -104,6 +107,12 @@ div.gestion {
           padding: 0;
           margin-bottom: 0;
           color: black;
+
+          li {
+            margin-left: 15px;
+            list-style-type: disc;
+            display: list-item;
+          }
         }
 
         a {
@@ -139,15 +148,15 @@ div.gestion {
         justify-content: center;
 
         mat-header-cell {
-          padding-left: 40px;
+          width: auto;
           color: #2c3e50;
           font-size: 80%;
           font-family: 'Roboto-Bold', serif;
 
           mat-icon {
-            margin-right: 5px;
           }
         }
+
 
       }
 
