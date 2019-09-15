@@ -140,6 +140,7 @@ export class GestionVersionComponent implements OnInit, AfterViewInit {
       dialogRef.componentInstance.codeModele = this.codeModele;
       dialogRef.afterClosed().subscribe(() => {
        this.refreshData();
+       this.refreshData();
       });
     } else {
       this.toastr.infoToastr('Veuillez choisir un modèle');
@@ -155,6 +156,7 @@ export class GestionVersionComponent implements OnInit, AfterViewInit {
     const dialogRef: MatDialogRef<ModifierVerionComponent> = this.matDialog.open(ModifierVerionComponent, {width: '800px', height: '80%'});
     dialogRef.componentInstance.version = version;
     dialogRef.afterClosed().subscribe(() => {
+      this.refreshData();
       this.refreshData();
     });
   }
