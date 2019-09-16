@@ -27,6 +27,7 @@ import {CommandeService} from './services/commande.service';
 import {PusherService} from './services/pusher.service';
 import {SimulationModule} from './pages/simulation/simulation.module';
 import {ProfileModule} from './pages/profile/profile.module';
+import {AccueilModule} from './pages/accueil/accueil.module';
 
 const urlGlobale = 'https://sayaradz.herokuapp.com';
 
@@ -58,6 +59,7 @@ const urlGlobale = 'https://sayaradz.herokuapp.com';
     StockModule,
     CommandesModule,
     ProfileModule,
+    AccueilModule,
     MDBBootstrapModule.forRoot()
   ],
   entryComponents: [ConfirmationDialogComponent],
