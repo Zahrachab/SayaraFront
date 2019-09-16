@@ -1,7 +1,10 @@
 div.stock {
-  width: 1100px;
   padding-top: 30px;
-  margin-left: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 100px;
+  width: auto;
+  margin: 0px;
 
   .gras {
     font-weight: bold;
@@ -41,12 +44,12 @@ div.stock {
   }
 
   div.container {
-    width: 90%;
+    width: 100%;
     margin-bottom: 30px;
 
     .example-card {
       background-color: transparent;
-      width: 85%;
+      width: 90%;
       border-radius: initial;
       padding: 25px 5px;
       height: 60px;
@@ -69,7 +72,7 @@ div.stock {
 
         mat-card-subtitle{
           font-family: 'Roboto-Bold', 'Sherif';
-          font-size: 12px;
+          font-size: 14px;
           margin-left: 10px;
           line-height: 20px;
           margin-bottom: 20px;
@@ -88,9 +91,7 @@ div.stock {
           color: #7627b3;
         }
 
-        mat-card-subtitle {
-          font-size: 12px;
-        }
+
       }
     }
 
@@ -135,7 +136,7 @@ div.stock {
 
 
   .example-container {
-    width: 90%;
+    width: 100%;
     background-color: transparent;
     margin-top: 5%;
     overflow: auto;

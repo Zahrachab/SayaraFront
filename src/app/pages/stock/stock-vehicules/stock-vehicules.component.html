@@ -71,14 +71,14 @@
             <div class="example-element-description">
               <mat-table [dataSource]=element.Stock multiTemplateDataRows >
                 <ng-container matColumnDef='NumChassis'>
-                  <mat-header-cell *matHeaderCellDef >
+                  <mat-header-cell *matHeaderCellDef mat-sort-header>
                     N°CHASSIS
                   </mat-header-cell>
                   <mat-cell *matCellDef="let stock"> {{stock.vehicules[0].NumChassis}} </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef='Couleur'>
-                  <mat-header-cell *matHeaderCellDef>
+                  <mat-header-cell *matHeaderCellDef mat-sort-header>
                     COULEUR
                   </mat-header-cell>
                   <mat-cell class="gras" *matCellDef="let stock" >
@@ -92,7 +92,7 @@
                 </ng-container>
 
                 <ng-container matColumnDef='Montant'>
-                  <mat-header-cell *matHeaderCellDef>
+                  <mat-header-cell *matHeaderCellDef mat-sort-header>
                     PRIX MINIMAL
                   </mat-header-cell>
                   <mat-cell *matCellDef="let stock"> {{stock.Montant}} DZA </mat-cell>

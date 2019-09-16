@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {StockVersion} from '../../../services/entites/stock.modele';
 import {ModeleDetail} from '../../../services/entites/modeleDetail.model';
@@ -6,7 +6,7 @@ import {VersionService} from '../../../services/version.service';
 import {ModeleService} from '../../../services/modele.service';
 import {StockService} from '../../../services/stock.service';
 import {StockVehicule} from '../../../services/entites/stockVehicule.model';
-import {MatTableDataSource} from '@angular/material';
+import {MatSort, MatTableDataSource} from '@angular/material';
 import {ToastrManager} from 'ng6-toastr-notifications';
 import {InfosMarque} from '../../../services/entites/InfosMarque.model';
 
@@ -41,6 +41,9 @@ export class StockVehiculesComponent implements  OnInit{
   stockDataSource: MatTableDataSource<StockVersion> = new MatTableDataSource(null);
   expandedElement1: any | null;
   expandedElement2: any | null;
+
+  // Réference vers le mat-sort
+  @ViewChild(MatSort) sort: MatSort;
 
   private infos: InfosMarque;
   isExpansionDetailRow = (i: number, row: object) => (1 === 1) ;
@@ -104,6 +107,12 @@ export class StockVehiculesComponent implements  OnInit{
   }
 
 
+  /**
+   *  Association du sort et de la pagination au dataSource
+   */
+  ngAfterViewInit(): void {
+    this.stockDataSource.sort = this.sort;
+  }
 
   /**
    * Application du filtre entré dans la recherche
