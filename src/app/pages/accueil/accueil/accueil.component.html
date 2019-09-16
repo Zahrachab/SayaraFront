@@ -1,0 +1,61 @@
+<div class="wrapper" id="globalWrapper">
+  <div fxFlex="100">
+    <app-navbar></app-navbar>
+  </div>
+</div>
+<div fxLayout="row">
+  <app-sidenav fxFlex="17"></app-sidenav>
+  <div fxFlex="80">
+    <div fxLayout="row" fxLayoutGap="30px" class="container" fxLayoutAlign="center center">
+      <mat-card class="example-card vert">
+        <mat-card-header>
+          <mat-card-title class="violet">Commandes</mat-card-title>
+          <mat-card-subtitle>Nombre de nouvelles commandes : {{nbNouvellesCommandes}} </mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
+
+      <mat-card class="example-card bleu">
+        <mat-card-header>
+          <mat-card-title class="bleu">Commandes</mat-card-title>
+          <mat-card-subtitle>Nombre de commandes validées : {{nbCommandesValides}} </mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
+
+      <mat-card class="example-card violet">
+        <mat-card-header>
+          <mat-card-title class="violet">Gains</mat-card-title>
+          <mat-card-subtitle>Total des gains : {{totalMoney}} Dzd</mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
+    </div>
+
+    <div fxLayout="row" fxLayoutGap="30px" class="container" fxLayoutAlign="center center">
+      <mat-card class="example-card vert">
+        <mat-card-header>
+          <mat-card-title class="vert">STOCK</mat-card-title>
+          <mat-card-subtitle>Nombre de véhicules en stock : {{nbStock}}
+          </mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
+
+      <mat-card class="example-card bleu">
+        <mat-card-header>
+          <mat-card-title class="vert">Modeles</mat-card-title>
+          <mat-card-subtitle>Nombre de Modeles : {{nbModeles}}
+          </mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
+
+      <mat-card class="example-card violet">
+        <mat-card-header>
+          <mat-card-title class="bleu">Versions</mat-card-title>
+          <mat-card-subtitle>Nombre de Versions : {{nbVersions}} </mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
+
+    </div>
+  </div>
+</div>
+<div>
+  <app-footer></app-footer>
+</div>

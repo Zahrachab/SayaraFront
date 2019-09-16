@@ -1,0 +1,70 @@
+div.container {
+  margin-top: 2%;
+  margin-left: 5%;
+  width: 90%;
+  margin-bottom: 30px;
+
+  .example-card {
+    background-color: transparent;
+    width: 85%;
+    border-radius: initial;
+    padding: 25px 5px;
+    height: 60px;
+    margin-top: 20px;
+    font-size: 13px;
+    font-family: 'Roboto-Medium', 'Sherif';
+    color: #000000;
+
+
+    mat-card-header {
+      color: black;
+
+      mat-card-title {
+        font-family: 'Roboto-Bold', 'Sherif';
+        font-weight: bold;
+        font-size: 15px;
+        margin-left: 10px;
+        margin-bottom: 20px;
+      }
+
+      mat-card-subtitle{
+        font-family: 'Roboto-Bold', 'Sherif';
+        font-size: 12px;
+        margin-left: 10px;
+        line-height: 20px;
+        margin-bottom: 20px;
+      }
+
+
+      .bleu {
+        color: #3498d8;
+      }
+
+      .vert {
+        color: #1abc9c;
+      }
+
+      .violet {
+        color: #7627b3;
+      }
+
+      mat-card-subtitle {
+        font-size: 12px;
+      }
+    }
+  }
+
+  mat-card.bleu {
+    border-left: 5px solid #3498d8;
+  }
+
+  mat-card.vert {
+    border-left: 5px solid #1abc9c;
+  }
+
+  mat-card.violet {
+    border-left: 5px solid #7627b3;
+  }
+}
+
+
