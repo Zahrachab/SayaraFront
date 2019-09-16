@@ -1,0 +1,72 @@
+<div class="gestion">
+  <h2>Gestion des Tarifs des Couleurs </h2>
+  <div id="trait"></div>
+  <div fxLayout="row">
+    <div fxFlex="70">
+      <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <input matInput type="text" (keyup)="appliquerFiltre($event.target.value)" placeholder="Rechercher une option" value="">
+        </mat-form-field>
+      </form>
+    </div>
+  </div>
+  <div class="example-container mat-elevation-z8">
+    <mat-table [dataSource]="optionDataSource" matSort>
+      <ng-container matColumnDef='CodeCouleur'>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          <mat-icon>code</mat-icon>
+          Code Couleur
+        </mat-header-cell>
+        <mat-cell *matCellDef="let option"> {{option.CodeCouleur}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef='CodeHexa'>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          <mat-icon>code</mat-icon>
+          Code Hexa
+        </mat-header-cell>
+        <mat-cell class="gras" *matCellDef="let option"> {{option.CodeHexa}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef='NomCouleur'>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          <mat-icon>directions_car</mat-icon>
+          Nom Couleur
+        </mat-header-cell>
+        <mat-cell class="gras" *matCellDef="let option"> {{option.NomCouleur}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef='NomModele'>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          <mat-icon>directions_car</mat-icon>
+          Nom Modele
+        </mat-header-cell>
+        <mat-cell class="gras" *matCellDef="let option"> {{option.NomModele}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef='Apartir'>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          <mat-icon>date_range</mat-icon>
+          A partir du
+        </mat-header-cell>
+        <mat-cell class="gras" *matCellDef="let option"> <span *ngIf="option.lignetarif!==null">11 </span> </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef='Jusqua'>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          <mat-icon>date_range</mat-icon>
+          Jusqu'au
+        </mat-header-cell>
+        <mat-cell class="gras" *matCellDef="let option"> <span *ngIf="option.lignetarif!==null">22 </span> </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef='Prix'>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          <mat-icon>attach_money</mat-icon>
+          Prix
+        </mat-header-cell>
+        <mat-cell class="gras" *matCellDef="let option"> <span *ngIf="option.lignetarif!==null">{{option.lignetarif.Prix}} DZA </span> </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+  <!-- <app-upload-fichier></app-upload-fichier>-->
+
+
+</div>

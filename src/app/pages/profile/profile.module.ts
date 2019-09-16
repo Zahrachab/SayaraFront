@@ -4,6 +4,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ProfileRoutingModule } from './profile-routing.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {GestionModule} from '../gestion/gestion.module';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [ProfileComponent],
@@ -11,7 +12,8 @@ import {GestionModule} from '../gestion/gestion.module';
     GestionModule,
     CommonModule,
     ProfileRoutingModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    FormsModule
   ]
 })
 export class ProfileModule { }

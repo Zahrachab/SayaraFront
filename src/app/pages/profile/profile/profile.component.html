@@ -1,42 +1,45 @@
 <app-navbar></app-navbar>
 <div class="header">
   <p>
-  <img src=" assets/images/Pics/user.png" alt="Avatar" align="left">
+  <img src="{{user.images[0].CheminImage}}" alt="Avatar" align="left">
     <br/>
-  Bouayache Mohamed Islem
+  {{user.Nom}} {{user.Prenom}}
   </p>
 </div>
 <div id="globalWrapper">
   <div fxLayout="row" style="width: 100%">
-  <div fxFlex="41.5" id="personalInformation" >
+  <div fxFlex="83" id="personalInformation" >
     <div class="titre">
       Informations Personnelles
     </div>
     <div class="trait"></div>
     <div class="informations">
+      <!--
       <span class="point">Existe depuis le   </span>
       <span class="text">20/12/2019</span>  <br/>
       <span class="point">Adresse : </span><br/>
     <textarea rows = "5" name = "description"> cité test, ville test, wilaya test.
     </textarea>
     <br/>
+    -->
     Email : <br/>
-    <input type="text" value="ft_test@esi.dz"/> <br/>
+    <input type="text" value="{{user.Mail}}" [(ngModel)]="mail" /> <br/>
     Télephone : <br/>
-    <input type="text" value="056478651"/> <br/>
+    <input type="text" value="{{user.NumTel}}" [(ngModel)]="tel" /> <br/>
     Modifier Mot de passe : <br/>
-    <input type="password" placeholder="Ancien Mot de passe"/> <br/>
+    <input type="password" placeholder="Ancien Mot de passe" [(ngModel)]="password0" /> <br/>
 
-    <input class="editPassword" type="text" placeholder="Nouveau Mot de passe"/> <br/>
+    <input class="editPassword" type="text" placeholder="Nouveau Mot de passe" (change)="passwordEdit()"  [(ngModel)]="password1" /> <br/>
 
-    <input class="editPassword" type="text" placeholder="Confirmer mot de passe"/> <br/>
+    <input class="editPassword" type="text" placeholder="Confirmer mot de passe" (change)="passwordEdit()"  [(ngModel)]="password2"/> <br/>
 
-    <button type="submit" class="btn-ajout">Modifier</button>
+    <input type="submit" class="btn-ajout" [disabled]="disableBtn" value="Modifier" (click)="edit()"/>
 
     </div>
   </div>
 
 
+    <!--
   <div fxFlex="41.5" id="companyInformation">
     <div class="titre">
       Informations Dacia
@@ -59,6 +62,7 @@
     </div>
 
   </div>
+-->
 </div>
   <div>
     <app-footer></app-footer>
