@@ -45,14 +45,14 @@
           <mat-icon>date_range</mat-icon>
           A partir du
         </mat-header-cell>
-        <mat-cell class="gras" *matCellDef="let option"> <span *ngIf="option.lignetarif!==null">11 </span> </mat-cell>
+        <mat-cell class="gras" *matCellDef="let option"> <span *ngIf="option.lignetarif!==null">{{option.lignetarif.DateDebut}}  </span> </mat-cell>
       </ng-container>
       <ng-container matColumnDef='Jusqua'>
         <mat-header-cell *matHeaderCellDef mat-sort-header>
           <mat-icon>date_range</mat-icon>
           Jusqu'au
         </mat-header-cell>
-        <mat-cell class="gras" *matCellDef="let option"> <span *ngIf="option.lignetarif!==null">22 </span> </mat-cell>
+        <mat-cell class="gras" *matCellDef="let option"> <span *ngIf="option.lignetarif!==null">{{option.lignetarif.DateFin}} </span> </mat-cell>
       </ng-container>
       <ng-container matColumnDef='Prix'>
         <mat-header-cell *matHeaderCellDef mat-sort-header>
