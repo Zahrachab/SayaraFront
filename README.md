@@ -1,15 +1,15 @@
-# Gestion des références
+## Gestion des références
 
 ![alt text](https://raw.githubusercontent.com/Zahrachab/SayaraFront/master/cap1.png)
 
 ![alt text](https://raw.githubusercontent.com/Zahrachab/SayaraFront/master/Capture%20du%202019-09-16%2013-19-40.png)
 
-# Simulation 
+## Simulation 
 
 ![alt text](https://raw.githubusercontent.com/Zahrachab/SayaraFront/master/cap2.png)
 
 
-# Tarifs 
+## Tarifs 
 ![alt text](https://raw.githubusercontent.com/Zahrachab/SayaraFront/master/cap4.png)
 
 # PrjSayara
