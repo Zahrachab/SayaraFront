@@ -140,7 +140,9 @@ export class GestionVersionComponent implements OnInit, AfterViewInit {
       dialogRef.componentInstance.codeModele = this.codeModele;
       dialogRef.afterClosed().subscribe(() => {
        this.refreshData();
-       this.refreshData();
+        setTimeout(() => {
+          this.refreshData();
+        }, 5000);
       });
     } else {
       this.toastr.infoToastr('Veuillez choisir un modèle');
@@ -157,7 +159,9 @@ export class GestionVersionComponent implements OnInit, AfterViewInit {
     dialogRef.componentInstance.version = version;
     dialogRef.afterClosed().subscribe(() => {
       this.refreshData();
-      this.refreshData();
+      setTimeout(() => {
+        this.refreshData();
+      }, 5000);
     });
   }
 
@@ -219,7 +223,7 @@ export class GestionVersionComponent implements OnInit, AfterViewInit {
           tmpData.push(res as VersionDetail);
           this.versionDataSource.data = tmpData;
         });
-      }, 3000);
+      });
     });
 
   }
