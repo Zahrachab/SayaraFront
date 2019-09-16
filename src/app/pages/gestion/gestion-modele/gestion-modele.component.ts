@@ -109,6 +109,15 @@ export class GestionModeleComponent implements OnInit, AfterViewInit {
       width: '850px',
       height: 'auto'
     });
+
+    // Rafraichissement de la page apres fermeture de la boite de dialogue
+    dialogRef.afterClosed().subscribe(() => {
+      setTimeout(() => {
+        this.refreshData();
+      }, 3000);
+      this.refreshData();
+
+    });
   }
 
   /**
@@ -124,6 +133,9 @@ export class GestionModeleComponent implements OnInit, AfterViewInit {
     });
     // Rafraichissement de la page apres fermeture de la boite de dialogue
     dialogRef.afterClosed().subscribe(() => {
+      setTimeout(() => {
+        this.refreshData();
+      }, 3000);
       this.refreshData();
     });
   }

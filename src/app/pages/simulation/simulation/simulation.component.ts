@@ -182,7 +182,6 @@ export class SimulationComponent implements OnInit {
       this.etape = 3;
       this.couleurService.getCouleursVersion(this.versionChoisie.CodeVersion).subscribe( (res) => {
         this.listCouleurs = res as Couleur[];
-        console.log(this.listCouleurs);
         if (this.listCouleurs.length!= 0) {
           this.couleurChoisie = this.listCouleurs[0];
           this.prixTotal += this.couleurChoisie.lignetarif.Prix;

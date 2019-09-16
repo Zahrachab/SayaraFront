@@ -108,7 +108,7 @@
         </div>
         <div class="trait vert"></div>
         <div fxLayout="column" fxLayoutAlign="center start" id="options"  >
-          <mat-checkbox *ngFor="let option of optionsVersion" color="primary" [value]="option.CodeOption"   (change)="choisirOptions($event, option)">{{option.NomOption}}  {{option.lignetarif.Prix}}</mat-checkbox>
+          <mat-checkbox *ngFor="let option of optionsVersion" color="primary" [value]="option.CodeOption"   (change)="choisirOptions($event, option,  option.CodeOption)">{{option.NomOption}}  {{option.lignetarif.Prix}}</mat-checkbox>
         </div>
       </mat-card>
 

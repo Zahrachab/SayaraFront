@@ -44,7 +44,7 @@ export class StockUploadComponent implements OnInit {
         this.el.setAttribute('mode', 'buffer');
       }
       }, error => {
-      this.toastr.errorToastr(error, 'Echec!!');
+      this.toastr.errorToastr(error, 'Echec!! Revoyez votre fichier');
       this.el.setAttribute('mode', 'buffer');
     });
     } else {
