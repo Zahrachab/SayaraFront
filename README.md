@@ -1,4 +1,13 @@
+# Gestion des références
+
 ![alt text](https://raw.githubusercontent.com/Zahrachab/SayaraFront/master/cap1.png)
+
+![alt text](https://raw.githubusercontent.com/Zahrachab/SayaraFront/master/Capture%20du%202019-09-16%2013-19-40.png)
+
+# Simulation 
+
+![alt text](https://raw.githubusercontent.com/Zahrachab/SayaraFront/master/cap2.png)
+
 # PrjSayara
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.1.
